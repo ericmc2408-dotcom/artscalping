@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions de Paiement - Neteller</title>
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .instructions-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #f1c40f;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #3498db;
+            margin-top: 30px;
+        }
+
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .email-address {
+            background-color: #2980b9;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .instructions-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 30px;
+        }
+        
+        .instructions-list li {
+            background-color: #55697d;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .language-switcher {
+            margin-bottom: 20px;
+        }
+        
+        .language-switcher img {
+            width: 30px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 3px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .language-switcher img.active,
+        .language-switcher img:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="instructions-container">
+        <div class="language-switcher">
+            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr">
+            <img src="https://flagcdn.com/gb.svg" alt="English" onclick="setLanguage('en')" id="lang-en">
+        </div>
+        <h1>
+            <span class="text-fr">Abonnement ArtScalping</span>
+            <span class="text-en" style="display:none;">ArtScalping Subscription</span>
+        </h1>
+        <p>
+            <span class="text-fr">En vous abonnant pour **19,99 € par mois**, vous obtenez l'accès exclusif à notre contenu premium.</span>
+            <span class="text-en" style="display:none;">By subscribing for **€19.99 per month**, you get exclusive access to our premium content.</span>
+        </p>
+
+        <h2>
+            <span class="text-fr">Votre abonnement inclut :</span>
+            <span class="text-en" style="display:none;">Your subscription includes:</span>
+        </h2>
+        <ul>
+            <li>
+                <span class="text-fr">L'accès sécurisé et privé à notre feuille **"Matchs du jour"**.</span>
+                <span class="text-en" style="display:none;">Secure and private access to our **"Matchs du jour"** spreadsheet.</span>
+            </li>
+            <li>
+                <span class="text-fr">Des analyses et des conseils basés sur notre méthode de scalping unique.</span>
+                <span class="text-en" style="display:none;">Analyses and advice based on our unique scalping method.</span>
+            </li>
+            <li>
+                <span class="text-fr">Une stratégie conçue pour **protéger votre capital** et maximiser vos gains.</span>
+                <span class="text-en" style="display:none;">A strategy designed to **protect your capital** and maximize your gains.</span>
+            </li>
+        </ul>
+        
+        <p>
+            <span class="text-fr">Pour finaliser votre abonnement, veuillez suivre les étapes suivantes pour un paiement via Neteller.</span>
+            <span class="text-en" style="display:none;">To finalize your subscription, please follow these steps for a payment via Neteller.</span>
+        </p>
+        
+        <ol class="instructions-list">
+            <li>
+                <span class="text-fr">Connectez-vous à votre compte Neteller.</span>
+                <span class="text-en" style="display:none;">Log in to your Neteller account.</span>
+            </li>
+            <li>
+                <span class="text-fr">Sélectionnez l'option "Transfert d'argent" ou "Envoyer de l'argent".</span>
+                <span class="text-en" style="display:none;">Select the "Money Transfer" or "Send Money" option.</span>
+            </li>
+            <li>
+                <span class="text-fr">Saisissez le montant de 19,99 €.</span>
+                <span class="text-en" style="display:none;">Enter the amount of €19.99.</span>
+            </li>
+            <li>
+                <span class="text-fr">Entrez l'adresse email de notre compte Neteller ci-dessous.</span>
+                <span class="text-en" style="display:none;">Enter the email address of our Neteller account below.</span>
+            </li>
+        </ol>
+
+        <p>
+            <span class="text-fr">Adresse de paiement :</span>
+            <span class="text-en" style="display:none;">Payment address:</span>
+        </p>
+        <span class="email-address">ericmc2@hotmail.fr</span>
+        
+        <p>
+            <span class="text-fr">Une fois le paiement effectué, veuillez nous envoyer un e-mail à cette même adresse pour nous confirmer le virement. Nous activerons votre abonnement dans les plus brefs délais.</span>
+            <span class="text-en" style="display:none;">Once the payment is made, please send us an email to the same address to confirm the transfer. We will activate your subscription as soon as possible.</span>
+        </p>
+    </div>
+
+    <script>
+        function setLanguage(lang) {
+            const elementsFr = document.querySelectorAll('.text-fr');
+            const elementsEn = document.querySelectorAll('.text-en');
+            
+            document.getElementById('lang-fr').classList.remove('active');
+            document.getElementById('lang-en').classList.remove('active');
+
+            if (lang === 'en') {
+                elementsFr.forEach(el => el.style.display = 'none');
+                elementsEn.forEach(el => el.style.display = 'inline');
+                document.getElementById('lang-en').classList.add('active');
+                document.documentElement.lang = "en";
+            } else {
+                elementsFr.forEach(el => el.style.display = 'inline');
+                elementsEn.forEach(el => el.style.display = 'none');
+                document.getElementById('lang-fr').classList.add('active');
+                document.documentElement.lang = "fr";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lis le paramètre de langue dans l'URL (envoyé par la page parente)
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'fr'; // 'fr' par défaut si aucun paramètre n'est trouvé
+            setLanguage(lang);
+        });
+    </script>
+</body>
+</html>
