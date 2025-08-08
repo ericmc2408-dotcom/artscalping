@@ -184,6 +184,21 @@
         #data-table tbody tr:hover {
             background-color: #3f586a;
         }
+        
+        /* NOUVEAU: Classes pour la coloration des résultats */
+        .result-green {
+            background-color: #27ae60; /* Vert foncé */
+            color: white;
+            font-weight: bold;
+        }
+        
+        .result-red {
+            background-color: #c0392b; /* Rouge foncé */
+            color: white;
+            font-weight: bold;
+        }
+        /* FIN NOUVEAU */
+
 
         /* Règles pour les petits écrans (téléphones) */
         @media (max-width: 768px) {
@@ -406,7 +421,6 @@
                 document.documentElement.lang = "fr";
             }
             
-            // Mettre à jour les textes des liens qui ne sont pas gérés par le script principal
             const linkPastUnder2_5 = document.getElementById('link-past-under-2-5');
             const linkPastUnder4_5 = document.getElementById('link-past-under-4-5');
             const freeTrialLink = document.getElementById('free-trial-mail');
@@ -447,7 +461,7 @@
                 const csvText = await response.text();
                 
                 const lines = csvText.split('\n').filter(line => line.trim() !== '');
-                const headers = lines[0].split(';'); // Assurez-vous que le séparateur est un point-virgule
+                const headers = lines[0].split(';');
                 const table = document.createElement('table');
                 table.id = 'data-table';
                 
@@ -465,10 +479,24 @@
                 for (let i = 1; i < lines.length; i++) {
                     const values = lines[i].split(';');
                     const row = tbody.insertRow();
-                    values.forEach(value => {
+                    for (let j = 0; j < values.length; j++) {
+                        const value = values[j].trim();
                         const td = row.insertCell();
-                        td.textContent = value.trim();
-                    });
+                        td.textContent = value;
+                        
+                        // NOUVEAU: Appliquer une classe de couleur à la dernière colonne
+                        if (j === values.length - 1) {
+                            const numericValue = parseInt(value, 10);
+                            if (!isNaN(numericValue)) {
+                                if (numericValue <= 4) {
+                                    td.classList.add('result-green');
+                                } else if (numericValue > 4) {
+                                    td.classList.add('result-red');
+                                }
+                            }
+                        }
+                        // FIN NOUVEAU
+                    }
                 }
 
                 tableContainer.innerHTML = '';
@@ -509,3 +537,4 @@
     </script>
 </body>
 </html>
+
