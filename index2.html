@@ -248,6 +248,48 @@
                 height: auto;
             }
         }
+        
+        /* Nouveaux styles pour la section d'essai gratuit */
+        .free-trial-cta {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .free-trial-cta p {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .free-trial-cta a {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #f1c40f;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .free-trial-cta a:hover {
+            background-color: #f39c12;
+        }
+        
+        .free-trial-cta a .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
@@ -275,7 +317,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="mailto:votre_email@example.com?subject=Question%20concernant%20ArtScalping" class="menu-link contact">
+                <a href="mailto:ericmc2@hotmail.fr?subject=Question%20concernant%20ArtScalping" class="menu-link contact">
                     <span class="icon">&#x2709;</span><span class="text-fr">Me Contacter</span><span class="text-en" style="display:none;">Contact Us</span>
                 </a>
             </li>
@@ -292,6 +334,19 @@
             <p id="content-p2">
                 Notre système est conçu pour **protéger votre capital** et limiter les découverts au maximum. Avec un écart probable de seulement 3 matchs et un maximum théorique de 4, vous vous assurez de **longues séries de victoires** et une rentabilité constante, indispensable pour devenir un parieur averti.
             </p>
+            
+            <div class="free-trial-cta">
+                <p>
+                    <span class="text-fr">Bénéficiez d'un essai gratuit d'une semaine pour accéder à la feuille d'historique !</span>
+                    <span class="text-en" style="display:none;">Get a one-week free trial to access the historical data sheet!</span>
+                </p>
+                <a href="mailto:ericmc2@hotmail.fr?subject=Demande%20d'essai%20gratuit%20ArtScalping" id="free-trial-mail">
+                    <span class="icon">&#x1F4E7;</span>
+                    <span class="text-fr">Demander l'accès</span>
+                    <span class="text-en" style="display:none;">Request Access</span>
+                </a>
+            </div>
+            
             <footer class="footer-gemini">
                 <span class="text-fr">Conçu avec l'aide de Gemini</span>
                 <span class="text-en" style="display:none;">Designed with the help of Gemini</span>
@@ -354,17 +409,22 @@
             // Mettre à jour les textes des liens qui ne sont pas gérés par le script principal
             const linkPastUnder2_5 = document.getElementById('link-past-under-2-5');
             const linkPastUnder4_5 = document.getElementById('link-past-under-4-5');
+            const freeTrialLink = document.getElementById('free-trial-mail');
             
             if (lang === 'en') {
                 linkPastUnder2_5.querySelector('.text-fr').style.display = 'none';
                 linkPastUnder2_5.querySelector('.text-en').style.display = 'inline';
                 linkPastUnder4_5.querySelector('.text-fr').style.display = 'none';
                 linkPastUnder4_5.querySelector('.text-en').style.display = 'inline';
+                
+                freeTrialLink.href = "mailto:ericmc2@hotmail.fr?subject=Free%20Trial%20Request%20for%20ArtScalping";
             } else {
                 linkPastUnder2_5.querySelector('.text-fr').style.display = 'inline';
                 linkPastUnder4_5.querySelector('.text-fr').style.display = 'inline';
                 linkPastUnder2_5.querySelector('.text-en').style.display = 'none';
                 linkPastUnder4_5.querySelector('.text-en').style.display = 'none';
+                
+                freeTrialLink.href = "mailto:ericmc2@hotmail.fr?subject=Demande%20d'essai%20gratuit%20ArtScalping";
             }
         }
 
