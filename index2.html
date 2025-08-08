@@ -14,7 +14,7 @@
             display: flex;
             height: 100vh;
         }
-
+        
         .sidebar {
             width: 200px;
             background-color: #34495e;
@@ -146,6 +146,45 @@
             color: #95a5a6;
         }
         
+        /* Styles pour les tableaux générés */
+        #table-container {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        
+        #data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        #data-table th, #data-table td {
+            border: 1px solid #2c3e50;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        #data-table thead th {
+            background-color: #2980b9;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        #data-table tbody tr:nth-child(even) {
+            background-color: #2c3e50;
+        }
+        
+        #data-table tbody tr:hover {
+            background-color: #3f586a;
+        }
+
         /* Règles pour les petits écrans (téléphones) */
         @media (max-width: 768px) {
             body {
@@ -221,27 +260,17 @@
         </div>
         <ul class="menu-list">
             <li class="menu-item">
-                <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTu_G0SxM2qnnjSjB2Lj6WyI8965Mq-ORHmThlADecP83IPKU_GU6rkzavKfdOmotl1wJPqtc1_l_1q/pubhtml" class="menu-link" target-iframe="main-content" id="link-past-under-2-5">
-                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Passé (Matchs & Résultats) Under 2.5 1ère mi-temps</span><span class="text-en" style="display:none;">Past (Matches & Results) Under 2.5 1st half</span>
+                <a href="#" class="menu-link" target-data="historique_under25.csv" id="link-past-under-2-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 2.5</span><span class="text-en" style="display:none;">Historical Under 2.5</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSPDCOf9nVRFmhf6oYfU9W29cT9gw-uK9DKMJ7aFtGBGnox1kINaVloPa3aRCEIzw/pubhtml" class="menu-link" target-iframe="main-content" id="link-past-under-4-5">
-                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Passé (Matchs & Résultats) Under 4.5</span><span class="text-en" style="display:none;">Past (Matches & Results) Under 4.5</span>
+                <a href="#" class="menu-link" target-data="historique_under45.csv" id="link-past-under-4-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 4.5</span><span class="text-en" style="display:none;">Historical Under 4.5</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSPeDDyfKM8_MGZ-eJC1Q4sTpvuKcG3TwPCGqN-v1d5hUUdoqqAb-bTVHz_s1YeuqxcyukrTYD-fB3-/pubhtml" class="menu-link" target-iframe="main-content" id="link-recent-2-5">
-                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Recent Under 2.5 1ere</span><span class="text-en" style="display:none;">Recent Under 2.5 1st half</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQCtoParM8EZ-pKykVDYWfrvkK71BhwIT4Ye5Te1s_BfyV0cRfGtRy8u4be7BArQgnAcaJntjR12q_m/pubhtml" class="menu-link" target-iframe="main-content" id="link-recent">
-                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Recent Under 4.5</span><span class="text-en" style="display:none;">Recent Under 4.5</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="paiement_neteller.html" class="menu-link subscribe" target-iframe="main-content">
+                <a href="paiement_neteller.html" class="menu-link subscribe">
                     <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span>
                 </a>
             </li>
@@ -268,16 +297,16 @@
                 <span class="text-en" style="display:none;">Designed with the help of Gemini</span>
             </footer>
         </div>
+        <div id="table-container" style="display: none;"></div>
     </div>
 
     <script>
         const links = document.querySelectorAll('.menu-link');
         const mainContent = document.getElementById('main-content');
-        
         let currentLanguage = 'fr'; // La langue par défaut
 
         function setLanguage(lang) {
-            currentLanguage = lang; // Met à jour la variable de langue
+            currentLanguage = lang;
             const elementsFr = document.querySelectorAll('.text-fr');
             const elementsEn = document.querySelectorAll('.text-en');
             
@@ -289,21 +318,16 @@
                 elementsEn.forEach(el => el.style.display = 'inline');
                 
                 const homeContent = document.getElementById('home-content');
+                const titleElement = document.getElementById('content-title');
+                const p1Element = document.getElementById('content-p1');
+                const p2Element = document.getElementById('content-p2');
+
                 if (homeContent) {
-                    document.getElementById('content-title').textContent = "Master your bets with our method";
-                    document.getElementById('content-p1').innerHTML = "By relying on our strategy of multiplying bets within the same 'Under' market, you **significantly control your risk**. Our unique approach gives you the keys to winning multiple bets on a single match. While a simple bet has a low loss rate (3-4%), our scalping method **drastically reduces this rate** by multiplying your victories on each match.";
-                    document.getElementById('content-p2').innerHTML = "Our system is designed to **protect your capital** and limit drawdowns to a minimum. With a probable gap of only 3 matches and a theoretical maximum of 4, you ensure **long winning streaks** and consistent profitability, essential for becoming a savvy bettor.";
+                    titleElement.textContent = "Master your bets with our method";
+                    p1Element.innerHTML = "By relying on our strategy of multiplying bets within the same 'Under' market, you **significantly control your risk**. Our unique approach gives you the keys to winning multiple bets on a single match. While a simple bet has a low loss rate (3-4%), our scalping method **drastically reduces this rate** by multiplying your victories on each match.";
+                    p2Element.innerHTML = "Our system is designed to **protect your capital** and limit drawdowns to a minimum. With a probable gap of only 3 matches and a theoretical maximum of 4, you ensure **long winning streaks** and consistent profitability, essential for becoming a savvy bettor.";
                 }
 
-                document.getElementById('link-past-under-2-5').querySelector('.text-fr').style.display = 'none';
-                document.getElementById('link-past-under-2-5').querySelector('.text-en').style.display = 'inline';
-                document.getElementById('link-past-under-4-5').querySelector('.text-fr').style.display = 'none';
-                document.getElementById('link-past-under-4-5').querySelector('.text-en').style.display = 'inline';
-                document.getElementById('link-recent-2-5').querySelector('.text-fr').style.display = 'none';
-                document.getElementById('link-recent-2-5').querySelector('.text-en').style.display = 'inline';
-                document.getElementById('link-recent').querySelector('.text-fr').style.display = 'none';
-                document.getElementById('link-recent').querySelector('.text-en').style.display = 'inline';
-                
                 document.getElementById('lang-en').classList.add('active');
                 document.title = "Main Menu - ArtScalping";
                 document.documentElement.lang = "en";
@@ -312,42 +336,109 @@
                 elementsEn.forEach(el => el.style.display = 'none');
                 
                 const homeContent = document.getElementById('home-content');
+                const titleElement = document.getElementById('content-title');
+                const p1Element = document.getElementById('content-p1');
+                const p2Element = document.getElementById('content-p2');
+
                 if (homeContent) {
-                    document.getElementById('content-title').textContent = "Maîtrisez vos paris avec notre méthode";
-                    document.getElementById('content-p1').innerHTML = "En s'appuyant sur notre stratégie de paris multiples dans un même pari 'Under', vous **maîtrisez le risque** de manière significative. Notre approche vous donne les clés pour remporter plusieurs paris sur une même rencontre. Si un pari simple a un faible taux de perte (3-4%), notre méthode de scalping permet de **réduire ce taux drastiquement** en multipliant vos victoires sur chaque match.";
-                    document.getElementById('content-p2').innerHTML = "Notre système est conçu pour **protéger votre capital** et limiter les découverts au maximum. Avec un écart probable de seulement 3 matchs et un maximum théorique de 4, vous vous assurez de **longues séries de victoires** et une rentabilité constante, indispensable pour devenir un parieur averti.";
+                    titleElement.textContent = "Maîtrisez vos paris avec notre méthode";
+                    p1Element.innerHTML = "En s'appuyant sur notre stratégie de paris multiples dans un même pari 'Under', vous **maîtrisez le risque** de manière significative. Notre approche vous donne les clés pour remporter plusieurs paris sur une même rencontre. Si un pari simple a un faible taux de perte (3-4%), notre méthode de scalping permet de **réduire ce taux drastiquement** en multipliant vos victoires sur chaque match.";
+                    p2Element.innerHTML = "Notre système est conçu pour **protéger votre capital** et limiter les découverts au maximum. Avec un écart probable de seulement 3 matchs et un maximum théorique de 4, vous vous assurez de **longues séries de victoires** et une rentabilité constante, indispensable pour devenir un parieur averti.";
                 }
-
-                document.getElementById('link-past-under-2-5').querySelector('.text-fr').style.display = 'inline';
-                document.getElementById('link-past-under-2-5').querySelector('.text-en').style.display = 'none';
-                document.getElementById('link-past-under-4-5').querySelector('.text-fr').style.display = 'inline';
-                document.getElementById('link-past-under-4-5').querySelector('.text-en').style.display = 'none';
-                document.getElementById('link-recent-2-5').querySelector('.text-fr').style.display = 'inline';
-                document.getElementById('link-recent-2-5').querySelector('.text-en').style.display = 'none';
-                document.getElementById('link-recent').querySelector('.text-fr').style.display = 'inline';
-                document.getElementById('link-recent').querySelector('.text-en').style.display = 'none';
-
+                
                 document.getElementById('lang-fr').classList.add('active');
                 document.title = "Menu Principal - ArtScalping";
                 document.documentElement.lang = "fr";
             }
+            
+            // Mettre à jour les textes des liens qui ne sont pas gérés par le script principal
+            const linkPastUnder2_5 = document.getElementById('link-past-under-2-5');
+            const linkPastUnder4_5 = document.getElementById('link-past-under-4-5');
+            
+            if (lang === 'en') {
+                linkPastUnder2_5.querySelector('.text-fr').style.display = 'none';
+                linkPastUnder2_5.querySelector('.text-en').style.display = 'inline';
+                linkPastUnder4_5.querySelector('.text-fr').style.display = 'none';
+                linkPastUnder4_5.querySelector('.text-en').style.display = 'inline';
+            } else {
+                linkPastUnder2_5.querySelector('.text-fr').style.display = 'inline';
+                linkPastUnder2_5.querySelector('.text-en').style.display = 'none';
+                linkPastUnder4_5.querySelector('.text-fr').style.display = 'inline';
+                linkPastUnder4_5.querySelector('.text-en').style.display = 'none';
+            }
         }
 
+        // Fonction pour charger et afficher les données CSV
+        async function loadAndDisplayCSV(filename) {
+            const tableContainer = document.getElementById('table-container');
+            const homeContent = document.getElementById('home-content');
+            
+            if (homeContent) {
+                homeContent.style.display = 'none';
+            }
+            tableContainer.style.display = 'block';
+            tableContainer.innerHTML = '<p style="text-align:center;">Chargement des données...</p>';
+
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`Erreur de chargement du fichier : ${response.statusText}`);
+                }
+                const csvText = await response.text();
+                
+                const lines = csvText.split('\n').filter(line => line.trim() !== '');
+                const headers = lines[0].split(';'); // Assurez-vous que le séparateur est un point-virgule
+                const table = document.createElement('table');
+                table.id = 'data-table';
+                
+                // Créer l'en-tête
+                const thead = table.createTHead();
+                const headerRow = thead.insertRow();
+                headers.forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header.trim();
+                    headerRow.appendChild(th);
+                });
+                
+                // Créer le corps du tableau
+                const tbody = table.createTBody();
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(';');
+                    const row = tbody.insertRow();
+                    values.forEach(value => {
+                        const td = row.insertCell();
+                        td.textContent = value.trim();
+                    });
+                }
+
+                tableContainer.innerHTML = '';
+                tableContainer.appendChild(table);
+
+            } catch (error) {
+                console.error('Erreur lors du chargement ou de l\'affichage du CSV:', error);
+                tableContainer.innerHTML = `<p style="color: red;">${error.message}</p>`;
+            }
+        }
+        
         links.forEach(link => {
             link.addEventListener('click', (event) => {
-                const targetIframe = link.getAttribute('target-iframe');
+                const targetData = link.getAttribute('target-data');
                 
-                if (targetIframe) {
+                if (targetData) {
                     event.preventDefault();
-                    
-                    if (document.getElementById('home-content')) {
-                        document.getElementById('home-content').style.display = 'none';
-                        mainContent.innerHTML = `<iframe id="content-iframe" class="main-iframe"></iframe>`;
+                    loadAndDisplayCSV(targetData);
+                } else {
+                    const targetIframe = link.getAttribute('target-iframe');
+                    if (targetIframe) {
+                        event.preventDefault();
+                        if (document.getElementById('home-content')) {
+                            document.getElementById('home-content').style.display = 'none';
+                            mainContent.innerHTML = `<iframe id="content-iframe" class="main-iframe"></iframe>`;
+                        }
+                        const url = new URL(link.href, window.location.href);
+                        url.searchParams.set('lang', currentLanguage);
+                        document.getElementById('content-iframe').src = url.toString();
                     }
-                    
-                    const url = new URL(link.href);
-                    url.searchParams.set('lang', currentLanguage);
-                    document.getElementById('content-iframe').src = url.toString();
                 }
             });
         });
@@ -358,4 +449,3 @@
     </script>
 </body>
 </html>
-
