@@ -478,14 +478,23 @@
                         const td = row.insertCell();
                         td.textContent = value;
                         
-                        // NOUVEAU: Appliquer la coloration uniquement pour le fichier historique_under45.csv
-                        if (filename === 'historique_under45.csv' && j === values.length - 1) {
+                        // NOUVEAU: Logique de coloration pour les deux fichiers CSV
+                        if (j === values.length - 1) { // Vérifie que c'est la dernière colonne
                             const numericValue = parseInt(value, 10);
+                            
                             if (!isNaN(numericValue)) {
-                                if (numericValue <= 4) {
-                                    td.classList.add('result-green');
-                                } else if (numericValue > 4) {
-                                    td.classList.add('result-red');
+                                if (filename === 'historique_under25.csv') {
+                                    if (numericValue <= 2) {
+                                        td.classList.add('result-green');
+                                    } else {
+                                        td.classList.add('result-red');
+                                    }
+                                } else if (filename === 'historique_under45.csv') {
+                                    if (numericValue <= 4) {
+                                        td.classList.add('result-green');
+                                    } else {
+                                        td.classList.add('result-red');
+                                    }
                                 }
                             }
                         }
