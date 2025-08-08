@@ -64,16 +64,26 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .scene.active {
-            display: block;
+            display: flex;
             opacity: 1;
             position: relative;
             transform: none;
             pointer-events: auto;
         }
-
+        
+        /* Specific centering for scene 1 */
+        #scene-1 {
+            flex-direction: column;
+        }
+        
         .controls {
             width: 100%;
             display: flex;
@@ -176,11 +186,6 @@
         .data-line.third-line { animation-delay: 6.5s; }
 
         /* --- Animations for scene 2 --- */
-        #scene-2 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
         #scene-2 h1 { font-size: 1.5em; margin-bottom: 20px; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 0.5s; }
         #scene-2 .subtitle { opacity: 0; animation: fadeIn 1s forwards; animation-delay: 1s; }
         .indices-container { display: flex; justify-content: space-around; width: 100%; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 1.5s; }
@@ -284,11 +289,6 @@
         #final-stats-scene .download-line { animation-delay: 3s; }
 
         /* --- Animations for Last Scene --- */
-        #last-scene {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
         #last-scene h2 {
             font-size: 1.8em;
             color: #f1c40f;
@@ -321,7 +321,7 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
-
+        
         .text-ar {
             direction: rtl;
             text-align: right;
@@ -339,6 +339,7 @@
     <div id="language-selector">
         <button id="lang-fr" class="active">🇫🇷</button>
         <button id="lang-en">🇬🇧</button>
+        <button id="lang-ar">🇦🇪</button>
     </div>
 
     <button id="skip-button"></button>
@@ -674,7 +675,7 @@
                         { time: 14.5, text: "Sale at <span class='highlight'>1.1</span>.", type: 'sell' },
                         { time: 26, text: "Goal! The odds change to <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
                         { time: 26.5, text: "Sale at <span class='highlight'>1.15</span>.", type: 'sell' },
-                        { time: 45, text: "But ! La cote passe à <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                        { time: 45, text: "Goal! The odds change to <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
                         { time: 45.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
                         { time: 65, text: "Goal! The odds change to <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
                         { time: 65.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
@@ -703,6 +704,103 @@
                     masteryText: "Self-control is the key to turning this tool into a real winning machine.",
                     masterySubtitle: "(La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.)"
                 }
+            },
+            ar: {
+                animatedLoop: "تبدأ الطريقة بتحليل البيانات.",
+                skipButton: "الانتقال إلى الصفحة التالية",
+                nextButton: "→",
+                startMethodButton: "ابدأ الطريقة",
+                scene1: {
+                    title: "تبدأ الطريقة بتحليل البيانات.",
+                },
+                scene2: {
+                    title: "حساب مؤشرات الأداء",
+                    subtitle: "Calculating the Performance Indices",
+                    index1Title: "المؤشر 1",
+                    index1Text1: "هجوم الفريق المضيف + دفاع الفريق الضيف",
+                    index1Text2: "(Home Team Attack + Away Team Defense)",
+                    index2Title: "المؤشر 2",
+                    index2Text1: "هجوم الفريق الضيف + دفاع الفريق المضيف",
+                    index2Text2: "(Away Team Attack + Home Team Defense)",
+                },
+                scene3: {
+                    title: "اختيار الرهانات الأكثر أمانًا",
+                    subtitle: "Selecting the Safest Bets",
+                    mysteriousText1: "تأتي معدلات النجاح هذه نتيجة **معادلة سرية**، تم تطويرها واختبارها بصبر على مدى سنوات من البيانات، حيث تجمع بين مؤشرات الأداء والتسلسلات.",
+                    mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
+                    percentage: "معدل النجاح: 92 إلى 94%",
+                    betBoxU45: "تحت 4.5",
+                    betBoxU25: "تحت 2.5 الشوط الأول<br>(Under 2.5 First Half)",
+                },
+                scene4: {
+                    title: "قواعد الطريقة الكاملة",
+                    subtitle: "Complete Method Rules",
+                    u45DetailsTitle: "تحت 4.5",
+                    u45StopLoss: "الخروج من الرهان في الدقيقة 86 و 30 ثانية.",
+                    u45Scalping: "يزيد معدل النجاح بعد كل هدف.",
+                    u45Condition: "لا تراهن على الهدف التالي حتى يكتمل رهانك الحالي.",
+                    u25DetailsTitle: "تحت 2.5 الشوط الأول",
+                    u25MainRule: "نلعب بعد الدقيقة الرابعة.",
+                    u25NoPlay: "إذا تم تسجيل هدفين في 3 دقائق، لا نلعب.",
+                    u25StopLoss: "الخروج من الرهان في الدقيقة 42 و 30 ثانية.",
+                    u25Scalping: "يزيد معدل النجاح بعد كل هدف.",
+                    u25Condition: "لا تراهن على الهدف التالي حتى يكتمل رهانك الحالي.",
+                    additionalTextMain: "من خلال تطبيق هذه القواعد بصرامة، يزيد معدل النجاح من",
+                    additionalTextUpgrade: "92-94% إلى 96-97%.",
+                },
+                perfectGame: {
+                    u25Title: "لعبة مثالية تحت 2.5 (الشوط الأول)",
+                    u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
+                    u45Title: "لعبة مثالية تحت 4.5",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "لا يوجد هدف في الدقائق الثلاث الأولى.", type: 'info' },
+                        { time: 4.5, text: "نأخذ معامل <span class='highlight'>1.05</span> على تحت 2.5.", type: 'bet' },
+                        { time: 10, text: "البيع في الدقيقة 10 لمعامل <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 15, text: "هدف! المعامل يصبح <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "البيع عند <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 25, text: "هدف! المعامل يصبح <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "البيع عند <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 42.5, text: "وقف الخسارة: بيع إجباري في الدقيقة 42 و 30 ثانية.", type: 'stop-loss' },
+                        { time: 45, text: "نهاية الشوط الأول: الرهان انتهى بنجاح. المباراة انتهت بالنسبة لنا!", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "ننتظر بداية المباراة لتأكيد الـ Scalping", type: 'info' },
+                        { time: 1.5, text: "نأخذ معامل <span class='highlight'>1.05</span> على تحت 4.5.", type: 'bet' },
+                        { time: 10, text: "البيع في الدقيقة 10 لمعامل <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 14, text: "هدف! المعامل يصبح <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "البيع عند <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 26, text: "هدف! المعامل يصبح <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "البيع عند <span class='highlight'>1.15</span>.", type: 'sell' },
+                        { time: 45, text: "هدف! المعامل يصبح <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "البيع عند <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 65, text: "هدف! المعامل يصبح <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "البيع عند <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 87.5, text: "وقف الخسارة: بيع إجباري في الدقيقة 87 و 30 ثانية.", type: 'stop-loss' },
+                        { time: 90, text: "نهاية المباراة: الرهان انتهى بنجاح. المباراة انتهت بالنسبة لنا!", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "رقم أخير في الطريق",
+                    subtitle: "One last figure for the road",
+                    stat1: "في العام الماضي، أنتج النظام أكثر من <span class='highlight'>20000 مباراة</span> للعب عليها!",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "بمعدل هدفين في المباراة، يمثل ذلك ما يصل إلى <span class='highlight'>46000 رهان ممكن</span>.",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "الملف متاح للتنزيل من الموقع.",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "تنبيه، ليست كل هذه الرهانات متاحة للعب على جميع مواقع المراهنات.",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
+                },
+                lastScene: {
+                    title: "تشبيه فيراري",
+                    analogyText: "نحن نقدم لك **أداة عالية الأداء**. ولكن كما هو الحال مع سيارة فيراري، القوة ليست كافية. بدون سائق ماهر، أفضل سيارة تنتهي في الزخرفة.",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "طريقة ArtScalping هي فيراري. **الصبر والانضباط والذكاء** هي المهارات التي تحتاجها لقيادتها وتحقيق أرباح كبيرة.",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "التحكم الذاتي هو مفتاح تحويل هذه الأداة إلى آلة ربح حقيقية.",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
+                }
             }
         };
 
@@ -718,6 +816,7 @@
 
         function updateContent() {
             const lang = translations[language];
+            document.body.classList.toggle('text-ar', language === 'ar');
             document.getElementById('animated-text-loop').textContent = lang.animatedLoop;
             document.getElementById('skip-button').textContent = lang.skipButton;
             nextButton.textContent = lang.nextButton;
@@ -817,6 +916,7 @@
             const timerElement = document.getElementById(`timer-${betType}`);
             let time = 0;
             let currentEventIndex = 0;
+            let currentScore = { home: 0, away: 0 };
             logElement.innerHTML = '';
             scoreElement.textContent = '0-0';
             timerElement.textContent = '00:00';
@@ -829,7 +929,10 @@
                     logItem.className = 'log-item';
                     if (event.type === 'goal') {
                         logItem.classList.add('goal');
-                        scoreElement.textContent = event.score;
+                        const scores = event.score.split('-').map(s => parseInt(s));
+                        currentScore.home = scores[0];
+                        currentScore.away = scores[1];
+                        scoreElement.textContent = `${currentScore.home}-${currentScore.away}`;
                     }
                     logElement.prepend(logItem);
                     currentEventIndex++;
@@ -854,6 +957,7 @@
             langButtons.forEach(button => button.classList.remove('active'));
             document.getElementById(`lang-${newLanguage}`).classList.add('active');
             updateContent();
+            // Re-show the current scene to apply new language and re-run animation if needed
             showScene(currentSceneIndex);
         }
 
@@ -865,6 +969,7 @@
 
         document.getElementById('lang-fr').addEventListener('click', () => setLanguage('fr'));
         document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-ar').addEventListener('click', () => setLanguage('ar'));
 
         window.addEventListener('DOMContentLoaded', () => {
             updateContent();
