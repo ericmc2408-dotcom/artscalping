@@ -1,373 +1,863 @@
-<script>
-    // Dictionnaire de traductions pour tous les textes de l'animation
-    const translations = {
-        fr: {
-            animatedLoop: "La méthode commence par l'analyse de données.",
-            skipButton: "Aller à la page suivante",
-            nextButton: "→",
-            startMethodButton: "Démarrez la méthode",
-            scene1: {
-                title: "La méthode commence par l'analyse de données.",
-            },
-            scene2: {
-                title: "Le calcul des indices de performance",
-                subtitle: "Calculating the Performance Indices",
-                index1Title: "Indice 1",
-                index1Text1: "Attaque Équipe Domicile + Défense Équipe Extérieure",
-                index1Text2: "(Home Team Attack + Away Team Defense)",
-                index2Title: "Indice 2",
-                index2Text1: "Attaque Équipe Extérieure + Défense Équipe Domicile",
-                index2Text2: "(Away Team Attack + Home Team Defense)",
-            },
-            scene3: {
-                title: "Sélection des paris les plus sûrs",
-                subtitle: "Selecting the Safest Bets",
-                mysteriousText1: "Ces taux de réussite sont le fruit d'une **équation secrète**, patiemment élaborée et testée sur des années de données, alliant indices de performance et séquences.",
-                mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
-                percentage: "Taux de réussite : 92 à 94%",
-                betBoxU45: "Under 4.5",
-                betBoxU25: "Under 2.5 1ère mi-temps<br>(Under 2.5 First Half)",
-            },
-            scene4: {
-                title: "Les Règles de la Méthode Complète",
-                subtitle: "Complete Method Rules",
-                u45DetailsTitle: "Under 4.5",
-                u45StopLoss: "Sortir du pari à la 86e minute 30 secondes.",
-                u45Scalping: "Le taux de réussite augmente après chaque but.",
-                u45Condition: "Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.",
-                u25DetailsTitle: "Under 2.5 1ère mi-temps",
-                u25MainRule: "On joue après la 4ème minute.",
-                u25NoPlay: "Si 2 buts sont marqués en 3 minutes, on ne joue pas.",
-                u25StopLoss: "Sortir du pari à la 42e minute 30 secondes.",
-                u25Scalping: "Le taux de réussite augmente après chaque but.",
-                u25Condition: "Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.",
-                additionalTextMain: "En appliquant scrupuleusement ces règles, le taux de réussite passe de",
-                additionalTextUpgrade: "92-94% à 96-97%.",
-            },
-            perfectGame: {
-                u25Title: "Perfect Game Under 2.5 (1ère mi-temps)",
-                u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
-                u45Title: "Perfect Game Under 4.5",
-                u45Subtitle: "(Perfect Game Under 4.5)",
-                eventU25: [
-                    { time: 3.5, text: "Pas de but dans les 3 premières minutes.", type: 'info' },
-                    { time: 4.5, text: "On prend une cote de <span class='highlight'>1.05</span> sur l'Under 2.5.", type: 'bet' },
-                    { time: 10, text: "Vente à la 10e minute pour une cote de <span class='highlight'>1.02</span>.", type: 'sell' },
-                    { time: 15, text: "But ! La cote passe à <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
-                    { time: 15.5, text: "Vente à <span class='highlight'>1.1</span>.", type: 'sell' },
-                    { time: 25, text: "But ! La cote passe à <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
-                    { time: 25.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
-                    { time: 42.5, text: "Stop Loss : Vente forcée à la 42e minute 30 secondes.", type: 'stop-loss' },
-                    { time: 45, text: "Fin de la 1ère mi-temps : Le pari est terminé avec succès. Le match est fini pour nous !", type: 'end' }
-                ],
-                eventU45: [
-                    { time: 0, text: "On attend le début du match pour confirmer le Scalping", type: 'info' },
-                    { time: 1.5, text: "On prend une cote de <span class='highlight'>1.05</span> sur l'Under 4.5.", type: 'bet' },
-                    { time: 10, text: "Vente à la 10e minute pour une cote de <span class='highlight'>1.02</span>.", type: 'sell' },
-                    { time: 14, text: "But ! La cote passe à <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
-                    { time: 14.5, text: "Vente à <span class='highlight'>1.1</span>.", type: 'sell' },
-                    { time: 26, text: "But ! La cote passe à <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
-                    { time: 26.5, text: "Vente à <span class='highlight'>1.15</span>.", type: 'sell' },
-                    { time: 45, text: "But ! La cote passe à <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
-                    { time: 45.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
-                    { time: 65, text: "But ! La cote passe à <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
-                    { time: 65.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
-                    { time: 87.5, text: "Stop Loss : Vente forcée à la 87e minute 30 secondes.", type: 'stop-loss' },
-                    { time: 90, text: "Fin du match : Le pari est terminé avec succès. Le match est fini pour nous !", type: 'end' }
-                ]
-            },
-            finalStats: {
-                title: "Un dernier chiffre pour la route",
-                subtitle: "One last figure for the road",
-                stat1: "L'année dernière, le système a généré plus de <span class='highlight'>20000 matchs</span> à jouer !",
-                stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
-                stat2: "Avec une moyenne de 2 buts par match, cela représente jusqu'à <span class='highlight'>46000 paris possibles</span>.",
-                stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
-                download: "Le fichier est téléchargeable sur le site.",
-                downloadSubtitle: "(The file is downloadable from the site.)",
-                caveat: "Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.",
-                caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
-            },
-            lastScene: {
-                title: "L'analogie de la Ferrari",
-                analogyText: "Nous vous offrons un **outil de haute performance**. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.",
-                analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
-                pilotText: "La méthode ArtScalping est une Ferrari. **Patience, rigueur et intelligence** sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.",
-                pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
-                masteryText: "La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.",
-                masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Méthode de Pari</title>
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            flex-direction: column;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .header {
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 0.5s;
+        }
+
+        #system-name {
+            font-size: 2.5em;
+            color: #f1c40f;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        #animated-text-loop {
+            font-size: 1.2em;
+            min-height: 20px;
+            margin-top: 10px;
+            animation: fadeIn 1s forwards;
+            animation-delay: 2s;
+        }
+
+        .animation-container {
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .scene {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            pointer-events: none;
+        }
+
+        .scene.active {
+            display: block;
+            opacity: 1;
+            position: relative;
+            pointer-events: auto;
+        }
+
+        #next-button {
+            margin-top: 40px;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: 2px solid #3498db;
+            background-color: transparent;
+            color: #3498db;
+            border-radius: 5px;
+            transition: background-color 0.3s, color: 0.3s;
+            /* Rendre le bouton visible par défaut, la logique JS le cachera si besoin */
+            display: block;
+        }
+
+        #next-button:hover {
+            background-color: #3498db;
+            color: #ecf0f1;
+        }
+
+        #skip-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border: 2px solid #e74c3c;
+            background-color: transparent;
+            color: #e74c3c;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            z-index: 100;
+        }
+
+        #skip-button:hover {
+            background-color: #e74c3c;
+            color: #ecf0f1;
+        }
+
+        #language-selector {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        #language-selector button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em;
+            padding: 5px;
+        }
+
+        #language-selector button.active {
+            filter: brightness(1.5);
+        }
+
+        #scene-1 h1 { font-size: 1.5em; margin-bottom: 5px; opacity: 0; animation: fadeIn 1.5s forwards; animation-delay: 3.5s; }
+        .data-icon-container { margin-top: 40px; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 4.5s; }
+        .database-icon { width: 80px; height: 60px; background-color: #3498db; border-radius: 10px; margin: 0 auto 20px; position: relative; transform: scale(0); animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; animation-delay: 5s; }
+        .database-icon::before { content: ''; position: absolute; top: -15px; left: 10px; right: 10px; height: 30px; background-color: #2980b9; border-radius: 10px; }
+        .data-line { font-family: 'Courier New', Courier, monospace; font-size: 1.2em; padding: 8px; margin: 5px 0; border: 1px solid #34495e; border-radius: 5px; opacity: 0; transform: translateX(-50px); animation: slideIn 0.5s forwards; }
+        .data-line.first-line { animation-delay: 5.5s; }
+        .data-line.second-line { animation-delay: 6s; }
+        .data-line.third-line { animation-delay: 6.5s; }
+
+        #scene-2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #scene-2 h1 { font-size: 1.5em; margin-bottom: 20px; }
+        .indices-container { display: flex; justify-content: space-around; width: 100%; }
+        .index-box { background-color: #34495e; padding: 20px; border-radius: 10px; width: 45%; }
+        .index-box h3 { color: #f1c40f; margin: 0 0 10px 0; }
+        .index-box p { margin: 0; }
+        #scene-3 h1, #scene-3 .translation, #scene-3 .percentage, .bet-box { opacity: 0; animation: fadeIn 1s forwards; }
+        #scene-3 h1 { animation-delay: 0.5s; }
+        #scene-3 .translation { animation-delay: 1s; }
+        .mysterious-text {
+            font-size: 1.1em;
+            color: #bdc3c7;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1.5s;
+        }
+        #scene-3 .percentage { font-size: 1.8em; color: #2ecc71; font-weight: bold; margin: 20px 0; animation-delay: 2s; }
+        #scene-3 .bet-choices-container { animation-delay: 2.5s; }
+        .bet-choices-container { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
+        .bet-box { padding: 20px; background-color: #2980b9; border-radius: 10px; font-weight: bold; transform: translateY(20px); animation: slideUp 0.8s forwards; }
+        .bet-box.under-4-5 { animation-delay: 3s; }
+        .bet-box.under-2-5 { animation-delay: 3.5s; }
+        #scene-4 h2 { color: #f1c40f; font-size: 1.8em; text-align: center; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 0.5s; }
+        #scene-4 .translation { font-size: 0.9em; color: #bdc3c7; opacity: 0; animation: fadeIn 1.5s forwards; }
+        #scene-4 .detail-section { margin: 20px auto; background-color: #34495e; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; text-align: left; opacity: 0; animation: fadeIn 1s forwards; }
+        #scene-4 .detail-section h3 { color: #f1c40f; margin-top: 0; text-align: center; }
+        #scene-4 .detail-item { margin: 10px 0; opacity: 0; transform: translateX(-20px); animation: slideIn 0.5s forwards; }
+        #scene-4 .percentage-highlight { color: #2ecc71; font-weight: bold; }
+
+        #scene-4 .additional-text {
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: #ecf0f1;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 3s;
+        }
+
+        #scene-4 .additional-text .percentage-upgrade {
+            color: #2ecc71;
+            font-weight: bold;
+            font-size: 1.3em;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+                opacity: 1;
             }
-        },
-        en: {
-            animatedLoop: "The method begins with data analysis.",
-            skipButton: "Go to next page",
-            nextButton: "→",
-            startMethodButton: "Start the method",
-            scene1: {
-                title: "The method begins with data analysis.",
-            },
-            scene2: {
-                title: "Calculating the Performance Indices",
-                subtitle: "Calcul des indices de performance",
-                index1Title: "Index 1",
-                index1Text1: "Home Team Attack + Away Team Defense",
-                index1Text2: "(Attaque Équipe Domicile + Défense Équipe Extérieure)",
-                index2Title: "Index 2",
-                index2Text1: "Away Team Attack + Home Team Defense",
-                index2Text2: "(Attaque Équipe Extérieure + Défense Équipe Domicile)",
-            },
-            scene3: {
-                title: "Selecting the Safest Bets",
-                subtitle: "Sélection des paris les plus sûrs",
-                mysteriousText1: "These success rates are the result of a **secret equation**, patiently developed and tested over years of data, combining performance indices and sequences.",
-                mysteriousText2: "(Ces taux de réussite sont le fruit d'une équation secrète, patiemment élaborée et testée sur des années de données, alliant indices de performance et séquences.)",
-                percentage: "Success Rate: 92 to 94%",
-                betBoxU45: "Under 4.5",
-                betBoxU25: "Under 2.5 First Half<br>(Under 2.5 1ère mi-temps)",
-            },
-            scene4: {
-                title: "Complete Method Rules",
-                subtitle: "Les Règles de la Méthode Complète",
-                u45DetailsTitle: "Under 4.5",
-                u45StopLoss: "Exit the bet at 86 minutes and 30 seconds.",
-                u45Scalping: "The success rate increases after each goal.",
-                u45Condition: "Do not bet on the next goal until your current bet is finished.",
-                u25DetailsTitle: "Under 2.5 First Half",
-                u25MainRule: "We play after the 4th minute.",
-                u25NoPlay: "If 2 goals are scored in 3 minutes, we do not play.",
-                u25StopLoss: "Exit the bet at 42 minutes and 30 seconds.",
-                u25Scalping: "The success rate increases after each goal.",
-                u25Condition: "Do not bet on the next goal until your current bet is finished.",
-                additionalTextMain: "By scrupulously applying these rules, the success rate increases from",
-                additionalTextUpgrade: "92-94% to 96-97%.",
-            },
-            perfectGame: {
-                u25Title: "Perfect Game Under 2.5 (First Half)",
-                u25Subtitle: "(Perfect Game Under 2.5 (1ère mi-temps))",
-                u45Title: "Perfect Game Under 4.5",
-                u45Subtitle: "(Perfect Game Under 4.5)",
-                eventU25: [
-                    { time: 3.5, text: "No goal in the first 3 minutes.", type: 'info' },
-                    { time: 4.5, text: "We take odds of <span class='highlight'>1.05</span> on Under 2.5.", type: 'bet' },
-                    { time: 10, text: "Sale at the 10th minute for odds of <span class='highlight'>1.02</span>.", type: 'sell' },
-                    { time: 15, text: "Goal! The odds change to <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
-                    { time: 15.5, text: "Sale at <span class='highlight'>1.1</span>.", type: 'sell' },
-                    { time: 25, text: "Goal! The odds change to <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
-                    { time: 25.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
-                    { time: 42.5, text: "Stop Loss: Forced sale at 42 minutes and 30 seconds.", type: 'stop-loss' },
-                    { time: 45, text: "End of the 1st half: The bet is successfully finished. The match is over for us!", type: 'end' }
-                ],
-                eventU45: [
-                    { time: 0, text: "We wait for the start of the match to confirm the Scalping", type: 'info' },
-                    { time: 1.5, text: "We take odds of <span class='highlight'>1.05</span> on Under 4.5.", type: 'bet' },
-                    { time: 10, text: "Sale at the 10th minute for odds of <span class='highlight'>1.02</span>.", type: 'sell' },
-                    { time: 14, text: "Goal! The odds change to <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
-                    { time: 14.5, text: "Sale at <span class='highlight'>1.1</span>.", type: 'sell' },
-                    { time: 26, text: "Goal! The odds change to <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
-                    { time: 26.5, text: "Sale at <span class='highlight'>1.15</span>.", type: 'sell' },
-                    { time: 45, text: "Goal! The odds change to <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
-                    { time: 45.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
-                    { time: 65, text: "Goal! The odds change to <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
-                    { time: 65.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
-                    { time: 87.5, text: "Stop Loss: Forced sale at 87 minutes and 30 seconds.", type: 'stop-loss' },
-                    { time: 90, text: "End of the match: The bet is successfully finished. The match is over for us!", type: 'end' }
-                ]
-            },
-            finalStats: {
-                title: "One last figure for the road",
-                subtitle: "Un dernier chiffre pour la route",
-                stat1: "Last year, the system generated more than <span class='highlight'>20000 matches</span> to bet on!",
-                stat1Subtitle: "(L'année dernière, le système a généré plus de 20000 matchs à jouer !)",
-                stat2: "With an average of 2 goals per match, this represents up to <span class='highlight'>46000 possible bets</span>.",
-                stat2Subtitle: "(Avec une moyenne de 2 buts par match, cela représente jusqu'à 46000 paris possibles.)",
-                download: "The file is downloadable from the site.",
-                downloadSubtitle: "(Le fichier est téléchargeable sur le site.)",
-                caveat: "Note: These bets are not all playable on all bookmakers.",
-                caveatSubtitle: "(Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.)",
-            },
-            lastScene: {
-                title: "The Ferrari Analogy",
-                analogyText: "We offer you a **high-performance tool**. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.",
-                analogySubtitle: "(Nous vous offrons un outil de haute performance. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.)",
-                pilotText: "The ArtScalping method is a Ferrari. **Patience, rigor, and intelligence** are the skills you need to drive it and make substantial profits.",
-                pilotSubtitle: "(La méthode ArtScalping est une Ferrari. Patience, rigueur et intelligence sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.)",
-                masteryText: "Self-control is the key to turning this tool into a real winning machine.",
-                masterySubtitle: "(La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.)"
+            to {
+                transform: scale(1.05);
+                opacity: 0.8;
             }
         }
-    };
 
-    // Variables de l'animation
-    const scenes = document.querySelectorAll('.scene');
-    const nextButton = document.getElementById('next-button');
-    const skipButton = document.getElementById('skip-button');
-    const startMethodButton = document.getElementById('start-method-button');
-    const systemName = document.getElementById('system-name');
-    const animatedTextLoop = document.getElementById('animated-text-loop');
+        .perfect-game-scene { display: flex; flex-direction: column; align-items: center; }
+        .perfect-game-scene h2 { color: #f1c40f; font-size: 1.8em; text-align: center; margin-bottom: 20px; }
+        .scoreboard { display: flex; justify-content: space-between; align-items: center; width: 80%; max-width: 400px; background-color: #34495e; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+        .team { font-size: 1.5em; font-weight: bold; }
+        .score { font-size: 2em; color: #2ecc71; font-weight: bold; }
+        .timer { font-size: 2em; color: #ecf0f1; font-weight: bold; background-color: #2980b9; padding: 5px 15px; border-radius: 5px; }
 
-    let currentSceneIndex = 0;
-    let language = 'fr'; // Langue par défaut
-
-    // Fonctions de l'animation
-    function updateContent() {
-        const lang = translations[language];
-
-        // Mise à jour des textes
-        document.getElementById('animated-text-loop').textContent = lang.animatedLoop;
-        document.getElementById('skip-button').textContent = lang.skipButton;
-        document.getElementById('next-button').textContent = lang.nextButton;
-
-        // Scene 1
-        document.getElementById('main-title').textContent = lang.scene1.title;
-
-        // Scene 2
-        document.getElementById('scene-2-title').textContent = lang.scene2.title;
-        document.getElementById('scene-2-subtitle').textContent = lang.scene2.subtitle;
-        document.getElementById('index-1-title').textContent = lang.scene2.index1Title;
-        document.getElementById('index-1-text-1').textContent = lang.scene2.index1Text1;
-        document.getElementById('index-1-text-2').textContent = lang.scene2.index1Text2;
-        document.getElementById('index-2-title').textContent = lang.scene2.index2Title;
-        document.getElementById('index-2-text-1').textContent = lang.scene2.index2Text1;
-        document.getElementById('index-2-text-2').textContent = lang.scene2.index2Text2;
-
-        // Scene 3
-        document.getElementById('scene-3-title').textContent = lang.scene3.title;
-        document.getElementById('scene-3-subtitle').textContent = lang.scene3.subtitle;
-        document.getElementById('mysterious-text-1').innerHTML = lang.scene3.mysteriousText1;
-        document.getElementById('mysterious-text-2').innerHTML = lang.scene3.mysteriousText2;
-        document.querySelector('#scene-3 .percentage').textContent = lang.scene3.percentage;
-        document.getElementById('bet-box-u4-5').textContent = lang.scene3.betBoxU45;
-        document.getElementById('bet-box-u2-5').innerHTML = lang.scene3.betBoxU25;
-
-        // Scene 4
-        document.getElementById('scene-4-title').textContent = lang.scene4.title;
-        document.getElementById('scene-4-subtitle').textContent = lang.scene4.subtitle;
-        document.getElementById('u4-5-details-title').textContent = lang.scene4.u45DetailsTitle;
-        document.getElementById('u4-5-stop-loss').textContent = lang.scene4.u45StopLoss;
-        document.getElementById('u4-5-scalping').textContent = lang.scene4.u45Scalping;
-        document.getElementById('u4-5-condition').textContent = lang.scene4.u45Condition;
-        document.getElementById('u2-5-details-title').textContent = lang.scene4.u25DetailsTitle;
-        document.getElementById('u2-5-main-rule').textContent = lang.scene4.u25MainRule;
-        document.getElementById('u2-5-no-play').textContent = lang.scene4.u25NoPlay;
-        document.getElementById('u2-5-stop-loss').textContent = lang.scene4.u25StopLoss;
-        document.getElementById('u2-5-scalping').textContent = lang.scene4.u25Scalping;
-        document.getElementById('u2-5-condition').textContent = lang.scene4.u25Condition;
-        document.getElementById('additional-text-main').textContent = lang.scene4.additionalTextMain;
-        document.getElementById('additional-text-upgrade').textContent = lang.scene4.additionalTextUpgrade;
-
-        // Perfect Game Scenes (titres et sous-titres)
-        document.getElementById('perfect-game-u2-5-title').textContent = lang.perfectGame.u25Title;
-        document.getElementById('perfect-game-u2-5-subtitle').textContent = lang.perfectGame.u25Subtitle;
-        document.getElementById('perfect-game-u4-5-title').textContent = lang.perfectGame.u45Title;
-        document.getElementById('perfect-game-u4-5-subtitle').textContent = lang.perfectGame.u45Subtitle;
-
-        // Final Stats Scene
-        document.getElementById('final-stats-title').textContent = lang.finalStats.title;
-        document.getElementById('final-stats-subtitle').textContent = lang.finalStats.subtitle;
-        document.getElementById('stat-line-1').innerHTML = lang.finalStats.stat1;
-        document.getElementById('stat-line-1-subtitle').textContent = lang.finalStats.stat1Subtitle;
-        document.getElementById('stat-line-2').innerHTML = lang.finalStats.stat2;
-        document.getElementById('stat-line-2-subtitle').textContent = lang.finalStats.stat2Subtitle;
-        document.getElementById('download-line-main').textContent = lang.finalStats.download;
-        document.getElementById('download-line-subtitle').textContent = lang.finalStats.downloadSubtitle;
-        document.getElementById('caveat-line-main').textContent = lang.finalStats.caveat;
-        document.getElementById('caveat-line-subtitle').textContent = lang.finalStats.caveatSubtitle;
-
-        // Last Scene
-        document.getElementById('analogy-title').textContent = lang.lastScene.title;
-        document.getElementById('analogy-text-1').innerHTML = lang.lastScene.analogyText;
-        document.getElementById('analogy-text-1-subtitle').textContent = lang.lastScene.analogySubtitle;
-        document.getElementById('pilot-text-main').innerHTML = lang.lastScene.pilotText;
-        document.getElementById('pilot-text-subtitle').textContent = lang.lastScene.pilotSubtitle;
-        document.getElementById('mastery-text-main').textContent = lang.lastScene.masteryText;
-        document.getElementById('mastery-text-subtitle').textContent = lang.lastScene.masterySubtitle;
-        document.getElementById('start-method-button').textContent = lang.startMethodButton;
-    }
-
-    function showScene(index) {
-        scenes.forEach((scene, i) => {
-            scene.classList.remove('active');
-        });
-        scenes[index].classList.add('active');
-
-        // Gérer la visibilité du bouton "next"
-        if (index === scenes.length - 1) { // Dernière scène
-            nextButton.style.display = 'none';
-            startMethodButton.style.display = 'block';
-        } else {
-            nextButton.style.display = 'block';
-            startMethodButton.style.display = 'none';
+        .action-log {
+            text-align: left;
+            width: 80%;
+            max-width: 400px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column-reverse;
         }
 
-        // Démarrer la simulation si c'est une scène de "perfect game"
-        if (index === scenes.length - 3) {
-            startPerfectGameSimulation('u4-5');
-        } else if (index === scenes.length - 4) {
-            startPerfectGameSimulation('u2-5');
+        .log-item {
+            background-color: #34495e;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideIn 0.5s forwards;
+            position: relative;
         }
-    }
 
-    function nextScene() {
-        currentSceneIndex++;
-        if (currentSceneIndex >= scenes.length) {
-            currentSceneIndex = scenes.length - 1;
-            return;
+        .log-item.goal::before {
+            content: '⚽';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
         }
-        showScene(currentSceneIndex);
-    }
 
-    let gameTimerInterval;
+        .highlight { color: #2ecc71; font-weight: bold; }
+        .info { font-size: 0.9em; color: #bdc3c7; }
 
-    function startPerfectGameSimulation(betType) {
-        clearInterval(gameTimerInterval);
-        const gameData = translations[language].perfectGame[`event${betType.toUpperCase()}`];
-        const logElement = document.getElementById(`action-log-${betType}`);
-        const scoreElement = document.getElementById(`score-${betType}`);
-        const timerElement = document.getElementById(`timer-${betType}`);
-        let time = 0;
-        let currentEventIndex = 0;
-        let currentScore = [0, 0];
-        logElement.innerHTML = '';
-        scoreElement.textContent = '0-0';
-        timerElement.textContent = '00:00';
+        #final-stats-scene h2 { font-size: 1.8em; color: #f1c40f; margin-bottom: 20px; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 0.5s; }
+        #final-stats-scene p { max-width: 500px; font-size: 1.1em; margin: 15px auto; opacity: 0; animation: fadeIn 1s forwards; }
+        #final-stats-scene .stat-line { font-size: 1.2em; animation-delay: 1.5s; }
+        #final-stats-scene .caveat-line { font-size: 0.9em; color: #bdc3c7; animation-delay: 2.5s; }
+        #final-stats-scene .download-line { animation-delay: 3s; }
 
-        const runSimulation = () => {
-            if (currentEventIndex < gameData.length && time >= gameData[currentEventIndex].time) {
-                const event = gameData[currentEventIndex];
-                const logItem = document.createElement('div');
-                logItem.innerHTML = `<span class="info">${Math.floor(event.time)} min :</span> ${event.text}`;
-                logItem.className = 'log-item';
-                if (event.type === 'goal') {
-                    logItem.classList.add('goal');
-                    scoreElement.textContent = event.score;
+        #last-scene {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #last-scene h2 {
+            font-size: 1.8em;
+            color: #f1c40f;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+        }
+
+        #last-scene p {
+            max-width: 500px;
+            font-size: 1.1em;
+            margin: 15px auto;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        #last-scene .analogy-text {
+            animation-delay: 1.5s;
+        }
+
+        #last-scene .pilot-text {
+            animation-delay: 2.5s;
+        }
+
+        #last-scene .mastery-text {
+            animation-delay: 3.5s;
+        }
+
+        #start-method-button {
+            margin-top: 40px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: 2px solid #2ecc71;
+            background-color: transparent;
+            color: #2ecc71;
+            border-radius: 5px;
+            transition: background-color 0.3s, color: 0.3s;
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 4.5s;
+        }
+
+        #start-method-button:hover {
+            background-color: #2ecc71;
+            color: #ecf0f1;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+
+        .text-ar {
+            direction: rtl;
+            text-align: right;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes fadeOutIn { 0%, 100% { opacity: 0; } 15%, 85% { opacity: 1; } }
+        @keyframes scaleIn { to { opacity: 1; transform: scale(1); } }
+        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div id="language-selector">
+        <button id="lang-fr" class="active">🇫🇷</button>
+        <button id="lang-en">🇬🇧</button>
+    </div>
+
+    <button id="skip-button"></button>
+
+    <div class="header">
+        <h2 id="system-name">ArtScalping</h2>
+        <h3 id="animated-text-loop"></h3>
+    </div>
+
+    <div class="animation-container">
+        <div id="scene-1" class="scene active">
+            <h1 id="main-title"></h1>
+            <div class="data-icon-container">
+                <div class="database-icon"></div>
+                <div class="data-line first-line">HomeTeam | AwayTeam</div>
+                <div class="data-line second-line">FTHG | FTAG</div>
+                <div class="data-line third-line">Date | Ligue</div>
+            </div>
+        </div>
+
+        <div id="scene-2" class="scene">
+            <h1 id="scene-2-title"></h1>
+            <p id="scene-2-subtitle"></p>
+            <div class="indices-container">
+                <div class="index-box">
+                    <h3 id="index-1-title"></h3>
+                    <p id="index-1-text-1"></p>
+                    <p id="index-1-text-2"></p>
+                </div>
+                <div class="index-box">
+                    <h3 id="index-2-title"></h3>
+                    <p id="index-2-text-1"></p>
+                    <p id="index-2-text-2"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="scene-3" class="scene">
+            <h1 id="scene-3-title"></h1>
+            <p id="scene-3-subtitle"></p>
+            <p class="mysterious-text">
+                <span id="mysterious-text-1"></span>
+                <br>
+                <span id="mysterious-text-2"></span>
+            </p>
+            <p class="percentage"></p>
+            <div class="bet-choices-container">
+                <div class="bet-box under-4-5" id="bet-box-u4-5"></div>
+                <div class="bet-box under-2-5" id="bet-box-u2-5"></div>
+            </div>
+        </div>
+
+        <div id="scene-4" class="scene">
+            <h2 id="scene-4-title"></h2>
+            <p id="scene-4-subtitle"></p>
+
+            <div class="detail-section under-4-5-details">
+                <h3 id="u4-5-details-title"></h3>
+                <p class="detail-item">
+                    <span class="percentage-highlight">Stop Loss :</span> <span id="u4-5-stop-loss"></span>
+                </p>
+                <p class="detail-item">
+                    <span class="percentage-highlight">Scalping :</span> <span id="u4-5-scalping"></span>
+                </p>
+                <p class="detail-item">
+                    <span class="percentage-highlight">Condition :</span> <span id="u4-5-condition"></span>
+                </p>
+            </div>
+
+            <div class="detail-section under-2-5-details">
+                <h3 id="u2-5-details-title"></h3>
+                <p class="detail-item">
+                    <span class="percentage-highlight">Règle principale :</span> <span id="u2-5-main-rule"></span>
+                </p>
+                <p class="detail-item">
+                    <span class="percentage-highlight">Condition de non-jeu :</span> <span id="u2-5-no-play"></span>
+                </p>
+                <p class="detail-item">
+                    <span class="percentage-highlight">Stop Loss :</span> <span id="u2-5-stop-loss"></span>
+                </p>
+                <p class="detail-item">
+                    <span class="percentage-highlight">Scalping :</span> <span id="u2-5-scalping"></span>
+                </p>
+                <p class="detail-item">
+                    <span class="percentage-highlight">Condition :</span> <span id="u2-5-condition"></span>
+                </p>
+            </div>
+
+            <p class="additional-text">
+                <span id="additional-text-main"></span>
+                <br>
+                <span id="additional-text-upgrade"></span>
+            </p>
+        </div>
+
+        <div id="perfect-game-scene-u2-5" class="scene perfect-game-scene">
+            <h2 id="perfect-game-u2-5-title"></h2>
+            <p id="perfect-game-u2-5-subtitle"></p>
+
+            <div class="scoreboard">
+                <span class="team">Équipe A</span>
+                <span class="score" id="score-u2-5">0-0</span>
+                <span class="team">Équipe B</span>
+            </div>
+
+            <div class="timer" id="timer-u2-5">00:00</div>
+
+            <div class="action-log" id="action-log-u2-5">
+            </div>
+        </div>
+
+        <div id="perfect-game-scene-u4-5" class="scene perfect-game-scene">
+            <h2 id="perfect-game-u4-5-title"></h2>
+            <p id="perfect-game-u4-5-subtitle"></p>
+
+            <div class="scoreboard">
+                <span class="team">Équipe C</span>
+                <span class="score" id="score-u4-5">0-0</span>
+                <span class="team">Équipe D</span>
+            </div>
+
+            <div class="timer" id="timer-u4-5">00:00</div>
+
+            <div class="action-log" id="action-log-u4-5">
+            </div>
+        </div>
+
+        <div id="final-stats-scene" class="scene">
+            <h2 id="final-stats-title"></h2>
+            <p id="final-stats-subtitle"></p>
+            <p class="stat-line" id="stat-line-1"></p>
+            <p id="stat-line-1-subtitle"></p>
+            <p class="stat-line" id="stat-line-2"></p>
+            <p id="stat-line-2-subtitle"></p>
+            <p class="download-line" id="download-line-main"></p>
+            <p id="download-line-subtitle"></p>
+            <p class="caveat-line" id="caveat-line-main"></p>
+            <p id="caveat-line-subtitle"></p>
+        </div>
+
+        <div id="last-scene" class="scene">
+            <h2 id="analogy-title"></h2>
+            <p class="analogy-text">
+                <span id="analogy-text-1"></span>
+                <br>
+                <span id="analogy-text-1-subtitle"></span>
+            </p>
+            <p class="pilot-text">
+                <span id="pilot-text-main"></span>
+                <br>
+                <span id="pilot-text-subtitle"></span>
+            </p>
+            <p class="mastery-text">
+                <span id="mastery-text-main"></span>
+                <br>
+                <span id="mastery-text-subtitle"></span>
+            </p>
+            <button id="start-method-button"></button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Mise au point avec l'aide de Gemini AI.</p>
+    </div>
+
+    <button id="next-button">&rarr;</button>
+
+    <script>
+        // Dictionnaire de traductions pour tous les textes de l'animation
+        const translations = {
+            fr: {
+                animatedLoop: "La méthode commence par l'analyse de données.",
+                skipButton: "Aller à la page suivante",
+                nextButton: "→",
+                startMethodButton: "Démarrez la méthode",
+                scene1: {
+                    title: "La méthode commence par l'analyse de données.",
+                },
+                scene2: {
+                    title: "Le calcul des indices de performance",
+                    subtitle: "Calculating the Performance Indices",
+                    index1Title: "Indice 1",
+                    index1Text1: "Attaque Équipe Domicile + Défense Équipe Extérieure",
+                    index1Text2: "(Home Team Attack + Away Team Defense)",
+                    index2Title: "Indice 2",
+                    index2Text1: "Attaque Équipe Extérieure + Défense Équipe Domicile",
+                    index2Text2: "(Away Team Attack + Home Team Defense)",
+                },
+                scene3: {
+                    title: "Sélection des paris les plus sûrs",
+                    subtitle: "Selecting the Safest Bets",
+                    mysteriousText1: "Ces taux de réussite sont le fruit d'une **équation secrète**, patiemment élaborée et testée sur des années de données, alliant indices de performance et séquences.",
+                    mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
+                    percentage: "Taux de réussite : 92 à 94%",
+                    betBoxU45: "Under 4.5",
+                    betBoxU25: "Under 2.5 1ère mi-temps<br>(Under 2.5 First Half)",
+                },
+                scene4: {
+                    title: "Les Règles de la Méthode Complète",
+                    subtitle: "Complete Method Rules",
+                    u45DetailsTitle: "Under 4.5",
+                    u45StopLoss: "Sortir du pari à la 86e minute 30 secondes.",
+                    u45Scalping: "Le taux de réussite augmente après chaque but.",
+                    u45Condition: "Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.",
+                    u25DetailsTitle: "Under 2.5 1ère mi-temps",
+                    u25MainRule: "On joue après la 4ème minute.",
+                    u25NoPlay: "Si 2 buts sont marqués en 3 minutes, on ne joue pas.",
+                    u25StopLoss: "Sortir du pari à la 42e minute 30 secondes.",
+                    u25Scalping: "Le taux de réussite augmente après chaque but.",
+                    u25Condition: "Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.",
+                    additionalTextMain: "En appliquant scrupuleusement ces règles, le taux de réussite passe de",
+                    additionalTextUpgrade: "92-94% à 96-97%.",
+                },
+                perfectGame: {
+                    u25Title: "Perfect Game Under 2.5 (1ère mi-temps)",
+                    u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
+                    u45Title: "Perfect Game Under 4.5",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "Pas de but dans les 3 premières minutes.", type: 'info' },
+                        { time: 4.5, text: "On prend une cote de <span class='highlight'>1.05</span> sur l'Under 2.5.", type: 'bet' },
+                        { time: 10, text: "Vente à la 10e minute pour une cote de <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 15, text: "But ! La cote passe à <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "Vente à <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 25, text: "But ! La cote passe à <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 42.5, text: "Stop Loss : Vente forcée à la 42e minute 30 secondes.", type: 'stop-loss' },
+                        { time: 45, text: "Fin de la 1ère mi-temps : Le pari est terminé avec succès. Le match est fini pour nous !", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "On attend le début du match pour confirmer le Scalping", type: 'info' },
+                        { time: 1.5, text: "On prend une cote de <span class='highlight'>1.05</span> sur l'Under 4.5.", type: 'bet' },
+                        { time: 10, text: "Vente à la 10e minute pour une cote de <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 14, text: "But ! La cote passe à <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "Vente à <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 26, text: "But ! La cote passe à <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "Vente à <span class='highlight'>1.15</span>.", type: 'sell' },
+                        { time: 45, text: "But ! La cote passe à <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 65, text: "But ! La cote passe à <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 87.5, text: "Stop Loss : Vente forcée à la 87e minute 30 secondes.", type: 'stop-loss' },
+                        { time: 90, text: "Fin du match : Le pari est terminé avec succès. Le match est fini pour nous !", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "Un dernier chiffre pour la route",
+                    subtitle: "One last figure for the road",
+                    stat1: "L'année dernière, le système a généré plus de <span class='highlight'>20000 matchs</span> à jouer !",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "Avec une moyenne de 2 buts par match, cela représente jusqu'à <span class='highlight'>46000 paris possibles</span>.",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "Le fichier est téléchargeable sur le site.",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
+                },
+                lastScene: {
+                    title: "L'analogie de la Ferrari",
+                    analogyText: "Nous vous offrons un **outil de haute performance**. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "La méthode ArtScalping est une Ferrari. **Patience, rigueur et intelligence** sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
                 }
-                logElement.prepend(logItem);
-                currentEventIndex++;
+            },
+            en: {
+                animatedLoop: "The method begins with data analysis.",
+                skipButton: "Go to next page",
+                nextButton: "→",
+                startMethodButton: "Start the method",
+                scene1: {
+                    title: "The method begins with data analysis.",
+                },
+                scene2: {
+                    title: "Calculating the Performance Indices",
+                    subtitle: "Calcul des indices de performance",
+                    index1Title: "Index 1",
+                    index1Text1: "Home Team Attack + Away Team Defense",
+                    index1Text2: "(Attaque Équipe Domicile + Défense Équipe Extérieure)",
+                    index2Title: "Index 2",
+                    index2Text1: "Away Team Attack + Home Team Defense",
+                    index2Text2: "(Attaque Équipe Extérieure + Défense Équipe Domicile)",
+                },
+                scene3: {
+                    title: "Selecting the Safest Bets",
+                    subtitle: "Sélection des paris les plus sûrs",
+                    mysteriousText1: "These success rates are the result of a **secret equation**, patiently developed and tested over years of data, combining performance indices and sequences.",
+                    mysteriousText2: "(Ces taux de réussite sont le fruit d'une équation secrète, patiemment élaborée et testée sur des années de données, alliant indices de performance et séquences.)",
+                    percentage: "Success Rate: 92 to 94%",
+                    betBoxU45: "Under 4.5",
+                    betBoxU25: "Under 2.5 First Half<br>(Under 2.5 1ère mi-temps)",
+                },
+                scene4: {
+                    title: "Complete Method Rules",
+                    subtitle: "Les Règles de la Méthode Complète",
+                    u45DetailsTitle: "Under 4.5",
+                    u45StopLoss: "Exit the bet at 86 minutes and 30 seconds.",
+                    u45Scalping: "The success rate increases after each goal.",
+                    u45Condition: "Do not bet on the next goal until your current bet is finished.",
+                    u25DetailsTitle: "Under 2.5 First Half",
+                    u25MainRule: "We play after the 4th minute.",
+                    u25NoPlay: "If 2 goals are scored in 3 minutes, we do not play.",
+                    u25StopLoss: "Exit the bet at 42 minutes and 30 seconds.",
+                    u25Scalping: "The success rate increases after each goal.",
+                    u25Condition: "Do not bet on the next goal until your current bet is finished.",
+                    additionalTextMain: "By scrupulously applying these rules, the success rate increases from",
+                    additionalTextUpgrade: "92-94% to 96-97%.",
+                },
+                perfectGame: {
+                    u25Title: "Perfect Game Under 2.5 (First Half)",
+                    u25Subtitle: "(Perfect Game Under 2.5 (1ère mi-temps))",
+                    u45Title: "Perfect Game Under 4.5",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "No goal in the first 3 minutes.", type: 'info' },
+                        { time: 4.5, text: "We take odds of <span class='highlight'>1.05</span> on Under 2.5.", type: 'bet' },
+                        { time: 10, text: "Sale at the 10th minute for odds of <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 15, text: "Goal! The odds change to <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "Sale at <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 25, text: "Goal! The odds change to <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 42.5, text: "Stop Loss: Forced sale at 42 minutes and 30 seconds.", type: 'stop-loss' },
+                        { time: 45, text: "End of the 1st half: The bet is successfully finished. The match is over for us!", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "We wait for the start of the match to confirm the Scalping", type: 'info' },
+                        { time: 1.5, text: "We take odds of <span class='highlight'>1.05</span> on Under 4.5.", type: 'bet' },
+                        { time: 10, text: "Sale at the 10th minute for odds of <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 14, text: "Goal! The odds change to <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "Sale at <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 26, text: "Goal! The odds change to <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "Sale at <span class='highlight'>1.15</span>.", type: 'sell' },
+                        { time: 45, text: "Goal! The odds change to <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 65, text: "Goal! The odds change to <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 87.5, text: "Stop Loss: Forced sale at 87 minutes and 30 seconds.", type: 'stop-loss' },
+                        { time: 90, text: "End of the match: The bet is successfully finished. The match is over for us!", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "One last figure for the road",
+                    subtitle: "Un dernier chiffre pour la route",
+                    stat1: "Last year, the system generated more than <span class='highlight'>20000 matches</span> to bet on!",
+                    stat1Subtitle: "(L'année dernière, le système a généré plus de 20000 matchs à jouer !)",
+                    stat2: "With an average of 2 goals per match, this represents up to <span class='highlight'>46000 possible bets</span>.",
+                    stat2Subtitle: "(Avec une moyenne de 2 buts par match, cela représente jusqu'à 46000 paris possibles.)",
+                    download: "The file is downloadable from the site.",
+                    downloadSubtitle: "(Le fichier est téléchargeable sur le site.)",
+                    caveat: "Note: These bets are not all playable on all bookmakers.",
+                    caveatSubtitle: "(Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.)",
+                },
+                lastScene: {
+                    title: "The Ferrari Analogy",
+                    analogyText: "We offer you a **high-performance tool**. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.",
+                    analogySubtitle: "(Nous vous offrons un outil de haute performance. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.)",
+                    pilotText: "The ArtScalping method is a Ferrari. **Patience, rigor, and intelligence** are the skills you need to drive it and make substantial profits.",
+                    pilotSubtitle: "(La méthode ArtScalping est une Ferrari. Patience, rigueur et intelligence sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.)",
+                    masteryText: "Self-control is the key to turning this tool into a real winning machine.",
+                    masterySubtitle: "(La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.)"
+                }
             }
-
-            if (currentEventIndex >= gameData.length) {
-                clearInterval(gameTimerInterval);
-                nextButton.style.display = 'block';
-                return;
-            }
-
-            time += 0.5;
-            const minutes = Math.floor(time);
-            const seconds = Math.floor((time - minutes) * 60);
-            timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         };
 
-        gameTimerInterval = setInterval(runSimulation, 50); // Simuler 30 secondes en 1.5s
-    }
+        // Variables de l'animation
+        const scenes = document.querySelectorAll('.scene');
+        const nextButton = document.getElementById('next-button');
+        const skipButton = document.getElementById('skip-button');
+        const startMethodButton = document.getElementById('start-method-button');
+        const systemName = document.getElementById('system-name');
+        const animatedTextLoop = document.getElementById('animated-text-loop');
+        const langButtons = document.querySelectorAll('#language-selector button');
 
-    // Écouteurs d'événements
-    nextButton.addEventListener('click', nextScene);
-    skipButton.addEventListener('click', () => showScene(scenes.length - 1));
-    startMethodButton.addEventListener('click', () => {
-        window.location.href = 'https://example.com';
-    });
+        let currentSceneIndex = 0;
+        let language = 'fr'; // Langue par défaut
 
-    // Initialisation
-    updateContent();
-    showScene(currentSceneIndex);
-</script>
+        function updateContent() {
+            const lang = translations[language];
+
+            document.getElementById('animated-text-loop').textContent = lang.animatedLoop;
+            document.getElementById('skip-button').textContent = lang.skipButton;
+            nextButton.textContent = lang.nextButton;
+            startMethodButton.textContent = lang.startMethodButton;
+
+            document.getElementById('main-title').textContent = lang.scene1.title;
+            document.getElementById('scene-2-title').textContent = lang.scene2.title;
+            document.getElementById('scene-2-subtitle').textContent = lang.scene2.subtitle;
+            document.getElementById('index-1-title').textContent = lang.scene2.index1Title;
+            document.getElementById('index-1-text-1').textContent = lang.scene2.index1Text1;
+            document.getElementById('index-1-text-2').textContent = lang.scene2.index1Text2;
+            document.getElementById('index-2-title').textContent = lang.scene2.index2Title;
+            document.getElementById('index-2-text-1').textContent = lang.scene2.index2Text1;
+            document.getElementById('index-2-text-2').textContent = lang.scene2.index2Text2;
+            document.getElementById('scene-3-title').textContent = lang.scene3.title;
+            document.getElementById('scene-3-subtitle').textContent = lang.scene3.subtitle;
+            document.getElementById('mysterious-text-1').innerHTML = lang.scene3.mysteriousText1;
+            document.getElementById('mysterious-text-2').innerHTML = lang.scene3.mysteriousText2;
+            document.querySelector('#scene-3 .percentage').textContent = lang.scene3.percentage;
+            document.getElementById('bet-box-u4-5').textContent = lang.scene3.betBoxU45;
+            document.getElementById('bet-box-u2-5').innerHTML = lang.scene3.betBoxU25;
+            document.getElementById('scene-4-title').textContent = lang.scene4.title;
+            document.getElementById('scene-4-subtitle').textContent = lang.scene4.subtitle;
+            document.getElementById('u4-5-details-title').textContent = lang.scene4.u45DetailsTitle;
+            document.getElementById('u4-5-stop-loss').textContent = lang.scene4.u45StopLoss;
+            document.getElementById('u4-5-scalping').textContent = lang.scene4.u45Scalping;
+            document.getElementById('u4-5-condition').textContent = lang.scene4.u45Condition;
+            document.getElementById('u2-5-details-title').textContent = lang.scene4.u25DetailsTitle;
+            document.getElementById('u2-5-main-rule').textContent = lang.scene4.u25MainRule;
+            document.getElementById('u2-5-no-play').textContent = lang.scene4.u25NoPlay;
+            document.getElementById('u2-5-stop-loss').textContent = lang.scene4.u25StopLoss;
+            document.getElementById('u2-5-scalping').textContent = lang.scene4.u25Scalping;
+            document.getElementById('u2-5-condition').textContent = lang.scene4.u25Condition;
+            document.getElementById('additional-text-main').textContent = lang.scene4.additionalTextMain;
+            document.getElementById('additional-text-upgrade').textContent = lang.scene4.additionalTextUpgrade;
+            document.getElementById('perfect-game-u2-5-title').textContent = lang.perfectGame.u25Title;
+            document.getElementById('perfect-game-u2-5-subtitle').textContent = lang.perfectGame.u25Subtitle;
+            document.getElementById('perfect-game-u4-5-title').textContent = lang.perfectGame.u45Title;
+            document.getElementById('perfect-game-u4-5-subtitle').textContent = lang.perfectGame.u45Subtitle;
+            document.getElementById('final-stats-title').textContent = lang.finalStats.title;
+            document.getElementById('final-stats-subtitle').textContent = lang.finalStats.subtitle;
+            document.getElementById('stat-line-1').innerHTML = lang.finalStats.stat1;
+            document.getElementById('stat-line-1-subtitle').textContent = lang.finalStats.stat1Subtitle;
+            document.getElementById('stat-line-2').innerHTML = lang.finalStats.stat2;
+            document.getElementById('stat-line-2-subtitle').textContent = lang.finalStats.stat2Subtitle;
+            document.getElementById('download-line-main').textContent = lang.finalStats.download;
+            document.getElementById('download-line-subtitle').textContent = lang.finalStats.downloadSubtitle;
+            document.getElementById('caveat-line-main').textContent = lang.finalStats.caveat;
+            document.getElementById('caveat-line-subtitle').textContent = lang.finalStats.caveatSubtitle;
+            document.getElementById('analogy-title').textContent = lang.lastScene.title;
+            document.getElementById('analogy-text-1').innerHTML = lang.lastScene.analogyText;
+            document.getElementById('analogy-text-1-subtitle').textContent = lang.lastScene.analogySubtitle;
+            document.getElementById('pilot-text-main').innerHTML = lang.lastScene.pilotText;
+            document.getElementById('pilot-text-subtitle').textContent = lang.lastScene.pilotSubtitle;
+            document.getElementById('mastery-text-main').textContent = lang.lastScene.masteryText;
+            document.getElementById('mastery-text-subtitle').textContent = lang.lastScene.masterySubtitle;
+
+            // Mettre à jour les textes des scènes de simulation
+            const perfectGameScenes = document.querySelectorAll('.perfect-game-scene');
+            perfectGameScenes.forEach(scene => {
+                // On réinitialise l'affichage pour éviter des doublons si l'utilisateur change de langue en cours de simulation
+                if(scene.classList.contains('active')) {
+                    const betType = scene.id.includes('u2-5') ? 'u2-5' : 'u4-5';
+                    startPerfectGameSimulation(betType);
+                }
+            });
+        }
+
+        function showScene(index) {
+            scenes.forEach((scene, i) => {
+                scene.classList.remove('active');
+            });
+            scenes[index].classList.add('active');
+
+            // Gérer la visibilité du bouton "next"
+            if (index === scenes.length - 1) {
+                nextButton.style.display = 'none';
+                startMethodButton.style.display = 'block';
+            } else {
+                nextButton.style.display = 'block';
+                startMethodButton.style.display = 'none';
+            }
+
+            // Démarrer la simulation si c'est une scène de "perfect game"
+            if (index === scenes.length - 3) {
+                startPerfectGameSimulation('u4-5');
+            } else if (index === scenes.length - 4) {
+                startPerfectGameSimulation('u2-5');
+            }
+        }
+
+        function nextScene() {
+            currentSceneIndex++;
+            if (currentSceneIndex >= scenes.length) {
+                currentSceneIndex = scenes.length - 1;
+                return;
+            }
+            showScene(currentSceneIndex);
+        }
+
+        let gameTimerInterval;
+
+        function startPerfectGameSimulation(betType) {
+            clearInterval(gameTimerInterval);
+            const gameData = translations[language].perfectGame[`event${betType.toUpperCase()}`];
+            const logElement = document.getElementById(`action-log-${betType}`);
+            const scoreElement = document.getElementById(`score-${betType}`);
+            const timerElement = document.getElementById(`timer-${betType}`);
+            let time = 0;
+            let currentEventIndex = 0;
+            logElement.innerHTML = '';
+            scoreElement.textContent = '0-0';
+            timerElement.textContent = '00:00';
+
+            const runSimulation = () => {
+                if (currentEventIndex < gameData.length && time >= gameData[currentEventIndex].time) {
+                    const event = gameData[currentEventIndex];
+                    const logItem = document.createElement('div');
+                    logItem.innerHTML = `<span class="info">${Math.floor(event.time)} min :</span> ${event.text}`;
+                    logItem.className = 'log-item';
+                    if (event.type === 'goal') {
+                        logItem.classList.add('goal');
+                        scoreElement.textContent = event.score;
+                    }
+                    logElement.prepend(logItem);
+                    currentEventIndex++;
+                }
+
+                if (currentEventIndex >= gameData.length) {
+                    clearInterval(gameTimerInterval);
+                    return;
+                }
+
+                time += 0.5;
+                const minutes = Math.floor(time);
+                const seconds = Math.floor((time - minutes) * 60);
+                timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            };
+
+            gameTimerInterval = setInterval(runSimulation, 50);
+        }
+
+        function setLanguage(newLanguage) {
+            language = newLanguage;
+            langButtons.forEach(button => button.classList.remove('active'));
+            document.getElementById(`lang-${newLanguage}`).classList.add('active');
+            updateContent();
+        }
+
+        // Écouteurs d'événements
+        nextButton.addEventListener('click', nextScene);
+        skipButton.addEventListener('click', () => showScene(scenes.length - 1));
+        startMethodButton.addEventListener('click', () => {
+            window.location.href = 'https://example.com';
+        });
+
+        document.getElementById('lang-fr').addEventListener('click', () => setLanguage('fr'));
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+
+        // Initialisation
+        window.addEventListener('DOMContentLoaded', () => {
+            updateContent();
+            showScene(currentSceneIndex);
+        });
+    </script>
+</body>
+</html>
