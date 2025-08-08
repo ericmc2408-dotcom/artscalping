@@ -79,11 +79,6 @@
             pointer-events: auto;
         }
         
-        /* Specific centering for scene 1 */
-        #scene-1 {
-            flex-direction: column;
-        }
-        
         .controls {
             width: 100%;
             display: flex;
@@ -916,7 +911,6 @@
             const timerElement = document.getElementById(`timer-${betType}`);
             let time = 0;
             let currentEventIndex = 0;
-            let currentScore = { home: 0, away: 0 };
             logElement.innerHTML = '';
             scoreElement.textContent = '0-0';
             timerElement.textContent = '00:00';
@@ -929,10 +923,7 @@
                     logItem.className = 'log-item';
                     if (event.type === 'goal') {
                         logItem.classList.add('goal');
-                        const scores = event.score.split('-').map(s => parseInt(s));
-                        currentScore.home = scores[0];
-                        currentScore.away = scores[1];
-                        scoreElement.textContent = `${currentScore.home}-${currentScore.away}`;
+                        scoreElement.textContent = event.score;
                     }
                     logElement.prepend(logItem);
                     currentEventIndex++;
