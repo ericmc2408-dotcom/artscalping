@@ -892,23 +892,14 @@
             });
             scenes[index].classList.add('active');
             currentSceneIndex = index;
-
-            nextButton.classList.remove('visible');
-            startMethodButton.classList.remove('visible');
             
             clearInterval(gameTimerInterval);
             
-            if (index === scenes.length - 1) {
-                nextButton.style.display = 'none';
-                startMethodButton.classList.add('visible');
-            } else if (scenes[index].id === 'perfect-game-scene-u2-5' || scenes[index].id === 'perfect-game-scene-u4-5') {
-                 nextButton.style.display = 'block';
-                 startMethodButton.classList.remove('visible');
-            } else {
-                nextButton.style.display = 'block';
-                startMethodButton.classList.remove('visible');
-            }
-            
+            // Manage button visibility
+            nextButton.classList.toggle('visible', index < scenes.length - 1);
+            startMethodButton.classList.toggle('visible', index === scenes.length - 1);
+
+            // Re-run animation if it's a game scene
             if (scenes[index].id === 'perfect-game-scene-u2-5') {
                 startPerfectGameSimulation('u2-5');
             } else if (scenes[index].id === 'perfect-game-scene-u4-5') {
@@ -923,29 +914,36 @@
         }
 
         function startPerfectGameSimulation(betType) {
-            clearInterval(gameTimerInterval);
+            clearInterval(gameTimerInterval); // Clear any existing timer
             const gameData = translations[language].perfectGame[`event${betType.toUpperCase()}`];
             const logElement = document.getElementById(`action-log-${betType}`);
             const scoreElement = document.getElementById(`score-${betType}`);
             const timerElement = document.getElementById(`timer-${betType}`);
             let time = 0;
             let currentEventIndex = 0;
+            
+            // Reset the scene
             logElement.innerHTML = '';
             scoreElement.textContent = '0-0';
             timerElement.textContent = '00:00';
+            logElement.style.display = 'none';
 
             const runSimulation = () => {
-                const event = gameData[currentEventIndex];
-                if (event && time >= event.time) {
-                    const logItem = document.createElement('div');
-                    logItem.innerHTML = `<span class="info">${Math.floor(event.time)} min :</span> ${event.text}`;
-                    logItem.className = 'log-item';
-                    if (event.type === 'goal') {
-                        logItem.classList.add('goal');
-                        scoreElement.textContent = event.score;
+                if (currentEventIndex < gameData.length) {
+                    const event = gameData[currentEventIndex];
+                    if (time >= event.time) {
+                        const logItem = document.createElement('div');
+                        logItem.innerHTML = `<span class="info">${Math.floor(event.time)} min :</span> ${event.text}`;
+                        logItem.className = 'log-item';
+                        if (event.type === 'goal') {
+                            logItem.classList.add('goal');
+                            scoreElement.textContent = event.score;
+                        }
+                        logElement.prepend(logItem);
+                        logItem.style.animationDelay = '0s';
+                        logElement.style.display = 'flex';
+                        currentEventIndex++;
                     }
-                    logElement.prepend(logItem);
-                    currentEventIndex++;
                 }
 
                 if (currentEventIndex >= gameData.length) {
@@ -959,7 +957,7 @@
                 timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             };
 
-            gameTimerInterval = setInterval(runSimulation, 50);
+            gameTimerInterval = setInterval(runSimulation, 50); // Fast-forward animation
         }
 
         function setLanguage(newLanguage) {
@@ -967,6 +965,7 @@
             langButtons.forEach(button => button.classList.remove('active'));
             document.getElementById(`lang-${newLanguage}`).classList.add('active');
             updateContent();
+            // Re-show the current scene to apply new language and re-run animation if needed
             showScene(currentSceneIndex);
         }
 
