@@ -57,6 +57,7 @@
             text-align: center;
         }
         
+        /* Modifié pour s'assurer que les scènes sont cachées initialement */
         .scene {
             display: none;
             opacity: 0;
@@ -364,7 +365,7 @@
     </div>
 
     <div class="animation-container">
-        <div id="scene-1" class="scene active">
+        <div id="scene-1" class="scene">
             <h1 id="main-title"></h1>
             <div class="data-icon-container">
                 <div class="database-icon"></div>
@@ -984,7 +985,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             updateContent();
-            showScene(currentSceneIndex);
+            showScene(0); // On s'assure que la première scène est affichée correctement
         });
     </script>
 </body>
