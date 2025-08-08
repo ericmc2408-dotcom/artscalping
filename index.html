@@ -60,10 +60,18 @@
             position: relative;
             pointer-events: auto;
         }
-        
-        /* Assure que la flèche est visible, même si d'autres styles la cachent */
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+        }
+
         #next-button {
-            margin-top: 40px;
             padding: 10px 20px;
             font-size: 1.5em;
             cursor: pointer;
@@ -72,12 +80,36 @@
             color: #3498db;
             border-radius: 5px;
             transition: background-color 0.3s, color: 0.3s;
-            display: block !important;
-            opacity: 1 !important;
+            display: none; /* Initial state, controlled by JS */
+        }
+        
+        #next-button.visible {
+            display: block;
         }
 
         #next-button:hover {
             background-color: #3498db;
+            color: #ecf0f1;
+        }
+
+        #start-method-button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: 2px solid #2ecc71;
+            background-color: transparent;
+            color: #2ecc71;
+            border-radius: 5px;
+            transition: background-color 0.3s, color: 0.3s;
+            display: none; /* Initial state, controlled by JS */
+        }
+        
+        #start-method-button.visible {
+            display: block;
+        }
+
+        #start-method-button:hover {
+            background-color: #2ecc71;
             color: #ecf0f1;
         }
 
@@ -271,31 +303,14 @@
             animation-delay: 3.5s;
         }
 
-        #start-method-button {
-            margin-top: 40px;
-            padding: 15px 30px;
-            font-size: 1.5em;
-            cursor: pointer;
-            border: 2px solid #2ecc71;
-            background-color: transparent;
-            color: #2ecc71;
-            border-radius: 5px;
-            transition: background-color 0.3s, color: 0.3s;
-            display: none;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-            animation-delay: 4.5s;
-        }
-
-        #start-method-button:hover {
-            background-color: #2ecc71;
-            color: #ecf0f1;
-        }
-
         .footer {
-            margin-top: 50px;
+            position: fixed;
+            bottom: 5px;
+            width: 100%;
+            text-align: center;
             font-size: 0.8em;
             color: #7f8c8d;
+            z-index: 90;
         }
 
         .text-ar {
@@ -472,16 +487,18 @@
                 <br>
                 <span id="mastery-text-subtitle"></span>
             </p>
-            <button id="start-method-button"></button>
         </div>
+    </div>
+    
+    <div class="controls">
+        <button id="next-button">&rarr;</button>
+        <button id="start-method-button"></button>
     </div>
 
     <div class="footer">
-        <p>Mise au point avec l'aide de Gemini AI.</p>
+        <p>Conçu avec l'aide de Gemini AI.</p>
     </div>
-
-    <button id="next-button">&rarr;</button>
-
+    
     <script>
         // Dictionnaire de traductions pour tous les textes de l'animation
         const translations = {
@@ -658,30 +675,29 @@
                     ]
                 },
                 finalStats: {
-                    title: "One last figure for the road",
-                    subtitle: "Un dernier chiffre pour la route",
-                    stat1: "Last year, the system generated more than <span class='highlight'>20000 matches</span> to bet on!",
-                    stat1Subtitle: "(L'année dernière, le système a généré plus de 20000 matchs à jouer !)",
-                    stat2: "With an average of 2 goals per match, this represents up to <span class='highlight'>46000 possible bets</span>.",
-                    stat2Subtitle: "(Avec une moyenne de 2 buts par match, cela représente jusqu'à 46000 paris possibles.)",
-                    download: "The file is downloadable from the site.",
-                    downloadSubtitle: "(Le fichier est téléchargeable sur le site.)",
-                    caveat: "Note: These bets are not all playable on all bookmakers.",
-                    caveatSubtitle: "(Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.)",
+                    title: "Un dernier chiffre pour la route",
+                    subtitle: "One last figure for the road",
+                    stat1: "L'année dernière, le système a généré plus de <span class='highlight'>20000 matchs</span> à jouer !",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "Avec une moyenne de 2 buts par match, cela représente jusqu'à <span class='highlight'>46000 paris possibles</span>.",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "Le fichier est téléchargeable sur le site.",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
                 },
                 lastScene: {
-                    title: "The Ferrari Analogy",
-                    analogyText: "We offer you a **high-performance tool**. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.",
-                    analogySubtitle: "(Nous vous offrons un outil de haute performance. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.)",
-                    pilotText: "The ArtScalping method is a Ferrari. **Patience, rigor, and intelligence** are the skills you need to drive it and make substantial profits.",
-                    pilotSubtitle: "(La méthode ArtScalping est une Ferrari. Patience, rigueur et intelligence sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.)",
-                    masteryText: "Self-control is the key to turning this tool into a real winning machine.",
-                    masterySubtitle: "(La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.)"
+                    title: "L'analogie de la Ferrari",
+                    analogyText: "Nous vous offrons un **outil de haute performance**. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "La méthode ArtScalping est une Ferrari. **Patience, rigueur et intelligence** sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
                 }
             }
         };
 
-        // Variables de l'animation
         const scenes = document.querySelectorAll('.scene');
         const nextButton = document.getElementById('next-button');
         const skipButton = document.getElementById('skip-button');
@@ -689,7 +705,7 @@
         const langButtons = document.querySelectorAll('#language-selector button');
 
         let currentSceneIndex = 0;
-        let language = 'fr'; // Langue par défaut
+        let language = 'fr';
 
         function updateContent() {
             const lang = translations[language];
@@ -751,7 +767,6 @@
             document.getElementById('mastery-text-main').textContent = lang.lastScene.masteryText;
             document.getElementById('mastery-text-subtitle').textContent = lang.lastScene.masterySubtitle;
 
-            // Mettre à jour les textes des scènes de simulation
             const perfectGameScenes = document.querySelectorAll('.perfect-game-scene');
             perfectGameScenes.forEach(scene => {
                 if(scene.classList.contains('active')) {
@@ -766,17 +781,17 @@
                 scene.classList.remove('active');
             });
             scenes[index].classList.add('active');
+            currentSceneIndex = index;
 
-            // Logique pour les boutons
+            nextButton.classList.remove('visible');
+            startMethodButton.classList.remove('visible');
+
             if (index === scenes.length - 1) {
-                nextButton.style.display = 'none';
-                startMethodButton.style.display = 'block';
+                startMethodButton.classList.add('visible');
             } else {
-                nextButton.style.display = 'block';
-                startMethodButton.style.display = 'none';
+                nextButton.classList.add('visible');
             }
 
-            // Démarrer la simulation si c'est une scène de "perfect game"
             if (index === scenes.length - 3) {
                 startPerfectGameSimulation('u4-5');
             } else if (index === scenes.length - 4) {
@@ -842,7 +857,6 @@
             updateContent();
         }
 
-        // Écouteurs d'événements
         nextButton.addEventListener('click', nextScene);
         skipButton.addEventListener('click', () => showScene(scenes.length - 1));
         startMethodButton.addEventListener('click', () => {
@@ -852,7 +866,6 @@
         document.getElementById('lang-fr').addEventListener('click', () => setLanguage('fr'));
         document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
 
-        // Initialisation
         window.addEventListener('DOMContentLoaded', () => {
             updateContent();
             showScene(currentSceneIndex);
