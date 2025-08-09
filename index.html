@@ -55,7 +55,7 @@
             justify-content: center;
             align-items: center;
             flex-grow: 1;
-            position: relative; /* Conteneur parent pour le positionnement absolu */
+            position: relative;
         }
 
         .scene {
@@ -81,6 +81,7 @@
             position: relative;
         }
         
+        /* Correction : positionnement de la flèche de navigation */
         #next-button {
             padding: 10px 20px;
             font-size: 1.5em;
@@ -91,10 +92,11 @@
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s, transform 0.3s;
             display: none;
-            position: absolute;
-            bottom: -50px;
+            position: fixed;
+            bottom: 20px; /* Positionnement fixe en bas de la page */
             left: 50%;
             transform: translateX(-50%);
+            z-index: 200; /* Toujours visible en avant-plan */
         }
 
         #next-button.visible {
@@ -241,7 +243,7 @@
             font-size: 2.2em;
             padding: 8px 15px;
             border-radius: 10px;
-            animation: none; /* Removed the pulse animation */
+            animation: none; /* Correction : Retrait de l'animation de pulsation */
             display: inline-block;
             margin: 0 5px;
         }
@@ -1438,6 +1440,7 @@
         let currentSceneIndex = 0;
         let language = 'fr';
         let simulationTimeout;
+        let perfectGameRunning = false;
 
         function updateContent() {
             const lang = translations[language];
@@ -1506,21 +1509,21 @@
             });
             scenes[index].classList.add('active');
             currentSceneIndex = index;
-
+            
             clearTimeout(simulationTimeout);
+            perfectGameRunning = false;
 
+            // Logique d'affichage des boutons
             const isFinalScene = index === scenes.length - 1;
-            const isLastButOne = index === scenes.length - 2;
-
             nextButton.classList.toggle('visible', !isFinalScene);
-            startMethodButton.classList.toggle('visible', isLastScene);
+            startMethodButton.classList.toggle('visible', isFinalScene);
 
+            // Gérer les simulations
             if (scenes[index].id === 'perfect-game-scene-u2-5') {
                 startPerfectGameSimulation('u2-5');
             } else if (scenes[index].id === 'perfect-game-scene-u4-5') {
                 startPerfectGameSimulation('u4-5');
             } else {
-                 clearTimeout(simulationTimeout);
                  document.getElementById('score-u2-5').textContent = '0-0';
                  document.getElementById('timer-u2-5').textContent = '00:00';
                  document.getElementById('action-log-u2-5').innerHTML = '';
@@ -1538,6 +1541,7 @@
 
         function startPerfectGameSimulation(betType) {
             clearTimeout(simulationTimeout);
+            perfectGameRunning = true;
             const gameData = translations[language].perfectGame[`event${betType.toUpperCase()}`];
             const logElement = document.getElementById(`action-log-${betType}`);
             const scoreElement = document.getElementById(`score-${betType}`);
@@ -1552,7 +1556,12 @@
             const startTime = Date.now();
 
             const runSimulation = () => {
+                if (!perfectGameRunning) return;
+
                 if (eventIndex >= gameData.length) {
+                    // Correction : Affiche la flèche après la fin de la simulation
+                    nextButton.classList.add('visible');
+                    perfectGameRunning = false;
                     return;
                 }
 
@@ -1580,10 +1589,13 @@
                 if (eventIndex < gameData.length) {
                     simulationTimeout = setTimeout(runSimulation, 50);
                 } else {
-                     clearTimeout(simulationTimeout);
+                    nextButton.classList.add('visible'); // S'assure que le bouton est visible à la fin
+                    perfectGameRunning = false;
                 }
             };
 
+            // Masque la flèche pendant la simulation
+            nextButton.classList.remove('visible');
             simulationTimeout = setTimeout(runSimulation, 50);
         }
 
@@ -1595,7 +1607,13 @@
             showScene(currentSceneIndex);
         }
 
-        nextButton.addEventListener('click', nextScene);
+        nextButton.addEventListener('click', () => {
+            // Si une simulation est en cours, la flèche ne fait rien
+            if (perfectGameRunning) {
+                return;
+            }
+            nextScene();
+        });
         skipButton.addEventListener('click', () => showScene(scenes.length - 1));
         startMethodButton.addEventListener('click', () => {
             window.location.href = 'index2.html';
