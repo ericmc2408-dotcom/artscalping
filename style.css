@@ -176,7 +176,7 @@ body {
 #data-table tbody tr:hover {
     background-color: #3f586a;
 }
-/* --- NOUVELLE RÈGLE CSS POUR LE SOUS-TITRE --- */
+/* --- RÈGLE POUR LE SOUS-TITRE --- */
 #static-subtitle {
     font-size: 1.2em;
     margin-top: 5px;
@@ -186,14 +186,14 @@ body {
     animation-delay: 2.5s;
 }
 
-/* --- RÈGLE POUR LES DRAPEAUX SUR GRANDS ÉCRANS (modifiée) --- */
+/* --- RÈGLE POUR LES DRAPEAUX SUR GRANDS ÉCRANS --- */
 .lang-flags {
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 100;
     display: flex;
-    flex-direction: column; /* CHANGEMENT ICI pour les aligner verticalement */
+    flex-direction: column; 
     gap: 10px;
 }
 
@@ -260,9 +260,8 @@ body {
         height: auto;
     }
     
-    /* --- STYLES DU PIED DE PAGE MOBILE (modifié) --- */
+    /* --- RÈGLES CORRIGÉES POUR LE PIED DE PAGE MOBILE --- */
     
-    /* Cache le pied de page sur les grands écrans pour éviter les doublons */
     .pied-de-page-mobile {
         display: flex !important;
         position: fixed;
@@ -277,15 +276,12 @@ body {
         z-index: 999;
     }
 
-    /* Le conteneur pour les drapeaux, maintenant dans le pied de page */
+    /* CORRECTION ICI : Pour que les drapeaux restent dans le pied de page et s'alignent correctement */
     .pied-de-page-mobile .lang-flags {
-            position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
-    display: flex;
-    flex-direction: column !important; /* Ajout de !important */
-    gap: 10px;
+        position: static; 
+        flex-direction: row; 
+        flex-wrap: nowrap;
+        gap: 5px;
     }
 
     .pied-de-page-mobile .lang-flags .lang-flag {
@@ -293,14 +289,12 @@ body {
         height: 30px;
     }
 
-    /* Le conteneur pour les boutons de navigation */
     .navigation-buttons {
         display: flex;
         gap: 15px;
         align-items: center;
     }
 
-    /* Styles pour tous les boutons de navigation (précédent, menu, suivant) */
     #prev-button, #menu-button, #next-button {
         background-color: transparent;
         color: #ecf0f1;
@@ -320,10 +314,7 @@ body {
     #prev-button:hover, #menu-button:hover, #next-button:hover {
         background-color: #3498db;
     }
-
-    /* Retrait de la règle qui cachait le bouton suivant, comme demandé */
 }
-
 
 
 
