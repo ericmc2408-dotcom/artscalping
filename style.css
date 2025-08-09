@@ -186,6 +186,17 @@ body {
     animation-delay: 2.5s;
 }
 
+/* --- RÈGLE POUR LES DRAPEAUX SUR GRANDS ÉCRANS (modifiée) --- */
+.lang-flags {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column; /* CHANGEMENT ICI pour les aligner verticalement */
+    gap: 10px;
+}
+
 /* Règles pour les petits écrans (téléphones) */
 @media (max-width: 768px) {
     body {
@@ -248,61 +259,32 @@ body {
         width: 100%;
         height: auto;
     }
-}
-/* --- NOUVEAUX STYLES POUR LE PIED DE PAGE MOBILE --- */
-
-/* Cache les éléments sur les grands écrans pour éviter les doublons */
-.pied-de-page-mobile {
-    display: none;
-}
-
-/* MODIFICATION ICI : Styles pour les drapeaux en haut à gauche, maintenant verticaux */
-.lang-flags {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
-    display: flex;
-    flex-direction: column; /* CHANGEMENT ICI pour les aligner verticalement */
-    gap: 10px;
-}
-/* Styles de base pour les boutons de navigation */
-#skip-button, #next-button {
-    /* Vos styles existants */
-}
-
-
-/* Media Query pour les écrans de téléphone (moins de 768px de large) */
-@media (max-width: 768px) {
-    /* Cache les anciens boutons qui créent le conflit */
-    #skip-button {
-        display: none !important;
-    }
     
-    /* Affiche et style le nouveau conteneur de pied de page */
+    /* --- STYLES DU PIED DE PAGE MOBILE (modifié) --- */
+    
+    /* Cache le pied de page sur les grands écrans pour éviter les doublons */
     .pied-de-page-mobile {
-        position: fixed; /* Position fixe en bas de l'écran */
+        display: flex !important;
+        position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
         background-color: #2c3e50;
         padding: 10px;
         box-sizing: border-box;
-        display: flex !important; /* Force l'affichage sur mobile */
-        justify-content: space-between; /* Espacer les drapeaux et les boutons */
-        align-items: center; /* Aligner verticalement au centre */
+        justify-content: space-between;
+        align-items: center;
         z-index: 999;
     }
 
     /* Le conteneur pour les drapeaux, maintenant dans le pied de page */
     .pied-de-page-mobile .lang-flags {
-        position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
-    display: flex;
-    flex-direction: column !important; /* Ajout de !important pour forcer l'alignement vertical */
-    gap: 10px;
+        position: static; /* CORRECTION: pour que les drapeaux restent dans le flux normal du pied de page */
+        flex-direction: row; /* CORRECTION: pour qu'ils soient alignés horizontalement sur mobile */
+        flex-wrap: nowrap;
+        gap: 5px;
+        top: auto;
+        left: auto;
     }
 
     .pied-de-page-mobile .lang-flags .lang-flag {
@@ -338,10 +320,8 @@ body {
         background-color: #3498db;
     }
 
-    /* S'assurer que le bouton suivant n'est pas affiché en double si l'ancien existait */
-    #next-button[data-i18n] {
-        display: none !important;
-    }
+    /* Retrait de la règle qui cachait le bouton suivant, comme demandé */
 }
+
 
 
