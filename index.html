@@ -244,9 +244,13 @@
         #scene-4 .additional-text .percentage-upgrade {
             color: #2ecc71;
             font-weight: bold;
-            font-size: 1.5em; /* Augmentation de la taille pour la visibilité */
+            font-size: 1.8em; /* Augmentation de la taille pour la visibilité */
             animation: pulse 1s infinite alternate;
-            text-shadow: 0 0 5px rgba(46, 204, 113, 0.5); /* Ajout d'une ombre */
+            text-shadow: 0 0 8px rgba(46, 204, 113, 0.7); /* Augmentation de l'ombre */
+            background-color: #34495e; /* Ajout d'un fond pour mieux faire ressortir */
+            padding: 5px 15px; /* Ajout de padding */
+            border-radius: 5px;
+            display: inline-block;
         }
 
         /* --- Animations for Perfect Game Scenes --- */
@@ -330,12 +334,13 @@
         /* Corrections pour la langue arabe */
         .text-ar {
             direction: rtl;
-            text-align: right;
         }
-        /* Règle spécifique pour que l'alignement à droite s'applique aux éléments à l'intérieur des scènes */
-        body.text-ar .scene, 
-        body.text-ar #last-scene p, 
-        body.text-ar .detail-section {
+        .text-ar .header,
+        .text-ar .scene,
+        .text-ar .footer {
+            text-align: center;
+        }
+        .text-ar #scene-4 .detail-section {
             text-align: right;
         }
         .text-ar .action-log {
@@ -1511,6 +1516,7 @@
         }
 
         function startPerfectGameSimulation(betType) {
+            console.log(`Starting simulation for ${betType}`); // Log pour le débogage
             clearInterval(gameTimerInterval);
             const gameData = translations[language].perfectGame[`event${betType.toUpperCase()}`];
             const logElement = document.getElementById(`action-log-${betType}`);
