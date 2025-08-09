@@ -1,317 +1,149 @@
-body {
-    margin: 0;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    height: 100vh;
-}
-    
-.sidebar {
-    width: 200px;
-    background-color: #34495e;
-    padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.sidebar h1 {
-    color: #f1c40f;
-    font-size: 1.8em;
-    margin-bottom: 30px;
-}
-    
-.language-switcher {
-    margin-bottom: 20px;
-}
-    
-.language-switcher img {
-    width: 30px;
-    cursor: pointer;
-    margin: 0 5px;
-    border-radius: 3px;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-
-.language-switcher img.active,
-.language-switcher img:hover {
-    opacity: 1;
-}
-    
-.menu-list {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-}
-
-.menu-item {
-    margin-bottom: 15px;
-}
-
-.menu-link {
-    display: flex;
-    align-items: center;
-    background-color: #2980b9;
-    color: #ecf0f1;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-    
-.menu-link:hover {
-    background-color: #3498db;
-    transform: scale(1.02);
-}
-
-.menu-link.subscribe {
-    background-color: #2ecc71;
-}
-    
-.menu-link.subscribe:hover {
-    background-color: #27ae60;
-}
-    
-.menu-link.contact {
-    background-color: #e74c3c;
-}
-
-.menu-link.contact:hover {
-    background-color: #c0392b;
-}
-
-.menu-link .icon {
-    margin-right: 15px;
-    font-size: 1.5em;
-}
-
-.content {
-    flex-grow: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.main-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-    
-#home-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-    
-#home-content h2 {
-    color: #f1c40f;
-    font-size: 2.5em;
-}
-
-#home-content p {
-    font-size: 1.2em;
-    max-width: 800px;
-    margin: 20px auto;
-    line-height: 1.6;
-}
-
-.main-image {
-    width: 400px;
-    height: auto;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.footer-gemini {
-    margin-top: 40px;
-    font-size: 0.9em;
-    color: #95a5a6;
-}
-    
-/* Styles pour les tableaux générés */
-#table-container {
-    width: 100%;
-    max-width: 1000px;
-    margin-top: 20px;
-    overflow-x: auto;
-}
-    
-#data-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #34495e;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    margin-bottom: 20px;
-}
-    
-#data-table th, #data-table td {
-    border: 1px solid #2c3e50;
-    padding: 12px 15px;
-    text-align: left;
-}
-
-#data-table thead th {
-    background-color: #2980b9;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-    
-#data-table tbody tr:nth-child(even) {
-    background-color: #2c3e50;
-}
-    
-#data-table tbody tr:hover {
-    background-color: #3f586a;
-}
-/* --- RÈGLE POUR LE SOUS-TITRE --- */
-#static-subtitle {
-    font-size: 1.2em;
-    margin-top: 5px;
-    color: #f1c40f;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-    animation-delay: 2.5s;
-}
-
-/* --- RÈGLE POUR LES DRAPEAUX SUR GRANDS ÉCRANS --- */
-.lang-flags {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Règles pour les petits écrans (téléphones) */
-@media (max-width: 768px) {
+<style>
     body {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        padding: 10px;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        box-shadow: none;
-    }
-    
-    .sidebar h1 {
-        display: none;
-    }
-    
-    .language-switcher {
-        margin-bottom: 10px;
-    }
-
-    .menu-list {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-    }
-    
-    .menu-item {
-        margin: 5px;
-    }
-
-    .menu-link {
-        font-size: 0.9em;
-        padding: 8px 12px;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
         text-align: center;
-    }
-    
-    .menu-link .icon {
-        margin-right: 5px;
-    }
-
-    .content {
-        padding: 10px;
-        width: 100%;
-        justify-content: flex-start;
+        flex-direction: column;
+        overflow-x: hidden;
+        padding: 20px;
     }
 
-    #home-content h2 {
-        font-size: 1.8em;
+    .header {
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+        animation-delay: 0.5s;
     }
 
-    #home-content p {
-        font-size: 1em;
-        margin: 10px auto;
+    #system-name {
+        font-size: 2.5em;
+        color: #f1c40f;
+        font-weight: bold;
+        margin: 0;
     }
-    
-    .main-image {
-        width: 100%;
-        height: auto;
+
+    #animated-text-loop {
+        font-size: 1.2em;
+        min-height: 20px;
+        margin-top: 10px;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 2s;
     }
-    
-    /* --- RÈGLES CORRIGÉES POUR LE PIED DE PAGE MOBILE --- */
-    
-    .pied-de-page-mobile {
-        display: flex !important;
-        position: fixed;
-        bottom: 0;
+
+    .fade-out-in {
+        animation: fadeOutIn 3s forwards;
+    }
+
+    .animation-container {
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+        margin-top: 40px;
+    }
+
+    .scene {
+        position: absolute;
+        top: 0;
         left: 0;
         width: 100%;
-        background-color: #2c3e50;
-        padding: 10px;
-        box-sizing: border-box;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 999;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        pointer-events: none;
     }
 
-    /* Cette règle a été corrigée pour fonctionner correctement sur téléphone. */
-    .pied-de-page-mobile .lang-flags {
-        position: static; 
-        flex-direction: row; 
-        flex-wrap: nowrap;
-        gap: 5px;
+    .scene.active {
+        opacity: 1;
+        position: relative;
+        pointer-events: auto;
     }
 
-    .pied-de-page-mobile .lang-flags .lang-flag {
-        width: 30px;
-        height: 30px;
-    }
-
-    .navigation-buttons {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-    }
-
-    #prev-button, #menu-button, #next-button {
-        background-color: transparent;
-        color: #ecf0f1;
-        border: 2px solid #3498db;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        font-size: 1.8em;
+    #next-button {
+        margin-top: 40px;
+        padding: 10px 20px;
+        font-size: 1.5em;
         cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
+        border: 2px solid #3498db;
+        background-color: transparent;
+        color: #3498db;
+        border-radius: 5px;
+        transition: background-color 0.3s, color: 0.3s;
+        display: none;
+    }
+
+    #next-button:hover {
+        background-color: #3498db;
+        color: #ecf0f1;
+    }
+
+    #skip-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 1em;
+        cursor: pointer;
+        border: 2px solid #e74c3c;
+        background-color: transparent;
+        color: #e74c3c;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        z-index: 100;
+    }
+
+    #skip-button:hover {
+        background-color: #e74c3c;
+        color: #ecf0f1;
     }
     
-    #prev-button:hover, #menu-button:hover, #next-button:hover {
-        background-color: #3498db;
+    /* --- RÈGLES SPÉCIFIQUES POUR LES TÉLÉPHONES --- */
+    @media (max-width: 768px) {
+        body {
+            /* Le corps devient un conteneur qui s'étend sur tout l'écran */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* MODIFIÉ : Répartit l'espace entre le haut et le bas */
+            align-items: stretch;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .header {
+            margin-top: 0; /* Réduit l'espace en haut */
+        }
+
+        .lang-flags {
+            /* Place les drapeaux en haut à gauche sur mobile, mais dans une ligne */
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        #skip-button {
+            /* Positionne le bouton 'skip' en haut à droite */
+            top: 20px;
+            right: 10px;
+            position: absolute;
+        }
+
+        #next-button {
+            /* Le bouton 'next' s'affiche en bas de l'écran */
+            display: block !important;
+            margin-top: auto; /* Le pousse vers le bas de l'écran */
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
-}
+</style>
