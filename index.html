@@ -534,6 +534,10 @@
         <button id="start-method-button"></button>
     </div>
 
+    <div class="footer">
+        Conçu avec l'aide de Gemini AI.
+    </div>
+
     <script>
         const translations = {
             fr: {
@@ -1491,8 +1495,11 @@
 
             clearTimeout(simulationTimeout);
 
-            nextButton.classList.toggle('visible', index < scenes.length - 1);
-            startMethodButton.classList.toggle('visible', index === scenes.length - 1);
+            const isLastScene = index === scenes.length - 1;
+            const isLastAnimatedScene = index >= scenes.length - 3; 
+
+            nextButton.classList.toggle('visible', !isLastScene);
+            startMethodButton.classList.toggle('visible', isLastScene);
 
             if (scenes[index].id === 'perfect-game-scene-u2-5') {
                 startPerfectGameSimulation('u2-5');
