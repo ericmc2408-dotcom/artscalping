@@ -15,7 +15,6 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            text-align: center;
             overflow-x: hidden;
             padding: 20px;
         }
@@ -54,7 +53,6 @@
             justify-content: center;
             align-items: center;
             flex-grow: 1;
-            text-align: center;
         }
         
         .scene {
@@ -246,8 +244,9 @@
         #scene-4 .additional-text .percentage-upgrade {
             color: #2ecc71;
             font-weight: bold;
-            font-size: 1.3em;
+            font-size: 1.5em; /* Augmentation de la taille pour la visibilité */
             animation: pulse 1s infinite alternate;
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.5); /* Ajout d'une ombre */
         }
 
         /* --- Animations for Perfect Game Scenes --- */
@@ -309,7 +308,6 @@
             margin: 15px auto;
             opacity: 0;
             animation: fadeIn 1.5s forwards;
-            text-align: center;
         }
         #last-scene .analogy-text {
             animation-delay: 1.5s;
@@ -362,6 +360,12 @@
         <button id="lang-fr" class="active">🇫🇷</button>
         <button id="lang-en">🇬🇧</button>
         <button id="lang-ar">🇦🇪</button>
+        <button id="lang-de">🇩🇪</button>
+        <button id="lang-zh">🇨🇳</button>
+        <button id="lang-ja">🇯🇵</button>
+        <button id="lang-pt">🇵🇹</button>
+        <button id="lang-es">🇪🇸</button>
+        <button id="lang-hi">🇮🇳</button>
     </div>
 
     <button id="skip-button"></button>
@@ -823,6 +827,588 @@
                     masteryText: "التحكم الذاتي هو مفتاح تحويل هذه الأداة إلى آلة ربح حقيقية.",
                     masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
                 }
+            },
+            de: {
+                animatedLoop: "Die Methode beginnt mit der Datenanalyse.",
+                skipButton: "Zur nächsten Seite",
+                nextButton: "→",
+                startMethodButton: "Methode starten",
+                scene1: {
+                    title: "Die Methode beginnt mit der Datenanalyse.",
+                },
+                scene2: {
+                    title: "Berechnung der Leistungsindizes",
+                    subtitle: "Calculating the Performance Indices",
+                    index1Title: "Index 1",
+                    index1Text1: "Angriff Heimmannschaft + Verteidigung Auswärtsmannschaft",
+                    index1Text2: "(Home Team Attack + Away Team Defense)",
+                    index2Title: "Index 2",
+                    index2Text1: "Angriff Auswärtsmannschaft + Verteidigung Heimmannschaft",
+                    index2Text2: "(Away Team Attack + Home Team Defense)",
+                },
+                scene3: {
+                    title: "Auswahl der sichersten Wetten",
+                    subtitle: "Selecting the Safest Bets",
+                    mysteriousText1: "Diese Erfolgsquoten sind das Ergebnis einer **geheimen Gleichung**, die geduldig über Jahre von Daten hinweg entwickelt und getestet wurde und Leistungsindizes und Sequenzen kombiniert.",
+                    mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
+                    percentage: "Erfolgsquote: 92 bis 94%",
+                    betBoxU45: "Unter 4.5",
+                    betBoxU25: "Unter 2.5 erste Halbzeit<br>(Under 2.5 First Half)",
+                },
+                scene4: {
+                    title: "Die vollständigen Methodenregeln",
+                    subtitle: "Complete Method Rules",
+                    u45DetailsTitle: "Unter 4.5",
+                    u45StopLoss: "Wette bei 86 Minuten 30 Sekunden beenden.",
+                    u45Scalping: "Die Erfolgsquote steigt nach jedem Tor.",
+                    u45Condition: "Wetten Sie nicht auf das nächste Tor, bis Ihre aktuelle Wette abgeschlossen ist.",
+                    u25DetailsTitle: "Unter 2.5 erste Halbzeit",
+                    u25MainRule: "Wir spielen nach der 4. Minute.",
+                    u25NoPlay: "Wenn in 3 Minuten 2 Tore erzielt werden, spielen wir nicht.",
+                    u25StopLoss: "Wette bei 42 Minuten 30 Sekunden beenden.",
+                    u25Scalping: "Die Erfolgsquote steigt nach jedem Tor.",
+                    u25Condition: "Wetten Sie nicht auf das nächste Tor, bis Ihre aktuelle Wette abgeschlossen ist.",
+                    additionalTextMain: "Durch sorgfältiges Anwenden dieser Regeln steigt die Erfolgsquote von",
+                    additionalTextUpgrade: "92-94% auf 96-97%.",
+                },
+                perfectGame: {
+                    u25Title: "Perfektes Spiel unter 2.5 (1. Halbzeit)",
+                    u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
+                    u45Title: "Perfektes Spiel unter 4.5",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "Kein Tor in den ersten 3 Minuten.", type: 'info' },
+                        { time: 4.5, text: "Wir nehmen eine Quote von <span class='highlight'>1.05</span> auf Unter 2.5.", type: 'bet' },
+                        { time: 10, text: "Verkauf in der 10. Minute für eine Quote von <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 15, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "Verkauf bei <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 25, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "Verkauf bei <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 42.5, text: "Stop Loss: Zwangsverkauf bei 42 Minuten 30 Sekunden.", type: 'stop-loss' },
+                        { time: 45, text: "Ende der 1. Halbzeit: Die Wette ist erfolgreich beendet. Das Spiel ist für uns vorbei!", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "Wir warten auf den Spielbeginn, um das Scalping zu bestätigen", type: 'info' },
+                        { time: 1.5, text: "Wir nehmen eine Quote von <span class='highlight'>1.05</span> auf Unter 4.5.", type: 'bet' },
+                        { time: 10, text: "Verkauf in der 10. Minute für eine Quote von <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 14, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "Verkauf bei <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 26, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "Verkauf bei <span class='highlight'>1.15</span>.", type: 'sell' },
+                        { time: 45, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "Verkauf bei <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 65, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "Verkauf bei <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 87.5, text: "Stop Loss: Zwangsverkauf bei 87 Minuten 30 Sekunden.", type: 'stop-loss' },
+                        { time: 90, text: "Spielende: Die Wette ist erfolgreich beendet. Das Spiel ist für uns vorbei!", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "Eine letzte Zahl zum Abschluss",
+                    subtitle: "One last figure for the road",
+                    stat1: "Letztes Jahr hat das System mehr als <span class='highlight'>20000 Spiele</span> zum Wetten generiert!",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "Mit durchschnittlich 2 Toren pro Spiel sind dies bis zu <span class='highlight'>46000 mögliche Wetten</span>.",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "Die Datei kann von der Website heruntergeladen werden.",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "Hinweis: Diese Wetten sind nicht bei allen Buchmachern spielbar.",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
+                },
+                lastScene: {
+                    title: "Die Ferrari-Analogie",
+                    analogyText: "Wir bieten Ihnen ein **Hochleistungswerkzeug**. Aber wie bei einem Ferrari reicht die Kraft nicht aus. Ohne einen kompetenten Fahrer landet das beste Auto im Graben.",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "Die ArtScalping-Methode ist ein Ferrari. **Geduld, Strenge und Intelligenz** sind die Fähigkeiten, die Sie benötigen, um ihn zu steuern und erhebliche Gewinne zu erzielen.",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "Selbstbeherrschung ist der Schlüssel, um dieses Werkzeug in eine echte Gewinnmaschine zu verwandeln.",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
+                }
+            },
+            zh: {
+                animatedLoop: "该方法始于数据分析。",
+                skipButton: "跳至下一页",
+                nextButton: "→",
+                startMethodButton: "开始该方法",
+                scene1: {
+                    title: "该方法始于数据分析。",
+                },
+                scene2: {
+                    title: "计算绩效指数",
+                    subtitle: "Calculating the Performance Indices",
+                    index1Title: "指数 1",
+                    index1Text1: "主队进攻 + 客队防守",
+                    index1Text2: "(Home Team Attack + Away Team Defense)",
+                    index2Title: "指数 2",
+                    index2Text1: "客队进攻 + 主队防守",
+                    index2Text2: "(Away Team Attack + Home Team Defense)",
+                },
+                scene3: {
+                    title: "选择最安全的投注",
+                    subtitle: "Selecting the Safest Bets",
+                    mysteriousText1: "这些成功率是**秘密方程**的结果，经过多年数据的耐心开发和测试，结合了绩效指数和序列。",
+                    mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
+                    percentage: "成功率：92% 到 94%",
+                    betBoxU45: "低于 4.5",
+                    betBoxU25: "上半场低于 2.5<br>(Under 2.5 First Half)",
+                },
+                scene4: {
+                    title: "完整方法规则",
+                    subtitle: "Complete Method Rules",
+                    u45DetailsTitle: "低于 4.5",
+                    u45StopLoss: "在第 86 分 30 秒时退出投注。",
+                    u45Scalping: "成功率在每个进球后都会增加。",
+                    u45Condition: "在您当前的投注结束之前，不要投注下一个进球。",
+                    u25DetailsTitle: "上半场低于 2.5",
+                    u25MainRule: "我们在第 4 分钟后开始下注。",
+                    u25NoPlay: "如果在 3 分钟内打进 2 个球，我们就不下注。",
+                    u25StopLoss: "在第 42 分 30 秒时退出投注。",
+                    u25Scalping: "成功率在每个进球后都会增加。",
+                    u25Condition: "在您当前的投注结束之前，不要投注下一个进球。",
+                    additionalTextMain: "通过严格遵守这些规则，成功率从",
+                    additionalTextUpgrade: "92-94% 提高到 96-97%。",
+                },
+                perfectGame: {
+                    u25Title: "上半场低于 2.5 的完美比赛",
+                    u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
+                    u45Title: "低于 4.5 的完美比赛",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "前 3 分钟没有进球。", type: 'info' },
+                        { time: 4.5, text: "我们以 <span class='highlight'>1.05</span> 的赔率投注低于 2.5。", type: 'bet' },
+                        { time: 10, text: "在第 10 分钟以 <span class='highlight'>1.02</span> 的赔率卖出。", type: 'sell' },
+                        { time: 15, text: "进球！赔率变为 <span class='highlight'>1.25</span>。", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "以 <span class='highlight'>1.1</span> 的赔率卖出。", type: 'sell' },
+                        { time: 25, text: "进球！赔率变为 <span class='highlight'>1.8</span>。", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "以 <span class='highlight'>1.2</span> 的赔率卖出。", type: 'sell' },
+                        { time: 42.5, text: "止损：在第 42 分 30 秒时强制卖出。", type: 'stop-loss' },
+                        { time: 45, text: "上半场结束：投注成功完成。比赛对我们来说结束了！", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "我们等待比赛开始以确认剥头皮交易", type: 'info' },
+                        { time: 1.5, text: "我们以 <span class='highlight'>1.05</span> 的赔率投注低于 4.5。", type: 'bet' },
+                        { time: 10, text: "在第 10 分钟以 <span class='highlight'>1.02</span> 的赔率卖出。", type: 'sell' },
+                        { time: 14, text: "进球！赔率变为 <span class='highlight'>1.20</span>。", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "以 <span class='highlight'>1.1</span> 的赔率卖出。", type: 'sell' },
+                        { time: 26, text: "进球！赔率变为 <span class='highlight'>1.4</span>。", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "以 <span class='highlight'>1.15</span> 的赔率卖出。", type: 'sell' },
+                        { time: 45, text: "进球！赔率变为 <span class='highlight'>1.5</span>。", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "以 <span class='highlight'>1.2</span> 的赔率卖出。", type: 'sell' },
+                        { time: 65, text: "进球！赔率变为 <span class='highlight'>1.9</span>。", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "以 <span class='highlight'>1.2</span> 的赔率卖出。", type: 'sell' },
+                        { time: 87.5, text: "止损：在第 87 分 30 秒时强制卖出。", type: 'stop-loss' },
+                        { time: 90, text: "比赛结束：投注成功完成。比赛对我们来说结束了！", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "旅途中的最后一个数字",
+                    subtitle: "One last figure for the road",
+                    stat1: "去年，该系统生成了超过 <span class='highlight'>20000 场</span>可投注的比赛！",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "平均每场比赛进 2 个球，这代表多达 <span class='highlight'>46000 个可能的投注</span>。",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "该文件可从网站下载。",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "注意：这些投注并非在所有博彩公司都可用。",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
+                },
+                lastScene: {
+                    title: "法拉利类比",
+                    analogyText: "我们为您提供了一个**高性能工具**。但就像法拉利一样，光有动力是不够的。没有熟练的司机，最好的车也会出事故。",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "ArtScalping 方法就是一辆法拉利。**耐心、严谨和智慧**是您驾驶它并获得可观利润所需的技能。",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "自控是您将此工具变成真正赚钱机器的关键。",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
+                }
+            },
+            ja: {
+                animatedLoop: "このメソッドはデータ分析から始まります。",
+                skipButton: "次のページへ",
+                nextButton: "→",
+                startMethodButton: "メソッドを開始",
+                scene1: {
+                    title: "このメソッドはデータ分析から始まります。",
+                },
+                scene2: {
+                    title: "パフォーマンス指数の計算",
+                    subtitle: "Calculating the Performance Indices",
+                    index1Title: "指数 1",
+                    index1Text1: "ホームチームの攻撃 + アウェイチームの守備",
+                    index1Text2: "(Home Team Attack + Away Team Defense)",
+                    index2Title: "指数 2",
+                    index2Text1: "アウェイチームの攻撃 + ホームチームの守備",
+                    index2Text2: "(Away Team Attack + Home Team Defense)",
+                },
+                scene3: {
+                    title: "最も安全なベットを選択",
+                    subtitle: "Selecting the Safest Bets",
+                    mysteriousText1: "これらの成功率は、パフォーマンス指数とシーケンスを組み合わせ、長年のデータを基に辛抱強く開発・テストされた**秘密の方程式**の結果です。",
+                    mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
+                    percentage: "成功率：92〜94%",
+                    betBoxU45: "アンダー 4.5",
+                    betBoxU25: "前半アンダー 2.5<br>(Under 2.5 First Half)",
+                },
+                scene4: {
+                    title: "完全なメソッドのルール",
+                    subtitle: "Complete Method Rules",
+                    u45DetailsTitle: "アンダー 4.5",
+                    u45StopLoss: "86分30秒でベットを終了します。",
+                    u45Scalping: "成功率はゴールごとに増加します。",
+                    u45Condition: "現在のベットが完了するまで、次のゴールにはベットしないでください。",
+                    u25DetailsTitle: "前半アンダー 2.5",
+                    u25MainRule: "4分経過後にプレイします。",
+                    u25NoPlay: "3分以内に2ゴールが決まった場合は、プレイしません。",
+                    u25StopLoss: "42分30秒でベットを終了します。",
+                    u25Scalping: "成功率はゴールごとに増加します。",
+                    u25Condition: "現在のベットが完了するまで、次のゴールにはベットしないでください。",
+                    additionalTextMain: "これらのルールを厳守することで、成功率は",
+                    additionalTextUpgrade: "92-94%から96-97%に向上します。",
+                },
+                perfectGame: {
+                    u25Title: "パーフェクトゲーム 前半アンダー 2.5",
+                    u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
+                    u45Title: "パーフェクトゲーム アンダー 4.5",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "最初の3分間はゴールなし。", type: 'info' },
+                        { time: 4.5, text: "アンダー2.5に <span class='highlight'>1.05</span> のオッズでベットします。", type: 'bet' },
+                        { time: 10, text: "10分で <span class='highlight'>1.02</span> のオッズで売却。", type: 'sell' },
+                        { time: 15, text: "ゴール！オッズは <span class='highlight'>1.25</span> に変更。", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "<span class='highlight'>1.1</span> で売却。", type: 'sell' },
+                        { time: 25, text: "ゴール！オッズは <span class='highlight'>1.8</span> に変更。", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "<span class='highlight'>1.2</span> で売却。", type: 'sell' },
+                        { time: 42.5, text: "ストップロス：42分30秒で強制売却。", type: 'stop-loss' },
+                        { time: 45, text: "前半終了：ベットは成功裏に完了。私たちにとって試合は終わりです！", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "スキャルピングを確認するために試合開始を待つ", type: 'info' },
+                        { time: 1.5, text: "アンダー4.5に <span class='highlight'>1.05</span> のオッズでベットします。", type: 'bet' },
+                        { time: 10, text: "10分で <span class='highlight'>1.02</span> のオッズで売却。", type: 'sell' },
+                        { time: 14, text: "ゴール！オッズは <span class='highlight'>1.20</span> に変更。", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "<span class='highlight'>1.1</span> で売却。", type: 'sell' },
+                        { time: 26, text: "ゴール！オッズは <span class='highlight'>1.4</span> に変更。", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "<span class='highlight'>1.15</span> で売却。", type: 'sell' },
+                        { time: 45, text: "ゴール！オッズは <span class='highlight'>1.5</span> に変更。", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "<span class='highlight'>1.2</span> で売却。", type: 'sell' },
+                        { time: 65, text: "ゴール！オッズは <span class='highlight'>1.9</span> に変更。", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "<span class='highlight'>1.2</span> で売却。", type: 'sell' },
+                        { time: 87.5, text: "ストップロス：87分30秒で強制売却。", type: 'stop-loss' },
+                        { time: 90, text: "試合終了：ベットは成功裏に完了。私たちにとって試合は終わりです！", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "最後の数字",
+                    subtitle: "One last figure for the road",
+                    stat1: "昨年、このシステムは <span class='highlight'>20000試合以上</span>のベットを生成しました！",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "1試合あたり平均2ゴールで、これは最大 <span class='highlight'>46000の可能なベット</span>を表します。",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "ファイルはウェブサイトからダウンロード可能です。",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "注意：これらのベットはすべてのブックメーカーで利用できるわけではありません。",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
+                },
+                lastScene: {
+                    title: "フェラーリの比喩",
+                    analogyText: "私たちは**高性能ツール**を提供します。しかし、フェラーリと同様に、パワーだけでは不十分です。熟練したドライバーがいなければ、最高の車でも事故を起こします。",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "ArtScalpingメソッドはフェラーリです。**忍耐、厳格さ、そして知性**は、それを運転して大きな利益を得るために必要なスキルです。",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "自制心は、このツールを真の勝利マシンに変える鍵です。",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
+                }
+            },
+            pt: {
+                animatedLoop: "O método começa com a análise de dados.",
+                skipButton: "Ir para a próxima página",
+                nextButton: "→",
+                startMethodButton: "Começar o método",
+                scene1: {
+                    title: "O método começa com a análise de dados.",
+                },
+                scene2: {
+                    title: "Cálculo dos índices de desempenho",
+                    subtitle: "Calculating the Performance Indices",
+                    index1Title: "Índice 1",
+                    index1Text1: "Ataque Equipa da Casa + Defesa Equipa Visitante",
+                    index1Text2: "(Home Team Attack + Away Team Defense)",
+                    index2Title: "Índice 2",
+                    index2Text1: "Ataque Equipa Visitante + Defesa Equipa da Casa",
+                    index2Text2: "(Away Team Attack + Home Team Defense)",
+                },
+                scene3: {
+                    title: "Seleção das apostas mais seguras",
+                    subtitle: "Selecting the Safest Bets",
+                    mysteriousText1: "Estas taxas de sucesso são o resultado de uma **equação secreta**, pacientemente elaborada e testada ao longo de anos de dados, combinando índices de desempenho e sequências.",
+                    mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
+                    percentage: "Taxa de sucesso: 92 a 94%",
+                    betBoxU45: "Abaixo de 4.5",
+                    betBoxU25: "Abaixo de 2.5 1ª parte<br>(Under 2.5 First Half)",
+                },
+                scene4: {
+                    title: "As Regras do Método Completo",
+                    subtitle: "Complete Method Rules",
+                    u45DetailsTitle: "Abaixo de 4.5",
+                    u45StopLoss: "Sair da aposta aos 86 minutos e 30 segundos.",
+                    u45Scalping: "A taxa de sucesso aumenta após cada golo.",
+                    u45Condition: "Não aposte no próximo golo até que a sua aposta atual termine.",
+                    u25DetailsTitle: "Abaixo de 2.5 1ª parte",
+                    u25MainRule: "Jogamos após o 4º minuto.",
+                    u25NoPlay: "Se 2 golos forem marcados em 3 minutos, não jogamos.",
+                    u25StopLoss: "Sair da aposta aos 42 minutos e 30 segundos.",
+                    u25Scalping: "A taxa de sucesso aumenta após cada golo.",
+                    u25Condition: "Não aposte no próximo golo até que a sua aposta atual termine.",
+                    additionalTextMain: "Aplicando escrupulosamente estas regras, a taxa de sucesso aumenta de",
+                    additionalTextUpgrade: "92-94% para 96-97%.",
+                },
+                perfectGame: {
+                    u25Title: "Jogo Perfeito Abaixo de 2.5 (1ª parte)",
+                    u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
+                    u45Title: "Jogo Perfeito Abaixo de 4.5",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "Nenhum golo nos primeiros 3 minutos.", type: 'info' },
+                        { time: 4.5, text: "Tomamos uma odd de <span class='highlight'>1.05</span> para o Abaixo de 2.5.", type: 'bet' },
+                        { time: 10, text: "Venda aos 10 minutos para uma odd de <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 15, text: "Golo! A odd muda para <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "Venda a <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 25, text: "Golo! A odd muda para <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "Venda a <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 42.5, text: "Stop Loss: Venda forçada aos 42 minutos e 30 segundos.", type: 'stop-loss' },
+                        { time: 45, text: "Fim da 1ª parte: A aposta foi concluída com sucesso. O jogo acabou para nós!", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "Aguardamos o início do jogo para confirmar o Scalping", type: 'info' },
+                        { time: 1.5, text: "Tomamos uma odd de <span class='highlight'>1.05</span> para o Abaixo de 4.5.", type: 'bet' },
+                        { time: 10, text: "Venda aos 10 minutos para uma odd de <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 14, text: "Golo! A odd muda para <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "Venda a <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 26, text: "Golo! A odd muda para <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "Venda a <span class='highlight'>1.15</span>.", type: 'sell' },
+                        { time: 45, text: "Golo! A odd muda para <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "Venda a <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 65, text: "Golo! A odd muda para <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "Venda a <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 87.5, text: "Stop Loss: Venda forçada aos 87 minutos e 30 segundos.", type: 'stop-loss' },
+                        { time: 90, text: "Fim do jogo: A aposta foi concluída com sucesso. O jogo acabou para nós!", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "Um último número para a estrada",
+                    subtitle: "One last figure for the road",
+                    stat1: "No ano passado, o sistema gerou mais de <span class='highlight'>20000 jogos</span> para apostar!",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "Com uma média de 2 golos por jogo, isto representa até <span class='highlight'>46000 apostas possíveis</span>.",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "O ficheiro está disponível para download no site.",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "Atenção: Nem todas estas apostas estão disponíveis em todas as casas de apostas.",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
+                },
+                lastScene: {
+                    title: "A analogia da Ferrari",
+                    analogyText: "Oferecemos-lhe uma **ferramenta de alto desempenho**. Mas, tal como com uma Ferrari, o poder não é suficiente. Sem um condutor competente, o melhor carro acaba na decoração.",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "O método ArtScalping é uma Ferrari. **Paciência, rigor e inteligência** são as habilidades de que precisa para a conduzir e obter lucros substanciais.",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "O autocontrolo é a chave para transformar esta ferramenta numa verdadeira máquina de ganhar.",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
+                }
+            },
+            es: {
+                animatedLoop: "El método comienza con el análisis de datos.",
+                skipButton: "Ir a la siguiente página",
+                nextButton: "→",
+                startMethodButton: "Iniciar el método",
+                scene1: {
+                    title: "El método comienza con el análisis de datos.",
+                },
+                scene2: {
+                    title: "Cálculo de los índices de rendimiento",
+                    subtitle: "Calculating the Performance Indices",
+                    index1Title: "Índice 1",
+                    index1Text1: "Ataque del equipo local + Defensa del equipo visitante",
+                    index1Text2: "(Home Team Attack + Away Team Defense)",
+                    index2Title: "Índice 2",
+                    index2Text1: "Ataque del equipo visitante + Defensa del equipo local",
+                    index2Text2: "(Away Team Attack + Home Team Defense)",
+                },
+                scene3: {
+                    title: "Selección de las apuestas más seguras",
+                    subtitle: "Selecting the Safest Bets",
+                    mysteriousText1: "Estas tasas de éxito son el resultado de una **ecuación secreta**, pacientemente elaborada y probada a lo largo de años de datos, combinando índices de rendimiento y secuencias.",
+                    mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
+                    percentage: "Tasa de éxito: 92 a 94%",
+                    betBoxU45: "Menos de 4.5",
+                    betBoxU25: "Menos de 2.5 1ª mitad<br>(Under 2.5 First Half)",
+                },
+                scene4: {
+                    title: "Las Reglas del Método Completo",
+                    subtitle: "Complete Method Rules",
+                    u45DetailsTitle: "Menos de 4.5",
+                    u45StopLoss: "Salir de la apuesta a los 86 minutos y 30 segundos.",
+                    u45Scalping: "La tasa de éxito aumenta después de cada gol.",
+                    u45Condition: "No apueste en el próximo gol hasta que su apuesta actual haya terminado.",
+                    u25DetailsTitle: "Menos de 2.5 1ª mitad",
+                    u25MainRule: "Se juega después del 4º minuto.",
+                    u25NoPlay: "Si se marcan 2 goles en 3 minutos, no jugamos.",
+                    u25StopLoss: "Salir de la apuesta a los 42 minutos y 30 segundos.",
+                    u25Scalping: "La tasa de éxito aumenta después de cada gol.",
+                    u25Condition: "No apueste en el próximo gol hasta que su apuesta actual haya terminado.",
+                    additionalTextMain: "Aplicando escrupulosamente estas reglas, la tasa de éxito aumenta de",
+                    additionalTextUpgrade: "92-94% a 96-97%.",
+                },
+                perfectGame: {
+                    u25Title: "Juego Perfecto Menos de 2.5 (1ª mitad)",
+                    u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
+                    u45Title: "Juego Perfecto Menos de 4.5",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "No hay goles en los primeros 3 minutos.", type: 'info' },
+                        { time: 4.5, text: "Tomamos una cuota de <span class='highlight'>1.05</span> en el Menos de 2.5.", type: 'bet' },
+                        { time: 10, text: "Venta en el minuto 10 para una cuota de <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 15, text: "¡Gol! La cuota cambia a <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "Venta a <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 25, text: "¡Gol! La cuota cambia a <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "Venta a <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 42.5, text: "Stop Loss: Venta forzada a los 42 minutos y 30 segundos.", type: 'stop-loss' },
+                        { time: 45, text: "Fin de la 1ª mitad: La apuesta se ha completado con éxito. ¡El partido ha terminado para nosotros!", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "Esperamos el inicio del partido para confirmar el Scalping", type: 'info' },
+                        { time: 1.5, text: "Tomamos una cuota de <span class='highlight'>1.05</span> en el Menos de 4.5.", type: 'bet' },
+                        { time: 10, text: "Venta en el minuto 10 para una cuota de <span class='highlight'>1.02</span>.", type: 'sell' },
+                        { time: 14, text: "¡Gol! La cuota cambia a <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "Venta a <span class='highlight'>1.1</span>.", type: 'sell' },
+                        { time: 26, text: "¡Gol! La cuota cambia a <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "Venta a <span class='highlight'>1.15</span>.", type: 'sell' },
+                        { time: 45, text: "¡Gol! La cuota cambia a <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "Venta a <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 65, text: "¡Gol! La cuota cambia a <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "Venta a <span class='highlight'>1.2</span>.", type: 'sell' },
+                        { time: 87.5, text: "Stop Loss: Venta forzada a los 87 minutos y 30 segundos.", type: 'stop-loss' },
+                        { time: 90, text: "Fin del partido: La apuesta se ha completado con éxito. ¡El partido ha terminado para nosotros!", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "Un último número para el camino",
+                    subtitle: "One last figure for the road",
+                    stat1: "El año pasado, el sistema generó más de <span class='highlight'>20000 partidos</span> para apostar.",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "Con un promedio de 2 goles por partido, esto representa hasta <span class='highlight'>46000 posibles apuestas</span>.",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "El archivo se puede descargar desde el sitio web.",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "Atención, estas apuestas no son jugables en todos los corredores de apuestas.",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
+                },
+                lastScene: {
+                    title: "La analogía de Ferrari",
+                    analogyText: "Le ofrecemos una **herramienta de alto rendimiento**. Pero al igual que con un Ferrari, la potencia no es suficiente. Sin un conductor competente, el mejor coche termina fuera de la carretera.",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "El método ArtScalping es un Ferrari. **La paciencia, el rigor y la inteligencia** son las habilidades que necesita para conducirlo y obtener ganancias sustanciales.",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "El autocontrol es la clave para convertir esta herramienta en una verdadera máquina de ganar.",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
+                }
+            },
+            hi: {
+                animatedLoop: "यह विधि डेटा विश्लेषण से शुरू होती है।",
+                skipButton: "अगले पृष्ठ पर जाएं",
+                nextButton: "→",
+                startMethodButton: "विधि शुरू करें",
+                scene1: {
+                    title: "यह विधि डेटा विश्लेषण से शुरू होती है।",
+                },
+                scene2: {
+                    title: "प्रदर्शन सूचकांकों की गणना",
+                    subtitle: "Calculating the Performance Indices",
+                    index1Title: "सूचकांक 1",
+                    index1Text1: "घरेलू टीम का हमला + मेहमान टीम का बचाव",
+                    index1Text2: "(Home Team Attack + Away Team Defense)",
+                    index2Title: "सूचकांक 2",
+                    index2Text1: "मेहमान टीम का हमला + घरेलू टीम का बचाव",
+                    index2Text2: "(Away Team Attack + Home Team Defense)",
+                },
+                scene3: {
+                    title: "सबसे सुरक्षित दांवों का चयन",
+                    subtitle: "Selecting the Safest Bets",
+                    mysteriousText1: "ये सफलता दर एक **गुप्त समीकरण** का परिणाम हैं, जिसे प्रदर्शन सूचकांकों और अनुक्रमों को मिलाकर, वर्षों के डेटा पर धैर्यपूर्वक विकसित और परीक्षण किया गया है।",
+                    mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
+                    percentage: "सफलता दर: 92 से 94%",
+                    betBoxU45: "अंडर 4.5",
+                    betBoxU25: "पहला हाफ अंडर 2.5<br>(Under 2.5 First Half)",
+                },
+                scene4: {
+                    title: "पूर्ण विधि के नियम",
+                    subtitle: "Complete Method Rules",
+                    u45DetailsTitle: "अंडर 4.5",
+                    u45StopLoss: "86 मिनट 30 सेकंड पर दांव से बाहर निकलें।",
+                    u45Scalping: "प्रत्येक गोल के बाद सफलता दर बढ़ जाती है।",
+                    u45Condition: "जब तक आपका वर्तमान दांव समाप्त नहीं हो जाता, तब तक अगले गोल पर दांव न लगाएं।",
+                    u25DetailsTitle: "पहला हाफ अंडर 2.5",
+                    u25MainRule: "हम 4 मिनट के बाद खेलते हैं।",
+                    u25NoPlay: "यदि 3 मिनट में 2 गोल होते हैं, तो हम नहीं खेलते हैं।",
+                    u25StopLoss: "42 मिनट 30 सेकंड पर दांव से बाहर निकलें।",
+                    u25Scalping: "प्रत्येक गोल के बाद सफलता दर बढ़ जाती है।",
+                    u25Condition: "जब तक आपका वर्तमान दांव समाप्त नहीं हो जाता, तब तक अगले गोल पर दांव न लगाएं।",
+                    additionalTextMain: "इन नियमों का सावधानीपूर्वक पालन करने से सफलता दर",
+                    additionalTextUpgrade: "92-94% से 96-97% तक बढ़ जाती है।",
+                },
+                perfectGame: {
+                    u25Title: "पहला हाफ अंडर 2.5 परफेक्ट गेम",
+                    u25Subtitle: "(Perfect Game Under 2.5 (First Half))",
+                    u45Title: "अंडर 4.5 परफेक्ट गेम",
+                    u45Subtitle: "(Perfect Game Under 4.5)",
+                    eventU25: [
+                        { time: 3.5, text: "पहले 3 मिनट में कोई गोल नहीं।", type: 'info' },
+                        { time: 4.5, text: "हम अंडर 2.5 पर <span class='highlight'>1.05</span> की ऑड्स लेते हैं।", type: 'bet' },
+                        { time: 10, text: "10वें मिनट में <span class='highlight'>1.02</span> की ऑड्स पर बेचें।", type: 'sell' },
+                        { time: 15, text: "गोल! ऑड्स <span class='highlight'>1.25</span> में बदल जाती हैं।", type: 'goal', score: '1-0' },
+                        { time: 15.5, text: "<span class='highlight'>1.1</span> पर बेचें।", type: 'sell' },
+                        { time: 25, text: "गोल! ऑड्स <span class='highlight'>1.8</span> में बदल जाती हैं।", type: 'goal', score: '2-0' },
+                        { time: 25.5, text: "<span class='highlight'>1.2</span> पर बेचें।", type: 'sell' },
+                        { time: 42.5, text: "स्टॉप लॉस: 42 मिनट 30 सेकंड पर जबरन बिक्री।", type: 'stop-loss' },
+                        { time: 45, text: "पहले हाफ का अंत: दांव सफलतापूर्वक समाप्त हो गया। हमारे लिए मैच खत्म!", type: 'end' }
+                    ],
+                    eventU45: [
+                        { time: 0, text: "हम स्कैल्पिंग की पुष्टि के लिए मैच शुरू होने का इंतजार करते हैं", type: 'info' },
+                        { time: 1.5, text: "हम अंडर 4.5 पर <span class='highlight'>1.05</span> की ऑड्स लेते हैं।", type: 'bet' },
+                        { time: 10, text: "10वें मिनट में <span class='highlight'>1.02</span> की ऑड्स पर बेचें।", type: 'sell' },
+                        { time: 14, text: "गोल! ऑड्स <span class='highlight'>1.20</span> में बदल जाती हैं।", type: 'goal', score: '1-0' },
+                        { time: 14.5, text: "<span class='highlight'>1.1</span> पर बेचें।", type: 'sell' },
+                        { time: 26, text: "गोल! ऑड्स <span class='highlight'>1.4</span> में बदल जाती हैं।", type: 'goal', score: '2-0' },
+                        { time: 26.5, text: "<span class='highlight'>1.15</span> पर बेचें।", type: 'sell' },
+                        { time: 45, text: "गोल! ऑड्स <span class='highlight'>1.5</span> में बदल जाती हैं।", type: 'goal', score: '3-0' },
+                        { time: 45.5, text: "<span class='highlight'>1.2</span> पर बेचें।", type: 'sell' },
+                        { time: 65, text: "गोल! ऑड्स <span class='highlight'>1.9</span> में बदल जाती हैं।", type: 'goal', score: '4-0' },
+                        { time: 65.5, text: "<span class='highlight'>1.2</span> पर बेचें।", type: 'sell' },
+                        { time: 87.5, text: "स्टॉप लॉस: 87 मिनट 30 सेकंड पर जबरन बिक्री।", type: 'stop-loss' },
+                        { time: 90, text: "मैच का अंत: दांव सफलतापूर्वक समाप्त हो गया। हमारे लिए मैच खत्म!", type: 'end' }
+                    ]
+                },
+                finalStats: {
+                    title: "सड़क के लिए एक आखिरी आंकड़ा",
+                    subtitle: "One last figure for the road",
+                    stat1: "पिछले साल, सिस्टम ने <span class='highlight'>20000 से अधिक</span> दांव लगाने के लिए मैच उत्पन्न किए!",
+                    stat1Subtitle: "(Last year, the system generated more than 20000 matches to bet on!)",
+                    stat2: "प्रति मैच 2 गोल के औसत के साथ, यह <span class='highlight'>46000 संभावित दांवों</span> तक का प्रतिनिधित्व करता है।",
+                    stat2Subtitle: "(With an average of 2 goals per match, this represents up to 46000 possible bets.)",
+                    download: "फ़ाइल वेबसाइट से डाउनलोड की जा सकती है।",
+                    downloadSubtitle: "(The file is downloadable from the site.)",
+                    caveat: "ध्यान दें: ये सभी दांव सभी सट्टेबाजों पर खेलने योग्य नहीं हैं।",
+                    caveatSubtitle: "(Note: These bets are not all playable on all bookmakers.)",
+                },
+                lastScene: {
+                    title: "फेरारी की उपमा",
+                    analogyText: "हम आपको एक **उच्च-प्रदर्शन उपकरण** प्रदान करते हैं। लेकिन एक फेरारी की तरह, शक्ति पर्याप्त नहीं है। एक सक्षम चालक के बिना, सबसे अच्छी कार भी दुर्घटनाग्रस्त हो जाती है।",
+                    analogySubtitle: "(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)",
+                    pilotText: "आर्टस्कैल्पिंग विधि एक फेरारी है। **धैर्य, कठोरता और बुद्धिमत्ता** वे कौशल हैं जिनकी आपको इसे चलाने और पर्याप्त लाभ कमाने के लिए आवश्यकता है।",
+                    pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
+                    masteryText: "आत्म-नियंत्रण इस उपकरण को एक वास्तविक जीत की मशीन में बदलने की कुंजी है।",
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
+                }
             }
         };
 
@@ -937,22 +1523,20 @@
             logElement.innerHTML = '';
             scoreElement.textContent = '0-0';
             timerElement.textContent = '00:00';
-            // Ligne de code retirée pour que l'historique soit visible
-            // logElement.style.display = 'none';
+            logElement.style.display = 'flex';
 
             const runSimulation = () => {
                 if (currentEventIndex < gameData.length) {
                     const event = gameData[currentEventIndex];
                     if (time >= event.time) {
                         const logItem = document.createElement('div');
-                        logItem.innerHTML = `<span class="info">${Math.floor(event.time)} min :</span> ${event.text}`;
+                        logItem.innerHTML = `<span class="info">${String(Math.floor(event.time)).padStart(2, '0')} min :</span> ${event.text}`;
                         logItem.className = 'log-item';
                         if (event.type === 'goal') {
                             logItem.classList.add('goal');
                             scoreElement.textContent = event.score;
                         }
                         logElement.prepend(logItem);
-                        logItem.style.animationDelay = '0s';
                         currentEventIndex++;
                     }
                 }
@@ -968,7 +1552,7 @@
                 timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             };
 
-            gameTimerInterval = setInterval(runSimulation, 50); // Fast-forward animation
+            gameTimerInterval = setInterval(runSimulation, 50);
         }
 
         function setLanguage(newLanguage) {
@@ -976,7 +1560,6 @@
             langButtons.forEach(button => button.classList.remove('active'));
             document.getElementById(`lang-${newLanguage}`).classList.add('active');
             updateContent();
-            // Re-show the current scene to apply new language and re-run animation if needed
             showScene(currentSceneIndex);
         }
 
@@ -989,6 +1572,12 @@
         document.getElementById('lang-fr').addEventListener('click', () => setLanguage('fr'));
         document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
         document.getElementById('lang-ar').addEventListener('click', () => setLanguage('ar'));
+        document.getElementById('lang-de').addEventListener('click', () => setLanguage('de'));
+        document.getElementById('lang-zh').addEventListener('click', () => setLanguage('zh'));
+        document.getElementById('lang-ja').addEventListener('click', () => setLanguage('ja'));
+        document.getElementById('lang-pt').addEventListener('click', () => setLanguage('pt'));
+        document.getElementById('lang-es').addEventListener('click', () => setLanguage('es'));
+        document.getElementById('lang-hi').addEventListener('click', () => setLanguage('hi'));
 
         window.addEventListener('DOMContentLoaded', () => {
             updateContent();
