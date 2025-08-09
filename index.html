@@ -333,10 +333,21 @@
 
     <div class="header">
     <h2 id="system-name">ArtScalping</h2>
-    <h3 id="animated-text-loop" style="margin-top: 5px; opacity: 1;">Lay Under 2.5 1ère et Lay Under 4.5</h3>
-   </div>
+    <p id="static-subtitle">Lay Under 2.5 1ère et Lay Under 4.5</p>
+    <h3 id="animated-text-loop"></h3>
+</div>
 
-    <div class="animation-container">
+<style>
+    /* Ajoutez ce style pour le nouveau sous-titre */
+    #static-subtitle {
+        font-size: 1.2em;
+        margin-top: 5px;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 2.5s; /* Ajustez ce délai si nécessaire */
+    }
+</style>
+ <div class="animation-container">
         <div id="scene-1" class="scene">
             <h1 id="main-title" data-i18n="s1_title">La méthode commence par l'analyse de données.</h1>
             <div class="data-icon-container">
@@ -1640,5 +1651,6 @@
     </script>
 </body>
 </html>
+
 
 
