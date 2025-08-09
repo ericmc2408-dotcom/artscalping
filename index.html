@@ -57,7 +57,6 @@
             text-align: center;
         }
         
-        /* Modifié pour s'assurer que les scènes sont cachées initialement */
         .scene {
             display: none;
             opacity: 0;
@@ -202,7 +201,7 @@
         /* --- Animations for scene 3 --- */
         #scene-3 h1, #scene-3 .translation, #scene-3 .percentage, .bet-box { opacity: 0; animation: fadeIn 1s forwards; }
         #scene-3 h1 { animation-delay: 0.5s; }
-        #scene-3 .translation { animation-delay: 1s; }
+        #scene-3 .subtitle { opacity: 0; animation: fadeIn 1s forwards; animation-delay: 1s; }
         .mysterious-text {
             font-size: 1.1em;
             color: #bdc3c7;
@@ -219,7 +218,7 @@
 
         /* --- Animations for scene 4 --- */
         #scene-4 h2 { color: #f1c40f; font-size: 1.8em; text-align: center; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 0.5s; }
-        #scene-4 .translation { font-size: 0.9em; color: #bdc3c7; opacity: 0; animation: fadeIn 1.5s forwards; }
+        #scene-4 .subtitle { font-size: 0.9em; color: #bdc3c7; opacity: 0; animation: fadeIn 1.5s forwards; }
         #scene-4 .detail-section { margin: 20px auto; background-color: #34495e; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; text-align: left; opacity: 0; animation: fadeIn 1s forwards; }
         #scene-4 .detail-section.under-4-5-details { animation-delay: 1.5s; }
         #scene-4 .detail-section.under-2-5-details { animation-delay: 2.5s; }
@@ -265,6 +264,7 @@
             margin-top: 20px;
             display: flex;
             flex-direction: column-reverse;
+            min-height: 150px;
         }
         .log-item {
             background-color: #34495e;
@@ -309,7 +309,7 @@
             margin: 15px auto;
             opacity: 0;
             animation: fadeIn 1.5s forwards;
-            text-align: center; /* Ligne de code ajoutée pour centrer le texte */
+            text-align: center;
         }
         #last-scene .analogy-text {
             animation-delay: 1.5s;
@@ -328,9 +328,16 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
-        
+
+        /* Corrections pour la langue arabe */
         .text-ar {
             direction: rtl;
+            text-align: right;
+        }
+        /* Règle spécifique pour que l'alignement à droite s'applique aux éléments à l'intérieur des scènes */
+        body.text-ar .scene, 
+        body.text-ar #last-scene p, 
+        body.text-ar .detail-section {
             text-align: right;
         }
         .text-ar .action-log {
@@ -918,7 +925,7 @@
         }
 
         function startPerfectGameSimulation(betType) {
-            clearInterval(gameTimerInterval); // Clear any existing timer
+            clearInterval(gameTimerInterval);
             const gameData = translations[language].perfectGame[`event${betType.toUpperCase()}`];
             const logElement = document.getElementById(`action-log-${betType}`);
             const scoreElement = document.getElementById(`score-${betType}`);
@@ -930,7 +937,8 @@
             logElement.innerHTML = '';
             scoreElement.textContent = '0-0';
             timerElement.textContent = '00:00';
-            logElement.style.display = 'none';
+            // Ligne de code retirée pour que l'historique soit visible
+            // logElement.style.display = 'none';
 
             const runSimulation = () => {
                 if (currentEventIndex < gameData.length) {
@@ -945,7 +953,6 @@
                         }
                         logElement.prepend(logItem);
                         logItem.style.animationDelay = '0s';
-                        logElement.style.display = 'flex';
                         currentEventIndex++;
                     }
                 }
@@ -985,7 +992,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             updateContent();
-            showScene(0); // On s'assure que la première scène est affichée correctement
+            showScene(0);
         });
     </script>
 </body>
