@@ -240,3 +240,95 @@ body {
         height: auto;
     }
 }
+/* --- NOUVEAUX STYLES POUR LE PIED DE PAGE MOBILE --- */
+
+/* Cache les éléments sur les grands écrans pour éviter les doublons */
+.pied-de-page-mobile {
+    display: none;
+}
+
+/* Styles pour les drapeaux positionnés en haut à gauche */
+.lang-flags {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+/* Styles de base pour les boutons de navigation */
+#skip-button, #next-button {
+    /* Vos styles existants */
+}
+
+
+/* Media Query pour les écrans de téléphone (moins de 768px de large) */
+@media (max-width: 768px) {
+    /* Cache les anciens boutons qui créent le conflit */
+    #skip-button {
+        display: none !important;
+    }
+    
+    /* Affiche et style le nouveau conteneur de pied de page */
+    .pied-de-page-mobile {
+        position: fixed; /* Position fixe en bas de l'écran */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #2c3e50;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex !important; /* Force l'affichage sur mobile */
+        justify-content: space-between; /* Espacer les drapeaux et les boutons */
+        align-items: center; /* Aligner verticalement au centre */
+        z-index: 999;
+    }
+
+    /* Le conteneur pour les drapeaux, maintenant dans le pied de page */
+    .pied-de-page-mobile .lang-flags {
+        position: static;
+        flex-wrap: nowrap;
+        gap: 5px;
+        top: auto;
+        left: auto;
+    }
+
+    .pied-de-page-mobile .lang-flags .lang-flag {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Le conteneur pour les boutons de navigation */
+    .navigation-buttons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    /* Styles pour tous les boutons de navigation (précédent, menu, suivant) */
+    #prev-button, #menu-button, #next-button {
+        background-color: transparent;
+        color: #ecf0f1;
+        border: 2px solid #3498db;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        font-size: 1.8em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    
+    #prev-button:hover, #menu-button:hover, #next-button:hover {
+        background-color: #3498db;
+    }
+
+    /* S'assurer que le bouton suivant n'est pas affiché en double si l'ancien existait */
+    #next-button[data-i18n] {
+        display: none !important;
+    }
+}
