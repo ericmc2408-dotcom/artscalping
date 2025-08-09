@@ -212,10 +212,10 @@
 
         #final-stats-scene h2 { font-size: 1.8em; color: #f1c40f; margin-bottom: 20px; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 0.5s; }
         #final-stats-scene p { max-width: 500px; font-size: 1.1em; margin: 15px auto; opacity: 0; animation: fadeIn 1s forwards; }
-        #final-stats-scene .stat-line { font-size: 1.2em; animation-delay: 1.5s; }
+        #final-stats-scene .stat-line { animation-delay: 1.5s; }
         #final-stats-scene .caveat-line { font-size: 0.9em; color: #bdc3c7; animation-delay: 2.5s; }
         #final-stats-scene .download-line { animation-delay: 3s; }
-
+        
         #last-scene {
             display: flex;
             flex-direction: column;
@@ -272,7 +272,6 @@
             color: #ecf0f1;
         }
 
-
         .footer {
             margin-top: 50px;
             font-size: 0.8em;
@@ -284,9 +283,51 @@
         @keyframes scaleIn { to { opacity: 1; transform: scale(1); } }
         @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
         @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* Styles des drapeaux de langue */
+        .lang-flags {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .lang-flag {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            opacity: 0.5;
+            transition: opacity 0.3s, border-color 0.3s;
+        }
+
+        .lang-flag.active {
+            opacity: 1;
+            border-color: #f1c40f;
+        }
+
+        .lang-flag:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
+
+    <div class="lang-flags">
+        <img src="https://flagcdn.com/fr.svg" alt="Français" class="lang-flag active" data-lang="fr">
+        <img src="https://flagcdn.com/gb.svg" alt="English" class="lang-flag" data-lang="en">
+        <img src="https://flagcdn.com/es.svg" alt="Español" class="lang-flag" data-lang="es">
+        <img src="https://flagcdn.com/de.svg" alt="Deutsch" class="lang-flag" data-lang="de">
+        <img src="https://flagcdn.com/pt.svg" alt="Português" class="lang-flag" data-lang="pt">
+        <img src="https://flagcdn.com/cn.svg" alt="中文" class="lang-flag" data-lang="zh">
+        <img src="https://flagcdn.com/sa.svg" alt="العربية" class="lang-flag" data-lang="ar">
+        <img src="https://flagcdn.com/jp.svg" alt="日本語" class="lang-flag" data-lang="ja">
+        <img src="https://flagcdn.com/in.svg" alt="हिंदी" class="lang-flag" data-lang="hi">
+    </div>
 
     <button id="skip-button">Aller à la page suivante</button>
 
@@ -297,7 +338,7 @@
 
     <div class="animation-container">
         <div id="scene-1" class="scene">
-            <h1 id="main-title">La méthode commence par l'analyse de données.</h1>
+            <h1 id="main-title" data-i18n="s1_title">La méthode commence par l'analyse de données.</h1>
             <div class="data-icon-container">
                 <div class="database-icon"></div>
                 <div class="data-line first-line">HomeTeam | AwayTeam</div>
@@ -307,154 +348,117 @@
         </div>
         
         <div id="scene-2" class="scene">
-            <h1>Le calcul des indices de performance</h1>
-            <p>Calculating the Performance Indices</p>
+            <h1 data-i18n="s2_title">Le calcul des indices de performance</h1>
+            <p data-i18n="s2_subtitle">Calculating the Performance Indices</p>
             <div class="indices-container">
                 <div class="index-box">
-                    <h3>Indice 1</h3>
-                    <p>Attaque Équipe Domicile + Défense Équipe Extérieure</p>
-                    <p class="translation">(Home Team Attack + Away Team Defense)</p>
+                    <h3 data-i18n="s2_indice1_title">Indice 1</h3>
+                    <p data-i18n="s2_indice1_text">Attaque Équipe Domicile + Défense Équipe Extérieure</p>
                 </div>
                 <div class="index-box">
-                    <h3>Indice 2</h3>
-                    <p>Attaque Équipe Extérieure + Défense Équipe Domicile</p>
-                    <p class="translation">(Away Team Attack + Home Team Defense)</p>
+                    <h3 data-i18n="s2_indice2_title">Indice 2</h3>
+                    <p data-i18n="s2_indice2_text">Attaque Équipe Extérieure + Défense Équipe Domicile</p>
                 </div>
             </div>
         </div>
 
         <div id="scene-3" class="scene">
-            <h1>Sélection des paris les plus sûrs</h1>
-            <p class="translation">Selecting the Safest Bets</p>
-            <p class="mysterious-text">
+            <h1 data-i18n="s3_title">Sélection des paris les plus sûrs</h1>
+            <p class="translation" data-i18n="s3_subtitle">Selecting the Safest Bets</p>
+            <p class="mysterious-text" data-i18n="s3_text">
                 Ces taux de réussite sont le fruit d'une **équation secrète**, patiemment élaborée et testée sur des années de données, alliant indices de performance et séquences.
-                <br>
-                <span class="translation">(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)</span>
             </p>
-            <p class="percentage">Taux de réussite : 92 à 94%</p>
-            <p class="translation">Success Rate: 92 to 94%</p>
+            <p class="percentage" data-i18n="s3_percentage_text">Taux de réussite : 92 à 94%</p>
             <div class="bet-choices-container">
-                <div class="bet-box under-4-5">Under 4.5</div>
-                <div class="bet-box under-2-5">Under 2.5 1ère mi-temps<br>(Under 2.5 First Half)</div>
+                <div class="bet-box under-4-5" data-i18n="s3_bet1_text">Under 4.5</div>
+                <div class="bet-box under-2-5" data-i18n="s3_bet2_text">Under 2.5 1ère mi-temps</div>
             </div>
         </div>
 
         <div id="scene-4" class="scene">
-            <h2 class="general-title">Les Règles de la Méthode Complète</h2>
-            <p class="translation general-translation">Complete Method Rules</p>
+            <h2 class="general-title" data-i18n="s4_title">Les Règles de la Méthode Complète</h2>
+            <p class="translation general-translation" data-i18n="s4_subtitle">Complete Method Rules</p>
 
             <div class="detail-section under-4-5-details">
-                <h3>Under 4.5</h3>
-                <p class="detail-item u4-item-1">
+                <h3 data-i18n="s4_u4_title">Under 4.5</h3>
+                <p class="detail-item u4-item-1" data-i18n="s4_u4_stoploss">
                     <span class="percentage-highlight">Stop Loss :</span> Sortir du pari à la 86e minute 30 secondes.
-                    <br><span class="translation">(Stop Loss: Exit the bet at 86 minutes and 30 seconds.)</span>
                 </p>
-                <p class="detail-item u4-item-2">
+                <p class="detail-item u4-item-2" data-i18n="s4_u4_scalping">
                     <span class="percentage-highlight">Scalping :</span> Le taux de réussite augmente après chaque but.
-                    <br><span class="translation">(Scalping: The success rate increases after each goal.)</span>
                 </p>
-                <p class="detail-item u4-item-3">
+                <p class="detail-item u4-item-3" data-i18n="s4_u4_condition">
                     <span class="percentage-highlight">Condition :</span> Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.
-                    <br><span class="translation">(Condition: Do not bet on the next goal until your current bet is finished.)</span>
                 </p>
             </div>
 
             <div class="detail-section under-2-5-details">
-                <h3>Under 2.5 1ère mi-temps</h3>
-                <p class="detail-item u2-item-1">
+                <h3 data-i18n="s4_u2_title">Under 2.5 1ère mi-temps</h3>
+                <p class="detail-item u2-item-1" data-i18n="s4_u2_rule">
                     <span class="percentage-highlight">Règle principale :</span> On joue après la 4ème minute.
-                    <br><span class="translation">(Main Rule: We play after the 4th minute.)</span>
                 </p>
-                <p class="detail-item u2-item-2">
+                <p class="detail-item u2-item-2" data-i18n="s4_u2_condition">
                     <span class="percentage-highlight">Condition de non-jeu :</span> Si 2 buts sont marqués en 3 minutes, on ne joue pas.
-                    <br><span class="translation">(No-Play Condition: If 2 goals are scored in 3 minutes, we do not play.)</span>
                 </p>
-                <p class="detail-item u2-item-3">
+                <p class="detail-item u2-item-3" data-i18n="s4_u2_stoploss">
                     <span class="percentage-highlight">Stop Loss :</span> Sortir du pari à la 42e minute 30 secondes.
-                    <br><span class="translation">(Stop Loss: Exit the bet at 42 minutes and 30 seconds.)</span>
                 </p>
-                <p class="detail-item u2-item-4">
+                <p class="detail-item u2-item-4" data-i18n="s4_u2_scalping">
                     <span class="percentage-highlight">Scalping :</span> Le taux de réussite augmente après chaque but.
-                    <br><span class="translation">(Scalping: The success rate increases after each goal.)</span>
                 </p>
-                <p class="detail-item u2-item-5">
+                <p class="detail-item u2-item-5" data-i18n="s4_u2_condition_bet">
                     <span class="percentage-highlight">Condition :</span> Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.
-                    <br><span class="translation">(Condition: Do not bet on the next goal until your current bet is finished.)</span>
                 </p>
             </div>
             
-            <p class="additional-text">
+            <p class="additional-text" data-i18n="s4_additional_text">
                 En appliquant scrupuleusement ces règles, le taux de réussite passe de <span class="percentage-upgrade">92-94%</span> à <span class="percentage-upgrade">96-97%</span>.
-                <br>
-                <span class="translation">(By scrupulously applying these rules, the success rate increases from 92-94% to 96-97%.)</span>
             </p>
         </div>
         
         <div id="perfect-game-scene-u2-5" class="scene perfect-game-scene">
-            <h2>Perfect Game Under 2.5 (1ère mi-temps)</h2>
-            <p class="translation">(Perfect Game Under 2.5 (First Half))</p>
-
+            <h2 data-i18n="s5_title">Perfect Game Under 2.5 (1ère mi-temps)</h2>
             <div class="scoreboard">
-                <span class="team">Équipe A</span>
+                <span class="team" data-i18n="teamA">Équipe A</span>
                 <span class="score" id="score-u2-5">0-0</span>
-                <span class="team">Équipe B</span>
+                <span class="team" data-i18n="teamB">Équipe B</span>
             </div>
-            
             <div class="timer" id="timer-u2-5">00:00</div>
-
-            <div class="action-log" id="action-log-u2-5">
-                </div>
+            <div class="action-log" id="action-log-u2-5"></div>
         </div>
 
         <div id="perfect-game-scene-u4-5" class="scene perfect-game-scene">
-            <h2>Perfect Game Under 4.5</h2>
-            <p class="translation">(Perfect Game Under 4.5)</p>
-
+            <h2 data-i18n="s6_title">Perfect Game Under 4.5</h2>
             <div class="scoreboard">
-                <span class="team">Équipe C</span>
+                <span class="team" data-i18n="teamC">Équipe C</span>
                 <span class="score" id="score-u4-5">0-0</span>
-                <span class="team">Équipe D</span>
+                <span class="team" data-i18n="teamD">Équipe D</span>
             </div>
-            
             <div class="timer" id="timer-u4-5">00:00</div>
-
-            <div class="action-log" id="action-log-u4-5">
-                </div>
+            <div class="action-log" id="action-log-u4-5"></div>
         </div>
 
         <div id="final-stats-scene" class="scene">
-            <h2>Un dernier chiffre pour la route</h2>
-            <p class="translation">(One last figure for the road)</p>
-            <p class="stat-line">L'année dernière, le système a généré plus de <span class="highlight">5763 matchs</span> à jouer !</p>
-            <p class="translation">(Last year, the system generated more than 5763 matches to bet on!)</p>
-            <p class="stat-line">Avec une moyenne de 2 buts par match, cela représente jusqu'à <span class="highlight">12000 paris possibles</span>.</p>
-            <p class="translation">(With an average of 2 goals per match, this represents up to 12000 possible bets.)</p>
-            <p class="download-line">Le fichier est téléchargeable sur le site.</p>
-            <p class="translation">(The file is downloadable from the site.)</p>
-            <p class="caveat-line">Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.</p>
-            <p class="translation caveat-translation">(Note: These bets are not all playable on all bookmakers.)</p>
+            <h2 data-i18n="s7_title">Un dernier chiffre pour la route</h2>
+            <p class="stat-line" data-i18n="s7_stat1">L'année dernière, le système a généré plus de <span class="highlight">5763 matchs</span> à jouer !</p>
+            <p class="stat-line" data-i18n="s7_stat2">Avec une moyenne de 2 buts par match, cela représente jusqu'à <span class="highlight">12000 paris possibles</span>.</p>
+            <p class="download-line" data-i18n="s7_download">Le fichier est téléchargeable sur le site.</p>
+            <p class="caveat-line" data-i18n="s7_caveat">Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.</p>
         </div>
         
         <div id="last-scene" class="scene">
-            <h2>L'analogie de la Ferrari</h2>
-            <p class="analogy-text">
+            <h2 data-i18n="s8_title">L'analogie de la Ferrari</h2>
+            <p class="analogy-text" data-i18n="s8_analogy">
                 Nous vous offrons un **outil de haute performance**.
-                <br>
                 Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.
-                <br>
-                <span class="translation">(We offer you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.)</span>
             </p>
-            <p class="pilot-text">
+            <p class="pilot-text" data-i18n="s8_pilot">
                 La méthode ArtScalping est une Ferrari. **Patience, rigueur et intelligence** sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.
-                <br>
-                <span class="translation">(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)</span>
             </p>
-            <p class="mastery-text">
+            <p class="mastery-text" data-i18n="s8_mastery">
                 La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.
-                <br>
-                <span class="translation">(Self-control is the key to turning this tool into a real winning machine.)</span>
             </p>
-            <button id="start-method-button">Démarrez la méthode</button>
+            <button id="start-method-button" data-i18n="start_button_text">Démarrez la méthode</button>
         </div>
     </div>
 
@@ -462,10 +466,741 @@
         <p>Mise au point avec l'aide de Gemini AI.</p>
     </div>
 
-    <button id="next-button">&rarr;</button>
+    <button id="next-button" data-i18n="next_button_text">&rarr;</button>
 
     <script>
-        const texts = [
+        // Dictionnaire des traductions
+        const translations = {
+            "fr": {
+                "s1_title": "La méthode commence par l'analyse de données.",
+                "s2_title": "Le calcul des indices de performance",
+                "s2_subtitle": "Calculer les Indices de Performance",
+                "s2_indice1_title": "Indice 1",
+                "s2_indice1_text": "Attaque Équipe Domicile + Défense Équipe Extérieure",
+                "s2_indice2_title": "Indice 2",
+                "s2_indice2_text": "Attaque Équipe Extérieure + Défense Équipe Domicile",
+                "s3_title": "Sélection des paris les plus sûrs",
+                "s3_subtitle": "Sélectionner les Paris les plus Sûrs",
+                "s3_text": "Ces taux de réussite sont le fruit d'une **équation secrète**, patiemment élaborée et testée sur des années de données, alliant indices de performance et séquences.",
+                "s3_percentage_text": "Taux de réussite : 92 à 94%",
+                "s3_bet1_text": "Under 4.5",
+                "s3_bet2_text": "Under 2.5 1ère mi-temps",
+                "s4_title": "Les Règles de la Méthode Complète",
+                "s4_subtitle": "Règles de la Méthode Complète",
+                "s4_u4_title": "Under 4.5",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss :</span> Sortir du pari à la 86e minute 30 secondes.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping :</span> Le taux de réussite augmente après chaque but.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Condition :</span> Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.",
+                "s4_u2_title": "Under 2.5 1ère mi-temps",
+                "s4_u2_rule": "<span class='percentage-highlight'>Règle principale :</span> On joue après la 4ème minute.",
+                "s4_u2_condition": "<span class='percentage-highlight'>Condition de non-jeu :</span> Si 2 buts sont marqués en 3 minutes, on ne joue pas.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss :</span> Sortir du pari à la 42e minute 30 secondes.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping :</span> Le taux de réussite augmente après chaque but.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Condition :</span> Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.",
+                "s4_additional_text": "En appliquant scrupuleusement ces règles, le taux de réussite passe de <span class='percentage-upgrade'>92-94%</span> à <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Perfect Game Under 2.5 (1ère mi-temps)",
+                "teamA": "Équipe A",
+                "teamB": "Équipe B",
+                "s6_title": "Perfect Game Under 4.5",
+                "teamC": "Équipe C",
+                "teamD": "Équipe D",
+                "s7_title": "Un dernier chiffre pour la route",
+                "s7_stat1": "L'année dernière, le système a généré plus de <span class='highlight'>5763 matchs</span> à jouer !",
+                "s7_stat2": "Avec une moyenne de 2 buts par match, cela représente jusqu'à <span class='highlight'>12000 paris possibles</span>.",
+                "s7_download": "Le fichier est téléchargeable sur le site.",
+                "s7_caveat": "Attention, ces paris ne sont pas tous jouables sur tous les bookmakers.",
+                "s8_title": "L'analogie de la Ferrari",
+                "s8_analogy": "Nous vous offrons un **outil de haute performance**. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.",
+                "s8_pilot": "La méthode ArtScalping est une Ferrari. **Patience, rigueur et intelligence** sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.",
+                "s8_mastery": "La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.",
+                "skip_button_text": "Aller à la page suivante",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Démarrez la méthode",
+            },
+            "en": {
+                "s1_title": "The method begins with data analysis.",
+                "s2_title": "Calculating the Performance Indices",
+                "s2_subtitle": "Calculating the Performance Indices",
+                "s2_indice1_title": "Index 1",
+                "s2_indice1_text": "Home Team Attack + Away Team Defense",
+                "s2_indice2_title": "Index 2",
+                "s2_indice2_text": "Away Team Attack + Home Team Defense",
+                "s3_title": "Selecting the Safest Bets",
+                "s3_subtitle": "Selecting the Safest Bets",
+                "s3_text": "These success rates are the result of a **secret equation**, patiently developed and tested over years of data, combining performance indices and sequences.",
+                "s3_percentage_text": "Success Rate: 92 to 94%",
+                "s3_bet1_text": "Under 4.5",
+                "s3_bet2_text": "Under 2.5 First Half",
+                "s4_title": "Complete Method Rules",
+                "s4_subtitle": "Complete Method Rules",
+                "s4_u4_title": "Under 4.5",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Exit the bet at 86 minutes and 30 seconds.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> The success rate increases after each goal.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Condition:</span> Do not bet on the next goal until your current bet is finished.",
+                "s4_u2_title": "Under 2.5 First Half",
+                "s4_u2_rule": "<span class='percentage-highlight'>Main Rule:</span> We play after the 4th minute.",
+                "s4_u2_condition": "<span class='percentage-highlight'>No-Play Condition:</span> If 2 goals are scored in 3 minutes, we do not play.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Exit the bet at 42 minutes and 30 seconds.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> The success rate increases after each goal.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Condition:</span> Do not bet on the next goal until your current bet is finished.",
+                "s4_additional_text": "By scrupulously applying these rules, the success rate increases from <span class='percentage-upgrade'>92-94%</span> to <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Perfect Game Under 2.5 (First Half)",
+                "teamA": "Team A",
+                "teamB": "Team B",
+                "s6_title": "Perfect Game Under 4.5",
+                "teamC": "Team C",
+                "teamD": "Team D",
+                "s7_title": "One last figure for the road",
+                "s7_stat1": "Last year, the system generated more than <span class='highlight'>5763 matches</span> to bet on!",
+                "s7_stat2": "With an average of 2 goals per match, this represents up to <span class='highlight'>12000 possible bets</span>.",
+                "s7_download": "The file is downloadable from the site.",
+                "s7_caveat": "Note: These bets are not all playable on all bookmakers.",
+                "s8_title": "The Ferrari Analogy",
+                "s8_analogy": "We offer you a **high-performance tool**. But like a Ferrari, power isn't enough. Without a skilled driver, the best car will crash.",
+                "s8_pilot": "The ArtScalping method is a Ferrari. **Patience, rigor, and intelligence** are the skills you need to drive it and make substantial profits.",
+                "s8_mastery": "Self-control is the key to turning this tool into a real winning machine.",
+                "skip_button_text": "Go to the next page",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Start the method",
+            },
+            "es": {
+                "s1_title": "El método comienza con el análisis de datos.",
+                "s2_title": "Cálculo de los índices de rendimiento",
+                "s2_subtitle": "Calculando los Índices de Rendimiento",
+                "s2_indice1_title": "Índice 1",
+                "s2_indice1_text": "Ataque Equipo Local + Defensa Equipo Visitante",
+                "s2_indice2_title": "Índice 2",
+                "s2_indice2_text": "Ataque Equipo Visitante + Defensa Equipo Local",
+                "s3_title": "Selección de las apuestas más seguras",
+                "s3_subtitle": "Seleccionando las Apuestas más Seguras",
+                "s3_text": "Estas tasas de éxito son el resultado de una **ecuación secreta**, elaborada pacientemente y probada con años de datos, combinando índices de rendimiento y secuencias.",
+                "s3_percentage_text": "Tasa de éxito: 92 a 94%",
+                "s3_bet1_text": "Menos de 4.5 goles",
+                "s3_bet2_text": "Menos de 2.5 goles 1ª mitad",
+                "s4_title": "Las Reglas del Método Completo",
+                "s4_subtitle": "Reglas del Método Completo",
+                "s4_u4_title": "Menos de 4.5 goles",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Salir de la apuesta a los 86 minutos y 30 segundos.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> La tasa de éxito aumenta después de cada gol.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Condición:</span> No apostar al siguiente gol hasta que tu apuesta actual haya terminado.",
+                "s4_u2_title": "Menos de 2.5 goles 1ª mitad",
+                "s4_u2_rule": "<span class='percentage-highlight'>Regla principal:</span> Se apuesta después del minuto 4.",
+                "s4_u2_condition": "<span class='percentage-highlight'>Condición de no-juego:</span> Si se marcan 2 goles en 3 minutos, no se apuesta.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Salir de la apuesta a los 42 minutos y 30 segundos.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> La tasa de éxito aumenta después de cada gol.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Condición:</span> No apostar al siguiente gol hasta que tu apuesta actual haya terminado.",
+                "s4_additional_text": "Aplicando escrupulosamente estas reglas, la tasa de éxito aumenta de <span class='percentage-upgrade'>92-94%</span> a <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Juego Perfecto Menos de 2.5 (1ª mitad)",
+                "teamA": "Equipo A",
+                "teamB": "Equipo B",
+                "s6_title": "Juego Perfecto Menos de 4.5",
+                "teamC": "Equipo C",
+                "teamD": "Equipo D",
+                "s7_title": "Una última cifra para el camino",
+                "s7_stat1": "El año pasado, el sistema generó más de <span class='highlight'>5763 partidos</span> para apostar.",
+                "s7_stat2": "Con un promedio de 2 goles por partido, esto representa hasta <span class='highlight'>12000 posibles apuestas</span>.",
+                "s7_download": "El archivo se puede descargar desde el sitio web.",
+                "s7_caveat": "Advertencia: No todas estas apuestas están disponibles en todas las casas de apuestas.",
+                "s8_title": "La Analogía del Ferrari",
+                "s8_analogy": "Te ofrecemos una **herramienta de alto rendimiento**. Pero como con un Ferrari, la potencia no es suficiente. Sin un piloto competente, el mejor coche termina fuera del camino.",
+                "s8_pilot": "El método ArtScalping es un Ferrari. **Paciencia, rigor e inteligencia** son las habilidades que necesitas para pilotarlo y obtener ganancias sustanciales.",
+                "s8_mastery": "El autocontrol es la clave para convertir esta herramienta en una verdadera máquina de ganar.",
+                "skip_button_text": "Ir a la página siguiente",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Iniciar el método",
+            },
+            "de": {
+                "s1_title": "Die Methode beginnt mit der Datenanalyse.",
+                "s2_title": "Berechnung der Leistungsindizes",
+                "s2_subtitle": "Berechnung der Leistungsindizes",
+                "s2_indice1_title": "Index 1",
+                "s2_indice1_text": "Angriff Heimteam + Verteidigung Auswärtsteam",
+                "s2_indice2_title": "Index 2",
+                "s2_indice2_text": "Angriff Auswärtsteam + Verteidigung Heimteam",
+                "s3_title": "Auswahl der sichersten Wetten",
+                "s3_subtitle": "Auswahl der sichersten Wetten",
+                "s3_text": "Diese Erfolgsquoten sind das Ergebnis einer **geheimen Gleichung**, die geduldig entwickelt und über Jahre von Daten getestet wurde, indem Leistungsindizes und Sequenzen kombiniert werden.",
+                "s3_percentage_text": "Erfolgsquote: 92 bis 94%",
+                "s3_bet1_text": "Unter 4.5 Tore",
+                "s3_bet2_text": "Unter 2.5 Tore 1. Halbzeit",
+                "s4_title": "Die Regeln der vollständigen Methode",
+                "s4_subtitle": "Regeln der vollständigen Methode",
+                "s4_u4_title": "Unter 4.5 Tore",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Wette bei 86 Minuten und 30 Sekunden beenden.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> Die Erfolgsquote steigt nach jedem Tor.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Bedingung:</span> Nicht auf das nächste Tor wetten, bis Ihre aktuelle Wette abgeschlossen ist.",
+                "s4_u2_title": "Unter 2.5 Tore 1. Halbzeit",
+                "s4_u2_rule": "<span class='percentage-highlight'>Hauptregel:</span> Wir wetten nach der 4. Minute.",
+                "s4_u2_condition": "<span class='percentage-highlight'>Nicht-Wett-Bedingung:</span> Wenn 2 Tore in 3 Minuten erzielt werden, wetten wir nicht.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Wette bei 42 Minuten und 30 Sekunden beenden.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> Die Erfolgsquote steigt nach jedem Tor.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Bedingung:</span> Nicht auf das nächste Tor wetten, bis Ihre aktuelle Wette abgeschlossen ist.",
+                "s4_additional_text": "Durch die sorgfältige Anwendung dieser Regeln steigt die Erfolgsquote von <span class='percentage-upgrade'>92-94%</span> auf <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Perfektes Spiel Unter 2.5 Tore (1. Halbzeit)",
+                "teamA": "Team A",
+                "teamB": "Team B",
+                "s6_title": "Perfektes Spiel Unter 4.5 Tore",
+                "teamC": "Team C",
+                "teamD": "Team D",
+                "s7_title": "Eine letzte Zahl zum Schluss",
+                "s7_stat1": "Letztes Jahr hat das System mehr als <span class='highlight'>5763 Spiele</span> zum Wetten generiert!",
+                "s7_stat2": "Bei durchschnittlich 2 Toren pro Spiel sind das bis zu <span class='highlight'>12000 mögliche Wetten</span>.",
+                "s7_download": "Die Datei kann auf der Website heruntergeladen werden.",
+                "s7_caveat": "Achtung: Diese Wetten sind nicht bei allen Buchmachern spielbar.",
+                "s8_title": "Die Ferrari-Analogie",
+                "s8_analogy": "Wir bieten Ihnen ein **Hochleistungswerkzeug**. Aber wie bei einem Ferrari reicht die Kraft allein nicht aus. Ohne einen kompetenten Fahrer landet das beste Auto im Graben.",
+                "s8_pilot": "Die ArtScalping-Methode ist ein Ferrari. **Geduld, Strenge und Intelligenz** sind die Fähigkeiten, die Sie benötigen, um ihn zu fahren und erhebliche Gewinne zu erzielen.",
+                "s8_mastery": "Selbstbeherrschung ist der Schlüssel, um dieses Werkzeug in eine echte Gewinnmaschine zu verwandeln.",
+                "skip_button_text": "Zur nächsten Seite",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Starten Sie die Methode",
+            },
+            "pt": {
+                "s1_title": "O método começa com a análise de dados.",
+                "s2_title": "Cálculo dos índices de desempenho",
+                "s2_subtitle": "Cálculo dos Índices de Desempenho",
+                "s2_indice1_title": "Índice 1",
+                "s2_indice1_text": "Ataque Equipe da Casa + Defesa Equipe Visitante",
+                "s2_indice2_title": "Índice 2",
+                "s2_indice2_text": "Ataque Equipe Visitante + Defesa Equipe da Casa",
+                "s3_title": "Seleção das apostas mais seguras",
+                "s3_subtitle": "Selecionando as Apostas mais Seguras",
+                "s3_text": "Essas taxas de sucesso são o resultado de uma **equação secreta**, elaborada pacientemente e testada ao longo de anos de dados, combinando índices de desempenho e sequências.",
+                "s3_percentage_text": "Taxa de sucesso: 92 a 94%",
+                "s3_bet1_text": "Menos de 4.5 gols",
+                "s3_bet2_text": "Menos de 2.5 gols 1º tempo",
+                "s4_title": "As Regras do Método Completo",
+                "s4_subtitle": "Regras do Método Completo",
+                "s4_u4_title": "Menos de 4.5 gols",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Sair da aposta aos 86 minutos e 30 segundos.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> A taxa de sucesso aumenta após cada gol.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Condição:</span> Não apostar no próximo gol até que sua aposta atual tenha terminado.",
+                "s4_u2_title": "Menos de 2.5 gols 1º tempo",
+                "s4_u2_rule": "<span class='percentage-highlight'>Regra principal:</span> Apostamos após o 4º minuto.",
+                "s4_u2_condition": "<span class='percentage-highlight'>Condição de não-aposta:</span> Se 2 gols são marcados em 3 minutos, não apostamos.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Sair da aposta aos 42 minutos e 30 segundos.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> A taxa de sucesso aumenta após cada gol.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Condição:</span> Não apostar no próximo gol até que sua aposta atual tenha terminado.",
+                "s4_additional_text": "Aplicando escrupulosamente estas regras, a taxa de sucesso aumenta de <span class='percentage-upgrade'>92-94%</span> a <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Jogo Perfeito Menos de 2.5 (1º tempo)",
+                "teamA": "Equipe A",
+                "teamB": "Equipe B",
+                "s6_title": "Jogo Perfeito Menos de 4.5",
+                "teamC": "Equipe C",
+                "teamD": "Equipe D",
+                "s7_title": "Uma última estatística para o caminho",
+                "s7_stat1": "No ano passado, o sistema gerou mais de <span class='highlight'>5763 partidas</span> para apostar!",
+                "s7_stat2": "Com uma média de 2 gols por partida, isso representa até <span class='highlight'>12000 apostas possíveis</span>.",
+                "s7_download": "O arquivo pode ser baixado no site.",
+                "s7_caveat": "Atenção: Nem todas essas apostas estão disponíveis em todas as casas de apostas.",
+                "s8_title": "A Analogia da Ferrari",
+                "s8_analogy": "Oferecemos a você uma **ferramenta de alto desempenho**. Mas assim como um Ferrari, a potência não é suficiente. Sem um piloto competente, o melhor carro acaba na vala.",
+                "s8_pilot": "O método ArtScalping é um Ferrari. **Paciência, rigor e inteligência** são as habilidades que você precisa para pilotá-lo e obter lucros substanciais.",
+                "s8_mastery": "O autocontrole é a chave para transformar esta ferramenta em uma verdadeira máquina de ganhar.",
+                "skip_button_text": "Ir para a próxima página",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Começar o método",
+            },
+            "zh": {
+                "s1_title": "该方法始于数据分析。",
+                "s2_title": "计算性能指标",
+                "s2_subtitle": "计算性能指标",
+                "s2_indice1_title": "指标 1",
+                "s2_indice1_text": "主队攻击 + 客队防守",
+                "s2_indice2_title": "指标 2",
+                "s2_indice2_text": "客队攻击 + 主队防守",
+                "s3_title": "选择最安全的投注",
+                "s3_subtitle": "选择最安全的投注",
+                "s3_text": "这些成功率是经过多年数据测试，将性能指标和序列相结合，精心制作的**秘密方程**的结果。",
+                "s3_percentage_text": "成功率: 92% 至 94%",
+                "s3_bet1_text": "小 4.5 球",
+                "s3_bet2_text": "上半场小 2.5 球",
+                "s4_title": "完整方法的规则",
+                "s4_subtitle": "完整方法的规则",
+                "s4_u4_title": "小 4.5 球",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>止损:</span> 在第 86 分 30 秒时退出投注。",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> 每次进球后成功率都会增加。",
+                "s4_u4_condition": "<span class='percentage-highlight'>条件:</span> 在当前投注结束前，不要投注下一个进球。",
+                "s4_u2_title": "上半场小 2.5 球",
+                "s4_u2_rule": "<span class='percentage-highlight'>主要规则:</span> 我们在第 4 分钟后开始投注。",
+                "s4_u2_condition": "<span class='percentage-highlight'>不投注条件:</span> 如果在 3 分钟内打进 2 个球，我们就不投注。",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>止损:</span> 在第 42 分 30 秒时退出投注。",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> 每次进球后成功率都会增加。",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>条件:</span> 在当前投注结束前，不要投注下一个进球。",
+                "s4_additional_text": "通过严格遵守这些规则，成功率从 <span class='percentage-upgrade'>92-94%</span> 提高到 <span class='percentage-upgrade'>96-97%</span>。",
+                "s5_title": "完美比赛 上半场小 2.5 球",
+                "teamA": "球队 A",
+                "teamB": "球队 B",
+                "s6_title": "完美比赛 小 4.5 球",
+                "teamC": "球队 C",
+                "teamD": "球队 D",
+                "s7_title": "最后一个数据",
+                "s7_stat1": "去年，该系统生成了超过 <span class='highlight'>5763 场</span>可供投注的比赛!",
+                "s7_stat2": "平均每场比赛有 2 个进球，这相当于多达 <span class='highlight'>12000 个可能的投注</span>。",
+                "s7_download": "该文件可以在网站上下载。",
+                "s7_caveat": "注意: 这些投注并非在所有博彩公司都可用。",
+                "s8_title": "法拉利的比喻",
+                "s8_analogy": "我们为您提供一个**高性能工具**。但就像法拉利一样，光有动力是不够的。没有熟练的司机，最好的车也会冲出赛道。",
+                "s8_pilot": "ArtScalping 方法就是一辆法拉利。**耐心、严谨和智慧**是您驾驶它并获得可观利润所需的技能。",
+                "s8_mastery": "自制力是将这个工具变成一台真正的赚钱机器的关键。",
+                "skip_button_text": "转到下一页",
+                "next_button_text": "&rarr;",
+                "start_button_text": "开始使用该方法",
+            },
+            "de": {
+                "s1_title": "Die Methode beginnt mit der Datenanalyse.",
+                "s2_title": "Berechnung der Leistungsindizes",
+                "s2_subtitle": "Berechnung der Leistungsindizes",
+                "s2_indice1_title": "Index 1",
+                "s2_indice1_text": "Angriff Heimteam + Verteidigung Auswärtsteam",
+                "s2_indice2_title": "Index 2",
+                "s2_indice2_text": "Angriff Auswärtsteam + Verteidigung Heimteam",
+                "s3_title": "Auswahl der sichersten Wetten",
+                "s3_subtitle": "Auswahl der sichersten Wetten",
+                "s3_text": "Diese Erfolgsquoten sind das Ergebnis einer **geheimen Gleichung**, die geduldig entwickelt und über Jahre von Daten getestet wurde, indem Leistungsindizes und Sequenzen kombiniert werden.",
+                "s3_percentage_text": "Erfolgsquote: 92 bis 94%",
+                "s3_bet1_text": "Unter 4.5 Tore",
+                "s3_bet2_text": "Unter 2.5 Tore 1. Halbzeit",
+                "s4_title": "Die Regeln der vollständigen Methode",
+                "s4_subtitle": "Regeln der vollständigen Methode",
+                "s4_u4_title": "Unter 4.5 Tore",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Wette bei 86 Minuten und 30 Sekunden beenden.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> Die Erfolgsquote steigt nach jedem Tor.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Bedingung:</span> Nicht auf das nächste Tor wetten, bis Ihre aktuelle Wette abgeschlossen ist.",
+                "s4_u2_title": "Unter 2.5 Tore 1. Halbzeit",
+                "s4_u2_rule": "<span class='percentage-highlight'>Hauptregel:</span> Wir wetten nach der 4. Minute.",
+                "s4_u2_condition": "<span class='percentage-highlight'>Nicht-Wett-Bedingung:</span> Wenn 2 Tore in 3 Minuten erzielt werden, wetten wir nicht.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Wette bei 42 Minuten und 30 Sekunden beenden.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> Die Erfolgsquote steigt nach jedem Tor.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Bedingung:</span> Nicht auf das nächste Tor wetten, bis Ihre aktuelle Wette abgeschlossen ist.",
+                "s4_additional_text": "Durch die sorgfältige Anwendung dieser Regeln steigt die Erfolgsquote von <span class='percentage-upgrade'>92-94%</span> auf <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Perfektes Spiel Unter 2.5 Tore (1. Halbzeit)",
+                "teamA": "Team A",
+                "teamB": "Team B",
+                "s6_title": "Perfektes Spiel Unter 4.5 Tore",
+                "teamC": "Team C",
+                "teamD": "Team D",
+                "s7_title": "Eine letzte Zahl zum Schluss",
+                "s7_stat1": "Letztes Jahr hat das System mehr als <span class='highlight'>5763 Spiele</span> zum Wetten generiert!",
+                "s7_stat2": "Bei durchschnittlich 2 Toren pro Spiel sind das bis zu <span class='highlight'>12000 mögliche Wetten</span>.",
+                "s7_download": "Die Datei kann auf der Website heruntergeladen werden.",
+                "s7_caveat": "Achtung: Diese Wetten sind nicht bei allen Buchmachern spielbar.",
+                "s8_title": "Die Ferrari-Analogie",
+                "s8_analogy": "Wir bieten Ihnen ein **Hochleistungswerkzeug**. Aber wie bei einem Ferrari reicht die Kraft allein nicht aus. Ohne einen kompetenten Fahrer landet das beste Auto im Graben.",
+                "s8_pilot": "Die ArtScalping-Methode ist ein Ferrari. **Geduld, Strenge und Intelligenz** sind die Fähigkeiten, die Sie benötigen, um ihn zu fahren und erhebliche Gewinne zu erzielen.",
+                "s8_mastery": "Selbstbeherrschung ist der Schlüssel, um dieses Werkzeug in eine echte Gewinnmaschine zu verwandeln.",
+                "skip_button_text": "Zur nächsten Seite",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Starten Sie die Methode",
+            },
+            "pt": {
+                "s1_title": "O método começa com a análise de dados.",
+                "s2_title": "Cálculo dos índices de desempenho",
+                "s2_subtitle": "Cálculo dos Índices de Desempenho",
+                "s2_indice1_title": "Índice 1",
+                "s2_indice1_text": "Ataque Equipe da Casa + Defesa Equipe Visitante",
+                "s2_indice2_title": "Índice 2",
+                "s2_indice2_text": "Ataque Equipe Visitante + Defesa Equipe da Casa",
+                "s3_title": "Seleção das apostas mais seguras",
+                "s3_subtitle": "Selecionando as Apostas mais Seguras",
+                "s3_text": "Essas taxas de sucesso são o resultado de uma **equação secreta**, elaborada pacientemente e testada ao longo de anos de dados, combinando índices de desempenho e sequências.",
+                "s3_percentage_text": "Taxa de sucesso: 92 a 94%",
+                "s3_bet1_text": "Menos de 4.5 gols",
+                "s3_bet2_text": "Menos de 2.5 gols 1º tempo",
+                "s4_title": "As Regras do Método Completo",
+                "s4_subtitle": "Regras do Método Completo",
+                "s4_u4_title": "Menos de 4.5 gols",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Sair da aposta aos 86 minutos e 30 segundos.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> A taxa de sucesso aumenta após cada gol.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Condição:</span> Não apostar no próximo gol até que sua aposta atual tenha terminado.",
+                "s4_u2_title": "Menos de 2.5 gols 1º tempo",
+                "s4_u2_rule": "<span class='percentage-highlight'>Regra principal:</span> Apostamos após o 4º minuto.",
+                "s4_u2_condition": "<span class='percentage-highlight'>Condição de não-aposta:</span> Se 2 gols são marcados em 3 minutos, não apostamos.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Sair da aposta aos 42 minutos e 30 segundos.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> A taxa de sucesso aumenta após cada gol.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Condição:</span> Não apostar no próximo gol até que sua aposta atual tenha terminado.",
+                "s4_additional_text": "Aplicando escrupulosamente estas regras, a taxa de sucesso aumenta de <span class='percentage-upgrade'>92-94%</span> a <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Jogo Perfeito Menos de 2.5 (1º tempo)",
+                "teamA": "Equipe A",
+                "teamB": "Equipe B",
+                "s6_title": "Jogo Perfeito Menos de 4.5",
+                "teamC": "Equipe C",
+                "teamD": "Equipe D",
+                "s7_title": "Uma última estatística para o caminho",
+                "s7_stat1": "No ano passado, o sistema gerou mais de <span class='highlight'>5763 partidas</span> para apostar!",
+                "s7_stat2": "Com uma média de 2 gols por partida, isso representa até <span class='highlight'>12000 apostas possíveis</span>.",
+                "s7_download": "O arquivo pode ser baixado no site.",
+                "s7_caveat": "Atenção: Nem todas essas apostas estão disponíveis em todas as casas de apostas.",
+                "s8_title": "A Analogia da Ferrari",
+                "s8_analogy": "Oferecemos a você uma **ferramenta de alto desempenho**. Mas assim como um Ferrari, a potência não é suficiente. Sem um piloto competente, o melhor carro acaba na vala.",
+                "s8_pilot": "O método ArtScalping é um Ferrari. **Paciência, rigor e inteligência** são as habilidades que você precisa para pilotá-lo e obter lucros substanciais.",
+                "s8_mastery": "O autocontrole é a chave para transformar esta ferramenta em uma verdadeira máquina de ganhar.",
+                "skip_button_text": "Ir para a próxima página",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Começar o método",
+            },
+            "zh": {
+                "s1_title": "该方法始于数据分析。",
+                "s2_title": "计算性能指标",
+                "s2_subtitle": "计算性能指标",
+                "s2_indice1_title": "指标 1",
+                "s2_indice1_text": "主队攻击 + 客队防守",
+                "s2_indice2_title": "指标 2",
+                "s2_indice2_text": "客队攻击 + 主队防守",
+                "s3_title": "选择最安全的投注",
+                "s3_subtitle": "选择最安全的投注",
+                "s3_text": "这些成功率是经过多年数据测试，将性能指标和序列相结合，精心制作的**秘密方程**的结果。",
+                "s3_percentage_text": "成功率: 92% 至 94%",
+                "s3_bet1_text": "小 4.5 球",
+                "s3_bet2_text": "上半场小 2.5 球",
+                "s4_title": "完整方法的规则",
+                "s4_subtitle": "完整方法的规则",
+                "s4_u4_title": "小 4.5 球",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>止损:</span> 在第 86 分 30 秒时退出投注。",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> 每次进球后成功率都会增加。",
+                "s4_u4_condition": "<span class='percentage-highlight'>条件:</span> 在当前投注结束前，不要投注下一个进球。",
+                "s4_u2_title": "上半场小 2.5 球",
+                "s4_u2_rule": "<span class='percentage-highlight'>主要规则:</span> 我们在第 4 分钟后开始投注。",
+                "s4_u2_condition": "<span class='percentage-highlight'>不投注条件:</span> 如果在 3 分钟内打进 2 个球，我们就不投注。",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>止损:</span> 在第 42 分 30 秒时退出投注。",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> 每次进球后成功率都会增加。",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>条件:</span> 在当前投注结束前，不要投注下一个进球。",
+                "s4_additional_text": "通过严格遵守这些规则，成功率从 <span class='percentage-upgrade'>92-94%</span> 提高到 <span class='percentage-upgrade'>96-97%</span>。",
+                "s5_title": "完美比赛 上半场小 2.5 球",
+                "teamA": "球队 A",
+                "teamB": "球队 B",
+                "s6_title": "完美比赛 小 4.5 球",
+                "teamC": "球队 C",
+                "teamD": "球队 D",
+                "s7_title": "最后一个数据",
+                "s7_stat1": "去年，该系统生成了超过 <span class='highlight'>5763 场</span>可供投注的比赛!",
+                "s7_stat2": "平均每场比赛有 2 个进球，这相当于多达 <span class='highlight'>12000 个可能的投注</span>。",
+                "s7_download": "该文件可以在网站上下载。",
+                "s7_caveat": "注意: 这些投注并非在所有博彩公司都可用。",
+                "s8_title": "法拉利的比喻",
+                "s8_analogy": "我们为您提供一个**高性能工具**。但就像法拉利一样，光有动力是不够的。没有熟练的司机，最好的车也会冲出赛道。",
+                "s8_pilot": "ArtScalping 方法就是一辆法拉利。**耐心、严谨和智慧**是您驾驶它并获得可观利润所需的技能。",
+                "s8_mastery": "自制力是将这个工具变成一台真正的赚钱机器的关键。",
+                "skip_button_text": "转到下一页",
+                "next_button_text": "&rarr;",
+                "start_button_text": "开始使用该方法",
+            },
+            "de": {
+                "s1_title": "Die Methode beginnt mit der Datenanalyse.",
+                "s2_title": "Berechnung der Leistungsindizes",
+                "s2_subtitle": "Berechnung der Leistungsindizes",
+                "s2_indice1_title": "Index 1",
+                "s2_indice1_text": "Angriff Heimteam + Verteidigung Auswärtsteam",
+                "s2_indice2_title": "Index 2",
+                "s2_indice2_text": "Angriff Auswärtsteam + Verteidigung Heimteam",
+                "s3_title": "Auswahl der sichersten Wetten",
+                "s3_subtitle": "Auswahl der sichersten Wetten",
+                "s3_text": "Diese Erfolgsquoten sind das Ergebnis einer **geheimen Gleichung**, die geduldig entwickelt und über Jahre von Daten getestet wurde, indem Leistungsindizes und Sequenzen kombiniert werden.",
+                "s3_percentage_text": "Erfolgsquote: 92 bis 94%",
+                "s3_bet1_text": "Unter 4.5 Tore",
+                "s3_bet2_text": "Unter 2.5 Tore 1. Halbzeit",
+                "s4_title": "Die Regeln der vollständigen Methode",
+                "s4_subtitle": "Regeln der vollständigen Methode",
+                "s4_u4_title": "Unter 4.5 Tore",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Wette bei 86 Minuten und 30 Sekunden beenden.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> Die Erfolgsquote steigt nach jedem Tor.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Bedingung:</span> Nicht auf das nächste Tor wetten, bis Ihre aktuelle Wette abgeschlossen ist.",
+                "s4_u2_title": "Unter 2.5 Tore 1. Halbzeit",
+                "s4_u2_rule": "<span class='percentage-highlight'>Hauptregel:</span> Wir wetten nach der 4. Minute.",
+                "s4_u2_condition": "<span class='percentage-highlight'>Nicht-Wett-Bedingung:</span> Wenn 2 Tore in 3 Minuten erzielt werden, wetten wir nicht.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Wette bei 42 Minuten und 30 Sekunden beenden.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> Die Erfolgsquote steigt nach jedem Tor.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Bedingung:</span> Nicht auf das nächste Tor wetten, bis Ihre aktuelle Wette abgeschlossen ist.",
+                "s4_additional_text": "Durch die sorgfältige Anwendung dieser Regeln steigt die Erfolgsquote von <span class='percentage-upgrade'>92-94%</span> auf <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Perfektes Spiel Unter 2.5 Tore (1. Halbzeit)",
+                "teamA": "Team A",
+                "teamB": "Team B",
+                "s6_title": "Perfektes Spiel Unter 4.5 Tore",
+                "teamC": "Team C",
+                "teamD": "Team D",
+                "s7_title": "Eine letzte Zahl zum Schluss",
+                "s7_stat1": "Letztes Jahr hat das System mehr als <span class='highlight'>5763 Spiele</span> zum Wetten generiert!",
+                "s7_stat2": "Bei durchschnittlich 2 Toren pro Spiel sind das bis zu <span class='highlight'>12000 mögliche Wetten</span>.",
+                "s7_download": "Die Datei kann auf der Website heruntergeladen werden.",
+                "s7_caveat": "Achtung: Diese Wetten sind nicht bei allen Buchmachern spielbar.",
+                "s8_title": "Die Ferrari-Analogie",
+                "s8_analogy": "Wir bieten Ihnen ein **Hochleistungswerkzeug**. Aber wie bei einem Ferrari reicht die Kraft allein nicht aus. Ohne einen kompetenten Fahrer landet das beste Auto im Graben.",
+                "s8_pilot": "Die ArtScalping-Methode ist ein Ferrari. **Geduld, Strenge und Intelligenz** sind die Fähigkeiten, die Sie benötigen, um ihn zu fahren und erhebliche Gewinne zu erzielen.",
+                "s8_mastery": "Selbstbeherrschung ist der Schlüssel, um dieses Werkzeug in eine echte Gewinnmaschine zu verwandeln.",
+                "skip_button_text": "Zur nächsten Seite",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Starten Sie die Methode",
+            },
+            "pt": {
+                "s1_title": "O método começa com a análise de dados.",
+                "s2_title": "Cálculo dos índices de desempenho",
+                "s2_subtitle": "Cálculo dos Índices de Desempenho",
+                "s2_indice1_title": "Índice 1",
+                "s2_indice1_text": "Ataque Equipe da Casa + Defesa Equipe Visitante",
+                "s2_indice2_title": "Índice 2",
+                "s2_indice2_text": "Ataque Equipe Visitante + Defesa Equipe da Casa",
+                "s3_title": "Seleção das apostas mais seguras",
+                "s3_subtitle": "Selecionando as Apostas mais Seguras",
+                "s3_text": "Essas taxas de sucesso são o resultado de uma **equação secreta**, elaborada pacientemente e testada ao longo de anos de dados, combinando índices de desempenho e sequências.",
+                "s3_percentage_text": "Taxa de sucesso: 92 a 94%",
+                "s3_bet1_text": "Menos de 4.5 gols",
+                "s3_bet2_text": "Menos de 2.5 gols 1º tempo",
+                "s4_title": "As Regras do Método Completo",
+                "s4_subtitle": "Regras do Método Completo",
+                "s4_u4_title": "Menos de 4.5 gols",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Sair da aposta aos 86 minutos e 30 segundos.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> A taxa de sucesso aumenta após cada gol.",
+                "s4_u4_condition": "<span class='percentage-highlight'>Condição:</span> Não apostar no próximo gol até que sua aposta atual tenha terminado.",
+                "s4_u2_title": "Menos de 2.5 gols 1º tempo",
+                "s4_u2_rule": "<span class='percentage-highlight'>Regra principal:</span> Apostamos após o 4º minuto.",
+                "s4_u2_condition": "<span class='percentage-highlight'>Condição de não-aposta:</span> Se 2 gols são marcados em 3 minutos, não apostamos.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>Stop Loss:</span> Sair da aposta aos 42 minutos e 30 segundos.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> A taxa de sucesso aumenta após cada gol.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>Condição:</span> Não apostar no próximo gol até que sua aposta atual tenha terminado.",
+                "s4_additional_text": "Aplicando escrupulosamente estas regras, a taxa de sucesso aumenta de <span class='percentage-upgrade'>92-94%</span> a <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "Jogo Perfeito Menos de 2.5 (1º tempo)",
+                "teamA": "Equipe A",
+                "teamB": "Equipe B",
+                "s6_title": "Jogo Perfeito Menos de 4.5",
+                "teamC": "Equipe C",
+                "teamD": "Equipe D",
+                "s7_title": "Uma última estatística para o caminho",
+                "s7_stat1": "No ano passado, o sistema gerou mais de <span class='highlight'>5763 partidas</span> para apostar!",
+                "s7_stat2": "Com uma média de 2 gols por partida, isso representa até <span class='highlight'>12000 apostas possíveis</span>.",
+                "s7_download": "O arquivo pode ser baixado no site.",
+                "s7_caveat": "Atenção: Nem todas essas apostas estão disponíveis em todas as casas de apostas.",
+                "s8_title": "A Analogia da Ferrari",
+                "s8_analogy": "Oferecemos a você uma **ferramenta de alto desempenho**. Mas assim como um Ferrari, a potência não é suficiente. Sem um piloto competente, o melhor carro acaba na vala.",
+                "s8_pilot": "O método ArtScalping é um Ferrari. **Paciência, rigor e inteligência** são as habilidades que você precisa para pilotá-lo e obter lucros substanciais.",
+                "s8_mastery": "O autocontrole é a chave para transformar esta ferramenta em uma verdadeira máquina de ganhar.",
+                "skip_button_text": "Ir para a próxima página",
+                "next_button_text": "&rarr;",
+                "start_button_text": "Começar o método",
+            },
+            "zh": {
+                "s1_title": "该方法始于数据分析。",
+                "s2_title": "计算性能指标",
+                "s2_subtitle": "计算性能指标",
+                "s2_indice1_title": "指标 1",
+                "s2_indice1_text": "主队攻击 + 客队防守",
+                "s2_indice2_title": "指标 2",
+                "s2_indice2_text": "客队攻击 + 主队防守",
+                "s3_title": "选择最安全的投注",
+                "s3_subtitle": "选择最安全的投注",
+                "s3_text": "这些成功率是经过多年数据测试，将性能指标和序列相结合，精心制作的**秘密方程**的结果。",
+                "s3_percentage_text": "成功率: 92% 至 94%",
+                "s3_bet1_text": "小 4.5 球",
+                "s3_bet2_text": "上半场小 2.5 球",
+                "s4_title": "完整方法的规则",
+                "s4_subtitle": "完整方法的规则",
+                "s4_u4_title": "小 4.5 球",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>止损:</span> 在第 86 分 30 秒时退出投注。",
+                "s4_u4_scalping": "<span class='percentage-highlight'>Scalping:</span> 每次进球后成功率都会增加。",
+                "s4_u4_condition": "<span class='percentage-highlight'>条件:</span> 在当前投注结束前，不要投注下一个进球。",
+                "s4_u2_title": "上半场小 2.5 球",
+                "s4_u2_rule": "<span class='percentage-highlight'>主要规则:</span> 我们在第 4 分钟后开始投注。",
+                "s4_u2_condition": "<span class='percentage-highlight'>不投注条件:</span> 如果在 3 分钟内打进 2 个球，我们就不投注。",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>止损:</span> 在第 42 分 30 秒时退出投注。",
+                "s4_u2_scalping": "<span class='percentage-highlight'>Scalping:</span> 每次进球后成功率都会增加。",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>条件:</span> 在当前投注结束前，不要投注下一个进球。",
+                "s4_additional_text": "通过严格遵守这些规则，成功率从 <span class='percentage-upgrade'>92-94%</span> 提高到 <span class='percentage-upgrade'>96-97%</span>。",
+                "s5_title": "完美比赛 上半场小 2.5 球",
+                "teamA": "球队 A",
+                "teamB": "球队 B",
+                "s6_title": "完美比赛 小 4.5 球",
+                "teamC": "球队 C",
+                "teamD": "球队 D",
+                "s7_title": "最后一个数据",
+                "s7_stat1": "去年，该系统生成了超过 <span class='highlight'>5763 场</span>可供投注的比赛!",
+                "s7_stat2": "平均每场比赛有 2 个进球，这相当于多达 <span class='highlight'>12000 个可能的投注</span>。",
+                "s7_download": "该文件可以在网站上下载。",
+                "s7_caveat": "注意: 这些投注并非在所有博彩公司都可用。",
+                "s8_title": "法拉利的比喻",
+                "s8_analogy": "我们为您提供一个**高性能工具**。但就像法拉利一样，光有动力是不够的。没有熟练的司机，最好的车也会冲出赛道。",
+                "s8_pilot": "ArtScalping 方法就是一辆法拉利。**耐心、严谨和智慧**是您驾驶它并获得可观利润所需的技能。",
+                "s8_mastery": "自制力是将这个工具变成一台真正的赚钱机器的关键。",
+                "skip_button_text": "转到下一页",
+                "next_button_text": "&rarr;",
+                "start_button_text": "开始使用该方法",
+            },
+            "ar": {
+                "s1_title": "تبدأ الطريقة بتحليل البيانات.",
+                "s2_title": "حساب مؤشرات الأداء",
+                "s2_subtitle": "حساب مؤشرات الأداء",
+                "s2_indice1_title": "المؤشر 1",
+                "s2_indice1_text": "هجوم الفريق المضيف + دفاع الفريق الضيف",
+                "s2_indice2_title": "المؤشر 2",
+                "s2_indice2_text": "هجوم الفريق الضيف + دفاع الفريق المضيف",
+                "s3_title": "اختيار الرهانات الأكثر أمانًا",
+                "s3_subtitle": "اختيار الرهانات الأكثر أمانًا",
+                "s3_text": "هذه معدلات النجاح هي نتيجة **معادلة سرية**، تم تطويرها واختبارها بصبر على مدى سنوات من البيانات، تجمع بين مؤشرات الأداء والتسلسلات.",
+                "s3_percentage_text": "معدل النجاح: 92 إلى 94%",
+                "s3_bet1_text": "أقل من 4.5",
+                "s3_bet2_text": "أقل من 2.5 الشوط الأول",
+                "s4_title": "قواعد الطريقة الكاملة",
+                "s4_subtitle": "قواعد الطريقة الكاملة",
+                "s4_u4_title": "أقل من 4.5",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>وقف الخسارة:</span> الخروج من الرهان في الدقيقة 86 و 30 ثانية.",
+                "s4_u4_scalping": "<span class='percentage-highlight'>السكالبينج:</span> معدل النجاح يزيد بعد كل هدف.",
+                "s4_u4_condition": "<span class='percentage-highlight'>شرط:</span> لا تراهن على الهدف التالي حتى ينتهي رهانك الحالي.",
+                "s4_u2_title": "أقل من 2.5 الشوط الأول",
+                "s4_u2_rule": "<span class='percentage-highlight'>القاعدة الرئيسية:</span> نبدأ الرهان بعد الدقيقة الرابعة.",
+                "s4_u2_condition": "<span class='percentage-highlight'>شرط عدم اللعب:</span> إذا تم تسجيل هدفين في 3 دقائق، لا نراهن.",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>وقف الخسارة:</span> الخروج من الرهان في الدقيقة 42 و 30 ثانية.",
+                "s4_u2_scalping": "<span class='percentage-highlight'>السكالبينج:</span> معدل النجاح يزيد بعد كل هدف.",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>شرط:</span> لا تراهن على الهدف التالي حتى ينتهي رهانك الحالي.",
+                "s4_additional_text": "بتطبيق هذه القواعد بدقة، يزيد معدل النجاح من <span class='percentage-upgrade'>92-94%</span> إلى <span class='percentage-upgrade'>96-97%</span>.",
+                "s5_title": "لعبة مثالية أقل من 2.5 (الشوط الأول)",
+                "teamA": "فريق أ",
+                "teamB": "فريق ب",
+                "s6_title": "لعبة مثالية أقل من 4.5",
+                "teamC": "فريق ج",
+                "teamD": "فريق د",
+                "s7_title": "رقم أخير على الطريق",
+                "s7_stat1": "في العام الماضي، أنتج النظام أكثر من <span class='highlight'>5763 مباراة</span> للمراهنة عليها!",
+                "s7_stat2": "بمتوسط هدفين في المباراة، هذا يمثل ما يصل إلى <span class='highlight'>12000 رهان محتمل</span>.",
+                "s7_download": "الملف قابل للتنزيل من الموقع.",
+                "s7_caveat": "تحذير: ليست كل هذه الرهانات متاحة على جميع مواقع المراهنة.",
+                "s8_title": "تشبيه فيراري",
+                "s8_analogy": "نحن نقدم لك **أداة عالية الأداء**. ولكن مثل سيارة فيراري، القوة وحدها لا تكفي. بدون سائق كفء، أفضل سيارة ستخرج عن المسار.",
+                "s8_pilot": "طريقة ArtScalping هي فيراري. **الصبر والانضباط والذكاء** هي المهارات التي تحتاجها لقيادتها وتحقيق أرباح كبيرة.",
+                "s8_mastery": "التحكم بالنفس هو المفتاح لتحويل هذه الأداة إلى آلة ربح حقيقية.",
+                "skip_button_text": "الانتقال إلى الصفحة التالية",
+                "next_button_text": "&larr;",
+                "start_button_text": "ابدأ الطريقة",
+            },
+            "ja": {
+                "s1_title": "この手法はデータ分析から始まります。",
+                "s2_title": "パフォーマンス指数の計算",
+                "s2_subtitle": "パフォーマンス指数の計算",
+                "s2_indice1_title": "指数 1",
+                "s2_indice1_text": "ホームチームの攻撃 + アウェイチームの守備",
+                "s2_indice2_title": "指数 2",
+                "s2_indice2_text": "アウェイチームの攻撃 + ホームチームの守備",
+                "s3_title": "最も安全な賭けの選択",
+                "s3_subtitle": "最も安全な賭けの選択",
+                "s3_text": "これらの成功率は、長年のデータで忍耐強く開発およびテストされた**秘密の方程式**の結果であり、パフォーマンス指数とシーケンスを組み合わせています。",
+                "s3_percentage_text": "成功率: 92〜94%",
+                "s3_bet1_text": "アンダー 4.5",
+                "s3_bet2_text": "前半アンダー 2.5",
+                "s4_title": "完全な手法のルール",
+                "s4_subtitle": "完全な手法のルール",
+                "s4_u4_title": "アンダー 4.5",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>ストップロス:</span> 86分30秒で賭けから撤退します。",
+                "s4_u4_scalping": "<span class='percentage-highlight'>スキャルピング:</span> 成功率はゴールごとに上昇します。",
+                "s4_u4_condition": "<span class='percentage-highlight'>条件:</span> 現在の賭けが終了するまで、次のゴールに賭けないでください。",
+                "s4_u2_title": "前半アンダー 2.5",
+                "s4_u2_rule": "<span class='percentage-highlight'>主なルール:</span> 4分以降に賭けます。",
+                "s4_u2_condition": "<span class='percentage-highlight'>非賭け条件:</span> 3分以内に2ゴールが記録された場合、賭けません。",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>ストップロス:</span> 42分30秒で賭けから撤退します。",
+                "s4_u2_scalping": "<span class='percentage-highlight'>スキャルピング:</span> 成功率はゴールごとに上昇します。",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>条件:</span> 現在の賭けが終了するまで、次のゴールに賭けないでください。",
+                "s4_additional_text": "これらのルールを厳密に適用することで、成功率は<span class='percentage-upgrade'>92-94%</span>から<span class='percentage-upgrade'>96-97%</span>に上昇します。",
+                "s5_title": "パーフェクトゲーム 前半アンダー 2.5",
+                "teamA": "チームA",
+                "teamB": "チームB",
+                "s6_title": "パーフェクトゲーム アンダー 4.5",
+                "teamC": "チームC",
+                "teamD": "チームD",
+                "s7_title": "最後に、もう1つの数字",
+                "s7_stat1": "昨年、システムは<span class='highlight'>5763試合以上</span>の賭けを生成しました！",
+                "s7_stat2": "1試合あたり平均2ゴールで、これは最大<span class='highlight'>12000の可能な賭け</span>に相当します。",
+                "s7_download": "ファイルはウェブサイトからダウンロード可能です。",
+                "s7_caveat": "注意: これらの賭けはすべてのブックメーカーで利用できるわけではありません。",
+                "s8_title": "フェラーリの例え",
+                "s8_analogy": "私たちはあなたに**高性能ツール**を提供します。しかし、フェラーリと同様に、力だけでは不十分です。熟練したドライバーがいなければ、最高の車もコースアウトします。",
+                "s8_pilot": "ArtScalpingの手法はフェラーリです。**忍耐、厳格さ、知性**は、それを運転し、実質的な利益を達成するために必要なスキルです。",
+                "s8_mastery": "自己制御は、このツールを真の勝利マシンに変える鍵です。",
+                "skip_button_text": "次のページへ",
+                "next_button_text": "&rarr;",
+                "start_button_text": "手法を開始する",
+            },
+            "hi": {
+                "s1_title": "यह विधि डेटा विश्लेषण से शुरू होती है।",
+                "s2_title": "प्रदर्शन सूचकांकों की गणना",
+                "s2_subtitle": "प्रदर्शन सूचकांकों की गणना",
+                "s2_indice1_title": "सूचकांक 1",
+                "s2_indice1_text": "घरेलू टीम का हमला + विपक्षी टीम की रक्षा",
+                "s2_indice2_title": "सूचकांक 2",
+                "s2_indice2_text": "विपक्षी टीम का हमला + घरेलू टीम की रक्षा",
+                "s3_title": "सबसे सुरक्षित दांवों का चयन",
+                "s3_subtitle": "सबसे सुरक्षित दांवों का चयन",
+                "s3_text": "ये सफलता दरें एक **गुप्त समीकरण** का परिणाम हैं, जिसे धैर्यपूर्वक विकसित किया गया है और वर्षों के डेटा पर परखा गया है, जिसमें प्रदर्शन सूचकांकों और अनुक्रमों का संयोजन है।",
+                "s3_percentage_text": "सफलता दर: 92 से 94%",
+                "s3_bet1_text": "अंडर 4.5",
+                "s3_bet2_text": "पहले हाफ में अंडर 2.5",
+                "s4_title": "पूर्ण विधि के नियम",
+                "s4_subtitle": "पूर्ण विधि के नियम",
+                "s4_u4_title": "अंडर 4.5",
+                "s4_u4_stoploss": "<span class='percentage-highlight'>स्टॉप लॉस:</span> 86 मिनट 30 सेकंड पर दांव से बाहर निकलें।",
+                "s4_u4_scalping": "<span class='percentage-highlight'>स्काल्पिंग:</span> प्रत्येक गोल के बाद सफलता दर बढ़ती है।",
+                "s4_u4_condition": "<span class='percentage-highlight'>शर्त:</span> जब तक आपका वर्तमान दांव समाप्त नहीं हो जाता, तब तक अगले गोल पर दांव न लगाएं।",
+                "s4_u2_title": "पहले हाफ में अंडर 2.5",
+                "s4_u2_rule": "<span class='percentage-highlight'>मुख्य नियम:</span> हम 4 मिनट के बाद खेलते हैं।",
+                "s4_u2_condition": "<span class='percentage-highlight'>न खेलने की शर्त:</span> यदि 3 मिनट में 2 गोल होते हैं, तो हम नहीं खेलते हैं।",
+                "s4_u2_stoploss": "<span class='percentage-highlight'>स्टॉप लॉस:</span> 42 मिनट 30 सेकंड पर दांव से बाहर निकलें।",
+                "s4_u2_scalping": "<span class='percentage-highlight'>स्काल्पिंग:</span> प्रत्येक गोल के बाद सफलता दर बढ़ती है।",
+                "s4_u2_condition_bet": "<span class='percentage-highlight'>शर्त:</span> जब तक आपका वर्तमान दांव समाप्त नहीं हो जाता, तब तक अगले गोल पर दांव न लगाएं।",
+                "s4_additional_text": "इन नियमों का सख्ती से पालन करके, सफलता दर <span class='percentage-upgrade'>92-94%</span> से बढ़कर <span class='percentage-upgrade'>96-97%</span> हो जाती है।",
+                "s5_title": "परफेक्ट गेम अंडर 2.5 (पहला हाफ)",
+                "teamA": "टीम A",
+                "teamB": "टीम B",
+                "s6_title": "परफेक्ट गेम अंडर 4.5",
+                "teamC": "टीम C",
+                "teamD": "टीम D",
+                "s7_title": "अंत में, एक और आंकड़ा",
+                "s7_stat1": "पिछले साल, सिस्टम ने <span class='highlight'>5763 से अधिक मैचों</span> पर दांव लगाने के लिए उत्पन्न किया!",
+                "s7_stat2": "प्रति मैच 2 गोल के औसत के साथ, यह <span class='highlight'>12000 संभावित दांवों</span> तक का प्रतिनिधित्व करता है।",
+                "s7_download": "फ़ाइल वेबसाइट से डाउनलोड की जा सकती है।",
+                "s7_caveat": "ध्यान दें: ये सभी दांव सभी सट्टेबाजों पर खेलने योग्य नहीं हैं।",
+                "s8_title": "फेरारी की उपमा",
+                "s8_analogy": "हम आपको एक **उच्च-प्रदर्शन उपकरण** प्रदान करते हैं। लेकिन एक फेरारी की तरह, केवल शक्ति पर्याप्त नहीं है। एक सक्षम ड्राइवर के बिना, सबसे अच्छी कार भी दुर्घटनाग्रस्त हो जाएगी।",
+                "s8_pilot": "आर्टस्कैल्पिंग विधि एक फेरारी है। **धैर्य, कठोरता और बुद्धिमत्ता** वे कौशल हैं जिनकी आपको इसे चलाने और पर्याप्त लाभ कमाने के लिए आवश्यकता है।",
+                "s8_mastery": "आत्म-नियंत्रण इस उपकरण को एक वास्तविक जीत मशीन में बदलने की कुंजी है।",
+                "skip_button_text": "अगले पृष्ठ पर जाएं",
+                "next_button_text": "&rarr;",
+                "start_button_text": "विधि शुरू करें",
+            }
+        };
+
+        let currentLanguage = "fr";
+
+        function translatePage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.lang-flag').forEach(flag => {
+                if (flag.getAttribute('data-lang') === lang) {
+                    flag.classList.add('active');
+                } else {
+                    flag.classList.remove('active');
+                }
+            });
+            // Mise à jour des textes des boutons
+            document.getElementById('skip-button').textContent = translations[lang]["skip_button_text"];
+            document.getElementById('next-button').innerHTML = translations[lang]["next_button_text"];
+            document.getElementById('start-method-button').textContent = translations[lang]["start_button_text"];
+            
+            // Mise à jour du texte de l'animation en boucle
+            texts_intro[0] = translations[lang]["s1_title"];
+            // Les traductions des événements de match sont gérées dans l'animation elle-même
+        }
+
+        document.querySelectorAll('.lang-flag').forEach(flag => {
+            flag.addEventListener('click', () => {
+                currentLanguage = flag.getAttribute('data-lang');
+                translatePage(currentLanguage);
+                if (perfectGameRunning) {
+                    restartCurrentPerfectGameAnimation();
+                }
+            });
+        });
+
+
+        const texts_intro = [
             "La méthode commence par l'analyse de données.",
             "The method begins with data analysis.",
         ];
@@ -480,13 +1215,10 @@
             animatedTextLoop.classList.add('fade-out-in');
             
             setTimeout(() => {
-                animatedTextLoop.textContent = texts[index];
-                index = (index + 1) % texts.length;
+                animatedTextLoop.textContent = texts_intro[index];
+                index = (index + 1) % texts_intro.length;
             }, 1500);
         }
-
-        changeTextLoop();
-        intervalId = setInterval(changeTextLoop, 3000);
 
         const scenes = ['scene-1', 'scene-2', 'scene-3', 'scene-4', 'perfect-game-scene-u2-5', 'perfect-game-scene-u4-5', 'final-stats-scene', 'last-scene'];
         let currentStep = 0;
@@ -506,6 +1238,7 @@
                 nextButton.style.display = 'block';
                 startMethodButton.style.display = 'none';
             }
+            translatePage(currentLanguage);
         }
 
         function handleNextClick() {
@@ -555,39 +1288,255 @@
         startMethodButton.addEventListener('click', skipToNextPage);
 
         document.addEventListener('DOMContentLoaded', () => {
+            changeTextLoop();
+            intervalId = setInterval(changeTextLoop, 3000);
             setTimeout(() => {
                 showStep('scene-1');
                 nextButton.style.display = 'block';
+                translatePage(currentLanguage);
             }, 4000);
         });
 
-        const events_u2_5 = [
-            { time: 3.5, text_fr: "Pas de but dans les 3 premières minutes.<br><span class='translation'>(No goal in the first 3 minutes.)</span>", type: 'info' },
-            { time: 4.5, text_fr: "On prend une cote de <span class='highlight'>1.05</span> sur l'Under 2.5.<br><span class='translation'>(We take odds of 1.05 on Under 2.5.)</span>", type: 'bet' },
-            { time: 10, text_fr: "Vente à la 10e minute pour une cote de <span class='highlight'>1.02</span>.<br><span class='translation'>(Sale at the 10th minute for odds of 1.02.)</span>", type: 'sell' },
-            { time: 15, text_fr: "But ! La cote passe à <span class='highlight'>1.25</span>.", text_en: "Goal! The odds change to 1.25.", type: 'goal', score: '1-0' },
-            { time: 15.5, text_fr: "Vente à <span class='highlight'>1.1</span>.<br><span class='translation'>(Sale at 1.1.)</span>", type: 'sell' },
-            { time: 25, text_fr: "But ! La cote passe à <span class='highlight'>1.8</span>.", text_en: "Goal! The odds change to 1.8.", type: 'goal', score: '2-0' },
-            { time: 25.5, text_fr: "Vente à <span class='highlight'>1.2</span>.<br><span class='translation'>(Sale at 1.2.)</span>", type: 'sell' },
-            { time: 42.5, text_fr: "Stop Loss : Vente forcée à la 42e minute 30 secondes.<br><span class='translation'>(Stop Loss: Forced sale at 42 minutes and 30 seconds.)</span>", type: 'stop-loss' },
-            { time: 45, text_fr: "Fin de la 1ère mi-temps : Le pari est terminé avec succès. Le match est fini pour nous !<br><span class='translation'>(End of the 1st half: The bet is successfully finished. The match is over for us!)</span>", type: 'end' }
-        ];
+        // Traduction des événements de match
+        const events_u2_5 = {
+            "fr": [
+                { time: 3.5, text: "Pas de but dans les 3 premières minutes.", type: 'info' },
+                { time: 4.5, text: "On prend une cote de <span class='highlight'>1.05</span> sur l'Under 2.5.", type: 'bet' },
+                { time: 10, text: "Vente à la 10e minute pour une cote de <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 15, text: "But ! La cote passe à <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "Vente à <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 25, text: "But ! La cote passe à <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 42.5, text: "Stop Loss : Vente forcée à la 42e minute 30 secondes.", type: 'stop-loss' },
+                { time: 45, text: "Fin de la 1ère mi-temps : Le pari est terminé avec succès. Le match est fini pour nous !", type: 'end' }
+            ],
+            "en": [
+                { time: 3.5, text: "No goal in the first 3 minutes.", type: 'info' },
+                { time: 4.5, text: "We take odds of <span class='highlight'>1.05</span> on Under 2.5.", type: 'bet' },
+                { time: 10, text: "Sale at the 10th minute for odds of <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 15, text: "Goal! The odds change to <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "Sale at <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 25, text: "Goal! The odds change to <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 42.5, text: "Stop Loss: Forced sale at 42 minutes and 30 seconds.", type: 'stop-loss' },
+                { time: 45, text: "End of the 1st half: The bet is successfully finished. The match is over for us!", type: 'end' }
+            ],
+            "es": [
+                { time: 3.5, text: "No hay gol en los primeros 3 minutos.", type: 'info' },
+                { time: 4.5, text: "Tomamos una cuota de <span class='highlight'>1.05</span> en Menos de 2.5.", type: 'bet' },
+                { time: 10, text: "Venta en el minuto 10 para una cuota de <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 15, text: "¡Gol! La cuota cambia a <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "Venta a <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 25, text: "¡Gol! La cuota cambia a <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "Venta a <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 42.5, text: "Stop Loss: Venta forzada a los 42 minutos y 30 segundos.", type: 'stop-loss' },
+                { time: 45, text: "Final del 1er tiempo: La apuesta ha terminado con éxito. ¡El partido ha terminado para nosotros!", type: 'end' }
+            ],
+            "de": [
+                { time: 3.5, text: "Kein Tor in den ersten 3 Minuten.", type: 'info' },
+                { time: 4.5, text: "Wir nehmen eine Quote von <span class='highlight'>1.05</span> auf Unter 2.5 Tore.", type: 'bet' },
+                { time: 10, text: "Verkauf in der 10. Minute für eine Quote von <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 15, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "Verkauf bei <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 25, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "Verkauf bei <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 42.5, text: "Stop Loss: Zwangsverkauf bei 42 Minuten und 30 Sekunden.", type: 'stop-loss' },
+                { time: 45, text: "Ende der 1. Halbzeit: Die Wette ist erfolgreich abgeschlossen. Das Spiel ist für uns beendet!", type: 'end' }
+            ],
+            "pt": [
+                { time: 3.5, text: "Nenhum gol nos primeiros 3 minutos.", type: 'info' },
+                { time: 4.5, text: "Pegamos uma cotação de <span class='highlight'>1.05</span> em Menos de 2.5 gols.", type: 'bet' },
+                { time: 10, text: "Venda aos 10 minutos para uma cotação de <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 15, text: "Gol! A cotação muda para <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "Venda a <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 25, text: "Gol! A cotação muda para <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "Venda a <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 42.5, text: "Stop Loss: Venda forçada aos 42 minutos e 30 segundos.", type: 'stop-loss' },
+                { time: 45, text: "Fim do 1º tempo: A aposta foi concluída com sucesso. O jogo acabou para nós!", type: 'end' }
+            ],
+            "zh": [
+                { time: 3.5, text: "前 3 分钟没有进球。", type: 'info' },
+                { time: 4.5, text: "我们以 <span class='highlight'>1.05</span> 的赔率投注小 2.5 球。", type: 'bet' },
+                { time: 10, text: "在第 10 分钟以 <span class='highlight'>1.02</span> 的赔率卖出。", type: 'sell' },
+                { time: 15, text: "进球！赔率变为 <span class='highlight'>1.25</span>。", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "以 <span class='highlight'>1.1</span> 卖出。", type: 'sell' },
+                { time: 25, text: "进球！赔率变为 <span class='highlight'>1.8</span>。", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "以 <span class='highlight'>1.2</span> 卖出。", type: 'sell' },
+                { time: 42.5, text: "止损: 在第 42 分 30 秒时强制卖出。", type: 'stop-loss' },
+                { time: 45, text: "上半场结束: 投注成功完成。比赛对我们来说结束了！", type: 'end' }
+            ],
+            "ar": [
+                { time: 3.5, text: "لا يوجد هدف في أول 3 دقائق.", type: 'info' },
+                { time: 4.5, text: "نأخذ رهانًا بمعدل <span class='highlight'>1.05</span> على أقل من 2.5.", type: 'bet' },
+                { time: 10, text: "بيع في الدقيقة 10 بمعدل <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 15, text: "هدف! المعدل يتغير إلى <span class='highlight'>1.25</span>.", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "بيع عند <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 25, text: "هدف! المعدل يتغير إلى <span class='highlight'>1.8</span>.", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "بيع عند <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 42.5, text: "وقف الخسارة: بيع إجباري في الدقيقة 42 و 30 ثانية.", type: 'stop-loss' },
+                { time: 45, text: "نهاية الشوط الأول: الرهان انتهى بنجاح. المباراة انتهت بالنسبة لنا!", type: 'end' }
+            ],
+            "ja": [
+                { time: 3.5, text: "最初の3分間はゴールなし。", type: 'info' },
+                { time: 4.5, text: "アンダー2.5のオッズ<span class='highlight'>1.05</span>を取ります。", type: 'bet' },
+                { time: 10, text: "10分でオッズ<span class='highlight'>1.02</span>で売却。", type: 'sell' },
+                { time: 15, text: "ゴール！オッズが<span class='highlight'>1.25</span>に変わります。", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "<span class='highlight'>1.1</span>で売却。", type: 'sell' },
+                { time: 25, text: "ゴール！オッズが<span class='highlight'>1.8</span>に変わります。", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "<span class='highlight'>1.2</span>で売却。", type: 'sell' },
+                { time: 42.5, text: "ストップロス: 42分30秒で強制売却。", type: 'stop-loss' },
+                { time: 45, text: "前半終了: 賭けは成功裏に終了しました。私たちにとって試合は終わりです！", type: 'end' }
+            ],
+            "hi": [
+                { time: 3.5, text: "पहले 3 मिनट में कोई गोल नहीं।", type: 'info' },
+                { time: 4.5, text: "हम अंडर 2.5 पर <span class='highlight'>1.05</span> का ऑड्स लेते हैं।", type: 'bet' },
+                { time: 10, text: "10वें मिनट में <span class='highlight'>1.02</span> के ऑड्स पर बेचते हैं।", type: 'sell' },
+                { time: 15, text: "गोल! ऑड्स बदलकर <span class='highlight'>1.25</span> हो जाता है।", type: 'goal', score: '1-0' },
+                { time: 15.5, text: "<span class='highlight'>1.1</span> पर बेचते हैं।", type: 'sell' },
+                { time: 25, text: "गोल! ऑड्स बदलकर <span class='highlight'>1.8</span> हो जाता है।", type: 'goal', score: '2-0' },
+                { time: 25.5, text: "<span class='highlight'>1.2</span> पर बेचते हैं।", type: 'sell' },
+                { time: 42.5, text: "स्टॉप लॉस: 42 मिनट 30 सेकंड पर जबरन बिक्री।", type: 'stop-loss' },
+                { time: 45, text: "पहले हाफ का अंत: दांव सफलतापूर्वक समाप्त हो गया। हमारे लिए मैच खत्म हो गया है!", type: 'end' }
+            ]
+        };
 
-        const events_u4_5 = [
-            { time: 0, text_fr: "On attend le début du match pour confirmer le Scalping", type: 'info' },
-            { time: 1.5, text_fr: "On prend une cote de <span class='highlight'>1.05</span> sur l'Under 4.5.<br><span class='translation'>(We take odds of 1.05 on Under 4.5.)</span>", type: 'bet' },
-            { time: 10, text_fr: "Vente à la 10e minute pour une cote de <span class='highlight'>1.02</span>.<br><span class='translation'>(Sale at the 10th minute for odds of 1.02.)</span>", type: 'sell' },
-            { time: 14, text_fr: "But ! La cote passe à <span class='highlight'>1.20</span>.", text_en: "Goal! The odds change to 1.20.", type: 'goal', score: '1-0' },
-            { time: 14.5, text_fr: "Vente à <span class='highlight'>1.1</span>.<br><span class='translation'>(Sale at 1.1.)</span>", type: 'sell' },
-            { time: 26, text_fr: "But ! La cote passe à <span class='highlight'>1.4</span>.", text_en: "Goal! The odds change to 1.4.", type: 'goal', score: '2-0' },
-            { time: 26.5, text_fr: "Vente à <span class='highlight'>1.15</span>.<br><span class='translation'>(Sale at 1.15.)</span>", type: 'sell' },
-            { time: 45, text_fr: "But ! La cote passe à <span class='highlight'>1.5</span>.", text_en: "Goal! The odds change to 1.5.", type: 'goal', score: '3-0' },
-            { time: 45.5, text_fr: "Vente à <span class='highlight'>1.2</span>.<br><span class='translation'>(Sale at 1.2.)</span>", type: 'sell' },
-            { time: 65, text_fr: "But ! La cote passe à <span class='highlight'>1.9</span>.", text_en: "Goal! The odds change to 1.9.", type: 'goal', score: '4-0' },
-            { time: 65.5, text_fr: "Vente à <span class='highlight'>1.2</span>.<br><span class='translation'>(Sale at 1.2.)</span>", type: 'sell' },
-            { time: 87.5, text_fr: "Stop Loss : Vente forcée à la 87e minute 30 secondes.<br><span class='translation'>(Stop Loss: Forced sale at 87 minutes and 30 seconds.)</span>", type: 'stop-loss' },
-            { time: 90, text_fr: "Fin du match : Le pari est terminé avec succès. Le match est fini pour nous !<br><span class='translation'>(End of the match: The bet is successfully finished. The match is over for us!)</span>", type: 'end' }
-        ];
+        const events_u4_5 = {
+            "fr": [
+                { time: 0, text: "On attend le début du match pour confirmer le Scalping", type: 'info' },
+                { time: 1.5, text: "On prend une cote de <span class='highlight'>1.05</span> sur l'Under 4.5.", type: 'bet' },
+                { time: 10, text: "Vente à la 10e minute pour une cote de <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 14, text: "But ! La cote passe à <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "Vente à <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 26, text: "But ! La cote passe à <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "Vente à <span class='highlight'>1.15</span>.", type: 'sell' },
+                { time: 45, text: "But ! La cote passe à <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 65, text: "But ! La cote passe à <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "Vente à <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 87.5, text: "Stop Loss : Vente forcée à la 87e minute 30 secondes.", type: 'stop-loss' },
+                { time: 90, text: "Fin du match : Le pari est terminé avec succès. Le match est fini pour nous !", type: 'end' }
+            ],
+            "en": [
+                { time: 0, text: "We wait for the start of the match to confirm the Scalping", type: 'info' },
+                { time: 1.5, text: "We take odds of <span class='highlight'>1.05</span> on Under 4.5.", type: 'bet' },
+                { time: 10, text: "Sale at the 10th minute for odds of <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 14, text: "Goal! The odds change to <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "Sale at <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 26, text: "Goal! The odds change to <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "Sale at <span class='highlight'>1.15</span>.", type: 'sell' },
+                { time: 45, text: "Goal! The odds change to <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 65, text: "Goal! The odds change to <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "Sale at <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 87.5, text: "Stop Loss: Forced sale at 87 minutes and 30 seconds.", type: 'stop-loss' },
+                { time: 90, text: "End of the match: The bet is successfully finished. The match is over for us!", type: 'end' }
+            ],
+            "es": [
+                { time: 0, text: "Esperamos el inicio del partido para confirmar el Scalping", type: 'info' },
+                { time: 1.5, text: "Tomamos una cuota de <span class='highlight'>1.05</span> en Menos de 4.5.", type: 'bet' },
+                { time: 10, text: "Venta en el minuto 10 para una cuota de <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 14, text: "¡Gol! La cuota cambia a <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "Venta a <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 26, text: "¡Gol! La cuota cambia a <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "Venta a <span class='highlight'>1.15</span>.", type: 'sell' },
+                { time: 45, text: "¡Gol! La cuota cambia a <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "Venta a <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 65, text: "¡Gol! La cuota cambia a <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "Venta a <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 87.5, text: "Stop Loss: Venta forzada a los 87 minutos y 30 segundos.", type: 'stop-loss' },
+                { time: 90, text: "Final del partido: La apuesta ha terminado con éxito. ¡El partido ha terminado para nosotros!", type: 'end' }
+            ],
+            "de": [
+                { time: 0, text: "Wir warten auf den Beginn des Spiels, um das Scalping zu bestätigen", type: 'info' },
+                { time: 1.5, text: "Wir nehmen eine Quote von <span class='highlight'>1.05</span> auf Unter 4.5 Tore.", type: 'bet' },
+                { time: 10, text: "Verkauf in der 10. Minute für eine Quote von <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 14, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "Verkauf bei <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 26, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "Verkauf bei <span class='highlight'>1.15</span>.", type: 'sell' },
+                { time: 45, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "Verkauf bei <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 65, text: "Tor! Die Quote ändert sich auf <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "Verkauf bei <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 87.5, text: "Stop Loss: Zwangsverkauf bei 87 Minuten und 30 Sekunden.", type: 'stop-loss' },
+                { time: 90, text: "Ende des Spiels: Die Wette ist erfolgreich abgeschlossen. Das Spiel ist für uns beendet!", type: 'end' }
+            ],
+            "pt": [
+                { time: 0, text: "Aguardamos o início do jogo para confirmar o Scalping", type: 'info' },
+                { time: 1.5, text: "Pegamos uma cotação de <span class='highlight'>1.05</span> em Menos de 4.5 gols.", type: 'bet' },
+                { time: 10, text: "Venda aos 10 minutos para uma cotação de <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 14, text: "Gol! A cotação muda para <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "Venda a <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 26, text: "Gol! A cotação muda para <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "Venda a <span class='highlight'>1.15</span>.", type: 'sell' },
+                { time: 45, text: "Gol! A cotação muda para <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "Venda a <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 65, text: "Gol! A cotação muda para <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "Venda a <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 87.5, text: "Stop Loss: Venda forçada aos 87 minutos e 30 segundos.", type: 'stop-loss' },
+                { time: 90, text: "Fim do jogo: A aposta foi concluída com sucesso. O jogo acabou para nós!", type: 'end' }
+            ],
+            "zh": [
+                { time: 0, text: "我们等待比赛开始以确认Scalping", type: 'info' },
+                { time: 1.5, text: "我们以 <span class='highlight'>1.05</span> 的赔率投注小 4.5 球。", type: 'bet' },
+                { time: 10, text: "在第 10 分钟以 <span class='highlight'>1.02</span> 的赔率卖出。", type: 'sell' },
+                { time: 14, text: "进球！赔率变为 <span class='highlight'>1.20</span>。", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "以 <span class='highlight'>1.1</span> 卖出。", type: 'sell' },
+                { time: 26, text: "进球！赔率变为 <span class='highlight'>1.4</span>。", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "以 <span class='highlight'>1.15</span> 卖出。", type: 'sell' },
+                { time: 45, text: "进球！赔率变为 <span class='highlight'>1.5</span>。", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "以 <span class='highlight'>1.2</span> 卖出。", type: 'sell' },
+                { time: 65, text: "进球！赔率变为 <span class='highlight'>1.9</span>。", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "以 <span class='highlight'>1.2</span> 卖出。", type: 'sell' },
+                { time: 87.5, text: "止损: 在第 87 分 30 秒时强制卖出。", type: 'stop-loss' },
+                { time: 90, text: "比赛结束: 投注成功完成。比赛对我们来说结束了！", type: 'end' }
+            ],
+            "ar": [
+                { time: 0, text: "ننتظر بداية المباراة لتأكيد السكالبينج", type: 'info' },
+                { time: 1.5, text: "نأخذ رهانًا بمعدل <span class='highlight'>1.05</span> على أقل من 4.5.", type: 'bet' },
+                { time: 10, text: "بيع في الدقيقة 10 بمعدل <span class='highlight'>1.02</span>.", type: 'sell' },
+                { time: 14, text: "هدف! المعدل يتغير إلى <span class='highlight'>1.20</span>.", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "بيع عند <span class='highlight'>1.1</span>.", type: 'sell' },
+                { time: 26, text: "هدف! المعدل يتغير إلى <span class='highlight'>1.4</span>.", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "بيع عند <span class='highlight'>1.15</span>.", type: 'sell' },
+                { time: 45, text: "هدف! المعدل يتغير إلى <span class='highlight'>1.5</span>.", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "بيع عند <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 65, text: "هدف! المعدل يتغير إلى <span class='highlight'>1.9</span>.", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "بيع عند <span class='highlight'>1.2</span>.", type: 'sell' },
+                { time: 87.5, text: "وقف الخسارة: بيع إجباري في الدقيقة 87 و 30 ثانية.", type: 'stop-loss' },
+                { time: 90, text: "نهاية المباراة: الرهان انتهى بنجاح. المباراة انتهت بالنسبة لنا!", type: 'end' }
+            ],
+            "ja": [
+                { time: 0, text: "スキャルピングを確認するため、試合開始を待ちます", type: 'info' },
+                { time: 1.5, text: "アンダー4.5のオッズ<span class='highlight'>1.05</span>を取ります。", type: 'bet' },
+                { time: 10, text: "10分でオッズ<span class='highlight'>1.02</span>で売却。", type: 'sell' },
+                { time: 14, text: "ゴール！オッズが<span class='highlight'>1.20</span>に変わります。", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "<span class='highlight'>1.1</span>で売却。", type: 'sell' },
+                { time: 26, text: "ゴール！オッズが<span class='highlight'>1.4</span>に変わります。", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "<span class='highlight'>1.15</span>で売却。", type: 'sell' },
+                { time: 45, text: "ゴール！オッズが<span class='highlight'>1.5</span>に変わります。", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "<span class='highlight'>1.2</span>で売却。", type: 'sell' },
+                { time: 65, text: "ゴール！オッズが<span class='highlight'>1.9</span>に変わります。", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "<span class='highlight'>1.2</span>で売却。", type: 'sell' },
+                { time: 87.5, text: "ストップロス: 87分30秒で強制売却。", type: 'stop-loss' },
+                { time: 90, text: "試合終了: 賭けは成功裏に終了しました。私たちにとって試合は終わりです！", type: 'end' }
+            ],
+            "hi": [
+                { time: 0, text: "हम स्काल्पिंग की पुष्टि करने के लिए मैच शुरू होने का इंतजार करते हैं", type: 'info' },
+                { time: 1.5, text: "हम अंडर 4.5 पर <span class='highlight'>1.05</span> का ऑड्स लेते हैं।", type: 'bet' },
+                { time: 10, text: "10वें मिनट में <span class='highlight'>1.02</span> के ऑड्स पर बेचते हैं।", type: 'sell' },
+                { time: 14, text: "गोल! ऑड्स बदलकर <span class='highlight'>1.20</span> हो जाता है।", type: 'goal', score: '1-0' },
+                { time: 14.5, text: "<span class='highlight'>1.1</span> पर बेचते हैं।", type: 'sell' },
+                { time: 26, text: "गोल! ऑड्स बदलकर <span class='highlight'>1.4</span> हो जाता है।", type: 'goal', score: '2-0' },
+                { time: 26.5, text: "<span class='highlight'>1.15</span> पर बेचते हैं।", type: 'sell' },
+                { time: 45, text: "गोल! ऑड्स बदलकर <span class='highlight'>1.5</span> हो जाता है।", type: 'goal', score: '3-0' },
+                { time: 45.5, text: "<span class='highlight'>1.2</span> पर बेचते हैं।", type: 'sell' },
+                { time: 65, text: "गोल! ऑड्स बदलकर <span class='highlight'>1.9</span> हो जाता है।", type: 'goal', score: '4-0' },
+                { time: 65.5, text: "<span class='highlight'>1.2</span> पर बेचते हैं।", type: 'sell' },
+                { time: 87.5, text: "स्टॉप लॉस: 87 मिनट 30 सेकंड पर जबरन बिक्री।", type: 'stop-loss' },
+                { time: 90, text: "मैच का अंत: दांव सफलतापूर्वक समाप्त हो गया। हमारे लिए मैच खत्म हो गया है!", type: 'end' }
+            ]
+        };
 
         let animationInterval;
         let perfectGameRunning = false;
@@ -600,8 +1549,8 @@
         let perfectGame_total_time;
 
 
-        function startPerfectGameAnimation(events, timer_display, score_display, log_display, total_time) {
-            perfectGame_events = events;
+        function startPerfectGameAnimation(events_data, timer_display, score_display, log_display, total_time) {
+            perfectGame_events = events_data[currentLanguage];
             perfectGame_timer_display = timer_display;
             perfectGame_score_display = score_display;
             perfectGame_log_display = log_display;
@@ -619,6 +1568,14 @@
             animationInterval = setInterval(animatePerfectGame, 500);
         }
 
+        function restartCurrentPerfectGameAnimation() {
+            if (scenes[currentStep] === 'perfect-game-scene-u2-5') {
+                startPerfectGameAnimation_u2_5();
+            } else if (scenes[currentStep] === 'perfect-game-scene-u4-5') {
+                startPerfectGameAnimation_u4_5();
+            }
+        }
+
         function animatePerfectGame() {
             if (!perfectGameRunning) return;
 
@@ -628,12 +1585,7 @@
                 if (perfectGame_current_time >= currentEvent.time) {
                     let logItem = document.createElement('div');
                     logItem.classList.add('log-item');
-                    
-                    let text = currentEvent.text_fr;
-                    if (currentEvent.text_en) {
-                        text += `<br><span class='translation'>(${currentEvent.text_en})</span>`;
-                    }
-                    logItem.innerHTML = text;
+                    logItem.innerHTML = currentEvent.text;
 
                     if (currentEvent.type === 'goal') {
                         logItem.classList.add('goal');
@@ -666,7 +1618,6 @@
             return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
         }
 
-        // Functions to start specific animations
         function startPerfectGameAnimation_u2_5() {
             startPerfectGameAnimation(
                 events_u2_5,
@@ -686,7 +1637,6 @@
                 90
             );
         }
-        
     </script>
 </body>
 </html>
