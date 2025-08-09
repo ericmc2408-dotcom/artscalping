@@ -176,6 +176,15 @@ body {
 #data-table tbody tr:hover {
     background-color: #3f586a;
 }
+/* --- NOUVELLE RÈGLE CSS POUR LE SOUS-TITRE --- */
+#static-subtitle {
+    font-size: 1.2em;
+    margin-top: 5px;
+    color: #f1c40f;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 2.5s;
+}
 
 /* Règles pour les petits écrans (téléphones) */
 @media (max-width: 768px) {
@@ -240,7 +249,6 @@ body {
         height: auto;
     }
 }
-
 /* --- NOUVEAUX STYLES POUR LE PIED DE PAGE MOBILE --- */
 
 /* Cache les éléments sur les grands écrans pour éviter les doublons */
@@ -248,14 +256,14 @@ body {
     display: none;
 }
 
-/* Styles pour les drapeaux positionnés en haut à gauche */
+/* MODIFICATION ICI : Styles pour les drapeaux en haut à gauche, maintenant verticaux */
 .lang-flags {
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 100;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; /* CHANGEMENT ICI pour les aligner verticalement */
     gap: 10px;
 }
 /* Styles de base pour les boutons de navigation */
@@ -333,3 +341,4 @@ body {
         display: none !important;
     }
 }
+
