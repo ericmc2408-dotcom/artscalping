@@ -17,10 +17,10 @@
             margin: 0;
             overflow-x: hidden;
             padding: 20px;
-            box-sizing: border-box; /* Correction : S'assure que padding et border n'affectent pas la taille */
+            box-sizing: border-box;
         }
         * {
-            box-sizing: border-box; /* Correction : Appliqué à tous les éléments */
+            box-sizing: border-box;
         }
 
         .header {
@@ -56,21 +56,20 @@
             align-items: center;
             flex-grow: 1;
         }
-        
+
         .scene {
             display: none;
             opacity: 0;
             transition: opacity 1s ease-in-out;
             width: 100%;
             text-align: center;
-            /* Suppression des positionnements absolus pour une meilleure stabilité */
         }
 
         .scene.active {
             display: block;
             opacity: 1;
         }
-        
+
         .controls {
             width: 100%;
             display: flex;
@@ -85,7 +84,7 @@
             font-size: 1.5em;
             cursor: pointer;
             border: 2px solid #3498db;
-            background-color: #3498db; 
+            background-color: #3498db;
             color: #ecf0f1;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s, transform 0.3s;
@@ -106,7 +105,7 @@
             font-size: 1.5em;
             cursor: pointer;
             border: 2px solid #2ecc71;
-            background-color: #2ecc71; 
+            background-color: #2ecc71;
             color: #ecf0f1;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s, transform 0.3s;
@@ -130,7 +129,7 @@
             font-size: 1em;
             cursor: pointer;
             border: 2px solid #e74c3c;
-            background-color: #e74c3c; 
+            background-color: #e74c3c;
             color: #ecf0f1;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s, transform 0.3s;
@@ -150,7 +149,7 @@
         }
 
         #language-selector button {
-            background-color: #7f8c8d; 
+            background-color: #7f8c8d;
             color: #ecf0f1;
             border: none;
             cursor: pointer;
@@ -207,23 +206,21 @@
         /* --- Animations for scene 4 --- */
         #scene-4 h2 { color: #f1c40f; font-size: 1.8em; text-align: center; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 0.5s; }
         #scene-4 .subtitle { font-size: 0.9em; color: #bdc3c7; opacity: 0; animation: fadeIn 1.5s forwards; }
-        #scene-4 .detail-section { margin: 20px auto; background-color: #34495e; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; text-align: left; opacity: 0; animation: fadeIn 1s forwards; }
-        #scene-4 .detail-section.under-4-5-details { animation-delay: 1.5s; }
-        #scene-4 .detail-section.under-2-5-details { animation-delay: 2.5s; }
-        #scene-4 .detail-section h3 { color: #f1c40f; margin-top: 0; text-align: center; }
-        #scene-4 .detail-item { margin: 10px 0; opacity: 0; transform: translateX(-20px); animation: slideIn 0.5s forwards; }
-        #scene-4 .detail-section.under-4-5-details .detail-item:nth-child(2) { animation-delay: 2s; }
-        #scene-4 .detail-section.under-4-5-details .detail-item:nth-child(3) { animation-delay: 2.2s; }
-        #scene-4 .detail-section.under-4-5-details .detail-item:nth-child(4) { animation-delay: 2.4s; }
-
-        #scene-4 .detail-section.under-2-5-details .detail-item:nth-child(2) { animation-delay: 3s; }
-        #scene-4 .detail-section.under-2-5-details .detail-item:nth-child(3) { animation-delay: 3.2s; }
-        #scene-4 .detail-section.under-2-5-details .detail-item:nth-child(4) { animation-delay: 3.4s; }
-        #scene-4 .detail-section.under-2-5-details .detail-item:nth-child(5) { animation-delay: 3.6s; }
-        #scene-4 .detail-section.under-2-5-details .detail-item:nth-child(6) { animation-delay: 3.8s; }
-
-        #scene-4 .percentage-highlight { color: #2ecc71; font-weight: bold; }
-        #scene-4 .additional-text {
+        .detail-section { margin: 20px auto; background-color: #34495e; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; text-align: left; opacity: 0; animation: fadeIn 1s forwards; }
+        .detail-section.under-4-5-details { animation-delay: 1.5s; }
+        .detail-section.under-2-5-details { animation-delay: 2.5s; }
+        .detail-section h3 { color: #f1c40f; margin-top: 0; text-align: center; }
+        .detail-item { margin: 10px 0; opacity: 0; transform: translateX(-20px); animation: slideIn 0.5s forwards; }
+        .detail-section.under-4-5-details .detail-item:nth-child(2) { animation-delay: 2s; }
+        .detail-section.under-4-5-details .detail-item:nth-child(3) { animation-delay: 2.2s; }
+        .detail-section.under-4-5-details .detail-item:nth-child(4) { animation-delay: 2.4s; }
+        .detail-section.under-2-5-details .detail-item:nth-child(2) { animation-delay: 3s; }
+        .detail-section.under-2-5-details .detail-item:nth-child(3) { animation-delay: 3.2s; }
+        .detail-section.under-2-5-details .detail-item:nth-child(4) { animation-delay: 3.4s; }
+        .detail-section.under-2-5-details .detail-item:nth-child(5) { animation-delay: 3.6s; }
+        .detail-section.under-2-5-details .detail-item:nth-child(6) { animation-delay: 3.8s; }
+        .percentage-highlight { color: #2ecc71; font-weight: bold; }
+        .additional-text {
             margin-top: 30px;
             font-size: 1.1em;
             color: #ecf0f1;
@@ -231,14 +228,14 @@
             animation: fadeIn 1s forwards;
             animation-delay: 4.5s;
         }
-        #scene-4 .additional-text .percentage-upgrade {
-            color: #ecf0f1; /* Couleur du texte claire */
-            background-color: #2ecc71; /* Correction : Fond coloré pour le faire ressortir */
+        .additional-text .percentage-upgrade {
+            color: #ecf0f1;
+            background-color: #2ecc71;
             font-weight: bold;
-            font-size: 2.2em; /* Correction : Augmentation significative de la taille */
-            padding: 8px 15px; /* Correction : Padding généreux */
-            border-radius: 10px; /* Correction : Bords arrondis */
-            animation: pulse 1s infinite alternate, glow 1s infinite alternate; /* Correction : Animation de pulsation et de lueur plus fortes */
+            font-size: 2.2em;
+            padding: 8px 15px;
+            border-radius: 10px;
+            animation: pulse 1s infinite alternate, glow 1s infinite alternate;
             display: inline-block;
             margin: 0 5px;
         }
@@ -247,12 +244,11 @@
             to { box-shadow: 0 0 20px #2ecc71; }
         }
 
-
         /* --- Animations for Perfect Game Scenes --- */
-        .perfect-game-scene { 
+        .perfect-game-scene {
             display: flex;
             flex-direction: column;
-            align-items: center; 
+            align-items: center;
             width: 100%;
         }
         .perfect-game-scene h2 { color: #f1c40f; font-size: 1.8em; text-align: center; margin-bottom: 20px; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 0.5s; }
@@ -262,13 +258,13 @@
         .timer { font-size: 2em; color: #ecf0f1; font-weight: bold; background-color: #2980b9; padding: 5px 15px; border-radius: 5px; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 2s; }
         .action-log {
             text-align: left;
-            width: 100%; /* Correction : utilise 100% de la largeur du parent */
+            width: 100%;
             max-width: 400px;
             margin-top: 20px;
             display: flex;
             flex-direction: column-reverse;
             min-height: 150px;
-            overflow-y: auto; /* Ajout d'un scroll pour éviter le débordement */
+            overflow-y: auto;
         }
         .log-item {
             background-color: #34495e;
@@ -341,7 +337,7 @@
         .text-ar .footer {
             text-align: center;
         }
-        .text-ar #scene-4 .detail-section {
+        .text-ar .detail-section {
             text-align: right;
         }
         .text-ar .action-log {
@@ -534,12 +530,8 @@
     </div>
 
     <div class="controls">
-        <button id="next-button">&rarr;</button>
+        <button id="next-button"></button>
         <button id="start-method-button"></button>
-    </div>
-
-    <div class="footer">
-        <p>Conçu avec l'aide de Gemini AI.</p>
     </div>
 
     <script>
@@ -735,7 +727,7 @@
                     pilotText: "The ArtScalping method is a Ferrari. **Patience, rigor, and intelligence** are the skills you need to drive it and make substantial profits.",
                     pilotSubtitle: "(The ArtScalping method is a Ferrari. Patience, rigor, and intelligence are the skills you need to drive it and make substantial profits.)",
                     masteryText: "Self-control is the key to turning this tool into a real winning machine.",
-                    masterySubtitle: "(La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.)"
+                    masterySubtitle: "(Self-control is the key to turning this tool into a real winning machine.)"
                 }
             },
             ar: {
@@ -1243,7 +1235,7 @@
                 },
                 scene3: {
                     title: "Selección de las apuestas más seguras",
-                    subtitle: "Selecting the Safest Bets",
+                    subtitle: "Sélection des paris les plus sûrs",
                     mysteriousText1: "Estas tasas de éxito son el resultado de una **ecuación secreta**, pacientemente elaborada y probada a lo largo de años de datos, combinando índices de rendimiento y secuencias.",
                     mysteriousText2: "(These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.)",
                     percentage: "Tasa de éxito: 92 a 94%",
@@ -1496,9 +1488,9 @@
             });
             scenes[index].classList.add('active');
             currentSceneIndex = index;
-            
+
             clearTimeout(simulationTimeout);
-            
+
             nextButton.classList.toggle('visible', index < scenes.length - 1);
             startMethodButton.classList.toggle('visible', index === scenes.length - 1);
 
@@ -1521,8 +1513,7 @@
             const logElement = document.getElementById(`action-log-${betType}`);
             const scoreElement = document.getElementById(`score-${betType}`);
             const timerElement = document.getElementById(`timer-${betType}`);
-            
-            // Reset the scene
+
             logElement.innerHTML = '';
             scoreElement.textContent = '0-0';
             timerElement.textContent = '00:00';
@@ -1537,8 +1528,8 @@
                 }
 
                 const currentTime = (Date.now() - startTime) / 1000;
-                
-                while(eventIndex < gameData.length && gameData[eventIndex].time <= currentTime * 2.5) { // Facteur 2.5 pour accélérer l'animation
+
+                while(eventIndex < gameData.length && gameData[eventIndex].time <= currentTime * 2.5) {
                     const event = gameData[eventIndex];
                     const logItem = document.createElement('div');
                     const minutes = String(Math.floor(event.time)).padStart(2, '0');
@@ -1563,7 +1554,7 @@
                      clearTimeout(simulationTimeout);
                 }
             };
-            
+
             simulationTimeout = setTimeout(runSimulation, 50);
         }
 
