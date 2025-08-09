@@ -296,11 +296,13 @@ body {
 
     /* Le conteneur pour les drapeaux, maintenant dans le pied de page */
     .pied-de-page-mobile .lang-flags {
-        position: static;
-        flex-wrap: nowrap;
-        gap: 5px;
-        top: auto;
-        left: auto;
+        position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column !important; /* Ajout de !important pour forcer l'alignement vertical */
+    gap: 10px;
     }
 
     .pied-de-page-mobile .lang-flags .lang-flag {
@@ -341,4 +343,5 @@ body {
         display: none !important;
     }
 }
+
 
