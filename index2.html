@@ -1,616 +1,616 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Principal - ArtScalping</title>
-    <meta name="google-site-verification" content="4YNw1JU7CR8E0lV55MED2KDWTJYfeUx6nVEcBcBi1vs" />
-    <style>
-        body {
-            margin: 0;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            height: 100vh;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal - ArtScalping</title>
+    <meta name="google-site-verification" content="4YNw1JU7CR8E0lV55MED2KDWTJYfeUx6nVEcBcBi1vs" />
+    <style>
+        body {
+            margin: 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
 
-        .sidebar {
-            width: 200px;
-            background-color: #34495e;
-            padding: 20px;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        .sidebar {
+            width: 200px;
+            background-color: #34495e;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        .sidebar h1 {
-            color: #f1c40f;
-            font-size: 1.8em;
-            margin-bottom: 30px;
-        }
-        
-        .language-switcher {
-            margin-bottom: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 5px;
-        }
-        
-        .language-switcher img {
-            width: 30px;
-            height: 20px;
-            object-fit: cover;
-            cursor: pointer;
-            border-radius: 3px;
-            opacity: 0.6;
-            transition: opacity 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
+        .sidebar h1 {
+            color: #f1c40f;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+        
+        .language-switcher {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .language-switcher img {
+            width: 30px;
+            height: 20px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 3px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
 
-        .language-switcher img.active,
-        .language-switcher img:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        
-        .menu-list {
-            list-style: none;
-            padding: 0;
-            width: 100%;
-        }
+        .language-switcher img.active,
+        .language-switcher img:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
 
-        .menu-item {
-            margin-bottom: 15px;
-        }
+        .menu-item {
+            margin-bottom: 15px;
+        }
 
-        .menu-link {
-            display: flex;
-            align-items: center;
-            background-color: #2980b9;
-            color: #ecf0f1;
-            padding: 10px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        
-        .menu-link:hover {
-            background-color: #3498db;
-            transform: scale(1.02);
-        }
+        .menu-link {
+            display: flex;
+            align-items: center;
+            background-color: #2980b9;
+            color: #ecf0f1;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .menu-link:hover {
+            background-color: #3498db;
+            transform: scale(1.02);
+        }
 
-        .menu-link.subscribe {
-            background-color: #2ecc71;
-        }
-        
-        .menu-link.subscribe:hover {
-            background-color: #27ae60;
-        }
-        
-        .menu-link.contact {
-            background-color: #e74c3c;
-        }
+        .menu-link.subscribe {
+            background-color: #2ecc71;
+        }
+        
+        .menu-link.subscribe:hover {
+            background-color: #27ae60;
+        }
+        
+        .menu-link.contact {
+            background-color: #e74c3c;
+        }
 
-        .menu-link.contact:hover {
-            background-color: #c0392b;
-        }
+        .menu-link.contact:hover {
+            background-color: #c0392b;
+        }
 
-        .menu-link .icon {
-            margin-right: 15px;
-            font-size: 1.5em;
-        }
-        
-        /* Ajustements pour les textes arabes */
-        .text-ar {
-            direction: rtl;
-            text-align: right;
-        }
+        .menu-link .icon {
+            margin-right: 15px;
+            font-size: 1.5em;
+        }
+        
+        /* Ajustements pour les textes arabes */
+        .text-ar {
+            direction: rtl;
+            text-align: right;
+        }
 
-        .content {
-            flex-grow: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
 
-        .main-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        #home-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        #home-content h2 {
-            color: #f1c40f;
-            font-size: 2.5em;
-        }
+        .main-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        #home-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        #home-content h2 {
+            color: #f1c40f;
+            font-size: 2.5em;
+        }
 
-        #home-content p {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 20px auto;
-            line-height: 1.6;
-        }
+        #home-content p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
 
-        .main-image {
-            width: 400px;
-            height: auto;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+        .main-image {
+            width: 400px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-        .footer-gemini {
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #95a5a6;
-        }
-        
-        /* Styles pour les tableaux générés */
-        #table-container {
-            width: 100%;
-            max-width: 1000px;
-            margin-top: 20px;
-            overflow-x: auto;
-        }
-        
-        #data-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #34495e;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        }
-        
-        #data-table th, #data-table td {
-            border: 1px solid #2c3e50;
-            padding: 12px 15px;
-            text-align: left;
-        }
+        .footer-gemini {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #95a5a6;
+        }
+        
+        /* Styles pour les tableaux générés */
+        #table-container {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        
+        #data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        #data-table th, #data-table td {
+            border: 1px solid #2c3e50;
+            padding: 12px 15px;
+            text-align: left;
+        }
 
-        #data-table thead th {
-            background-color: #2980b9;
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        #data-table tbody tr:nth-child(even) {
-            background-color: #2c3e50;
-        }
-        
-        #data-table tbody tr:hover {
-            background-color: #3f586a;
-        }
-        
-        .result-green {
-            background-color: #27ae60;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .result-red {
-            background-color: #c0392b;
-            color: white;
-            font-weight: bold;
-        }
+        #data-table thead th {
+            background-color: #2980b9;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        #data-table tbody tr:nth-child(even) {
+            background-color: #2c3e50;
+        }
+        
+        #data-table tbody tr:hover {
+            background-color: #3f586a;
+        }
+        
+        .result-green {
+            background-color: #27ae60;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .result-red {
+            background-color: #c0392b;
+            color: white;
+            font-weight: bold;
+        }
 
-        /* Règles pour les petits écrans (téléphones) */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
+        /* Règles pour les petits écrans (téléphones) */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
 
-            .sidebar {
-                width: 100%;
-                padding: 10px;
-                flex-direction: row;
-                justify-content: center;
-                flex-wrap: wrap;
-                box-shadow: none;
-            }
-            
-            .sidebar h1 {
-                display: none;
-            }
-            
-            .language-switcher {
-                margin-bottom: 10px;
-            }
+            .sidebar {
+                width: 100%;
+                padding: 10px;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                box-shadow: none;
+            }
+            
+            .sidebar h1 {
+                display: none;
+            }
+            
+            .language-switcher {
+                margin-bottom: 10px;
+            }
 
-            .menu-list {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .menu-item {
-                margin: 5px;
-            }
+            .menu-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .menu-item {
+                margin: 5px;
+            }
 
-            .menu-link {
-                font-size: 0.9em;
-                padding: 8px 12px;
-                text-align: center;
-            }
-            
-            .menu-link .icon {
-                margin-right: 5px;
-            }
+            .menu-link {
+                font-size: 0.9em;
+                padding: 8px 12px;
+                text-align: center;
+            }
+            
+            .menu-link .icon {
+                margin-right: 5px;
+            }
 
-            .content {
-                padding: 10px;
-                width: 100%;
-                justify-content: flex-start;
-            }
+            .content {
+                padding: 10px;
+                width: 100%;
+                justify-content: flex-start;
+            }
 
-            #home-content h2 {
-                font-size: 1.8em;
-            }
+            #home-content h2 {
+                font-size: 1.8em;
+            }
 
-            #home-content p {
-                font-size: 1em;
-                margin: 10px auto;
-            }
-            
-            .main-image {
-                width: 100%;
-                height: auto;
-            }
-        }
-        
-        /* Nouveaux styles pour la section d'essai gratuit */
-        .free-trial-cta {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #34495e;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 600px;
-            width: 100%;
-        }
+            #home-content p {
+                font-size: 1em;
+                margin: 10px auto;
+            }
+            
+            .main-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        /* Nouveaux styles pour la section d'essai gratuit */
+        .free-trial-cta {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
 
-        .free-trial-cta p {
-            margin: 0;
-            font-size: 1.1em;
-            font-weight: bold;
-        }
+        .free-trial-cta p {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
 
-        .free-trial-cta a {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #f1c40f;
-            color: #2c3e50;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        
-        .free-trial-cta a:hover {
-            background-color: #f39c12;
-        }
-        
-        .free-trial-cta a .icon {
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-    </style>
+        .free-trial-cta a {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #f1c40f;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .free-trial-cta a:hover {
+            background-color: #f39c12;
+        }
+        
+        .free-trial-cta a .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <h1>ArtScalping</h1>
-        <div class="language-switcher">
-            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr" class="active">
-            <img src="https://flagcdn.com/gb.svg" alt="English" onclick="setLanguage('en')" id="lang-en">
-            <img src="https://flagcdn.com/es.svg" alt="Español" onclick="setLanguage('es')" id="lang-es">
-            <img src="https://flagcdn.com/cn.svg" alt="中文" onclick="setLanguage('zh')" id="lang-zh">
-            <img src="https://flagcdn.com/de.svg" alt="Deutsch" onclick="setLanguage('de')" id="lang-de">
-            <img src="https://flagcdn.com/pt.svg" alt="Português" onclick="setLanguage('pt')" id="lang-pt">
-            <img src="https://flagcdn.com/sa.svg" alt="العربية" onclick="setLanguage('ar')" id="lang-ar">
-            <img src="https://flagcdn.com/in.svg" alt="हिन्दी" onclick="setLanguage('hi')" id="lang-hi">
-            <img src="https://flagcdn.com/jp.svg" alt="日本語" onclick="setLanguage('ja')" id="lang-ja">
-        </div>
-        <ul class="menu-list">
-            <li class="menu-item">
-                <a href="#" class="menu-link" target-data="historique_under25.csv" id="link-past-under-2-5">
-                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 2.5</span><span class="text-en" style="display:none;">Historical Under 2.5</span><span class="text-es" style="display:none;">Historial Under 2.5</span><span class="text-zh" style="display:none;">历史 Under 2.5</span><span class="text-de" style="display:none;">Historie Under 2.5</span><span class="text-pt" style="display:none;">Histórico Under 2.5</span><span class="text-ar" style="display:none;">تاريخ Under 2.5</span><span class="text-hi" style="display:none;">अंडर 2.5 इतिहास</span><span class="text-ja" style="display:none;">Under 2.5 履歴</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="#" class="menu-link" target-data="historique_under45.csv" id="link-past-under-4-5">
-                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 4.5</span><span class="text-en" style="display:none;">Historical Under 4.5</span><span class="text-es" style="display:none;">Historial Under 4.5</span><span class="text-zh" style="display:none;">历史 Under 4.5</span><span class="text-de" style="display:none;">Historie Under 4.5</span><span class="text-pt" style="display:none;">Histórico Under 4.5</span><span class="text-ar" style="display:none;">تاريخ Under 4.5</span><span class="text-hi" style="display:none;">अंडर 4.5 इतिहास</span><span class="text-ja" style="display:none;">Under 4.5 履歴</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="paiement_neteller.html" class="menu-link subscribe" target-iframe="content-iframe">
-                    <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span><span class="text-es" style="display:none;">Suscripción</span><span class="text-zh" style="display:none;">订阅</span><span class="text-de" style="display:none;">Abonnement</span><span class="text-pt" style="display:none;">Assinatura</span><span class="text-ar" style="display:none;">اشتراك</span><span class="text-hi" style="display:none;">सदस्यता</span><span class="text-ja" style="display:none;">購読</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="mailto:ericmc2@hotmail.fr?subject=Question%20concernant%20ArtScalping" class="menu-link contact">
-                    <span class="icon">&#x2709;</span><span class="text-fr">Me Contacter</span><span class="text-en" style="display:none;">Contact Us</span><span class="text-es" style="display:none;">Contáctanos</span><span class="text-zh" style="display:none;">联系我们</span><span class="text-de" style="display:none;">Kontaktieren Sie uns</span><span class="text-pt" style="display:none;">Contate-nos</span><span class="text-ar" style="display:none;">اتصل بنا</span><span class="text-hi" style="display:none;">हमसे संपर्क करें</span><span class="text-ja" style="display:none;">お問い合わせ</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+    <div class="sidebar">
+        <h1>ArtScalping</h1>
+        <div class="language-switcher">
+            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr" class="active">
+            <img src="https://flagcdn.com/gb.svg" alt="English" onclick="setLanguage('en')" id="lang-en">
+            <img src="https://flagcdn.com/es.svg" alt="Español" onclick="setLanguage('es')" id="lang-es">
+            <img src="https://flagcdn.com/cn.svg" alt="中文" onclick="setLanguage('zh')" id="lang-zh">
+            <img src="https://flagcdn.com/de.svg" alt="Deutsch" onclick="setLanguage('de')" id="lang-de">
+            <img src="https://flagcdn.com/pt.svg" alt="Português" onclick="setLanguage('pt')" id="lang-pt">
+            <img src="https://flagcdn.com/sa.svg" alt="العربية" onclick="setLanguage('ar')" id="lang-ar">
+            <img src="https://flagcdn.com/in.svg" alt="हिन्दी" onclick="setLanguage('hi')" id="lang-hi">
+            <img src="https://flagcdn.com/jp.svg" alt="日本語" onclick="setLanguage('ja')" id="lang-ja">
+        </div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="#" class="menu-link" target-data="historique_under25.csv" id="link-past-under-2-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 2.5</span><span class="text-en" style="display:none;">Historical Under 2.5</span><span class="text-es" style="display:none;">Historial Under 2.5</span><span class="text-zh" style="display:none;">历史 Under 2.5</span><span class="text-de" style="display:none;">Historie Under 2.5</span><span class="text-pt" style="display:none;">Histórico Under 2.5</span><span class="text-ar" style="display:none;">تاريخ Under 2.5</span><span class="text-hi" style="display:none;">अंडर 2.5 इतिहास</span><span class="text-ja" style="display:none;">Under 2.5 履歴</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link" target-data="historique_under45.csv" id="link-past-under-4-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 4.5</span><span class="text-en" style="display:none;">Historical Under 4.5</span><span class="text-es" style="display:none;">Historial Under 4.5</span><span class="text-zh" style="display:none;">历史 Under 4.5</span><span class="text-de" style="display:none;">Historie Under 4.5</span><span class="text-pt" style="display:none;">Histórico Under 4.5</span><span class="text-ar" style="display:none;">تاريخ Under 4.5</span><span class="text-hi" style="display:none;">अंडर 4.5 इतिहास</span><span class="text-ja" style="display:none;">Under 4.5 履歴</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="paiement_neteller.html" class="menu-link subscribe" target-iframe="content-iframe">
+                    <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span><span class="text-es" style="display:none;">Suscripción</span><span class="text-zh" style="display:none;">订阅</span><span class="text-de" style="display:none;">Abonnement</span><span class="text-pt" style="display:none;">Assinatura</span><span class="text-ar" style="display:none;">اشتراك</span><span class="text-hi" style="display:none;">सदस्यता</span><span class="text-ja" style="display:none;">購読</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="mailto:ericmc2@hotmail.fr?subject=Question%20concernant%20ArtScalping" class="menu-link contact">
+                    <span class="icon">&#x2709;</span><span class="text-fr">Me Contacter</span><span class="text-en" style="display:none;">Contact Us</span><span class="text-es" style="display:none;">Contáctanos</span><span class="text-zh" style="display:none;">联系我们</span><span class="text-de" style="display:none;">Kontaktieren Sie uns</span><span class="text-pt" style="display:none;">Contate-nos</span><span class="text-ar" style="display:none;">اتصل بنا</span><span class="text-hi" style="display:none;">हमसे संपर्क करें</span><span class="text-ja" style="display:none;">お問い合わせ</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 
-    <div class="content" id="main-content">
-        <div id="home-content">
-            <h2 id="content-title"></h2>
-            <img src="soccer.jpg" alt="Joueur de football en action" class="main-image">
-            <p id="content-p1"></p>
-            <p id="content-p2"></p>
-            
-            <div class="free-trial-cta">
-                <p id="cta-text"></p>
-                <a href="#" id="free-trial-mail">
-                    <span class="icon">&#x1F4E7;</span>
-                    <span id="cta-link-text"></span>
-                </a>
-            </div>
-            
-            <footer class="footer-gemini">
-                <span id="footer-text"></span>
-            </footer>
-        </div>
-        <div id="table-container" style="display: none;"></div>
-    </div>
+    <div class="content" id="main-content">
+        <div id="home-content">
+            <h2 id="content-title"></h2>
+            <img src="soccer.jpg" alt="Joueur de football en action" class="main-image">
+            <p id="content-p1"></p>
+            <p id="content-p2"></p>
+            
+            <div class="free-trial-cta">
+                <p id="cta-text"></p>
+                <a href="#" id="free-trial-mail">
+                    <span class="icon">&#x1F4E7;</span>
+                    <span id="cta-link-text"></span>
+                </a>
+            </div>
+            
+            <footer class="footer-gemini">
+                <span id="footer-text"></span>
+            </footer>
+        </div>
+        <div id="table-container" style="display: none;"></div>
+    </div>
 
-    <script>
-        const links = document.querySelectorAll('.menu-link');
-        const mainContent = document.getElementById('main-content');
-        let currentLanguage = 'fr';
-        
-        // Dictionnaire de traductions pour tous les textes
-        const translations = {
-            fr: {
-                title: "Menu Principal - ArtScalping",
-                h2: "Maîtrisez vos paris avec notre méthode",
-                p1: "En adoptant notre stratégie de paris multiples, notamment le **LAY Under 2.5 1HT** et le **LAY Under 4.5** sur un même match, vous **maîtrisez le risque** de manière significative. Notre approche vous donne les clés pour remporter plusieurs paris sur une même rencontre. Si un pari simple a un faible taux de perte (3-4%), notre méthode de scalping permet de **réduire ce taux drastiquement** en multipliant vos victoires sur chaque match.",
-                p2: "Notre système est conçu pour **protéger votre capital** et limiter les découverts au maximum. Avec un écart probable de seulement 3 matchs et un maximum théorique de 4, vous vous assurez de **longues séries de victoires** et une rentabilité constante, indispensable pour devenir un parieur averti.",
-                cta: "Bénéficiez d'un essai gratuit d'une semaine pour accéder à la feuille des matchs du jour !",
-                ctaLink: "Demander l'accès",
-                footer: "Conçu avec l'aide de Gemini",
-                contactSubject: "Question concernant ArtScalping",
-                trialSubject: "Demande d'essai gratuit ArtScalping",
-            },
-            en: {
-                title: "Main Menu - ArtScalping",
-                h2: "Master your bets with our method",
-                p1: "By relying on our strategy of multiplying bets within the same 'Under' market, you **significantly control your risk**. Our unique approach gives you the keys to winning multiple bets on a single match. While a simple bet has a low loss rate (3-4%), our scalping method **drastically reduces this rate** by multiplying your victories on each match.",
-                p2: "Our system is designed to **protect your capital** and limit drawdowns to a minimum. With a probable gap of only 3 matches and a theoretical maximum of 4, you ensure **long winning streaks** and consistent profitability, essential for becoming a savvy bettor.",
-                cta: "Get a one-week free trial to access the historical data sheet!",
-                ctaLink: "Request Access",
-                footer: "Designed with the help of Gemini",
-                contactSubject: "Question about ArtScalping",
-                trialSubject: "Free Trial Request for ArtScalping",
-            },
-            es: {
-                title: "Menú Principal - ArtScalping",
-                h2: "Domina tus apuestas con nuestro método",
-                p1: "Al confiar en nuestra estrategia de múltiples apuestas en el mismo mercado 'Under', **controlas el riesgo** de manera significativa. Nuestro enfoque te da las claves para ganar varias apuestas en un mismo partido. Si una apuesta simple tiene una baja tasa de pérdida (3-4%), nuestro método de scalping permite **reducir esta tasa drásticamente** multiplicando tus victorias en cada partido.",
-                p2: "Nuestro sistema está diseñado para **proteger tu capital** y limitar los descubiertos al máximo. Con una diferencia probable de solo 3 partidos y un máximo teórico de 4, te aseguras **largas rachas de victorias** y una rentabilidad constante, indispensable para convertirte en un apostador experto.",
-                cta: "¡Obtén una prueba gratuita de una semana para acceder a la hoja de historial!",
-                ctaLink: "Solicitar Acceso",
-                footer: "Diseñado con la ayuda de Gemini",
-                contactSubject: "Pregunta sobre ArtScalping",
-                trialSubject: "Solicitud de prueba gratuita de ArtScalping",
-            },
-            zh: {
-                title: "主菜单 - ArtScalping",
-                h2: "用我们的方法掌控你的投注",
-                p1: "通过在我们相同的“小球”市场中采用多重投注策略，你可以显着地**控制风险**。我们的方法为你提供了在一场比赛中赢得多次投注的关键。如果单一投注的失败率较低（3-4%），我们的波段交易方法可以通过在每场比赛中增加你的胜利来**大幅降低这个比率**。",
-                p2: "我们的系统旨在**保护你的资金**并最大限度地减少透支。理论上，最大的连败场次仅为4场，你可以确保**长期的连胜**和稳定的盈利能力，这是成为一名精明投注者不可或缺的。",
-                cta: "获取一周免费试用，访问历史数据表！",
-                ctaLink: "申请访问",
-                footer: "由 Gemini 协助设计",
-                contactSubject: "关于 ArtScalping 的问题",
-                trialSubject: "ArtScalping 免费试用申请",
-            },
-            de: {
-                title: "Hauptmenü - ArtScalping",
-                h2: "Meistern Sie Ihre Wetten mit unserer Methode",
-                p1: "Durch unsere Strategie der Mehrfachwetten im selben 'Under'-Markt **kontrollieren Sie das Risiko** erheblich. Unser Ansatz gibt Ihnen die Werkzeuge an die Hand, um mehrere Wetten in einem einzigen Spiel zu gewinnen. Während eine einfache Wette eine niedrige Verlustrate (3-4%) hat, ermöglicht unsere Scalping-Methode, **diese Rate drastisch zu reduzieren**, indem Sie Ihre Siege in jedem Spiel vervielfachen.",
-                p2: "Unser System wurde entwickelt, um **Ihr Kapital zu schützen** und Überziehungen auf ein Minimum zu beschränken. Mit einer wahrscheinlichen Lücke von nur 3 Spielen und einem theoretischen Maximum von 4 sorgen Sie für **lange Gewinnserien** und eine konstante Rentabilität, die unerlässlich ist, um ein versierter Wettender zu werden.",
-                cta: "Erhalten Sie eine kostenlose einwöchige Testversion, um auf die Verlaufsübersicht zuzugreifen!",
-                ctaLink: "Zugang anfordern",
-                footer: "Mit Hilfe von Gemini entworfen",
-                contactSubject: "Frage zu ArtScalping",
-                trialSubject: "Kostenlose Testversion von ArtScalping anfordern",
-            },
-            pt: {
-                title: "Menu Principal - ArtScalping",
-                h2: "Domine suas apostas com nosso método",
-                p1: "Ao confiar em nossa estratégia de múltiplas apostas no mesmo mercado 'Under', você **controla o risco** de forma significativa. Nossa abordagem oferece as chaves para vencer várias apostas em uma única partida. Enquanto uma aposta simples tem uma baixa taxa de perda (3-4%), nosso método de scalping permite **reduzir drasticamente essa taxa** multiplicando suas vitórias em cada jogo.",
-                p2: "Nosso sistema foi projetado para **proteger seu capital** e limitar ao máximo os saldos negativos. Com uma provável diferença de apenas 3 jogos e um máximo teórico de 4, você garante **longas sequências de vitórias** e uma rentabilidade constante, indispensável para se tornar um apostador experiente.",
-                cta: "Obtenha um teste gratuito de uma semana para acessar a folha de histórico!",
-                ctaLink: "Solicitar Acesso",
-                footer: "Projetado com a ajuda de Gemini",
-                contactSubject: "Pergunta sobre ArtScalping",
-                trialSubject: "Solicitação de teste gratuito de ArtScalping",
-            },
-            ar: {
-                title: "القائمة الرئيسية - ArtScalping",
-                h2: "تحكم في رهاناتك باستخدام طريقتنا",
-                p1: "بالاعتماد على استراتيجية الرهانات المتعددة في نفس رهان 'Under'، فإنك **تتحكم في المخاطر** بشكل كبير. يمنحك نهجنا المفاتيح للفوز بعدة رهانات في مباراة واحدة. إذا كان للرهان الفردي معدل خسارة منخفض (3-4٪)، فإن طريقة السكالبينج لدينا تسمح **بتقليل هذا المعدل بشكل كبير** عن طريق مضاعفة انتصاراتك في كل مباراة.",
-                p2: "تم تصميم نظامنا **لحماية رأس مالك** والحد من السحب على المكشوف إلى أقصى حد. مع فجوة محتملة من 3 مباريات فقط وحد أقصى نظري يبلغ 4، فإنك تضمن **سلاسل انتصارات طويلة** وربحية ثابتة، وهو أمر ضروري لتصبح مراهنًا ذكيًا.",
-                cta: "احصل على تجربة مجانية لمدة أسبوع للوصول إلى سجل التاريخ!",
-                ctaLink: "طلب الوصول",
-                footer: "تم التصميم بمساعدة Gemini",
-                contactSubject: "سؤال بخصوص ArtScalping",
-                trialSubject: "طلب تجربة مجانية لـ ArtScalping",
-            },
-            hi: {
-                title: "मुख्य मेनू - आर्टस्कैल्पिंग",
-                h2: "हमारी विधि से अपनी दांव को नियंत्रित करें",
-                p1: "एक ही 'अंडर' दांव में कई दांवों की हमारी रणनीति पर भरोसा करके, आप **जोखिम को महत्वपूर्ण रूप से नियंत्रित** करते हैं। हमारा दृष्टिकोण आपको एक ही मैच पर कई दांव जीतने की कुंजी देता है। यदि एक साधारण दांव में हार की दर कम (3-4%) है, तो हमारी स्कैल्पिंग विधि प्रत्येक मैच पर आपकी जीत को गुणा करके **इस दर को काफी कम** कर देती है।",
-                p2: "हमारी प्रणाली **आपकी पूंजी की रक्षा** करने और ओवरड्राफ्ट को अधिकतम तक सीमित करने के लिए डिज़ाइन की गई है। केवल 3 मैचों के संभावित अंतर और 4 के सैद्धांतिक अधिकतम के साथ, आप **लंबी जीत की लकीरें** और निरंतर लाभप्रदता सुनिश्चित करते हैं, जो एक जानकार सट्टेबाज बनने के लिए अपरिहार्य है।",
-                cta: "इतिहास शीट तक पहुंचने के लिए एक सप्ताह का निःशुल्क परीक्षण प्राप्त करें!",
-                ctaLink: "पहुंच का अनुरोध करें",
-                footer: "जेमिनी की मदद से डिज़ाइन किया गया",
-                contactSubject: "आर्टस्कैल्पिंग के बारे में प्रश्न",
-                trialSubject: "आर्टस्कैल्पिंग के लिए निःशुल्क परीक्षण अनुरोध",
-            },
-            ja: {
-                title: "メインメニュー - ArtScalping",
-                h2: "私たちの方法でベットをマスターする",
-                p1: "同じ「アンダー」市場での複数ベット戦略に頼ることで、**リスクを大幅にコントロール**できます。私たちの手法は、1つの試合で複数のベットに勝つための鍵を与えます。単純なベットの敗北率が低い（3-4%）のに対し、私たちのスキャルピング方法は、各試合での勝利を増やすことで**この率を劇的に減らします**。",
-                p2: "私たちのシステムは、**あなたの資本を保護**し、当座貸越を最大限に制限するように設計されています。可能性のあるギャップはわずか3試合、理論上の最大は4試合で、**長い連勝**と一貫した収益性を確保し、賢いベッターになるために不可欠です。",
-                cta: "履歴シートにアクセスするための1週間の無料トライアルを入手してください！",
-                ctaLink: "アクセスをリクエストする",
-                footer: "Geminiの助けを借りて設計",
-                contactSubject: "ArtScalpingに関する質問",
-                trialSubject: "ArtScalping無料トライアルリクエスト",
-            },
-        };
+    <script>
+        const links = document.querySelectorAll('.menu-link');
+        const mainContent = document.getElementById('main-content');
+        let currentLanguage = 'fr';
+        
+        // Dictionnaire de traductions pour tous les textes
+        const translations = {
+            fr: {
+                title: "Menu Principal - ArtScalping",
+                h2: "Maîtrisez vos paris avec notre méthode",
+                p1: "En s'appuyant sur notre stratégie de paris multiples dans un même pari 'Under', vous **maîtrisez le risque** de manière significative. Notre approche vous donne les clés pour remporter plusieurs paris sur une même rencontre. Si un pari simple a un faible taux de perte (3-4%), notre méthode de scalping permet de **réduire ce taux drastiquement** en multipliant vos victoires sur chaque match.",
+                p2: "Notre système est conçu pour **protéger votre capital** et limiter les découverts au maximum. Avec un écart probable de seulement 3 matchs et un maximum théorique de 4, vous vous assurez de **longues séries de victoires** et une rentabilité constante, indispensable pour devenir un parieur averti.",
+                cta: "Bénéficiez d'un essai gratuit d'une semaine pour accéder à la feuille d'historique !",
+                ctaLink: "Demander l'accès",
+                footer: "Conçu avec l'aide de Gemini",
+                contactSubject: "Question concernant ArtScalping",
+                trialSubject: "Demande d'essai gratuit ArtScalping",
+            },
+            en: {
+                title: "Main Menu - ArtScalping",
+                h2: "Master your bets with our method",
+                p1: "By relying on our strategy of multiplying bets within the same 'Under' market, you **significantly control your risk**. Our unique approach gives you the keys to winning multiple bets on a single match. While a simple bet has a low loss rate (3-4%), our scalping method **drastically reduces this rate** by multiplying your victories on each match.",
+                p2: "Our system is designed to **protect your capital** and limit drawdowns to a minimum. With a probable gap of only 3 matches and a theoretical maximum of 4, you ensure **long winning streaks** and consistent profitability, essential for becoming a savvy bettor.",
+                cta: "Get a one-week free trial to access the historical data sheet!",
+                ctaLink: "Request Access",
+                footer: "Designed with the help of Gemini",
+                contactSubject: "Question about ArtScalping",
+                trialSubject: "Free Trial Request for ArtScalping",
+            },
+            es: {
+                title: "Menú Principal - ArtScalping",
+                h2: "Domina tus apuestas con nuestro método",
+                p1: "Al confiar en nuestra estrategia de múltiples apuestas en el mismo mercado 'Under', **controlas el riesgo** de manera significativa. Nuestro enfoque te da las claves para ganar varias apuestas en un mismo partido. Si una apuesta simple tiene una baja tasa de pérdida (3-4%), nuestro método de scalping permite **reducir esta tasa drásticamente** multiplicando tus victorias en cada partido.",
+                p2: "Nuestro sistema está diseñado para **proteger tu capital** y limitar los descubiertos al máximo. Con una diferencia probable de solo 3 partidos y un máximo teórico de 4, te aseguras **largas rachas de victorias** y una rentabilidad constante, indispensable para convertirte en un apostador experto.",
+                cta: "¡Obtén una prueba gratuita de una semana para acceder a la hoja de historial!",
+                ctaLink: "Solicitar Acceso",
+                footer: "Diseñado con la ayuda de Gemini",
+                contactSubject: "Pregunta sobre ArtScalping",
+                trialSubject: "Solicitud de prueba gratuita de ArtScalping",
+            },
+            zh: {
+                title: "主菜单 - ArtScalping",
+                h2: "用我们的方法掌控你的投注",
+                p1: "通过在我们相同的“小球”市场中采用多重投注策略，你可以显着地**控制风险**。我们的方法为你提供了在一场比赛中赢得多次投注的关键。如果单一投注的失败率较低（3-4%），我们的波段交易方法可以通过在每场比赛中增加你的胜利来**大幅降低这个比率**。",
+                p2: "我们的系统旨在**保护你的资金**并最大限度地减少透支。理论上，最大的连败场次仅为4场，你可以确保**长期的连胜**和稳定的盈利能力，这是成为一名精明投注者不可或缺的。",
+                cta: "获取一周免费试用，访问历史数据表！",
+                ctaLink: "申请访问",
+                footer: "由 Gemini 协助设计",
+                contactSubject: "关于 ArtScalping 的问题",
+                trialSubject: "ArtScalping 免费试用申请",
+            },
+            de: {
+                title: "Hauptmenü - ArtScalping",
+                h2: "Meistern Sie Ihre Wetten mit unserer Methode",
+                p1: "Durch unsere Strategie der Mehrfachwetten im selben 'Under'-Markt **kontrollieren Sie das Risiko** erheblich. Unser Ansatz gibt Ihnen die Werkzeuge an die Hand, um mehrere Wetten in einem einzigen Spiel zu gewinnen. Während eine einfache Wette eine niedrige Verlustrate (3-4%) hat, ermöglicht unsere Scalping-Methode, **diese Rate drastisch zu reduzieren**, indem Sie Ihre Siege in jedem Spiel vervielfachen.",
+                p2: "Unser System wurde entwickelt, um **Ihr Kapital zu schützen** und Überziehungen auf ein Minimum zu beschränken. Mit einer wahrscheinlichen Lücke von nur 3 Spielen und einem theoretischen Maximum von 4 sorgen Sie für **lange Gewinnserien** und eine konstante Rentabilität, die unerlässlich ist, um ein versierter Wettender zu werden.",
+                cta: "Erhalten Sie eine kostenlose einwöchige Testversion, um auf die Verlaufsübersicht zuzugreifen!",
+                ctaLink: "Zugang anfordern",
+                footer: "Mit Hilfe von Gemini entworfen",
+                contactSubject: "Frage zu ArtScalping",
+                trialSubject: "Kostenlose Testversion von ArtScalping anfordern",
+            },
+            pt: {
+                title: "Menu Principal - ArtScalping",
+                h2: "Domine suas apostas com nosso método",
+                p1: "Ao confiar em nossa estratégia de múltiplas apostas no mesmo mercado 'Under', você **controla o risco** de forma significativa. Nossa abordagem oferece as chaves para vencer várias apostas em uma única partida. Enquanto uma aposta simples tem uma baixa taxa de perda (3-4%), nosso método de scalping permite **reduzir drasticamente essa taxa** multiplicando suas vitórias em cada jogo.",
+                p2: "Nosso sistema foi projetado para **proteger seu capital** e limitar ao máximo os saldos negativos. Com uma provável diferença de apenas 3 jogos e um máximo teórico de 4, você garante **longas sequências de vitórias** e uma rentabilidade constante, indispensável para se tornar um apostador experiente.",
+                cta: "Obtenha um teste gratuito de uma semana para acessar a folha de histórico!",
+                ctaLink: "Solicitar Acesso",
+                footer: "Projetado com a ajuda de Gemini",
+                contactSubject: "Pergunta sobre ArtScalping",
+                trialSubject: "Solicitação de teste gratuito de ArtScalping",
+            },
+            ar: {
+                title: "القائمة الرئيسية - ArtScalping",
+                h2: "تحكم في رهاناتك باستخدام طريقتنا",
+                p1: "بالاعتماد على استراتيجية الرهانات المتعددة في نفس رهان 'Under'، فإنك **تتحكم في المخاطر** بشكل كبير. يمنحك نهجنا المفاتيح للفوز بعدة رهانات في مباراة واحدة. إذا كان للرهان الفردي معدل خسارة منخفض (3-4٪)، فإن طريقة السكالبينج لدينا تسمح **بتقليل هذا المعدل بشكل كبير** عن طريق مضاعفة انتصاراتك في كل مباراة.",
+                p2: "تم تصميم نظامنا **لحماية رأس مالك** والحد من السحب على المكشوف إلى أقصى حد. مع فجوة محتملة من 3 مباريات فقط وحد أقصى نظري يبلغ 4، فإنك تضمن **سلاسل انتصارات طويلة** وربحية ثابتة، وهو أمر ضروري لتصبح مراهنًا ذكيًا.",
+                cta: "احصل على تجربة مجانية لمدة أسبوع للوصول إلى سجل التاريخ!",
+                ctaLink: "طلب الوصول",
+                footer: "تم التصميم بمساعدة Gemini",
+                contactSubject: "سؤال بخصوص ArtScalping",
+                trialSubject: "طلب تجربة مجانية لـ ArtScalping",
+            },
+            hi: {
+                title: "मुख्य मेनू - आर्टस्कैल्पिंग",
+                h2: "हमारी विधि से अपनी दांव को नियंत्रित करें",
+                p1: "एक ही 'अंडर' दांव में कई दांवों की हमारी रणनीति पर भरोसा करके, आप **जोखिम को महत्वपूर्ण रूप से नियंत्रित** करते हैं। हमारा दृष्टिकोण आपको एक ही मैच पर कई दांव जीतने की कुंजी देता है। यदि एक साधारण दांव में हार की दर कम (3-4%) है, तो हमारी स्कैल्पिंग विधि प्रत्येक मैच पर आपकी जीत को गुणा करके **इस दर को काफी कम** कर देती है।",
+                p2: "हमारी प्रणाली **आपकी पूंजी की रक्षा** करने और ओवरड्राफ्ट को अधिकतम तक सीमित करने के लिए डिज़ाइन की गई है। केवल 3 मैचों के संभावित अंतर और 4 के सैद्धांतिक अधिकतम के साथ, आप **लंबी जीत की लकीरें** और निरंतर लाभप्रदता सुनिश्चित करते हैं, जो एक जानकार सट्टेबाज बनने के लिए अपरिहार्य है।",
+                cta: "इतिहास शीट तक पहुंचने के लिए एक सप्ताह का निःशुल्क परीक्षण प्राप्त करें!",
+                ctaLink: "पहुंच का अनुरोध करें",
+                footer: "जेमिनी की मदद से डिज़ाइन किया गया",
+                contactSubject: "आर्टस्कैल्पिंग के बारे में प्रश्न",
+                trialSubject: "आर्टस्कैल्पिंग के लिए निःशुल्क परीक्षण अनुरोध",
+            },
+            ja: {
+                title: "メインメニュー - ArtScalping",
+                h2: "私たちの方法でベットをマスターする",
+                p1: "同じ「アンダー」市場での複数ベット戦略に頼ることで、**リスクを大幅にコントロール**できます。私たちの手法は、1つの試合で複数のベットに勝つための鍵を与えます。単純なベットの敗北率が低い（3-4%）のに対し、私たちのスキャルピング方法は、各試合での勝利を増やすことで**この率を劇的に減らします**。",
+                p2: "私たちのシステムは、**あなたの資本を保護**し、当座貸越を最大限に制限するように設計されています。可能性のあるギャップはわずか3試合、理論上の最大は4試合で、**長い連勝**と一貫した収益性を確保し、賢いベッターになるために不可欠です。",
+                cta: "履歴シートにアクセスするための1週間の無料トライアルを入手してください！",
+                ctaLink: "アクセスをリクエストする",
+                footer: "Geminiの助けを借りて設計",
+                contactSubject: "ArtScalpingに関する質問",
+                trialSubject: "ArtScalping無料トライアルリクエスト",
+            },
+        };
 
-        function setLanguage(lang) {
-            currentLanguage = lang;
-            
-            // Masquer tous les textes et retirer la classe 'active' de tous les drapeaux
-            document.querySelectorAll('[class^="text-"]').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('.language-switcher img').forEach(el => el.classList.remove('active'));
-            
-            // Afficher les textes de la langue sélectionnée et ajouter la classe 'active' au drapeau
-            const langElements = document.querySelectorAll(`.text-${lang}`);
-            langElements.forEach(el => el.style.display = 'inline');
-            document.getElementById(`lang-${lang}`).classList.add('active');
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Masquer tous les textes et retirer la classe 'active' de tous les drapeaux
+            document.querySelectorAll('[class^="text-"]').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.language-switcher img').forEach(el => el.classList.remove('active'));
+            
+            // Afficher les textes de la langue sélectionnée et ajouter la classe 'active' au drapeau
+            const langElements = document.querySelectorAll(`.text-${lang}`);
+            langElements.forEach(el => el.style.display = 'inline');
+            document.getElementById(`lang-${lang}`).classList.add('active');
 
-            // Mettre à jour le contenu principal et les liens en utilisant le dictionnaire de traductions
-            const textContent = translations[lang];
-            
-            document.title = textContent.title;
-            document.documentElement.lang = lang;
-            document.getElementById('content-title').textContent = textContent.h2;
-            document.getElementById('content-p1').innerHTML = textContent.p1;
-            document.getElementById('content-p2').innerHTML = textContent.p2;
-            document.getElementById('cta-text').textContent = textContent.cta;
-            document.getElementById('cta-link-text').textContent = textContent.ctaLink;
-            document.getElementById('footer-text').textContent = textContent.footer;
-            
-            // Mettre à jour les sujets des liens mailto
-            document.querySelector('.menu-link.contact').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.contactSubject)}`;
-            document.getElementById('free-trial-mail').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.trialSubject)}`;
-        }
+            // Mettre à jour le contenu principal et les liens en utilisant le dictionnaire de traductions
+            const textContent = translations[lang];
+            
+            document.title = textContent.title;
+            document.documentElement.lang = lang;
+            document.getElementById('content-title').textContent = textContent.h2;
+            document.getElementById('content-p1').innerHTML = textContent.p1;
+            document.getElementById('content-p2').innerHTML = textContent.p2;
+            document.getElementById('cta-text').textContent = textContent.cta;
+            document.getElementById('cta-link-text').textContent = textContent.ctaLink;
+            document.getElementById('footer-text').textContent = textContent.footer;
+            
+            // Mettre à jour les sujets des liens mailto
+            document.querySelector('.menu-link.contact').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.contactSubject)}`;
+            document.getElementById('free-trial-mail').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.trialSubject)}`;
+        }
 
-        async function loadAndDisplayCSV(filename) {
-            const tableContainer = document.getElementById('table-container');
-            const homeContent = document.getElementById('home-content');
-            
-            if (homeContent) {
-                homeContent.style.display = 'none';
-            }
-            tableContainer.style.display = 'block';
-            tableContainer.innerHTML = '<p style="text-align:center;">Chargement des données...</p>';
+        async function loadAndDisplayCSV(filename) {
+            const tableContainer = document.getElementById('table-container');
+            const homeContent = document.getElementById('home-content');
+            
+            if (homeContent) {
+                homeContent.style.display = 'none';
+            }
+            tableContainer.style.display = 'block';
+            tableContainer.innerHTML = '<p style="text-align:center;">Chargement des données...</p>';
 
-            try {
-                const response = await fetch(filename);
-                if (!response.ok) {
-                    throw new Error(`Erreur de chargement du fichier : ${response.statusText}`);
-                }
-                const csvText = await response.text();
-                
-                const lines = csvText.split('\n').filter(line => line.trim() !== '');
-                const headers = lines[0].split(';');
-                const table = document.createElement('table');
-                table.id = 'data-table';
-                
-                const thead = table.createTHead();
-                const headerRow = thead.insertRow();
-                headers.forEach(header => {
-                    const th = document.createElement('th');
-                    th.textContent = header.trim();
-                    headerRow.appendChild(th);
-                });
-                
-                const tbody = table.createTBody();
-                for (let i = 1; i < lines.length; i++) {
-                    const values = lines[i].split(';');
-                    const row = tbody.insertRow();
-                    for (let j = 0; j < values.length; j++) {
-                        const value = values[j].trim();
-                        const td = row.insertCell();
-                        td.textContent = value;
-                        
-                        if (j === values.length - 1) { 
-                            const numericValue = parseInt(value, 10);
-                            
-                            if (!isNaN(numericValue)) {
-                                if (filename === 'historique_under25.csv') {
-                                    if (numericValue <= 2) {
-                                        td.classList.add('result-green');
-                                    } else {
-                                        td.classList.add('result-red');
-                                    }
-                                } else if (filename === 'historique_under45.csv') {
-                                    if (numericValue <= 4) {
-                                        td.classList.add('result-green');
-                                    } else {
-                                        td.classList.add('result-red');
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`Erreur de chargement du fichier : ${response.statusText}`);
+                }
+                const csvText = await response.text();
+                
+                const lines = csvText.split('\n').filter(line => line.trim() !== '');
+                const headers = lines[0].split(';');
+                const table = document.createElement('table');
+                table.id = 'data-table';
+                
+                const thead = table.createTHead();
+                const headerRow = thead.insertRow();
+                headers.forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header.trim();
+                    headerRow.appendChild(th);
+                });
+                
+                const tbody = table.createTBody();
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(';');
+                    const row = tbody.insertRow();
+                    for (let j = 0; j < values.length; j++) {
+                        const value = values[j].trim();
+                        const td = row.insertCell();
+                        td.textContent = value;
+                        
+                        if (j === values.length - 1) { 
+                            const numericValue = parseInt(value, 10);
+                            
+                            if (!isNaN(numericValue)) {
+                                if (filename === 'historique_under25.csv') {
+                                    if (numericValue <= 2) {
+                                        td.classList.add('result-green');
+                                    } else {
+                                        td.classList.add('result-red');
+                                    }
+                                } else if (filename === 'historique_under45.csv') {
+                                    if (numericValue <= 4) {
+                                        td.classList.add('result-green');
+                                    } else {
+                                        td.classList.add('result-red');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
 
-                tableContainer.innerHTML = '';
-                tableContainer.appendChild(table);
+                tableContainer.innerHTML = '';
+                tableContainer.appendChild(table);
 
-            } catch (error) {
-                console.error('Erreur lors du chargement ou de l\'affichage du CSV:', error);
-                tableContainer.innerHTML = `<p style="color: red;">${error.message}</p>`;
-            }
-        }
-        
-        links.forEach(link => {
-            link.addEventListener('click', (event) => {
-                const targetData = link.getAttribute('target-data');
-                
-                if (targetData) {
-                    event.preventDefault();
-                    loadAndDisplayCSV(targetData);
-                } else {
-                    const targetIframe = link.getAttribute('target-iframe');
-                    if (targetIframe) {
-                        event.preventDefault();
-                        if (document.getElementById('home-content')) {
-                            document.getElementById('home-content').style.display = 'none';
-                            mainContent.innerHTML = `<iframe id="content-iframe" class="main-iframe"></iframe>`;
-                        }
-                        const url = new URL(link.href, window.location.href);
-                        url.searchParams.set('lang', currentLanguage);
-                        document.getElementById('content-iframe').src = url.toString();
-                    }
-                }
-            });
-        });
+            } catch (error) {
+                console.error('Erreur lors du chargement ou de l\'affichage du CSV:', error);
+                tableContainer.innerHTML = `<p style="color: red;">${error.message}</p>`;
+            }
+        }
+        
+        links.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const targetData = link.getAttribute('target-data');
+                
+                if (targetData) {
+                    event.preventDefault();
+                    loadAndDisplayCSV(targetData);
+                } else {
+                    const targetIframe = link.getAttribute('target-iframe');
+                    if (targetIframe) {
+                        event.preventDefault();
+                        if (document.getElementById('home-content')) {
+                            document.getElementById('home-content').style.display = 'none';
+                            mainContent.innerHTML = `<iframe id="content-iframe" class="main-iframe"></iframe>`;
+                        }
+                        const url = new URL(link.href, window.location.href);
+                        url.searchParams.set('lang', currentLanguage);
+                        document.getElementById('content-iframe').src = url.toString();
+                    }
+                }
+            });
+        });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            setLanguage('fr');
-        });
-    </script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage('fr');
+        });
+    </script>
 </body>
 </html>
