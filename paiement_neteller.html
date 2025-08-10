@@ -3,69 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instructions de Paiement - Neteller</title>
+    <title>Menu Principal - ArtScalping</title>
+    <meta name="google-site-verification" content="4YNw1JU7CR8E0lV55MED2KDWTJYfeUx6nVEcBcBi1vs" />
     <style>
         body {
+            margin: 0;
             background-color: #2c3e50;
             color: #ecf0f1;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 40px;
+            display: flex;
+            height: 100vh;
         }
-        
-        .instructions-container {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
+
+        .sidebar {
+            width: 200px;
             background-color: #34495e;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        h1 {
+        .sidebar h1 {
             color: #f1c40f;
-            font-size: 2.5em;
-        }
-
-        h2 {
-            color: #3498db;
-            margin-top: 30px;
-        }
-
-        p, li {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .email-address {
-            background-color: #2980b9;
-            color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 1.5em;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        
-        .instructions-list {
-            list-style-type: none;
-            padding: 0;
-            text-align: left;
-            margin-top: 30px;
-        }
-        
-        .instructions-list li {
-            background-color: #55697d;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            cursor: pointer;
         }
         
         .language-switcher {
             margin-bottom: 20px;
-            display: flex;
+            display: flex; /* Cette ligne est la modification clé */
             flex-wrap: wrap;
             justify-content: center;
             gap: 5px;
@@ -88,40 +57,277 @@
             transform: scale(1.1);
         }
         
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .menu-item {
+            margin-bottom: 15px;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            background-color: #2980b9;
+            color: #ecf0f1;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .menu-link:hover {
+            background-color: #3498db;
+            transform: scale(1.02);
+        }
+
+        .menu-link.subscribe {
+            background-color: #2ecc71;
+        }
+        
+        .menu-link.subscribe:hover {
+            background-color: #27ae60;
+        }
+        
+        .menu-link.contact {
+            background-color: #e74c3c;
+        }
+
+        .menu-link.contact:hover {
+            background-color: #c0392b;
+        }
+
+        .menu-link .icon {
+            margin-right: 15px;
+            font-size: 1.5em;
+        }
+        
         /* Ajustements pour les textes arabes */
         .text-ar {
             direction: rtl;
             text-align: right;
         }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+        }
+
+        .main-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+        }
         
-        /* Media query pour les petits écrans */
+        #home-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+        
+        #home-content h2 {
+            color: #f1c40f;
+            font-size: 2.5em;
+        }
+
+        #home-content p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        .main-image {
+            width: 400px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-gemini {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #95a5a6;
+        }
+        
+        /* Styles pour les tableaux générés */
+        #table-container {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 20px;
+            overflow-x: auto;
+            display: none;
+        }
+        
+        #data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        #data-table th, #data-table td {
+            border: 1px solid #2c3e50;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        #data-table thead th {
+            background-color: #2980b9;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        #data-table tbody tr:nth-child(even) {
+            background-color: #2c3e50;
+        }
+        
+        #data-table tbody tr:hover {
+            background-color: #3f586a;
+        }
+        
+        .result-green {
+            background-color: #27ae60;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .result-red {
+            background-color: #c0392b;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .free-trial-cta {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .free-trial-cta p {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .free-trial-cta a {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #f1c40f;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .free-trial-cta a:hover {
+            background-color: #f39c12;
+        }
+        
+        .free-trial-cta a .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        /* Règles pour les petits écrans (téléphones) */
         @media (max-width: 768px) {
             body {
-                padding: 20px;
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 10px;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                box-shadow: none;
+                position: relative;
             }
             
-            h1 {
+            .sidebar h1 {
+                display: none;
+            }
+            
+            .language-switcher {
+                margin-bottom: 10px;
+            }
+
+            .menu-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .menu-item {
+                margin: 5px;
+            }
+
+            .menu-link {
+                font-size: 0.9em;
+                padding: 8px 12px;
+                text-align: center;
+            }
+            
+            .menu-link .icon {
+                margin-right: 5px;
+            }
+
+            .content {
+                padding: 10px;
+                width: 100%;
+                justify-content: flex-start;
+                box-sizing: border-box;
+            }
+
+            #home-content h2 {
                 font-size: 1.8em;
             }
-            
-            h2 {
-                font-size: 1.3em;
-            }
-            
-            p, li {
+
+            #home-content p {
                 font-size: 1em;
+                margin: 10px auto;
             }
             
-            .email-address {
-                font-size: 1.2em;
-                padding: 10px;
+            .main-image {
+                width: 100%;
+                height: auto;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="instructions-container">
+    <div class="sidebar">
+        <h1 id="site-title">ArtScalping</h1>
         <div class="language-switcher">
             <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr" class="active">
             <img src="https://flagcdn.com/gb.svg" alt="English" onclick="setLanguage('en')" id="lang-en">
@@ -133,224 +339,300 @@
             <img src="https://flagcdn.com/in.svg" alt="हिन्दी" onclick="setLanguage('hi')" id="lang-hi">
             <img src="https://flagcdn.com/jp.svg" alt="日本語" onclick="setLanguage('ja')" id="lang-ja">
         </div>
-        
-        <h1 id="main-title"></h1>
-        <p id="subscription-intro"></p>
-
-        <h2 id="subscription-includes-title"></h2>
-        <ul class="instructions-list">
-            <li id="item-1"></li>
-            <li id="item-2"></li>
-            <li id="item-3"></li>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="historique_under25.csv" id="link-past-under-2-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 2.5</span><span class="text-en" style="display:none;">Historical Under 2.5</span><span class="text-es" style="display:none;">Historial Under 2.5</span><span class="text-zh" style="display:none;">历史 Under 2.5</span><span class="text-de" style="display:none;">Historie Under 2.5</span><span class="text-pt" style="display:none;">Histórico Under 2.5</span><span class="text-ar" style="display:none;">تاريخ Under 2.5</span><span class="text-hi" style="display:none;">अंडर 2.5 इतिहास</span><span class="text-ja" style="display:none;">Under 2.5 履歴</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="historique_under45.csv" id="link-past-under-4-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 4.5</span><span class="text-en" style="display:none;">Historical Under 4.5</span><span class="text-es" style="display:none;">Historial Under 4.5</span><span class="text-zh" style="display:none;">历史 Under 4.5</span><span class="text-de" style="display:none;">Historie Under 4.5</span><span class="text-pt" style="display:none;">Histórico Under 4.5</span><span class="text-ar" style="display:none;">تاريخ Under 4.5</span><span class="text-hi" style="display:none;">अंडर 4.5 इतिहास</span><span class="text-ja" style="display:none;">Under 4.5 履歴</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="paiement_neteller.html" class="menu-link subscribe" data-content-type="iframe" id="link-subscribe">
+                    <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span><span class="text-es" style="display:none;">Suscripción</span><span class="text-zh" style="display:none;">订阅</span><span class="text-de" style="display:none;">Abonnement</span><span class="text-pt" style="display:none;">Assinatura</span><span class="text-ar" style="display:none;">اشتراك</span><span class="text-hi" style="display:none;">सदस्यता</span><span class="text-ja" style="display:none;">購読</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="mailto:ericmc2@hotmail.fr?subject=Question%20concernant%20ArtScalping" class="menu-link contact" id="link-contact">
+                    <span class="icon">&#x2709;</span><span class="text-fr">Me Contacter</span><span class="text-en" style="display:none;">Contact Us</span><span class="text-es" style="display:none;">Contáctanos</span><span class="text-zh" style="display:none;">联系我们</span><span class="text-de" style="display:none;">Kontaktieren Sie uns</span><span class="text-pt" style="display:none;">Contate-nos</span><span class="text-ar" style="display:none;">اتصل بنا</span><span class="text-hi" style="display:none;">हमसे संपर्क करें</span><span class="text-ja" style="display:none;">お問い合わせ</span>
+                </a>
+            </li>
         </ul>
-        
-        <p id="payment-intro"></p>
-        
-        <h2 id="payment-steps-title"></h2>
-        <ol class="instructions-list">
-            <li id="step-1"></li>
-            <li id="step-2"></li>
-            <li id="step-3"></li>
-            <li id="step-4"></li>
-        </ol>
+    </div>
 
-        <p id="payment-address-label"></p>
-        <span class="email-address">ericmc2@hotmail.fr</span>
-        
-        <p id="payment-confirmation"></p>
+    <div class="content" id="main-content">
+        <div id="home-content">
+            <h2 id="content-title"></h2>
+            <img src="soccer.jpg" alt="Joueur de football en action" class="main-image">
+            <p id="content-p1"></p>
+            <p id="content-p2"></p>
+            
+            <div class="free-trial-cta">
+                <p id="cta-text"></p>
+                <a href="#" id="free-trial-mail">
+                    <span class="icon">&#x1F4E7;</span>
+                    <span id="cta-link-text"></span>
+                </a>
+            </div>
+            
+            <footer class="footer-gemini">
+                <span id="footer-text"></span>
+            </footer>
+        </div>
+        <div id="table-container"></div>
+        <iframe id="content-iframe" class="main-iframe" name="content-iframe"></iframe>
     </div>
 
     <script>
+        const links = document.querySelectorAll('.menu-link');
+        const homeContent = document.getElementById('home-content');
+        const tableContainer = document.getElementById('table-container');
+        const contentIframe = document.getElementById('content-iframe');
+        const siteTitle = document.getElementById('site-title');
+
+        let currentLanguage = 'fr';
+        
         const translations = {
             fr: {
-                title: "Abonnement ArtScalping",
-                intro: "En vous abonnant pour **19,99 € par mois**, vous obtenez l'accès exclusif à notre contenu premium.",
-                includesTitle: "Votre abonnement inclut :",
-                item1: "L'accès sécurisé et privé à notre feuille **'Matchs du jour'**.",
-                item2: "Des analyses et des conseils basés sur notre méthode de scalping unique.",
-                item3: "Une stratégie conçue pour **protéger votre capital** et maximiser vos gains.",
-                paymentIntro: "Pour finaliser votre abonnement, veuillez suivre les étapes suivantes pour un paiement via Neteller.",
-                stepsTitle: "Étapes de paiement :",
-                step1: "Connectez-vous à votre compte Neteller.",
-                step2: "Sélectionnez l'option 'Transfert d'argent' ou 'Envoyer de l'argent'.",
-                step3: "Saisissez le montant de 19,99 €.",
-                step4: "Entrez l'adresse email de notre compte Neteller ci-dessous.",
-                addressLabel: "Adresse de paiement :",
-                confirmation: "Une fois le paiement effectué, veuillez nous envoyer un e-mail à cette même adresse pour nous confirmer le virement. Nous activerons votre abonnement dans les plus brefs délais."
+                title: "Menu Principal - ArtScalping",
+                h2: "Maîtrisez vos paris avec notre méthode",
+                p1: "En s'appuyant sur notre stratégie de paris multiples dans un même pari 'Lay Under2.5 1HT et Lay Under 4.5', vous **maîtrisez le risque** de manière significative. Notre approche vous donne les clés pour remporter plusieurs paris sur une même rencontre. Si un pari simple a un faible taux de perte (3-4%), notre méthode de scalping permet de **réduire ce taux drastiquement** en multipliant vos victoires sur chaque match.",
+                p2: "Notre système est conçu pour **protéger votre capital** et limiter les découverts au maximum. Avec un écart probable de seulement 3 matchs et un maximum théorique de 4, vous vous assurez de **longues séries de victoires** et une rentabilité constante, indispensable pour devenir un parieur averti.",
+                cta: "Bénéficiez d'un essai gratuit d'une semaine pour accéder à la feuille des matchs du jour !",
+                ctaLink: "Demander l'accès",
+                footer: "Conçu avec l'aide de Gemini",
+                contactSubject: "Question concernant ArtScalping",
+                trialSubject: "Demande d'essai gratuit ArtScalping",
             },
             en: {
-                title: "ArtScalping Subscription",
-                intro: "By subscribing for **€19.99 per month**, you get exclusive access to our premium content.",
-                includesTitle: "Your subscription includes:",
-                item1: "Secure and private access to our **'Daily Matches'** spreadsheet.",
-                item2: "Analyses and advice based on our unique scalping method.",
-                item3: "A strategy designed to **protect your capital** and maximize your gains.",
-                paymentIntro: "To finalize your subscription, please follow these steps for a payment via Neteller.",
-                stepsTitle: "Payment steps:",
-                step1: "Log in to your Neteller account.",
-                step2: "Select the 'Money Transfer' or 'Send Money' option.",
-                step3: "Enter the amount of €19.99.",
-                step4: "Enter the email address of our Neteller account below.",
-                addressLabel: "Payment address:",
-                confirmation: "Once the payment is made, please send us an email to the same address to confirm the transfer. We will activate your subscription as soon as possible."
+                title: "Main Menu - ArtScalping",
+                h2: "Master your bets with our method",
+                p1: "By relying on our strategy of multiplying bets within the same 'Lay Under2.5 1HT and Lay Under 4.5' market, you **significantly control your risk**. Our unique approach gives you the keys to winning multiple bets on a single match. While a simple bet has a low loss rate (3-4%), our scalping method **drastically reduces this rate** by multiplying your victories on each match.",
+                p2: "Our system is designed to **protect your capital** and limit drawdowns to a minimum. With a probable gap of only 3 matches and a theoretical maximum of 4, you ensure **long winning streaks** and consistent profitability, essential for becoming a savvy bettor.",
+                cta: "Get a one-week free trial to access the daily matches sheet!",
+                ctaLink: "Request Access",
+                footer: "Designed with the help of Gemini",
+                contactSubject: "Question about ArtScalping",
+                trialSubject: "Free Trial Request for ArtScalping",
             },
             es: {
-                title: "Suscripción a ArtScalping",
-                intro: "Al suscribirte por **€19.99 al mes**, obtienes acceso exclusivo a nuestro contenido premium.",
-                includesTitle: "Tu suscripción incluye:",
-                item1: "Acceso seguro y privado a nuestra hoja de cálculo **'Partidos del día'**.",
-                item2: "Análisis y consejos basados en nuestro método de scalping único.",
-                item3: "Una estrategia diseñada para **proteger tu capital** y maximizar tus ganancias.",
-                paymentIntro: "Para finalizar tu suscripción, sigue estos pasos para realizar un pago a través de Neteller.",
-                stepsTitle: "Pasos para el pago:",
-                step1: "Inicia sesión en tu cuenta de Neteller.",
-                step2: "Selecciona la opción 'Transferencia de dinero' o 'Enviar dinero'.",
-                step3: "Introduce la cantidad de €19.99.",
-                step4: "Introduce la dirección de correo electrónico de nuestra cuenta Neteller a continuación.",
-                addressLabel: "Dirección de pago:",
-                confirmation: "Una vez realizado el pago, envíanos un correo electrónico a la misma dirección para confirmarnos la transferencia. Activaremos tu suscripción lo antes posible."
+                title: "Menú Principal - ArtScalping",
+                h2: "Domina tus apuestas con nuestro método",
+                p1: "Al confiar en nuestra estrategia de múltiples apuestas en el mismo mercado 'Lay Under2.5 1HT y Lay Under 4.5', **controlas el riesgo** de manera significativa. Nuestro enfoque te da las claves para ganar varias apuestas en un mismo partido. Si una apuesta simple tiene una baja tasa de pérdida (3-4%), nuestro método de scalping permite **reducir esta tasa drásticamente** multiplicando tus victorias en cada partido.",
+                p2: "Nuestro sistema está diseñado para **proteger tu capital** y limitar los descubiertos al máximo. Con una diferencia probable de solo 3 partidos y un máximo teórico de 4, te aseguras **largas rachas de victorias** y una rentabilidad constante, indispensable para convertirte en un apostador experto.",
+                cta: "¡Obtén una prueba gratuita de una semana para acceder a la hoja de los partidos del día!",
+                ctaLink: "Solicitar Acceso",
+                footer: "Diseñado con la ayuda de Gemini",
+                contactSubject: "Pregunta sobre ArtScalping",
+                trialSubject: "Solicitud de prueba gratuita de ArtScalping",
             },
             zh: {
-                title: "ArtScalping 订阅",
-                intro: "每月订阅 **€19.99**，即可获得我们优质内容的独家访问权。",
-                includesTitle: "您的订阅包括：",
-                item1: "安全且私密的 **'每日比赛'** 电子表格访问权。",
-                item2: "基于我们独特的波段交易方法的分析和建议。",
-                item3: "旨在**保护您的资金**并最大化收益的策略。",
-                paymentIntro: "要完成您的订阅，请按照以下步骤通过 Neteller 进行支付。",
-                stepsTitle: "支付步骤：",
-                step1: "登录您的 Neteller 账户。",
-                step2: "选择“汇款”或“发送资金”选项。",
-                step3: "输入金额 €19.99。",
-                step4: "在下方输入我们 Neteller 账户的电子邮件地址。",
-                addressLabel: "支付地址：",
-                confirmation: "付款完成后，请向该邮箱地址发送一封电子邮件，确认转账。我们将尽快激活您的订阅。"
+                title: "主菜单 - ArtScalping",
+                h2: "用我们的方法掌控你的投注",
+                p1: "通过在我们相同的“Lay Under2.5 1HT 和 Lay Under 4.5”市场中采用多重投注策略，你可以显着地**控制风险**。我们的方法为你提供了在一场比赛中赢得多次投注的关键。如果单一投注的失败率较低（3-4%），我们的波段交易方法可以通过在每场比赛中增加你的胜利来**大幅降低这个比率**。",
+                p2: "我们的系统旨在**保护你的资金**并最大限度地减少透支。理论上，最大的连败场次仅为4场，你可以确保**长期的连胜**和稳定的盈利能力，这是成为一名精明投注者不可或挝的。",
+                cta: "获取一周免费试用，访问每日比赛数据表！",
+                ctaLink: "申请访问",
+                footer: "由 Gemini 协助设计",
+                contactSubject: "关于 ArtScalping 的问题",
+                trialSubject: "ArtScalping 免费试用申请",
             },
             de: {
-                title: "ArtScalping-Abonnement",
-                intro: "Mit einem Abonnement für **€19.99 pro Monat** erhalten Sie exklusiven Zugang zu unseren Premium-Inhalten.",
-                includesTitle: "Ihr Abonnement beinhaltet:",
-                item1: "Sicheren und privaten Zugriff auf unsere Tabelle **'Tägliche Spiele'**.",
-                item2: "Analysen und Ratschläge basierend auf unserer einzigartigen Scalping-Methode.",
-                item3: "Eine Strategie, die darauf ausgelegt ist, **Ihr Kapital zu schützen** und Ihre Gewinne zu maximieren.",
-                paymentIntro: "Um Ihr Abonnement abzuschließen, folgen Sie bitte diesen Schritten für eine Zahlung über Neteller.",
-                stepsTitle: "Zahlungsschritte:",
-                step1: "Melden Sie sich bei Ihrem Neteller-Konto an.",
-                step2: "Wählen Sie die Option 'Geldtransfer' oder 'Geld senden'.",
-                step3: "Geben Sie den Betrag von €19.99 ein.",
-                step4: "Geben Sie unten die E-Mail-Adresse unseres Neteller-Kontos ein.",
-                addressLabel: "Zahlungsadresse:",
-                confirmation: "Nachdem die Zahlung erfolgt ist, senden Sie uns bitte eine E-Mail an dieselbe Adresse, um die Überweisung zu bestätigen. Wir werden Ihr Abonnement so schnell wie möglich aktivieren."
+                title: "Hauptmenü - ArtScalping",
+                h2: "Meistern Sie Ihre Wetten mit unserer Methode",
+                p1: "Durch unsere Strategie der Mehrfachwetten im selben 'Lay Under2.5 1HT und Lay Under 4.5'-Markt **kontrollieren Sie das Risiko** erheblich. Unser Ansatz gibt Ihnen die Werkzeuge an die Hand, um mehrere Wetten in einem einzigen Spiel zu gewinnen. Während eine einfache Wette eine niedrige Verlustrate (3-4%) hat, ermöglicht unsere Scalping-Methode, **diese Rate drastisch zu reduzieren**, indem Sie Ihre Siege in jedem Spiel vervielfachen.",
+                p2: "Unser System wurde entwickelt, um **Ihr Kapital zu schützen** und Überziehungen auf ein Minimum zu beschränken. Mit einer wahrscheinlichen Lücke von nur 3 Spielen und einem theoretischen Maximum von 4, sorgen Sie für **lange Gewinnserien** und eine konstante Rentabilität, die unerlässlich ist, um ein versierter Wettender zu werden.",
+                cta: "Erhalten Sie eine kostenlose einwöchige Testversion, um auf das Blatt der täglichen Spiele zuzugreifen!",
+                ctaLink: "Zugang anfordern",
+                footer: "Mit Hilfe von Gemini entworfen",
+                contactSubject: "Frage zu ArtScalping",
+                trialSubject: "Kostenlose Testversion von ArtScalping anfordern",
             },
             pt: {
-                title: "Assinatura ArtScalping",
-                intro: "Ao assinar por **€19.99 por mês**, você obtém acesso exclusivo ao nosso conteúdo premium.",
-                includesTitle: "Sua assinatura inclui:",
-                item1: "Acesso seguro e privado à nossa planilha **'Jogos do dia'**.",
-                item2: "Análises e conselhos baseados em nosso método de scalping exclusivo.",
-                item3: "Uma estratégia projetada para **proteger seu capital** e maximizar seus ganhos.",
-                paymentIntro: "Para finalizar sua assinatura, siga estes passos para um pagamento via Neteller.",
-                stepsTitle: "Passos para o pagamento:",
-                step1: "Faça login na sua conta Neteller.",
-                step2: "Selecione a opção 'Transferência de dinheiro' ou 'Enviar dinheiro'.",
-                step3: "Insira o valor de €19.99.",
-                step4: "Insira o endereço de e-mail da nossa conta Neteller abaixo.",
-                addressLabel: "Endereço de pagamento:",
-                confirmation: "Após o pagamento, envie-nos um e-mail para o mesmo endereço para confirmar a transferência. Ativaremos sua assinatura o mais rápido possível."
+                title: "Menu Principal - ArtScalping",
+                h2: "Domine suas apostas com nosso método",
+                p1: "Ao confiar em nossa estratégia de múltiplas apostas no mesmo mercado 'Lay Under2.5 1HT e Lay Under 4.5', você **controla o risco** de forma significativa. Nossa abordagem oferece as chaves para vencer várias apostas em uma única partida. Enquanto uma aposta simples tem uma baixa taxa de perda (3-4%), nosso método de scalping permite **reduzir drasticamente essa taxa** multiplicando suas vitórias em cada jogo.",
+                p2: "Nosso sistema foi projetado para **proteger seu capital** e limitar ao máximo os saldos negativos. Com uma provável diferença de apenas 3 jogos e um máximo teórico de 4, você garante **longas sequências de vitórias** e uma rentabilidade constante, indispensável para se tornar um apostador experiente.",
+                cta: "Obtenha um teste gratuito de uma semana para acessar a folha dos jogos do dia!",
+                ctaLink: "Solicitar Acesso",
+                footer: "Projetado com a ajuda de Gemini",
+                contactSubject: "Pergunta sobre ArtScalping",
+                trialSubject: "Solicitação de teste gratuito de ArtScalping",
             },
             ar: {
-                title: "اشتراك ArtScalping",
-                intro: "بالاشتراك مقابل **19.99 يورو شهريًا**، تحصل على وصول حصري إلى محتوانا المتميز.",
-                includesTitle: "يتضمن اشتراكك ما يلي:",
-                item1: "وصول آمن وخاص إلى جدول بيانات **'مباريات اليوم'** الخاص بنا.",
-                item2: "تحليلات ونصائح مبنية على طريقة السكالبينج الفريدة لدينا.",
-                item3: "استراتيجية مصممة **لحماية رأس مالك** وزيادة أرباحك إلى أقصى حد.",
-                paymentIntro: "لإنهاء اشتراكك، يرجى اتباع هذه الخطوات للدفع عبر Neteller.",
-                stepsTitle: "خطوات الدفع:",
-                step1: "سجل الدخول إلى حساب Neteller الخاص بك.",
-                step2: "اختر خيار 'تحويل الأموال' أو 'إرسال الأموال'.",
-                step3: "أدخل مبلغ 19.99 يورو.",
-                step4: "أدخل عنوان البريد الإلكتروني لحساب Neteller الخاص بنا أدناه.",
-                addressLabel: "عنوان الدفع:",
-                confirmation: "بمجرد إتمام الدفع، يرجى إرسال بريد إلكتروني إلينا على نفس العنوان لتأكيد التحويل. سنقوم بتفعيل اشتراكك في أقرب وقت ممكن."
+                title: "القائمة الرئيسية - ArtScalping",
+                h2: "تحكم في رهاناتك باستخدام طريقتنا",
+                p1: "بالاعتماد على استراتيجية الرهانات المتعددة في نفس رهان 'Lay Under2.5 1HT و Lay Under 4.5'، فإنك **تتحكم في المخاطر** بشكل كبير. يمنحك نهجنا المفاتيح للفوز بعدة رهانات في مباراة واحدة. إذا كان للرهان الفردي معدل خسارة منخفض (3-4٪)، فإن طريقة السكالبينج لدينا تسمح **بتقليل هذا المعدل بشكل كبير** عن طريق مضاعفة انتصاراتك في كل مباراة.",
+                p2: "تم تصميم نظامنا **لحماية رأس مالك** والحد من السحب على المكشوف إلى أقصى حد. مع فجوة محتملة من 3 مباريات فقط وحد أقصى نظري يبلغ 4، فإنك تضمن **سلاسل انتصارات طويلة** وربحية ثابتة، وهو أمر ضروري لتصبح مراهنًا ذكيًا.",
+                cta: "احصل على تجربة مجانية لمدة أسبوع للوصول إلى قائمة مباريات اليوم!",
+                ctaLink: "طلب الوصول",
+                footer: "تم التصميم بمساعدة Gemini",
+                contactSubject: "سؤال بخصوص ArtScalping",
+                trialSubject: "طلب تجربة مجانية لـ ArtScalping",
             },
             hi: {
-                title: "आर्टस्कैल्पिंग सदस्यता",
-                intro: "**€19.99 प्रति माह** की सदस्यता लेकर, आपको हमारी प्रीमियम सामग्री तक विशेष पहुंच मिलती है।",
-                includesTitle: "आपकी सदस्यता में शामिल हैं:",
-                item1: "हमारी **'आज के मैच'** स्प्रेडशीट तक सुरक्षित और निजी पहुंच।",
-                item2: "हमारी अनूठी स्कैल्पिंग विधि पर आधारित विश्लेषण और सलाह।",
-                item3: "आपकी **पूंजी की रक्षा** और आपके लाभ को अधिकतम करने के लिए डिज़ाइन की गई एक रणनीति।",
-                paymentIntro: "अपनी सदस्यता को अंतिम रूप देने के लिए, कृपया नेटेलर के माध्यम से भुगतान के लिए इन चरणों का पालन करें।",
-                stepsTitle: "भुगतान के चरण:",
-                step1: "अपने नेटेलर खाते में लॉग इन करें।",
-                step2: "'पैसे का हस्तांतरण' या 'पैसे भेजें' विकल्प चुनें।",
-                step3: "€19.99 की राशि दर्ज करें।",
-                step4: "नीचे हमारे नेटेलर खाते का ईमेल पता दर्ज करें।",
-                addressLabel: "भुगतान का पता:",
-                confirmation: "भुगतान हो जाने के बाद, कृपया हमें उसी पते पर एक ईमेल भेजकर हस्तांतरण की पुष्टि करें। हम जल्द से जल्द आपकी सदस्यता को सक्रिय कर देंगे।"
+                title: "मुख्य मेनू - आर्टस्कैल्पिंग",
+                h2: "हमारी विधि से अपनी दांव को नियंत्रित करें",
+                p1: "एक ही 'Lay Under2.5 1HT and Lay Under 4.5' दांव में कई दांवों की हमारी रणनीति पर भरोसा करके, आप **जोखिम को महत्वपूर्ण रूप से नियंत्रित** करते हैं। हमारा दृष्टिकोण आपको एक ही मैच पर कई दांव जीतने की कुंजी देता है। यदि एक साधारण दांव में हार की दर कम (3-4%) है, तो हमारी स्कैल्पिंग विधि प्रत्येक मैच पर आपकी जीत को गुणा करके **इस दर को काफी कम** कर देती है।",
+                p2: "हमारी प्रणाली **आपकी पूंजी की रक्षा** करने और ओवरड्राफ्ट को अधिकतम तक सीमित करने के लिए डिज़ाइन की गई है। केवल 3 मैचों के संभावित अंतर और 4 के सैद्धांतिक अधिकतम के साथ, आप **लंबी जीत की लकीरें** और निरंतर लाभप्रदता सुनिश्चित करते हैं, जो एक जानकार सट्टेबाज बनने के लिए अपरिहार्य है।",
+                cta: "आज के मैचों की शीट तक पहुंचने के लिए एक सप्ताह का निःशुल्क परीक्षण प्राप्त करें!",
+                ctaLink: "पहुंच का अनुरोध करें",
+                footer: "जेमिनी की मदद से डिज़ाइन किया गया",
+                contactSubject: "आर्टस्कैल्पिंग के बारे में प्रश्न",
+                trialSubject: "आर्टस्कैल्पिंग के लिए निःशुल्क परीक्षण अनुरोध",
             },
             ja: {
-                title: "ArtScalpingの購読",
-                intro: "月額**€19.99**で購読すると、プレミアムコンテンツへの独占アクセスが得られます。",
-                includesTitle: "購読内容：",
-                item1: "当社の**「本日の試合」**スプレッドシートへの安全でプライベートなアクセス。",
-                item2: "独自の​​スキャルピング手法に基づいた分析とアドバイス。",
-                item3: "**資本を保護**し、利益を最大化するように設計された戦略。",
-                paymentIntro: "購読を完了するには、以下の手順に従ってNeteller経由で支払いを行ってください。",
-                stepsTitle: "支払い手順：",
-                step1: "Netellerアカウントにログインします。",
-                step2: "「送金」または「お金を送る」オプションを選択します。",
-                step3: "€19.99の金額を入力します。",
-                step4: "以下のNetellerアカウントのメールアドレスを入力します。",
-                addressLabel: "支払いアドレス：",
-                confirmation: "支払いが完了したら、同じアドレスにメールを送信して送金を確認してください。できるだけ早く購読をアクティブ化します。"
-            }
+                title: "メインメニュー - ArtScalping",
+                h2: "私たちの方法でベットをマスターする",
+                p1: "同じ「Lay Under2.5 1HT と Lay Under 4.5」市場での複数ベット戦略に頼ることで、**リスクを大幅にコントロール**できます。私たちの手法は、1つの試合で複数のベットに勝つための鍵を与えます。単純なベットの敗北率が低い（3-4%）のに対し、私たちのスキャルピング方法は、各試合での勝利を増やすことで**この率を劇的に減らします**。",
+                p2: "私たちのシステムは、**あなたの資本を保護**し、当座貸越を最大限に制限するように設計されています。可能性のあるギャップはわずか3試合、理論上の最大は4試合で、**長い連勝**と一貫した収益性を確保し、賢いベッターになるために不可欠です。",
+                cta: "本日の試合シートにアクセスするための1週間の無料トライアルを入手してください！",
+                ctaLink: "アクセスをリクエストする",
+                footer: "Geminiの助けを借りて設計",
+                contactSubject: "ArtScalpingに関する質問",
+                trialSubject: "ArtScalping無料トライアルリクエスト",
+            },
         };
 
-        function updateContent(lang) {
-            const content = translations[lang];
-            
-            document.title = content.title;
-            document.getElementById('main-title').textContent = content.title;
-            document.getElementById('subscription-intro').innerHTML = content.intro;
-            document.getElementById('subscription-includes-title').textContent = content.includesTitle;
-            document.getElementById('item-1').innerHTML = content.item1;
-            document.getElementById('item-2').innerHTML = content.item2;
-            document.getElementById('item-3').innerHTML = content.item3;
-            document.getElementById('payment-intro').innerHTML = content.paymentIntro;
-            document.getElementById('payment-steps-title').textContent = content.stepsTitle;
-            document.getElementById('step-1').textContent = content.step1;
-            document.getElementById('step-2').textContent = content.step2;
-            document.getElementById('step-3').textContent = content.step3;
-            document.getElementById('step-4').textContent = content.step4;
-            document.getElementById('payment-address-label').textContent = content.addressLabel;
-            document.getElementById('payment-confirmation').textContent = content.confirmation;
+        function showContent(contentToShow) {
+            homeContent.style.display = 'none';
+            tableContainer.style.display = 'none';
+            contentIframe.style.display = 'none';
 
-            // Gérer la direction du texte pour l'arabe
-            const instructionsContainer = document.querySelector('.instructions-container');
-            if (lang === 'ar') {
-                instructionsContainer.classList.add('text-ar');
-            } else {
-                instructionsContainer.classList.remove('text-ar');
+            if (contentToShow === 'home') {
+                homeContent.style.display = 'flex';
+                homeContent.style.flexDirection = 'column';
+            } else if (contentToShow === 'table') {
+                tableContainer.style.display = 'block';
+            } else if (contentToShow === 'iframe') {
+                contentIframe.style.display = 'block';
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            document.querySelectorAll('[class^="text-"]').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.language-switcher img').forEach(el => el.classList.remove('active'));
+            
+            const langElements = document.querySelectorAll(`.text-${lang}`);
+            langElements.forEach(el => el.style.display = 'inline');
+            document.getElementById(`lang-${lang}`).classList.add('active');
+
+            const textContent = translations[lang];
+            
+            document.title = textContent.title;
+            document.documentElement.lang = lang;
+            document.getElementById('content-title').textContent = textContent.h2;
+            document.getElementById('content-p1').innerHTML = textContent.p1;
+            document.getElementById('content-p2').innerHTML = textContent.p2;
+            document.getElementById('cta-text').textContent = textContent.cta;
+            document.getElementById('cta-link-text').textContent = textContent.ctaLink;
+            document.getElementById('footer-text').textContent = textContent.footer;
+            
+            document.getElementById('link-contact').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.contactSubject)}`;
+            document.getElementById('free-trial-mail').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.trialSubject)}`;
+        }
+
+        async function loadAndDisplayCSV(filename) {
+            showContent('table');
+            tableContainer.innerHTML = '<p style="text-align:center;">Chargement des données...</p>';
+
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`Erreur de chargement du fichier : ${response.statusText}`);
+                }
+                const csvText = await response.text();
+                
+                const lines = csvText.split('\n').filter(line => line.trim() !== '');
+                if (lines.length === 0) {
+                    throw new Error('Le fichier CSV est vide.');
+                }
+
+                const headers = lines[0].split(';');
+                const table = document.createElement('table');
+                table.id = 'data-table';
+                
+                const thead = table.createTHead();
+                const headerRow = thead.insertRow();
+                headers.forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header.trim();
+                    headerRow.appendChild(th);
+                });
+                
+                const tbody = table.createTBody();
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(';');
+                    const row = tbody.insertRow();
+                    for (let j = 0; j < values.length; j++) {
+                        const value = values[j].trim();
+                        const td = row.insertCell();
+                        td.textContent = value;
+                        
+                        if (j === values.length - 1) { 
+                            const numericValue = parseInt(value, 10);
+                            
+                            if (!isNaN(numericValue)) {
+                                if (filename === 'historique_under25.csv') {
+                                    if (numericValue <= 2) {
+                                        td.classList.add('result-green');
+                                    } else {
+                                        td.classList.add('result-red');
+                                    }
+                                } else if (filename === 'historique_under45.csv') {
+                                    if (numericValue <= 4) {
+                                        td.classList.add('result-green');
+                                    } else {
+                                        td.classList.add('result-red');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                tableContainer.innerHTML = '';
+                tableContainer.appendChild(table);
+
+            } catch (error) {
+                console.error('Erreur lors du chargement ou de l\'affichage du CSV:', error);
+                tableContainer.innerHTML = `<p style="color: red;">${error.message}</p>`;
             }
         }
         
-        function setLanguage(lang) {
-            document.querySelectorAll('.language-switcher img').forEach(el => el.classList.remove('active'));
-            const activeFlag = document.getElementById(`lang-${lang}`);
-            if (activeFlag) {
-                activeFlag.classList.add('active');
-            }
-            document.documentElement.lang = lang;
-            updateContent(lang);
-        }
+        links.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const contentType = link.getAttribute('data-content-type');
+                
+                if (contentType === 'csv') {
+                    const filename = link.getAttribute('data-file');
+                    loadAndDisplayCSV(filename);
+                } else if (contentType === 'iframe') {
+                    showContent('iframe');
+                    const url = new URL(link.href, window.location.href);
+                    url.searchParams.set('lang', currentLanguage);
+                    contentIframe.src = url.toString();
+                } else {
+                    window.location.href = link.href;
+                }
+            });
+        });
+
+        siteTitle.addEventListener('click', () => {
+            showContent('home');
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang') || 'fr';
-            setLanguage(lang);
+            setLanguage('fr');
+            showContent('home');
         });
     </script>
 </body>
 </html>
+
