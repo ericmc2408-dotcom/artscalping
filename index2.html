@@ -201,26 +201,43 @@
         #data-table tbody tr:hover {
             background-color: #3f586a;
         }
-
+        
         /* Styles spécifiques pour le tableau gestion25 */
+        /* Pour que le tableau tienne sur la page, même sur mobile */
+        #gestion25 {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        #gestion25 th, #gestion25 td {
+            border: 1px solid #34495e;
+            padding: 8px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        /* Styles pour les 4 dernières colonnes du tableau gestion25 */
         #data-table td.col-f.valeur-1 {
             background-color: green;
             color: white;
         }
-
+        
         #data-table td.col-g.valeur-1 {
             background-color: red;
             color: white;
         }
-
+        
         #data-table td.col-h.valeur-1 {
             background-color: blue;
             color: white;
         }
-
+        
         #data-table td.col-i.valeur-1 {
-            background-color: green;
-            color: white;
+            background-color: orange;
+            color: black;
         }
         
         /* Règles pour les petits écrans (téléphones) */
@@ -595,17 +612,6 @@
             });
         }
 
-        // Script pour la gestion du tableau CSV
-        const csvFileToColumnMap = {
-            'gestion25.csv': {
-                'F': 5, // 6e colonne
-                'G': 6, // 7e colonne
-                'H': 7, // 8e colonne
-                'I': 8 // 9e colonne
-            },
-            // Ajoute d'autres mappings si d'autres fichiers CSV ont besoin de couleurs
-        };
-
         async function loadCSV(filePath) {
             const response = await fetch(filePath);
             const data = await response.text();
@@ -613,7 +619,8 @@
             const headers = lines[0].split(';');
             const body = lines.slice(1);
             
-            let table = '<table><thead><tr>';
+            // Ajout d'un ID pour le tableau
+            let table = `<table id="data-table"><thead><tr>`;
             headers.forEach(header => {
                 table += `<th>${header}</th>`;
             });
@@ -623,7 +630,7 @@
                 const values = line.split(';');
                 table += '<tr>';
                 values.forEach((value, index) => {
-                    const colIndex = index + 1; // Le premier enfant a l'index 1
+                    const colIndex = index + 1; 
                     let cellClasses = '';
 
                     // On vérifie si le fichier CSV est gestion25.csv
