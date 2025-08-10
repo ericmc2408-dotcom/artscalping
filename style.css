@@ -117,7 +117,7 @@
       word-wrap: break-word;
     }
     
-    /* Couleurs pour les quatre dernières colonnes */
+    /* Couleurs pour les quatre dernières colonnes, en partant de la droite */
     
     /* Dernière colonne : orange */
     #gestion25 th:nth-last-child(1),
