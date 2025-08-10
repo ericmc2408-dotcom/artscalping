@@ -66,6 +66,7 @@
         .language-switcher {
             margin-bottom: 20px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
         }
@@ -89,8 +90,15 @@
 
     <div class="instructions-container">
         <div class="language-switcher">
-            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr">
+            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr" class="active">
             <img src="https://flagcdn.com/gb.svg" alt="English" onclick="setLanguage('en')" id="lang-en">
+            <img src="https://flagcdn.com/es.svg" alt="Español" onclick="setLanguage('es')" id="lang-es">
+            <img src="https://flagcdn.com/cn.svg" alt="中文" onclick="setLanguage('zh')" id="lang-zh">
+            <img src="https://flagcdn.com/de.svg" alt="Deutsch" onclick="setLanguage('de')" id="lang-de">
+            <img src="https://flagcdn.com/pt.svg" alt="Português" onclick="setLanguage('pt')" id="lang-pt">
+            <img src="https://flagcdn.com/sa.svg" alt="العربية" onclick="setLanguage('ar')" id="lang-ar">
+            <img src="https://flagcdn.com/in.svg" alt="हिन्दी" onclick="setLanguage('hi')" id="lang-hi">
+            <img src="https://flagcdn.com/jp.svg" alt="日本語" onclick="setLanguage('ja')" id="lang-ja">
         </div>
         <h1 id="payment-title"></h1>
         <p id="payment-intro"></p>
@@ -148,6 +156,111 @@
                 step4: "Enter the email address of our Neteller account below.",
                 addressLabel: "Payment address:",
                 confirmationNote: "Once the payment is made, please send us an email to the same address to confirm the transfer. We will activate your subscription as soon as possible."
+            },
+            es: {
+                title: "Suscripción a ArtScalping",
+                intro: "Al suscribirse por **€19.99 al mes**, obtienes acceso exclusivo a nuestro contenido premium.",
+                includesTitle: "Su suscripción incluye:",
+                item1: "Acceso seguro y privado a nuestra hoja de cálculo de **'Partidos del día'**.",
+                item2: "Análisis y consejos basados en nuestro método de scalping único.",
+                item3: "Una estrategia diseñada para **proteger su capital** y maximizar sus ganancias.",
+                instructionsIntro: "Para finalizar su suscripción, siga los siguientes pasos para un pago a través de Neteller.",
+                step1: "Inicie sesión en su cuenta de Neteller.",
+                step2: "Seleccione la opción 'Transferencia de dinero' o 'Enviar dinero'.",
+                step3: "Introduzca el importe de €19.99.",
+                step4: "Introduzca la dirección de correo electrónico de nuestra cuenta de Neteller a continuación.",
+                addressLabel: "Dirección de pago:",
+                confirmationNote: "Una vez realizado el pago, envíenos un correo electrónico a la misma dirección para confirmar la transferencia. Activaremos su suscripción lo antes posible."
+            },
+            zh: {
+                title: "ArtScalping 订阅",
+                intro: "每月订阅 **19.99 欧元**，您将获得我们高级内容的独家访问权。",
+                includesTitle: "您的订阅包括：",
+                item1: "安全且私密的访问我们的 **'每日比赛'** 工作表。",
+                item2: "基于我们独特的剥头皮方法的分析和建议。",
+                item3: "旨在**保护您的资本**并最大化收益的策略。",
+                instructionsIntro: "要完成您的订阅，请按照以下步骤通过 Neteller 付款。",
+                step1: "登录您的 Neteller 帐户。",
+                step2: "选择“汇款”或“发送资金”选项。",
+                step3: "输入金额 19.99 欧元。",
+                step4: "在下方输入我们 Neteller 账户的电子邮件地址。",
+                addressLabel: "付款地址：",
+                confirmationNote: "付款完成后，请向我们发送电子邮件至同一地址以确认转账。我们将尽快激活您的订阅。"
+            },
+            de: {
+                title: "ArtScalping-Abonnement",
+                intro: "Mit einem Abonnement für **19,99 € pro Monat** erhalten Sie exklusiven Zugang zu unseren Premium-Inhalten.",
+                includesTitle: "Ihr Abonnement umfasst:",
+                item1: "Sicherer und privater Zugang zu unserem **'Spiele des Tages'**-Arbeitsblatt.",
+                item2: "Analysen und Ratschläge basierend auf unserer einzigartigen Scalping-Methode.",
+                item3: "Eine Strategie, die darauf ausgelegt ist, **Ihr Kapital zu schützen** und Ihre Gewinne zu maximieren.",
+                instructionsIntro: "Um Ihr Abonnement abzuschließen, befolgen Sie bitte die folgenden Schritte für eine Zahlung über Neteller.",
+                step1: "Melden Sie sich bei Ihrem Neteller-Konto an.",
+                step2: "Wählen Sie die Option 'Geldtransfer' oder 'Geld senden'.",
+                step3: "Geben Sie den Betrag von 19,99 € ein.",
+                step4: "Geben Sie unten die E-Mail-Adresse unseres Neteller-Kontos ein.",
+                addressLabel: "Zahlungsadresse:",
+                confirmationNote: "Sobald die Zahlung erfolgt ist, senden Sie uns bitte eine E-Mail an dieselbe Adresse, um die Überweisung zu bestätigen. Wir werden Ihr Abonnement so schnell wie möglich aktivieren."
+            },
+            pt: {
+                title: "Assinatura ArtScalping",
+                intro: "Ao assinar por **€19,99 por mês**, você obtém acesso exclusivo ao nosso conteúdo premium.",
+                includesTitle: "Sua assinatura inclui:",
+                item1: "Acesso seguro e privado à nossa planilha de **'Jogos do dia'**.",
+                item2: "Análises e conselhos baseados em nosso método de scalping exclusivo.",
+                item3: "Uma estratégia projetada para **proteger seu capital** e maximizar seus ganhos.",
+                instructionsIntro: "Para finalizar sua assinatura, siga os seguintes passos para um pagamento via Neteller.",
+                step1: "Faça login em sua conta Neteller.",
+                step2: "Selecione a opção 'Transferência de Dinheiro' ou 'Enviar Dinheiro'.",
+                step3: "Digite o valor de €19,99.",
+                step4: "Digite o endereço de e-mail da nossa conta Neteller abaixo.",
+                addressLabel: "Endereço de pagamento:",
+                confirmationNote: "Assim que o pagamento for feito, envie-nos um e-mail para o mesmo endereço para confirmar a transferência. Ativaremos sua assinatura o mais rápido possível."
+            },
+            ar: {
+                title: "اشتراك ArtScalping",
+                intro: "عند الاشتراك مقابل **19.99 يورو شهريًا**، تحصل على وصول حصري إلى محتوانا المتميز.",
+                includesTitle: "اشتراكك يتضمن:",
+                item1: "وصول آمن وخاص إلى جدولنا **'مباريات اليوم'**.",
+                item2: "تحليلات ونصائح بناءً على طريقة السكالبينج الفريدة لدينا.",
+                item3: "استراتيجية مصممة **لحماية رأس مالك** وزيادة أرباحك إلى أقصى حد.",
+                instructionsIntro: "لإنهاء اشتراكك، يرجى اتباع الخطوات التالية للدفع عبر Neteller.",
+                step1: "سجل الدخول إلى حساب Neteller الخاص بك.",
+                step2: "حدد خيار 'تحويل الأموال' أو 'إرسال الأموال'.",
+                step3: "أدخل مبلغ 19.99 يورو.",
+                step4: "أدخل عنوان البريد الإلكتروني لحساب Neteller الخاص بنا أدناه.",
+                addressLabel: "عنوان الدفع:",
+                confirmationNote: "بمجرد إتمام الدفع، يرجى إرسال بريد إلكتروني إلينا على نفس العنوان لتأكيد التحويل. سنقوم بتفعيل اشتراكك في أقرب وقت ممكن."
+            },
+            hi: {
+                title: "आर्टस्कैल्पिंग सदस्यता",
+                intro: "**€19.99 प्रति माह** की सदस्यता लेकर, आपको हमारी प्रीमियम सामग्री तक विशेष पहुंच मिलती है।",
+                includesTitle: "आपकी सदस्यता में शामिल हैं:",
+                item1: "हमारी **'आज के मैच'** स्प्रेडशीट तक सुरक्षित और निजी पहुंच।",
+                item2: "हमारी अनूठी स्कैल्पिंग विधि पर आधारित विश्लेषण और सलाह।",
+                item3: "**आपकी पूंजी की रक्षा** करने और आपके लाभ को अधिकतम करने के लिए डिज़ाइन की गई एक रणनीति।",
+                instructionsIntro: "अपनी सदस्यता को अंतिम रूप देने के लिए, Neteller के माध्यम से भुगतान के लिए इन चरणों का पालन करें।",
+                step1: "अपने Neteller खाते में लॉग इन करें।",
+                step2: "'मनी ट्रांसफर' या 'पैसे भेजें' विकल्प चुनें।",
+                step3: "€19.99 की राशि दर्ज करें।",
+                step4: "नीचे हमारे Neteller खाते का ईमेल पता दर्ज करें।",
+                addressLabel: "भुगतान पता:",
+                confirmationNote: "एक बार भुगतान हो जाने पर, कृपया हस्तांतरण की पुष्टि करने के लिए हमें उसी पते पर एक ईमेल भेजें। हम जल्द से जल्द आपकी सदस्यता को सक्रिय कर देंगे।"
+            },
+            ja: {
+                title: "ArtScalping サブスクリプション",
+                intro: "**月額 €19.99** で購読すると、プレミアムコンテンツへの独占アクセスができます。",
+                includesTitle: "サブスクリプションに含まれるもの：",
+                item1: "私たちの **「本日の試合」** スプレッドシートへの安全でプライベートなアクセス。",
+                item2: "独自のスキャルピング方法に基づいた分析とアドバイス。",
+                item3: "**あなたの資本を保護**し、利益を最大化するように設計された戦略。",
+                instructionsIntro: "サブスクリプションを完了するには、Neteller を介した支払いのために次の手順に従ってください。",
+                step1: "Neteller アカウントにログインします。",
+                step2: "「送金」または「送金」オプションを選択します。",
+                step3: "金額 €19.99 を入力します。",
+                step4: "以下に私たちの Neteller アカウントのメールアドレスを入力します。",
+                addressLabel: "支払いアドレス：",
+                confirmationNote: "支払いが完了したら、同じアドレスにメールを送信して転送を確認してください。できるだけ早くサブスクリプションを有効化します。"
             }
         };
 
