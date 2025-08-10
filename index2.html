@@ -29,7 +29,7 @@
             color: #f1c40f;
             font-size: 1.8em;
             margin-bottom: 30px;
-            cursor: pointer; /* Ajout d'un curseur pour indiquer qu'il est cliquable */
+            cursor: pointer;
         }
         
         .language-switcher {
@@ -126,7 +126,7 @@
             width: 100%;
             height: 100%;
             border: none;
-            display: none; /* Rendre l'iframe invisible par défaut */
+            display: none;
         }
         
         #home-content {
@@ -168,7 +168,7 @@
             max-width: 1000px;
             margin-top: 20px;
             overflow-x: auto;
-            display: none; /* Rendre le conteneur de tableau invisible par défaut */
+            display: none;
         }
         
         #data-table {
@@ -348,6 +348,21 @@
                 </a>
             </li>
             <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="gestion25.csv" id="link-results-under-2-5">
+                    <span class="icon">&#x1F4C8;</span><span class="text-fr">Résultats Under 2.5 1HT</span><span class="text-en" style="display:none;">Results Under 2.5 1HT</span><span class="text-es" style="display:none;">Resultados Under 2.5 1HT</span><span class="text-zh" style="display:none;">结果 Under 2.5 1HT</span><span class="text-de" style="display:none;">Ergebnisse Under 2.5 1HT</span><span class="text-pt" style="display:none;">Resultados Under 2.5 1HT</span><span class="text-ar" style="display:none;">نتائج Under 2.5 1HT</span><span class="text-hi" style="display:none;">परिणाम Under 2.5 1HT</span><span class="text-ja" style="display:none;">結果 Under 2.5 1HT</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="gestion45.csv" id="link-results-under-4-5">
+                    <span class="icon">&#x1F4C8;</span><span class="text-fr">Résultats Under 4.5</span><span class="text-en" style="display:none;">Results Under 4.5</span><span class="text-es" style="display:none;">Resultados Under 4.5</span><span class="text-zh" style="display:none;">结果 Under 4.5</span><span class="text-de" style="display:none;">Ergebnisse Under 4.5</span><span class="text-pt" style="display:none;">Resultados Under 4.5</span><span class="text-ar" style="display:none;">نتائج Under 4.5</span><span class="text-hi" style="display:none;">परिणाम Under 4.5</span><span class="text-ja" style="display:none;">結果 Under 4.5</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="gestion451.csv" id="link-results-under-4-5-sequence">
+                    <span class="icon">&#x1F4C5;</span><span class="text-fr">Résultats Under 4.5 Séquence</span><span class="text-en" style="display:none;">Results Under 4.5 Sequence</span><span class="text-es" style="display:none;">Resultados Under 4.5 Secuencia</span><span class="text-zh" style="display:none;">结果 Under 4.5 序列</span><span class="text-de" style="display:none;">Ergebnisse Under 4.5 Sequenz</span><span class="text-pt" style="display:none;">Resultados Under 4.5 Sequência</span><span class="text-ar" style="display:none;">نتائج Under 4.5 تسلسل</span><span class="text-hi" style="display:none;">परिणाम Under 4.5 अनुक्रम</span><span class="text-ja" style="display:none;">結果 Under 4.5 シーケンス</span>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="paiement_neteller.html" class="menu-link subscribe" data-content-type="iframe" id="link-subscribe">
                     <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span><span class="text-es" style="display:none;">Suscripción</span><span class="text-zh" style="display:none;">订阅</span><span class="text-de" style="display:none;">Abonnement</span><span class="text-pt" style="display:none;">Assinatura</span><span class="text-ar" style="display:none;">اشتراك</span><span class="text-hi" style="display:none;">सदस्यता</span><span class="text-ja" style="display:none;">購読</span>
                 </a>
@@ -403,6 +418,9 @@
                 footer: "Conçu avec l'aide de Gemini",
                 contactSubject: "Question concernant ArtScalping",
                 trialSubject: "Demande d'essai gratuit ArtScalping",
+                resultsUnder25: "Résultats Under 2.5 1HT",
+                resultsUnder45: "Résultats Under 4.5",
+                resultsUnder45Seq: "Résultats Under 4.5 Séquence"
             },
             en: {
                 title: "Main Menu - ArtScalping",
@@ -414,6 +432,9 @@
                 footer: "Designed with the help of Gemini",
                 contactSubject: "Question about ArtScalping",
                 trialSubject: "Free Trial Request for ArtScalping",
+                resultsUnder25: "Results Under 2.5 1HT",
+                resultsUnder45: "Results Under 4.5",
+                resultsUnder45Seq: "Results Under 4.5 Sequence"
             },
             es: {
                 title: "Menú Principal - ArtScalping",
@@ -425,6 +446,9 @@
                 footer: "Diseñado con la ayuda de Gemini",
                 contactSubject: "Pregunta sobre ArtScalping",
                 trialSubject: "Solicitud de prueba gratuita de ArtScalping",
+                resultsUnder25: "Resultados Under 2.5 1HT",
+                resultsUnder45: "Resultados Under 4.5",
+                resultsUnder45Seq: "Resultados Under 4.5 Secuencia"
             },
             zh: {
                 title: "主菜单 - ArtScalping",
@@ -436,6 +460,9 @@
                 footer: "由 Gemini 协助设计",
                 contactSubject: "关于 ArtScalping 的问题",
                 trialSubject: "ArtScalping 免费试用申请",
+                resultsUnder25: "结果 Under 2.5 1HT",
+                resultsUnder45: "结果 Under 4.5",
+                resultsUnder45Seq: "结果 Under 4.5 序列"
             },
             de: {
                 title: "Hauptmenü - ArtScalping",
@@ -447,6 +474,9 @@
                 footer: "Mit Hilfe von Gemini entworfen",
                 contactSubject: "Frage zu ArtScalping",
                 trialSubject: "Kostenlose Testversion von ArtScalping anfordern",
+                resultsUnder25: "Ergebnisse Under 2.5 1HT",
+                resultsUnder45: "Ergebnisse Under 4.5",
+                resultsUnder45Seq: "Ergebnisse Under 4.5 Sequenz"
             },
             pt: {
                 title: "Menu Principal - ArtScalping",
@@ -458,6 +488,9 @@
                 footer: "Projetado com a ajuda de Gemini",
                 contactSubject: "Pergunta sobre ArtScalping",
                 trialSubject: "Solicitação de teste gratuito de ArtScalping",
+                resultsUnder25: "Resultados Under 2.5 1HT",
+                resultsUnder45: "Resultados Under 4.5",
+                resultsUnder45Seq: "Resultados Under 4.5 Sequência"
             },
             ar: {
                 title: "القائمة الرئيسية - ArtScalping",
@@ -469,6 +502,9 @@
                 footer: "تم التصميم بمساعدة Gemini",
                 contactSubject: "سؤال بخصوص ArtScalping",
                 trialSubject: "طلب تجربة مجانية لـ ArtScalping",
+                resultsUnder25: "نتائج Under 2.5 1HT",
+                resultsUnder45: "نتائج Under 4.5",
+                resultsUnder45Seq: "نتائج Under 4.5 تسلسل"
             },
             hi: {
                 title: "मुख्य मेनू - आर्टस्कैल्पिंग",
@@ -480,6 +516,9 @@
                 footer: "जेमिनी की मदद से डिज़ाइन किया गया",
                 contactSubject: "आर्टस्कैल्पिंग के बारे में प्रश्न",
                 trialSubject: "आर्टस्कैल्पिंग के लिए निःशुल्क परीक्षण अनुरोध",
+                resultsUnder25: "परिणाम Under 2.5 1HT",
+                resultsUnder45: "परिणाम Under 4.5",
+                resultsUnder45Seq: "परिणाम Under 4.5 अनुक्रम"
             },
             ja: {
                 title: "メインメニュー - ArtScalping",
@@ -491,6 +530,9 @@
                 footer: "Geminiの助けを借りて設計",
                 contactSubject: "ArtScalpingに関する質問",
                 trialSubject: "ArtScalping無料トライアルリクエスト",
+                resultsUnder25: "結果 Under 2.5 1HT",
+                resultsUnder45: "結果 Under 4.5",
+                resultsUnder45Seq: "結果 Under 4.5 シーケンス"
             },
         };
 
@@ -532,6 +574,37 @@
             
             document.getElementById('link-contact').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.contactSubject)}`;
             document.getElementById('free-trial-mail').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.trialSubject)}`;
+
+            // Update text for new buttons
+            document.querySelector('#link-results-under-2-5 .text-fr').textContent = translations.fr.resultsUnder25;
+            document.querySelector('#link-results-under-2-5 .text-en').textContent = translations.en.resultsUnder25;
+            document.querySelector('#link-results-under-2-5 .text-es').textContent = translations.es.resultsUnder25;
+            document.querySelector('#link-results-under-2-5 .text-zh').textContent = translations.zh.resultsUnder25;
+            document.querySelector('#link-results-under-2-5 .text-de').textContent = translations.de.resultsUnder25;
+            document.querySelector('#link-results-under-2-5 .text-pt').textContent = translations.pt.resultsUnder25;
+            document.querySelector('#link-results-under-2-5 .text-ar').textContent = translations.ar.resultsUnder25;
+            document.querySelector('#link-results-under-2-5 .text-hi').textContent = translations.hi.resultsUnder25;
+            document.querySelector('#link-results-under-2-5 .text-ja').textContent = translations.ja.resultsUnder25;
+
+            document.querySelector('#link-results-under-4-5 .text-fr').textContent = translations.fr.resultsUnder45;
+            document.querySelector('#link-results-under-4-5 .text-en').textContent = translations.en.resultsUnder45;
+            document.querySelector('#link-results-under-4-5 .text-es').textContent = translations.es.resultsUnder45;
+            document.querySelector('#link-results-under-4-5 .text-zh').textContent = translations.zh.resultsUnder45;
+            document.querySelector('#link-results-under-4-5 .text-de').textContent = translations.de.resultsUnder45;
+            document.querySelector('#link-results-under-4-5 .text-pt').textContent = translations.pt.resultsUnder45;
+            document.querySelector('#link-results-under-4-5 .text-ar').textContent = translations.ar.resultsUnder45;
+            document.querySelector('#link-results-under-4-5 .text-hi').textContent = translations.hi.resultsUnder45;
+            document.querySelector('#link-results-under-4-5 .text-ja').textContent = translations.ja.resultsUnder45;
+
+            document.querySelector('#link-results-under-4-5-sequence .text-fr').textContent = translations.fr.resultsUnder45Seq;
+            document.querySelector('#link-results-under-4-5-sequence .text-en').textContent = translations.en.resultsUnder45Seq;
+            document.querySelector('#link-results-under-4-5-sequence .text-es').textContent = translations.es.resultsUnder45Seq;
+            document.querySelector('#link-results-under-4-5-sequence .text-zh').textContent = translations.zh.resultsUnder45Seq;
+            document.querySelector('#link-results-under-4-5-sequence .text-de').textContent = translations.de.resultsUnder45Seq;
+            document.querySelector('#link-results-under-4-5-sequence .text-pt').textContent = translations.pt.resultsUnder45Seq;
+            document.querySelector('#link-results-under-4-5-sequence .text-ar').textContent = translations.ar.resultsUnder45Seq;
+            document.querySelector('#link-results-under-4-5-sequence .text-hi').textContent = translations.hi.resultsUnder45Seq;
+            document.querySelector('#link-results-under-4-5-sequence .text-ja').textContent = translations.ja.resultsUnder45Seq;
         }
 
         async function loadAndDisplayCSV(filename) {
@@ -575,13 +648,13 @@
                             const numericValue = parseInt(value, 10);
                             
                             if (!isNaN(numericValue)) {
-                                if (filename === 'historique_under25.csv') {
+                                if (filename === 'historique_under25.csv' || filename === 'gestion25.csv') {
                                     if (numericValue <= 2) {
                                         td.classList.add('result-green');
                                     } else {
                                         td.classList.add('result-red');
                                     }
-                                } else if (filename === 'historique_under45.csv') {
+                                } else if (filename === 'historique_under45.csv' || filename === 'gestion45.csv' || filename === 'gestion451.csv') {
                                     if (numericValue <= 4) {
                                         td.classList.add('result-green');
                                     } else {
@@ -604,20 +677,21 @@
         
         links.forEach(link => {
             link.addEventListener('click', (event) => {
-                event.preventDefault();
                 const contentType = link.getAttribute('data-content-type');
                 
                 if (contentType === 'csv') {
+                    event.preventDefault();
                     const filename = link.getAttribute('data-file');
                     loadAndDisplayCSV(filename);
                 } else if (contentType === 'iframe') {
+                    event.preventDefault();
                     showContent('iframe');
                     const url = new URL(link.href, window.location.href);
                     url.searchParams.set('lang', currentLanguage);
                     contentIframe.src = url.toString();
                 } else {
                     // Gérer les autres liens (comme mailto)
-                    window.location.href = link.href;
+                    // L'action par défaut du lien sera exécutée
                 }
             });
         });
@@ -634,3 +708,4 @@
     </script>
 </body>
 </html>
+
