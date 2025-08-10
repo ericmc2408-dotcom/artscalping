@@ -1,191 +1,81 @@
-<style>
-    body {
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        text-align: center;
-        flex-direction: column;
-        overflow-x: hidden;
-        padding: 20px;
-    }
+/* --- Styles pour les tableaux générés --- */
+#table-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+    overflow-x: auto;
+    display: none;
+}
 
-    .header {
-        opacity: 0;
-        animation: fadeIn 1.5s forwards;
-        animation-delay: 0.5s;
-    }
+#data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #34495e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
 
-    #system-name {
-        font-size: 2.5em;
-        color: #f1c40f;
-        font-weight: bold;
-        margin: 0;
-    }
+#data-table th, #data-table td {
+    border: 1px solid #2c3e50;
+    padding: 12px 15px;
+    text-align: left;
+}
 
-    #animated-text-loop {
-        font-size: 1.2em;
-        min-height: 20px;
-        margin-top: 10px;
-        opacity: 0;
-        animation: fadeIn 1s forwards;
-        animation-delay: 2s;
-    }
+#data-table thead th {
+    background-color: #2980b9;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
-    .fade-out-in {
-        animation: fadeOutIn 3s forwards;
-    }
+#data-table tbody tr:nth-child(even) {
+    background-color: #2c3e50;
+}
 
-    .animation-container {
-        width: 80%;
-        max-width: 600px;
-        position: relative;
-        margin-top: 40px;
-    }
-
-    .scene {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-        pointer-events: none;
-    }
-
-    .scene.active {
-        opacity: 1;
-        position: relative;
-        pointer-events: auto;
-    }
-
-    #next-button {
-        margin-top: 40px;
-        padding: 10px 20px;
-        font-size: 1.5em;
-        cursor: pointer;
-        border: 2px solid #3498db;
-        background-color: transparent;
-        color: #3498db;
-        border-radius: 5px;
-        transition: background-color 0.3s, color: 0.3s;
-        display: none;
-    }
-
-    #next-button:hover {
-        background-color: #3498db;
-        color: #ecf0f1;
-    }
-
-    #skip-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 10px 15px;
-        font-size: 1em;
-        cursor: pointer;
-        border: 2px solid #e74c3c;
-        background-color: transparent;
-        color: #e74c3c;
-        border-radius: 5px;
-        transition: background-color 0.3s, color 0.3s;
-        z-index: 100;
-    }
-
-    #skip-button:hover {
-        background-color: #e74c3c;
-        color: #ecf0f1;
-    }
-
-    /* --- NOUVEAUX STYLES POUR LE TABLEAU gestion25 --- */
-    #gestion25 {
-      table-layout: fixed;
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      font-size: 0.9em;
-    }
+#data-table tbody tr:hover {
+    background-color: #3f586a;
+}
     
-    #gestion25 th, #gestion25 td {
-      border: 1px solid #34495e;
-      padding: 8px;
-      text-align: center;
-      word-wrap: break-word;
-    }
-    
-    /* Couleurs pour les quatre dernières colonnes, en partant de la droite */
-    
-    /* Dernière colonne : orange */
-    #gestion25 th:nth-last-child(1),
-    #gestion25 td:nth-last-child(1) {
-      background-color: orange;
-      color: black;
-    }
-    
-    /* Avant-dernière colonne : bleue */
-    #gestion25 th:nth-last-child(2),
-    #gestion25 td:nth-last-child(2) {
-      background-color: blue;
-      color: white;
-    }
-    
-    /* Avant-avant-dernière colonne : rouge */
-    #gestion25 th:nth-last-child(3),
-    #gestion25 td:nth-last-child(3) {
-      background-color: red;
-      color: white;
-    }
-    
-    /* Avant-avant-avant-dernière colonne : verte */
-    #gestion25 th:nth-last-child(4),
-    #gestion25 td:nth-last-child(4) {
-      background-color: green;
-      color: white;
-    }
+/* --- NOUVEAUX STYLES SPÉCIFIQUES POUR LE TABLEAU gestion25 --- */
+/* Pour que le tableau tienne sur la page, même sur mobile */
+#gestion25 {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
 
-    /* --- RÈGLES SPÉCIFIQUES POUR LES TÉLÉPHONES --- */
-    @media (max-width: 768px) {
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: stretch;
-            min-height: 100vh;
-            text-align: center;
-            padding: 20px 10px;
-        }
-
-        .header {
-            margin-top: 0;
-        }
-
-        .lang-flags {
-            position: absolute;
-            top: 20px;
-            left: 10px;
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
-
-        #skip-button {
-            top: 20px;
-            right: 10px;
-            position: absolute;
-        }
-
-        #next-button {
-            display: block !important;
-            margin-top: auto;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
-</style>
+#gestion25 th, #gestion25 td {
+    border: 1px solid #34495e;
+    padding: 8px;
+    text-align: center;
+    word-wrap: break-word;
+}
+    
+/* Styles pour les 4 dernières colonnes */
+/* Colonne F (avant-avant-avant-dernière) : verte si la valeur est 1 */
+#gestion25 td:nth-last-child(4).valeur-1 {
+    background-color: green;
+    color: white;
+}
+    
+/* Colonne G (avant-avant-dernière) : rouge si la valeur est 1 */
+#gestion25 td:nth-last-child(3).valeur-1 {
+    background-color: red;
+    color: white;
+}
+    
+/* Colonne H (avant-dernière) : bleue si la valeur est 1 */
+#gestion25 td:nth-last-child(2).valeur-1 {
+    background-color: blue;
+    color: white;
+}
+    
+/* Colonne I (dernière) : orange si la valeur est 1 */
+#gestion25 td:nth-last-child(1).valeur-1 {
+    background-color: orange;
+    color: black;
+}
