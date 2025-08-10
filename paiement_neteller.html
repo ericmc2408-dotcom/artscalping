@@ -3,59 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abonnement - ArtScalping</title>
+    <title>Instructions de Paiement - Neteller</title>
     <style>
         body {
             background-color: #2c3e50;
             color: #ecf0f1;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .payment-container {
-            width: 100%;
-            max-width: 600px;
-            background-color: #34495e;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
+            padding: 40px;
         }
-        .payment-container h2 {
+        
+        .instructions-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
             color: #f1c40f;
-            font-size: 2em;
-            margin-bottom: 20px;
+            font-size: 2.5em;
         }
-        .payment-container p {
+
+        h2 {
+            color: #3498db;
+            margin-top: 30px;
+        }
+
+        p, li {
             font-size: 1.1em;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
-        .payment-link {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #2ecc71;
+        
+        .email-address {
+            background-color: #2980b9;
             color: #fff;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
+            padding: 15px;
             border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
         }
-        .payment-link:hover {
-            background-color: #27ae60;
-            transform: scale(1.05);
+        
+        .instructions-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 30px;
+        }
+        
+        .instructions-list li {
+            background-color: #55697d;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .language-switcher {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .language-switcher img {
+            width: 30px;
+            cursor: pointer;
+            border-radius: 3px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .language-switcher img.active,
+        .language-switcher img:hover {
+            opacity: 1;
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <div class="payment-container">
-        <h2>Page d'Abonnement</h2>
-        <p>Cliquez sur le bouton ci-dessous pour finaliser votre abonnement via Neteller. Vous serez redirigé vers la page de paiement sécurisée.</p>
-        <a href="https://your-neteller-payment-link.com" class="payment-link" target="_blank">Payer via Neteller</a>
+
+    <div class="instructions-container">
+        <div class="language-switcher">
+            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr">
+            <img src="https://flagcdn.com/gb.svg" alt="English" onclick="setLanguage('en')" id="lang-en">
+        </div>
+        <h1 id="payment-title"></h1>
+        <p id="payment-intro"></p>
+
+        <h2 id="subscription-includes-title"></h2>
+        <ul class="instructions-list">
+            <li id="item-1"></li>
+            <li id="item-2"></li>
+            <li id="item-3"></li>
+        </ul>
+        
+        <p id="payment-instructions-intro"></p>
+        
+        <ol class="instructions-list">
+            <li id="step-1"></li>
+            <li id="step-2"></li>
+            <li id="step-3"></li>
+            <li id="step-4"></li>
+        </ol>
+
+        <p id="payment-address-label"></p>
+        <span class="email-address">ericmc2@hotmail.fr</span>
+        
+        <p id="payment-confirmation-note"></p>
     </div>
+
+    <script>
+        const translations = {
+            fr: {
+                title: "Abonnement ArtScalping",
+                intro: "En vous abonnant pour **19,99 € par mois**, vous obtenez l'accès exclusif à notre contenu premium.",
+                includesTitle: "Votre abonnement inclut :",
+                item1: "L'accès sécurisé et privé à notre feuille **'Matchs du jour'**.",
+                item2: "Des analyses et des conseils basés sur notre méthode de scalping unique.",
+                item3: "Une stratégie conçue pour **protéger votre capital** et maximiser vos gains.",
+                instructionsIntro: "Pour finaliser votre abonnement, veuillez suivre les étapes suivantes pour un paiement via Neteller.",
+                step1: "Connectez-vous à votre compte Neteller.",
+                step2: "Sélectionnez l'option 'Transfert d'argent' ou 'Envoyer de l'argent'.",
+                step3: "Saisissez le montant de 19,99 €.",
+                step4: "Entrez l'adresse email de notre compte Neteller ci-dessous.",
+                addressLabel: "Adresse de paiement :",
+                confirmationNote: "Une fois le paiement effectué, veuillez nous envoyer un e-mail à cette même adresse pour nous confirmer le virement. Nous activerons votre abonnement dans les plus brefs délais."
+            },
+            en: {
+                title: "ArtScalping Subscription",
+                intro: "By subscribing for **€19.99 per month**, you get exclusive access to our premium content.",
+                includesTitle: "Your subscription includes:",
+                item1: "Secure and private access to our **'Matchs du jour'** spreadsheet.",
+                item2: "Analyses and advice based on our unique scalping method.",
+                item3: "A strategy designed to **protect your capital** and maximize your gains.",
+                instructionsIntro: "To finalize your subscription, please follow these steps for a payment via Neteller.",
+                step1: "Log in to your Neteller account.",
+                step2: "Select the 'Money Transfer' or 'Send Money' option.",
+                step3: "Enter the amount of €19.99.",
+                step4: "Enter the email address of our Neteller account below.",
+                addressLabel: "Payment address:",
+                confirmationNote: "Once the payment is made, please send us an email to the same address to confirm the transfer. We will activate your subscription as soon as possible."
+            }
+        };
+
+        function setLanguage(lang) {
+            const content = translations[lang];
+
+            document.getElementById('payment-title').textContent = content.title;
+            document.getElementById('payment-intro').innerHTML = content.intro;
+            document.getElementById('subscription-includes-title').textContent = content.includesTitle;
+            document.getElementById('item-1').innerHTML = content.item1;
+            document.getElementById('item-2').innerHTML = content.item2;
+            document.getElementById('item-3').innerHTML = content.item3;
+            document.getElementById('payment-instructions-intro').textContent = content.instructionsIntro;
+            document.getElementById('step-1').textContent = content.step1;
+            document.getElementById('step-2').textContent = content.step2;
+            document.getElementById('step-3').textContent = content.step3;
+            document.getElementById('step-4').textContent = content.step4;
+            document.getElementById('payment-address-label').textContent = content.addressLabel;
+            document.getElementById('payment-confirmation-note').textContent = content.confirmationNote;
+            
+            document.querySelectorAll('.language-switcher img').forEach(img => img.classList.remove('active'));
+            document.getElementById(`lang-${lang}`).classList.add('active');
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'fr';
+            setLanguage(lang);
+        });
+    </script>
 </body>
 </html>
