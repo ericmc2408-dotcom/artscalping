@@ -201,19 +201,28 @@
         #data-table tbody tr:hover {
             background-color: #3f586a;
         }
-        
-        .result-green {
-            background-color: #27ae60;
+
+        /* Styles spécifiques pour le tableau gestion25 */
+        #data-table td.col-f.valeur-1 {
+            background-color: green;
             color: white;
-            font-weight: bold;
-        }
-        
-        .result-red {
-            background-color: #c0392b;
-            color: white;
-            font-weight: bold;
         }
 
+        #data-table td.col-g.valeur-1 {
+            background-color: red;
+            color: white;
+        }
+
+        #data-table td.col-h.valeur-1 {
+            background-color: blue;
+            color: white;
+        }
+
+        #data-table td.col-i.valeur-1 {
+            background-color: green;
+            color: white;
+        }
+        
         /* Règles pour les petits écrans (téléphones) */
         @media (max-width: 768px) {
             body {
@@ -575,137 +584,111 @@
             document.getElementById('link-contact').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.contactSubject)}`;
             document.getElementById('free-trial-mail').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.trialSubject)}`;
 
-            // Update text for new buttons
-            document.querySelector('#link-results-under-2-5 .text-fr').textContent = translations.fr.resultsUnder25;
-            document.querySelector('#link-results-under-2-5 .text-en').textContent = translations.en.resultsUnder25;
-            document.querySelector('#link-results-under-2-5 .text-es').textContent = translations.es.resultsUnder25;
-            document.querySelector('#link-results-under-2-5 .text-zh').textContent = translations.zh.resultsUnder25;
-            document.querySelector('#link-results-under-2-5 .text-de').textContent = translations.de.resultsUnder25;
-            document.querySelector('#link-results-under-2-5 .text-pt').textContent = translations.pt.resultsUnder25;
-            document.querySelector('#link-results-under-2-5 .text-ar').textContent = translations.ar.resultsUnder25;
-            document.querySelector('#link-results-under-2-5 .text-hi').textContent = translations.hi.resultsUnder25;
-            document.querySelector('#link-results-under-2-5 .text-ja').textContent = translations.ja.resultsUnder25;
-
-            document.querySelector('#link-results-under-4-5 .text-fr').textContent = translations.fr.resultsUnder45;
-            document.querySelector('#link-results-under-4-5 .text-en').textContent = translations.en.resultsUnder45;
-            document.querySelector('#link-results-under-4-5 .text-es').textContent = translations.es.resultsUnder45;
-            document.querySelector('#link-results-under-4-5 .text-zh').textContent = translations.zh.resultsUnder45;
-            document.querySelector('#link-results-under-4-5 .text-de').textContent = translations.de.resultsUnder45;
-            document.querySelector('#link-results-under-4-5 .text-pt').textContent = translations.pt.resultsUnder45;
-            document.querySelector('#link-results-under-4-5 .text-ar').textContent = translations.ar.resultsUnder45;
-            document.querySelector('#link-results-under-4-5 .text-hi').textContent = translations.hi.resultsUnder45;
-            document.querySelector('#link-results-under-4-5 .text-ja').textContent = translations.ja.resultsUnder45;
-
-            document.querySelector('#link-results-under-4-5-sequence .text-fr').textContent = translations.fr.resultsUnder45Seq;
-            document.querySelector('#link-results-under-4-5-sequence .text-en').textContent = translations.en.resultsUnder45Seq;
-            document.querySelector('#link-results-under-4-5-sequence .text-es').textContent = translations.es.resultsUnder45Seq;
-            document.querySelector('#link-results-under-4-5-sequence .text-zh').textContent = translations.zh.resultsUnder45Seq;
-            document.querySelector('#link-results-under-4-5-sequence .text-de').textContent = translations.de.resultsUnder45Seq;
-            document.querySelector('#link-results-under-4-5-sequence .text-pt').textContent = translations.pt.resultsUnder45Seq;
-            document.querySelector('#link-results-under-4-5-sequence .text-ar').textContent = translations.ar.resultsUnder45Seq;
-            document.querySelector('#link-results-under-4-5-sequence .text-hi').textContent = translations.hi.resultsUnder45Seq;
-            document.querySelector('#link-results-under-4-5-sequence .text-ja').textContent = translations.ja.resultsUnder45Seq;
+            // Update text for menu links
+            const menuLinks = document.querySelectorAll('.menu-link');
+            menuLinks.forEach(link => {
+                const linkId = link.id;
+                const linkTextSpan = link.querySelector(`.text-${lang}`);
+                if (linkTextSpan) {
+                    // Update text from translations object
+                }
+            });
         }
 
-        async function loadAndDisplayCSV(filename) {
-            showContent('table');
-            tableContainer.innerHTML = '<p style="text-align:center;">Chargement des données...</p>';
+        // Script pour la gestion du tableau CSV
+        const csvFileToColumnMap = {
+            'gestion25.csv': {
+                'F': 5, // 6e colonne
+                'G': 6, // 7e colonne
+                'H': 7, // 8e colonne
+                'I': 8 // 9e colonne
+            },
+            // Ajoute d'autres mappings si d'autres fichiers CSV ont besoin de couleurs
+        };
 
-            try {
-                const response = await fetch(filename);
-                if (!response.ok) {
-                    throw new Error(`Erreur de chargement du fichier : ${response.statusText}`);
-                }
-                const csvText = await response.text();
-                
-                const lines = csvText.split('\n').filter(line => line.trim() !== '');
-                if (lines.length === 0) {
-                    throw new Error('Le fichier CSV est vide.');
-                }
+        async function loadCSV(filePath) {
+            const response = await fetch(filePath);
+            const data = await response.text();
+            const lines = data.split('\n').filter(line => line.trim() !== '');
+            const headers = lines[0].split(';');
+            const body = lines.slice(1);
+            
+            let table = '<table><thead><tr>';
+            headers.forEach(header => {
+                table += `<th>${header}</th>`;
+            });
+            table += '</tr></thead><tbody>';
 
-                const headers = lines[0].split(';');
-                const table = document.createElement('table');
-                table.id = 'data-table';
-                
-                const thead = table.createTHead();
-                const headerRow = thead.insertRow();
-                headers.forEach(header => {
-                    const th = document.createElement('th');
-                    th.textContent = header.trim();
-                    headerRow.appendChild(th);
-                });
-                
-                const tbody = table.createTBody();
-                for (let i = 1; i < lines.length; i++) {
-                    const values = lines[i].split(';');
-                    const row = tbody.insertRow();
-                    for (let j = 0; j < values.length; j++) {
-                        const value = values[j].trim();
-                        const td = row.insertCell();
-                        td.textContent = value;
-                        
-                        if (j === values.length - 1) { 
-                            const numericValue = parseInt(value, 10);
-                            
-                            if (!isNaN(numericValue)) {
-                                if (filename === 'historique_under25.csv' || filename === 'gestion25.csv') {
-                                    if (numericValue <= 2) {
-                                        td.classList.add('result-green');
-                                    } else {
-                                        td.classList.add('result-red');
-                                    }
-                                } else if (filename === 'historique_under45.csv' || filename === 'gestion45.csv' || filename === 'gestion451.csv') {
-                                    if (numericValue <= 4) {
-                                        td.classList.add('result-green');
-                                    } else {
-                                        td.classList.add('result-red');
-                                    }
-                                }
-                            }
+            body.forEach(line => {
+                const values = line.split(';');
+                table += '<tr>';
+                values.forEach((value, index) => {
+                    const colIndex = index + 1; // Le premier enfant a l'index 1
+                    let cellClasses = '';
+
+                    // On vérifie si le fichier CSV est gestion25.csv
+                    if (filePath.includes('gestion25.csv')) {
+                        // On vérifie si la colonne doit être colorée
+                        if (colIndex === 6) cellClasses += ' col-f';
+                        if (colIndex === 7) cellClasses += ' col-g';
+                        if (colIndex === 8) cellClasses += ' col-h';
+                        if (colIndex === 9) cellClasses += ' col-i';
+
+                        // On vérifie si la valeur est "1" pour ajouter la classe
+                        if (value.trim() === '1') {
+                            cellClasses += ' valeur-1';
                         }
                     }
-                }
+                    
+                    table += `<td class="${cellClasses}">${value}</td>`;
+                });
+                table += '</tr>';
+            });
 
-                tableContainer.innerHTML = '';
-                tableContainer.appendChild(table);
-
-            } catch (error) {
-                console.error('Erreur lors du chargement ou de l\'affichage du CSV:', error);
-                tableContainer.innerHTML = `<p style="color: red;">${error.message}</p>`;
-            }
+            table += '</tbody></table>';
+            return table;
         }
-        
+
         links.forEach(link => {
-            link.addEventListener('click', (event) => {
-                const contentType = link.getAttribute('data-content-type');
-                
+            link.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const contentType = link.dataset.contentType;
+                const file = link.dataset.file;
+                const url = link.href;
+
+                // Masquer le contenu de la page d'accueil
+                homeContent.style.display = 'none';
+                tableContainer.style.display = 'none';
+                contentIframe.style.display = 'none';
+
                 if (contentType === 'csv') {
-                    event.preventDefault();
-                    const filename = link.getAttribute('data-file');
-                    loadAndDisplayCSV(filename);
+                    try {
+                        tableContainer.innerHTML = await loadCSV(file);
+                        tableContainer.style.display = 'block';
+                    } catch (error) {
+                        console.error('Erreur lors du chargement du fichier CSV :', error);
+                        tableContainer.innerHTML = `<p>Erreur lors du chargement du tableau.</p>`;
+                        tableContainer.style.display = 'block';
+                    }
                 } else if (contentType === 'iframe') {
-                    event.preventDefault();
-                    showContent('iframe');
-                    const url = new URL(link.href, window.location.href);
-                    url.searchParams.set('lang', currentLanguage);
-                    contentIframe.src = url.toString();
-                } else {
-                    // Gérer les autres liens (comme mailto)
-                    // L'action par défaut du lien sera exécutée
+                    contentIframe.src = url;
+                    contentIframe.style.display = 'block';
+                } else if (url.startsWith('mailto:')) {
+                    window.location.href = url;
                 }
             });
         });
 
-        // Gérer le retour à la page d'accueil en cliquant sur le titre
-        siteTitle.addEventListener('click', () => {
+        // Charger la page d'accueil par défaut
+        window.addEventListener('DOMContentLoaded', () => {
+            setLanguage('fr');
             showContent('home');
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            setLanguage('fr');
+        // Gestion du titre cliquable
+        siteTitle.addEventListener('click', () => {
             showContent('home');
         });
     </script>
 </body>
 </html>
-
