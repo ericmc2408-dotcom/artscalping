@@ -1,27 +1,191 @@
-/* --- Couleurs basées sur la position des colonnes --- */
-/* Colonne I (9e colonne) - Orange */
-#gestion25 th:nth-child(9),
-#gestion25 td:nth-child(9) {
-  background-color: orange;
-}
+<style>
+    body {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        text-align: center;
+        flex-direction: column;
+        overflow-x: hidden;
+        padding: 20px;
+    }
 
-/* Colonne H (8e colonne) - Bleu */
-#gestion25 th:nth-child(8),
-#gestion25 td:nth-child(8) {
-  background-color: blue;
-  color: white; /* Pour un meilleur contraste du texte */
-}
+    .header {
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+        animation-delay: 0.5s;
+    }
 
-/* Colonne G (7e colonne) - Rouge */
-#gestion25 th:nth-child(7),
-#gestion25 td:nth-child(7) {
-  background-color: red;
-  color: white;
-}
+    #system-name {
+        font-size: 2.5em;
+        color: #f1c40f;
+        font-weight: bold;
+        margin: 0;
+    }
 
-/* Colonne F (6e colonne) - Vert */
-#gestion25 th:nth-child(6),
-#gestion25 td:nth-child(6) {
-  background-color: green;
-  color: white;
-}
+    #animated-text-loop {
+        font-size: 1.2em;
+        min-height: 20px;
+        margin-top: 10px;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 2s;
+    }
+
+    .fade-out-in {
+        animation: fadeOutIn 3s forwards;
+    }
+
+    .animation-container {
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+        margin-top: 40px;
+    }
+
+    .scene {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        pointer-events: none;
+    }
+
+    .scene.active {
+        opacity: 1;
+        position: relative;
+        pointer-events: auto;
+    }
+
+    #next-button {
+        margin-top: 40px;
+        padding: 10px 20px;
+        font-size: 1.5em;
+        cursor: pointer;
+        border: 2px solid #3498db;
+        background-color: transparent;
+        color: #3498db;
+        border-radius: 5px;
+        transition: background-color 0.3s, color: 0.3s;
+        display: none;
+    }
+
+    #next-button:hover {
+        background-color: #3498db;
+        color: #ecf0f1;
+    }
+
+    #skip-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 1em;
+        cursor: pointer;
+        border: 2px solid #e74c3c;
+        background-color: transparent;
+        color: #e74c3c;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        z-index: 100;
+    }
+
+    #skip-button:hover {
+        background-color: #e74c3c;
+        color: #ecf0f1;
+    }
+
+    /* --- NOUVEAUX STYLES POUR LE TABLEAU gestion25 --- */
+    #gestion25 {
+      table-layout: fixed;
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+    
+    #gestion25 th, #gestion25 td {
+      border: 1px solid #34495e;
+      padding: 8px;
+      text-align: center;
+      word-wrap: break-word;
+    }
+    
+    /* Couleurs pour les quatre dernières colonnes */
+    
+    /* Dernière colonne : orange */
+    #gestion25 th:nth-last-child(1),
+    #gestion25 td:nth-last-child(1) {
+      background-color: orange;
+      color: black;
+    }
+    
+    /* Avant-dernière colonne : bleue */
+    #gestion25 th:nth-last-child(2),
+    #gestion25 td:nth-last-child(2) {
+      background-color: blue;
+      color: white;
+    }
+    
+    /* Avant-avant-dernière colonne : rouge */
+    #gestion25 th:nth-last-child(3),
+    #gestion25 td:nth-last-child(3) {
+      background-color: red;
+      color: white;
+    }
+    
+    /* Avant-avant-avant-dernière colonne : verte */
+    #gestion25 th:nth-last-child(4),
+    #gestion25 td:nth-last-child(4) {
+      background-color: green;
+      color: white;
+    }
+
+    /* --- RÈGLES SPÉCIFIQUES POUR LES TÉLÉPHONES --- */
+    @media (max-width: 768px) {
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .header {
+            margin-top: 0;
+        }
+
+        .lang-flags {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        #skip-button {
+            top: 20px;
+            right: 10px;
+            position: absolute;
+        }
+
+        #next-button {
+            display: block !important;
+            margin-top: auto;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
