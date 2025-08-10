@@ -616,10 +616,8 @@
             let tableClass = '';
             if (filePath.includes('gestion25.csv')) {
                 tableClass = 'gestion25-table';
-            } else if (filePath.includes('historique_under25.csv')) {
-                tableClass = 'historique-under25-table';
-            } else if (filePath.includes('historique_under45.csv')) {
-                tableClass = 'historique-under45-table';
+            } else if (filePath.includes('historique')) {
+                tableClass = 'historique-table';
             }
             
             let table = `<table id="data-table" class="${tableClass}"><thead><tr>`;
@@ -635,7 +633,7 @@
                 values.forEach((value, index) => {
                     let cellClasses = '';
 
-                    // Si c'est le fichier gestion25.csv, on applique les classes aux 4 dernières colonnes
+                    // Si c'est le fichier gestion25.csv
                     if (filePath.includes('gestion25.csv')) {
                         const reversedIndex = totalColumns - index;
                         if (reversedIndex === 1 && value.trim() === '1') cellClasses = 'col-9';
@@ -643,7 +641,7 @@
                         if (reversedIndex === 3 && value.trim() === '1') cellClasses = 'col-7';
                         if (reversedIndex === 4 && value.trim() === '1') cellClasses = 'col-6';
                     }
-                    // Si c'est un des fichiers historique, on applique la couleur à la dernière colonne en fonction du chiffre
+                    // Si c'est un des fichiers historique
                     else if (filePath.includes('historique')) {
                         if (index === totalColumns - 1) { // Dernière colonne
                             const numericValue = parseInt(value, 10);
@@ -724,4 +722,3 @@
     </script>
 </body>
 </html>
-
