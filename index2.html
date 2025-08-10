@@ -203,33 +203,33 @@
         }
         
         /* Styles pour le tableau gestion25 (les 4 dernières colonnes) */
-        #data-table.gestion25-table td:nth-last-child(4) {
+        #data-table.gestion25-table td.col-6 {
             background-color: green;
             color: white;
         }
         
-        #data-table.gestion25-table td:nth-last-child(3) {
+        #data-table.gestion25-table td.col-7 {
             background-color: red;
             color: white;
         }
         
-        #data-table.gestion25-table td:nth-last-child(2) {
+        #data-table.gestion25-table td.col-8 {
             background-color: blue;
             color: white;
         }
         
-        #data-table.gestion25-table td:last-child {
+        #data-table.gestion25-table td.col-9 {
             background-color: orange;
             color: black;
         }
-
+        
         /* Styles pour les tableaux historique (dernière colonne) */
-        #data-table.historique-table td:last-child.vert {
+        #data-table.historique-table td.derniere-colonne-verte {
             background-color: green;
             color: white;
         }
         
-        #data-table.historique-table td:last-child.rouge {
+        #data-table.historique-table td.derniere-colonne-rouge {
             background-color: red;
             color: white;
         }
@@ -616,8 +616,10 @@
             let tableClass = '';
             if (filePath.includes('gestion25.csv')) {
                 tableClass = 'gestion25-table';
-            } else if (filePath.includes('historique')) {
-                tableClass = 'historique-table';
+            } else if (filePath.includes('historique_under25.csv')) {
+                tableClass = 'historique-under25-table';
+            } else if (filePath.includes('historique_under45.csv')) {
+                tableClass = 'historique-under45-table';
             }
             
             let table = `<table id="data-table" class="${tableClass}"><thead><tr>`;
@@ -633,29 +635,37 @@
                 values.forEach((value, index) => {
                     let cellClasses = '';
 
-                    // Si c'est un des fichiers historique, on applique la couleur à la dernière colonne
-                    if (filePath.includes('historique')) {
+                    // Si c'est le fichier gestion25.csv, on applique les classes aux 4 dernières colonnes
+                    if (filePath.includes('gestion25.csv')) {
+                        const reversedIndex = totalColumns - index;
+                        if (reversedIndex === 1 && value.trim() === '1') cellClasses = 'col-9';
+                        if (reversedIndex === 2 && value.trim() === '1') cellClasses = 'col-8';
+                        if (reversedIndex === 3 && value.trim() === '1') cellClasses = 'col-7';
+                        if (reversedIndex === 4 && value.trim() === '1') cellClasses = 'col-6';
+                    }
+                    // Si c'est un des fichiers historique, on applique la couleur à la dernière colonne en fonction du chiffre
+                    else if (filePath.includes('historique')) {
                         if (index === totalColumns - 1) { // Dernière colonne
                             const numericValue = parseInt(value, 10);
                             
                             // Règle pour historique_under25.csv
-                            if (filePath === 'historique_under25.csv') {
+                            if (filePath.includes('historique_under25.csv')) {
                                 if (!isNaN(numericValue)) {
                                     if (numericValue <= 2) {
-                                        cellClasses = 'vert';
+                                        cellClasses = 'derniere-colonne-verte';
                                     } else {
-                                        cellClasses = 'rouge';
+                                        cellClasses = 'derniere-colonne-rouge';
                                     }
                                 }
                             }
                             
                             // Règle pour historique_under45.csv
-                            if (filePath === 'historique_under45.csv') {
+                            if (filePath.includes('historique_under45.csv')) {
                                 if (!isNaN(numericValue)) {
                                     if (numericValue <= 4) {
-                                        cellClasses = 'vert';
+                                        cellClasses = 'derniere-colonne-verte';
                                     } else {
-                                        cellClasses = 'rouge';
+                                        cellClasses = 'derniere-colonne-rouge';
                                     }
                                 }
                             }
@@ -714,3 +724,4 @@
     </script>
 </body>
 </html>
+
