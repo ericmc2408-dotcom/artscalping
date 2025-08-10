@@ -203,24 +203,43 @@
         }
         
         /* Styles pour le tableau gestion25 (les 4 dernières colonnes) */
-        #data-table.gestion25-table td.col-6 {
+        #data-table.gestion25-table td:nth-last-child(4) {
             background-color: green;
             color: white;
         }
         
-        #data-table.gestion25-table td.col-7 {
+        #data-table.gestion25-table td:nth-last-child(3) {
             background-color: red;
             color: white;
         }
         
-        #data-table.gestion25-table td.col-8 {
+        #data-table.gestion25-table td:nth-last-child(2) {
             background-color: blue;
             color: white;
         }
         
-        #data-table.gestion25-table td.col-9 {
+        #data-table.gestion25-table td:last-child {
             background-color: orange;
             color: black;
+        }
+        
+        /* Styles pour les tableaux gestion45 et gestion451 */
+        #data-table.gestion45-table td:nth-last-child(3),
+        #data-table.gestion451-table td:nth-last-child(3) {
+            background-color: green;
+            color: white;
+        }
+        
+        #data-table.gestion45-table td:nth-last-child(2),
+        #data-table.gestion451-table td:nth-last-child(2) {
+            background-color: red;
+            color: white;
+        }
+        
+        #data-table.gestion45-table td:last-child,
+        #data-table.gestion451-table td:last-child {
+            background-color: blue;
+            color: white;
         }
         
         /* Styles pour les tableaux historique (dernière colonne) */
@@ -379,7 +398,7 @@
             </li>
             <li class="menu-item">
                 <a href="#" class="menu-link" data-content-type="csv" data-file="gestion451.csv" id="link-results-under-4-5-sequence">
-                    <span class="icon">&#x1F4C5;</span><span class="text-fr">Résultats Under 4.5 Séquence</span><span class="text-en" style="display:none;">Results Under 4.5 Sequence</span><span class="text-es" style="display:none;">Resultados Under 4.5 Secuencia</span><span class="text-zh" style="display:none;">结果 Under 4.5 序列</span><span class="text-de" style="display:none;">Ergebnisse Under 4.5 Sequenz</span><span class="text-pt" style="display:none;">Resultados Under 4.5 Sequência</span><span class="text-ar" style="display:none;">نتائج Under 4.5 تسلسل</span><span class="text-hi" style="display:none;">परिणाम Under 4.5 अनुक्रम</span><span class="text-ja" style="display:none;">結果 Under 4.5 シーケンス</span>
+                    <span class="icon">&#x1F4C8;</span><span class="text-fr">Résultats Under 4.5 Séquence</span><span class="text-en" style="display:none;">Results Under 4.5 Sequence</span><span class="text-es" style="display:none;">Resultados Under 4.5 Secuencia</span><span class="text-zh" style="display:none;">结果 Under 4.5 序列</span><span class="text-de" style="display:none;">Ergebnisse Under 4.5 Sequenz</span><span class="text-pt" style="display:none;">Resultados Under 4.5 Sequência</span><span class="text-ar" style="display:none;">نتائج Under 4.5 تسلسل</span><span class="text-hi" style="display:none;">परिणाम Under 4.5 अनुक्रम</span><span class="text-ja" style="display:none;">結果 Under 4.5 シーケンス</span>
                 </a>
             </li>
             <li class="menu-item">
@@ -616,6 +635,10 @@
             let tableClass = '';
             if (filePath.includes('gestion25.csv')) {
                 tableClass = 'gestion25-table';
+            } else if (filePath.includes('gestion45.csv')) {
+                tableClass = 'gestion45-table';
+            } else if (filePath.includes('gestion451.csv')) {
+                tableClass = 'gestion451-table';
             } else if (filePath.includes('historique')) {
                 tableClass = 'historique-table';
             }
@@ -633,7 +656,7 @@
                 values.forEach((value, index) => {
                     let cellClasses = '';
 
-                    // Si c'est le fichier gestion25.csv
+                    // Règles pour gestion25.csv
                     if (filePath.includes('gestion25.csv')) {
                         const reversedIndex = totalColumns - index;
                         if (reversedIndex === 1 && value.trim() === '1') cellClasses = 'col-9';
@@ -641,12 +664,18 @@
                         if (reversedIndex === 3 && value.trim() === '1') cellClasses = 'col-7';
                         if (reversedIndex === 4 && value.trim() === '1') cellClasses = 'col-6';
                     }
-                    // Si c'est un des fichiers historique
+                    // Règles pour gestion45.csv et gestion451.csv
+                    else if (filePath.includes('gestion45.csv') || filePath.includes('gestion451.csv')) {
+                        const reversedIndex = totalColumns - index;
+                        if (reversedIndex === 1 && value.trim() === '1') cellClasses = 'last-col';
+                        if (reversedIndex === 2 && value.trim() === '1') cellClasses = 'penult-col';
+                        if (reversedIndex === 3 && value.trim() === '1') cellClasses = 'ante-penult-col';
+                    }
+                    // Règles pour les fichiers historique
                     else if (filePath.includes('historique')) {
                         if (index === totalColumns - 1) { // Dernière colonne
                             const numericValue = parseInt(value, 10);
                             
-                            // Règle pour historique_under25.csv
                             if (filePath.includes('historique_under25.csv')) {
                                 if (!isNaN(numericValue)) {
                                     if (numericValue <= 2) {
@@ -655,10 +684,7 @@
                                         cellClasses = 'derniere-colonne-rouge';
                                     }
                                 }
-                            }
-                            
-                            // Règle pour historique_under45.csv
-                            if (filePath.includes('historique_under45.csv')) {
+                            } else if (filePath.includes('historique_under45.csv')) {
                                 if (!isNaN(numericValue)) {
                                     if (numericValue <= 4) {
                                         cellClasses = 'derniere-colonne-verte';
