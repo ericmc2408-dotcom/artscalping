@@ -1,149 +1,179 @@
 <style>
-    body {
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        text-align: center;
-        flex-direction: column;
-        overflow-x: hidden;
-        padding: 20px;
-    }
+    body {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        text-align: center;
+        flex-direction: column;
+        overflow-x: hidden;
+        padding: 20px;
+    }
 
-    .header {
-        opacity: 0;
-        animation: fadeIn 1.5s forwards;
-        animation-delay: 0.5s;
-    }
+    .header {
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+        animation-delay: 0.5s;
+    }
 
-    #system-name {
-        font-size: 2.5em;
-        color: #f1c40f;
-        font-weight: bold;
-        margin: 0;
-    }
+    #system-name {
+        font-size: 2.5em;
+        color: #f1c40f;
+        font-weight: bold;
+        margin: 0;
+    }
 
-    #animated-text-loop {
-        font-size: 1.2em;
-        min-height: 20px;
-        margin-top: 10px;
-        opacity: 0;
-        animation: fadeIn 1s forwards;
-        animation-delay: 2s;
-    }
+    #animated-text-loop {
+        font-size: 1.2em;
+        min-height: 20px;
+        margin-top: 10px;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 2s;
+    }
 
-    .fade-out-in {
-        animation: fadeOutIn 3s forwards;
-    }
+    .fade-out-in {
+        animation: fadeOutIn 3s forwards;
+    }
 
-    .animation-container {
-        width: 80%;
-        max-width: 600px;
-        position: relative;
-        margin-top: 40px;
-    }
+    .animation-container {
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+        margin-top: 40px;
+    }
 
-    .scene {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-        pointer-events: none;
-    }
+    .scene {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        pointer-events: none;
+    }
 
-    .scene.active {
-        opacity: 1;
-        position: relative;
-        pointer-events: auto;
-    }
+    .scene.active {
+        opacity: 1;
+        position: relative;
+        pointer-events: auto;
+    }
 
-    #next-button {
-        margin-top: 40px;
-        padding: 10px 20px;
-        font-size: 1.5em;
-        cursor: pointer;
-        border: 2px solid #3498db;
-        background-color: transparent;
-        color: #3498db;
-        border-radius: 5px;
-        transition: background-color 0.3s, color: 0.3s;
-        display: none;
-    }
+    #next-button {
+        margin-top: 40px;
+        padding: 10px 20px;
+        font-size: 1.5em;
+        cursor: pointer;
+        border: 2px solid #3498db;
+        background-color: transparent;
+        color: #3498db;
+        border-radius: 5px;
+        transition: background-color 0.3s, color: 0.3s;
+        display: none;
+    }
 
-    #next-button:hover {
-        background-color: #3498db;
-        color: #ecf0f1;
-    }
+    #next-button:hover {
+        background-color: #3498db;
+        color: #ecf0f1;
+    }
 
-    #skip-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 10px 15px;
-        font-size: 1em;
-        cursor: pointer;
-        border: 2px solid #e74c3c;
-        background-color: transparent;
-        color: #e74c3c;
-        border-radius: 5px;
-        transition: background-color 0.3s, color 0.3s;
-        z-index: 100;
-    }
+    #skip-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 1em;
+        cursor: pointer;
+        border: 2px solid #e74c3c;
+        background-color: transparent;
+        color: #e74c3c;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        z-index: 100;
+    }
 
-    #skip-button:hover {
-        background-color: #e74c3c;
-        color: #ecf0f1;
+    #skip-button:hover {
+        background-color: #e74c3c;
+        color: #ecf0f1;
+    }
+
+    /* --- NOUVEAU STYLE POUR LE TABLEAU gestion25 --- */
+    #gestion25 {
+      /* Réduction de la largeur des colonnes */
+      table-layout: fixed; /* Rend la largeur des colonnes fixe */
+      width: 100%;
+      border-collapse: collapse; /* Pour de belles bordures */
+      margin-top: 20px; /* Pour l'éloigner du texte */
+      font-size: 0.9em;
     }
     
-    /* --- RÈGLES SPÉCIFIQUES POUR LES TÉLÉPHONES --- */
-    @media (max-width: 768px) {
-        body {
-            /* Le corps devient un conteneur qui s'étend sur tout l'écran */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* MODIFIÉ : Répartit l'espace entre le haut et le bas */
-            align-items: stretch;
-            min-height: 100vh;
-            text-align: center;
-            padding: 20px 10px;
-        }
-
-        .header {
-            margin-top: 0; /* Réduit l'espace en haut */
-        }
-
-        .lang-flags {
-            /* Place les drapeaux en haut à gauche sur mobile, mais dans une ligne */
-            position: absolute;
-            top: 20px;
-            left: 10px;
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
-
-        #skip-button {
-            /* Positionne le bouton 'skip' en haut à droite */
-            top: 20px;
-            right: 10px;
-            position: absolute;
-        }
-
-        #next-button {
-            /* Le bouton 'next' s'affiche en bas de l'écran */
-            display: block !important;
-            margin-top: auto; /* Le pousse vers le bas de l'écran */
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    #gestion25 th, #gestion25 td {
+      border: 1px solid #34495e; /* Bordures de couleur assortie */
+      padding: 8px;
+      word-wrap: break-word; /* Évite que le texte dépasse dans une petite colonne */
     }
+    
+    /* Couleurs des dernières colonnes */
+    #gestion25 th:nth-last-child(1), #gestion25 td:nth-last-child(1) {
+      background-color: #f1c40f; /* Jaune */
+      color: #2c3e50; /* Texte sombre pour un meilleur contraste */
+    }
+    
+    #gestion25 th:nth-last-child(2), #gestion25 td:nth-last-child(2) {
+      background-color: #e74c3c; /* Rouge */
+    }
+    
+    #gestion25 th:nth-last-child(3), #gestion25 td:nth-last-child(3) {
+      background-color: #2ecc71; /* Vert */
+    }
+
+    /* --- RÈGLES SPÉCIFIQUES POUR LES TÉLÉPHONES --- */
+    @media (max-width: 768px) {
+        body {
+            /* Le corps devient un conteneur qui s'étend sur tout l'écran */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* MODIFIÉ : Répartit l'espace entre le haut et le bas */
+            align-items: stretch;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .header {
+            margin-top: 0; /* Réduit l'espace en haut */
+        }
+
+        .lang-flags {
+            /* Place les drapeaux en haut à gauche sur mobile, mais dans une ligne */
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        #skip-button {
+            /* Positionne le bouton 'skip' en haut à droite */
+            top: 20px;
+            right: 10px;
+            position: absolute;
+        }
+
+        #next-button {
+            /* Le bouton 'next' s'affiche en bas de l'écran */
+            display: block !important;
+            margin-top: auto; /* Le pousse vers le bas de l'écran */
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
 </style>
