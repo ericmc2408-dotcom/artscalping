@@ -62,23 +62,60 @@
             margin-bottom: 10px;
             border-radius: 5px;
         }
-
+        
         .language-switcher {
             margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
         }
         
         .language-switcher img {
             width: 30px;
+            height: 20px;
+            object-fit: cover;
             cursor: pointer;
-            margin: 0 5px;
             border-radius: 3px;
             opacity: 0.6;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
 
         .language-switcher img.active,
         .language-switcher img:hover {
             opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* Ajustements pour les textes arabes */
+        .text-ar {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        /* Media query pour les petits écrans */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+            }
+            
+            p, li {
+                font-size: 1em;
+            }
+            
+            .email-address {
+                font-size: 1.2em;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -86,98 +123,232 @@
 
     <div class="instructions-container">
         <div class="language-switcher">
-            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr">
+            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr" class="active">
             <img src="https://flagcdn.com/gb.svg" alt="English" onclick="setLanguage('en')" id="lang-en">
+            <img src="https://flagcdn.com/es.svg" alt="Español" onclick="setLanguage('es')" id="lang-es">
+            <img src="https://flagcdn.com/cn.svg" alt="中文" onclick="setLanguage('zh')" id="lang-zh">
+            <img src="https://flagcdn.com/de.svg" alt="Deutsch" onclick="setLanguage('de')" id="lang-de">
+            <img src="https://flagcdn.com/pt.svg" alt="Português" onclick="setLanguage('pt')" id="lang-pt">
+            <img src="https://flagcdn.com/sa.svg" alt="العربية" onclick="setLanguage('ar')" id="lang-ar">
+            <img src="https://flagcdn.com/in.svg" alt="हिन्दी" onclick="setLanguage('hi')" id="lang-hi">
+            <img src="https://flagcdn.com/jp.svg" alt="日本語" onclick="setLanguage('ja')" id="lang-ja">
         </div>
-        <h1>
-            <span class="text-fr">Abonnement ArtScalping</span>
-            <span class="text-en" style="display:none;">ArtScalping Subscription</span>
-        </h1>
-        <p>
-            <span class="text-fr">En vous abonnant pour **19,99 € par mois**, vous obtenez l'accès exclusif à notre contenu premium.</span>
-            <span class="text-en" style="display:none;">By subscribing for **€19.99 per month**, you get exclusive access to our premium content.</span>
-        </p>
+        
+        <h1 id="main-title"></h1>
+        <p id="subscription-intro"></p>
 
-        <h2>
-            <span class="text-fr">Votre abonnement inclut :</span>
-            <span class="text-en" style="display:none;">Your subscription includes:</span>
-        </h2>
-        <ul>
-            <li>
-                <span class="text-fr">L'accès sécurisé et privé à notre feuille **"Matchs du jour"**.</span>
-                <span class="text-en" style="display:none;">Secure and private access to our **"Matchs du jour"** spreadsheet.</span>
-            </li>
-            <li>
-                <span class="text-fr">Des analyses et des conseils basés sur notre méthode de scalping unique.</span>
-                <span class="text-en" style="display:none;">Analyses and advice based on our unique scalping method.</span>
-            </li>
-            <li>
-                <span class="text-fr">Une stratégie conçue pour **protéger votre capital** et maximiser vos gains.</span>
-                <span class="text-en" style="display:none;">A strategy designed to **protect your capital** and maximize your gains.</span>
-            </li>
+        <h2 id="subscription-includes-title"></h2>
+        <ul class="instructions-list">
+            <li id="item-1"></li>
+            <li id="item-2"></li>
+            <li id="item-3"></li>
         </ul>
         
-        <p>
-            <span class="text-fr">Pour finaliser votre abonnement, veuillez suivre les étapes suivantes pour un paiement via Neteller.</span>
-            <span class="text-en" style="display:none;">To finalize your subscription, please follow these steps for a payment via Neteller.</span>
-        </p>
+        <p id="payment-intro"></p>
         
+        <h2 id="payment-steps-title"></h2>
         <ol class="instructions-list">
-            <li>
-                <span class="text-fr">Connectez-vous à votre compte Neteller.</span>
-                <span class="text-en" style="display:none;">Log in to your Neteller account.</span>
-            </li>
-            <li>
-                <span class="text-fr">Sélectionnez l'option "Transfert d'argent" ou "Envoyer de l'argent".</span>
-                <span class="text-en" style="display:none;">Select the "Money Transfer" or "Send Money" option.</span>
-            </li>
-            <li>
-                <span class="text-fr">Saisissez le montant de 19,99 €.</span>
-                <span class="text-en" style="display:none;">Enter the amount of €19.99.</span>
-            </li>
-            <li>
-                <span class="text-fr">Entrez l'adresse email de notre compte Neteller ci-dessous.</span>
-                <span class="text-en" style="display:none;">Enter the email address of our Neteller account below.</span>
-            </li>
+            <li id="step-1"></li>
+            <li id="step-2"></li>
+            <li id="step-3"></li>
+            <li id="step-4"></li>
         </ol>
 
-        <p>
-            <span class="text-fr">Adresse de paiement :</span>
-            <span class="text-en" style="display:none;">Payment address:</span>
-        </p>
+        <p id="payment-address-label"></p>
         <span class="email-address">ericmc2@hotmail.fr</span>
         
-        <p>
-            <span class="text-fr">Une fois le paiement effectué, veuillez nous envoyer un e-mail à cette même adresse pour nous confirmer le virement. Nous activerons votre abonnement dans les plus brefs délais.</span>
-            <span class="text-en" style="display:none;">Once the payment is made, please send us an email to the same address to confirm the transfer. We will activate your subscription as soon as possible.</span>
-        </p>
+        <p id="payment-confirmation"></p>
     </div>
 
     <script>
-        function setLanguage(lang) {
-            const elementsFr = document.querySelectorAll('.text-fr');
-            const elementsEn = document.querySelectorAll('.text-en');
-            
-            document.getElementById('lang-fr').classList.remove('active');
-            document.getElementById('lang-en').classList.remove('active');
-
-            if (lang === 'en') {
-                elementsFr.forEach(el => el.style.display = 'none');
-                elementsEn.forEach(el => el.style.display = 'inline');
-                document.getElementById('lang-en').classList.add('active');
-                document.documentElement.lang = "en";
-            } else {
-                elementsFr.forEach(el => el.style.display = 'inline');
-                elementsEn.forEach(el => el.style.display = 'none');
-                document.getElementById('lang-fr').classList.add('active');
-                document.documentElement.lang = "fr";
+        const translations = {
+            fr: {
+                title: "Abonnement ArtScalping",
+                intro: "En vous abonnant pour **19,99 € par mois**, vous obtenez l'accès exclusif à notre contenu premium.",
+                includesTitle: "Votre abonnement inclut :",
+                item1: "L'accès sécurisé et privé à notre feuille **'Matchs du jour'**.",
+                item2: "Des analyses et des conseils basés sur notre méthode de scalping unique.",
+                item3: "Une stratégie conçue pour **protéger votre capital** et maximiser vos gains.",
+                paymentIntro: "Pour finaliser votre abonnement, veuillez suivre les étapes suivantes pour un paiement via Neteller.",
+                stepsTitle: "Étapes de paiement :",
+                step1: "Connectez-vous à votre compte Neteller.",
+                step2: "Sélectionnez l'option 'Transfert d'argent' ou 'Envoyer de l'argent'.",
+                step3: "Saisissez le montant de 19,99 €.",
+                step4: "Entrez l'adresse email de notre compte Neteller ci-dessous.",
+                addressLabel: "Adresse de paiement :",
+                confirmation: "Une fois le paiement effectué, veuillez nous envoyer un e-mail à cette même adresse pour nous confirmer le virement. Nous activerons votre abonnement dans les plus brefs délais."
+            },
+            en: {
+                title: "ArtScalping Subscription",
+                intro: "By subscribing for **€19.99 per month**, you get exclusive access to our premium content.",
+                includesTitle: "Your subscription includes:",
+                item1: "Secure and private access to our **'Daily Matches'** spreadsheet.",
+                item2: "Analyses and advice based on our unique scalping method.",
+                item3: "A strategy designed to **protect your capital** and maximize your gains.",
+                paymentIntro: "To finalize your subscription, please follow these steps for a payment via Neteller.",
+                stepsTitle: "Payment steps:",
+                step1: "Log in to your Neteller account.",
+                step2: "Select the 'Money Transfer' or 'Send Money' option.",
+                step3: "Enter the amount of €19.99.",
+                step4: "Enter the email address of our Neteller account below.",
+                addressLabel: "Payment address:",
+                confirmation: "Once the payment is made, please send us an email to the same address to confirm the transfer. We will activate your subscription as soon as possible."
+            },
+            es: {
+                title: "Suscripción a ArtScalping",
+                intro: "Al suscribirte por **€19.99 al mes**, obtienes acceso exclusivo a nuestro contenido premium.",
+                includesTitle: "Tu suscripción incluye:",
+                item1: "Acceso seguro y privado a nuestra hoja de cálculo **'Partidos del día'**.",
+                item2: "Análisis y consejos basados en nuestro método de scalping único.",
+                item3: "Una estrategia diseñada para **proteger tu capital** y maximizar tus ganancias.",
+                paymentIntro: "Para finalizar tu suscripción, sigue estos pasos para realizar un pago a través de Neteller.",
+                stepsTitle: "Pasos para el pago:",
+                step1: "Inicia sesión en tu cuenta de Neteller.",
+                step2: "Selecciona la opción 'Transferencia de dinero' o 'Enviar dinero'.",
+                step3: "Introduce la cantidad de €19.99.",
+                step4: "Introduce la dirección de correo electrónico de nuestra cuenta Neteller a continuación.",
+                addressLabel: "Dirección de pago:",
+                confirmation: "Una vez realizado el pago, envíanos un correo electrónico a la misma dirección para confirmarnos la transferencia. Activaremos tu suscripción lo antes posible."
+            },
+            zh: {
+                title: "ArtScalping 订阅",
+                intro: "每月订阅 **€19.99**，即可获得我们优质内容的独家访问权。",
+                includesTitle: "您的订阅包括：",
+                item1: "安全且私密的 **'每日比赛'** 电子表格访问权。",
+                item2: "基于我们独特的波段交易方法的分析和建议。",
+                item3: "旨在**保护您的资金**并最大化收益的策略。",
+                paymentIntro: "要完成您的订阅，请按照以下步骤通过 Neteller 进行支付。",
+                stepsTitle: "支付步骤：",
+                step1: "登录您的 Neteller 账户。",
+                step2: "选择“汇款”或“发送资金”选项。",
+                step3: "输入金额 €19.99。",
+                step4: "在下方输入我们 Neteller 账户的电子邮件地址。",
+                addressLabel: "支付地址：",
+                confirmation: "付款完成后，请向该邮箱地址发送一封电子邮件，确认转账。我们将尽快激活您的订阅。"
+            },
+            de: {
+                title: "ArtScalping-Abonnement",
+                intro: "Mit einem Abonnement für **€19.99 pro Monat** erhalten Sie exklusiven Zugang zu unseren Premium-Inhalten.",
+                includesTitle: "Ihr Abonnement beinhaltet:",
+                item1: "Sicheren und privaten Zugriff auf unsere Tabelle **'Tägliche Spiele'**.",
+                item2: "Analysen und Ratschläge basierend auf unserer einzigartigen Scalping-Methode.",
+                item3: "Eine Strategie, die darauf ausgelegt ist, **Ihr Kapital zu schützen** und Ihre Gewinne zu maximieren.",
+                paymentIntro: "Um Ihr Abonnement abzuschließen, folgen Sie bitte diesen Schritten für eine Zahlung über Neteller.",
+                stepsTitle: "Zahlungsschritte:",
+                step1: "Melden Sie sich bei Ihrem Neteller-Konto an.",
+                step2: "Wählen Sie die Option 'Geldtransfer' oder 'Geld senden'.",
+                step3: "Geben Sie den Betrag von €19.99 ein.",
+                step4: "Geben Sie unten die E-Mail-Adresse unseres Neteller-Kontos ein.",
+                addressLabel: "Zahlungsadresse:",
+                confirmation: "Nachdem die Zahlung erfolgt ist, senden Sie uns bitte eine E-Mail an dieselbe Adresse, um die Überweisung zu bestätigen. Wir werden Ihr Abonnement so schnell wie möglich aktivieren."
+            },
+            pt: {
+                title: "Assinatura ArtScalping",
+                intro: "Ao assinar por **€19.99 por mês**, você obtém acesso exclusivo ao nosso conteúdo premium.",
+                includesTitle: "Sua assinatura inclui:",
+                item1: "Acesso seguro e privado à nossa planilha **'Jogos do dia'**.",
+                item2: "Análises e conselhos baseados em nosso método de scalping exclusivo.",
+                item3: "Uma estratégia projetada para **proteger seu capital** e maximizar seus ganhos.",
+                paymentIntro: "Para finalizar sua assinatura, siga estes passos para um pagamento via Neteller.",
+                stepsTitle: "Passos para o pagamento:",
+                step1: "Faça login na sua conta Neteller.",
+                step2: "Selecione a opção 'Transferência de dinheiro' ou 'Enviar dinheiro'.",
+                step3: "Insira o valor de €19.99.",
+                step4: "Insira o endereço de e-mail da nossa conta Neteller abaixo.",
+                addressLabel: "Endereço de pagamento:",
+                confirmation: "Após o pagamento, envie-nos um e-mail para o mesmo endereço para confirmar a transferência. Ativaremos sua assinatura o mais rápido possível."
+            },
+            ar: {
+                title: "اشتراك ArtScalping",
+                intro: "بالاشتراك مقابل **19.99 يورو شهريًا**، تحصل على وصول حصري إلى محتوانا المتميز.",
+                includesTitle: "يتضمن اشتراكك ما يلي:",
+                item1: "وصول آمن وخاص إلى جدول بيانات **'مباريات اليوم'** الخاص بنا.",
+                item2: "تحليلات ونصائح مبنية على طريقة السكالبينج الفريدة لدينا.",
+                item3: "استراتيجية مصممة **لحماية رأس مالك** وزيادة أرباحك إلى أقصى حد.",
+                paymentIntro: "لإنهاء اشتراكك، يرجى اتباع هذه الخطوات للدفع عبر Neteller.",
+                stepsTitle: "خطوات الدفع:",
+                step1: "سجل الدخول إلى حساب Neteller الخاص بك.",
+                step2: "اختر خيار 'تحويل الأموال' أو 'إرسال الأموال'.",
+                step3: "أدخل مبلغ 19.99 يورو.",
+                step4: "أدخل عنوان البريد الإلكتروني لحساب Neteller الخاص بنا أدناه.",
+                addressLabel: "عنوان الدفع:",
+                confirmation: "بمجرد إتمام الدفع، يرجى إرسال بريد إلكتروني إلينا على نفس العنوان لتأكيد التحويل. سنقوم بتفعيل اشتراكك في أقرب وقت ممكن."
+            },
+            hi: {
+                title: "आर्टस्कैल्पिंग सदस्यता",
+                intro: "**€19.99 प्रति माह** की सदस्यता लेकर, आपको हमारी प्रीमियम सामग्री तक विशेष पहुंच मिलती है।",
+                includesTitle: "आपकी सदस्यता में शामिल हैं:",
+                item1: "हमारी **'आज के मैच'** स्प्रेडशीट तक सुरक्षित और निजी पहुंच।",
+                item2: "हमारी अनूठी स्कैल्पिंग विधि पर आधारित विश्लेषण और सलाह।",
+                item3: "आपकी **पूंजी की रक्षा** और आपके लाभ को अधिकतम करने के लिए डिज़ाइन की गई एक रणनीति।",
+                paymentIntro: "अपनी सदस्यता को अंतिम रूप देने के लिए, कृपया नेटेलर के माध्यम से भुगतान के लिए इन चरणों का पालन करें।",
+                stepsTitle: "भुगतान के चरण:",
+                step1: "अपने नेटेलर खाते में लॉग इन करें।",
+                step2: "'पैसे का हस्तांतरण' या 'पैसे भेजें' विकल्प चुनें।",
+                step3: "€19.99 की राशि दर्ज करें।",
+                step4: "नीचे हमारे नेटेलर खाते का ईमेल पता दर्ज करें।",
+                addressLabel: "भुगतान का पता:",
+                confirmation: "भुगतान हो जाने के बाद, कृपया हमें उसी पते पर एक ईमेल भेजकर हस्तांतरण की पुष्टि करें। हम जल्द से जल्द आपकी सदस्यता को सक्रिय कर देंगे।"
+            },
+            ja: {
+                title: "ArtScalpingの購読",
+                intro: "月額**€19.99**で購読すると、プレミアムコンテンツへの独占アクセスが得られます。",
+                includesTitle: "購読内容：",
+                item1: "当社の**「本日の試合」**スプレッドシートへの安全でプライベートなアクセス。",
+                item2: "独自の​​スキャルピング手法に基づいた分析とアドバイス。",
+                item3: "**資本を保護**し、利益を最大化するように設計された戦略。",
+                paymentIntro: "購読を完了するには、以下の手順に従ってNeteller経由で支払いを行ってください。",
+                stepsTitle: "支払い手順：",
+                step1: "Netellerアカウントにログインします。",
+                step2: "「送金」または「お金を送る」オプションを選択します。",
+                step3: "€19.99の金額を入力します。",
+                step4: "以下のNetellerアカウントのメールアドレスを入力します。",
+                addressLabel: "支払いアドレス：",
+                confirmation: "支払いが完了したら、同じアドレスにメールを送信して送金を確認してください。できるだけ早く購読をアクティブ化します。"
             }
+        };
+
+        function updateContent(lang) {
+            const content = translations[lang];
+            
+            document.title = content.title;
+            document.getElementById('main-title').textContent = content.title;
+            document.getElementById('subscription-intro').innerHTML = content.intro;
+            document.getElementById('subscription-includes-title').textContent = content.includesTitle;
+            document.getElementById('item-1').innerHTML = content.item1;
+            document.getElementById('item-2').innerHTML = content.item2;
+            document.getElementById('item-3').innerHTML = content.item3;
+            document.getElementById('payment-intro').innerHTML = content.paymentIntro;
+            document.getElementById('payment-steps-title').textContent = content.stepsTitle;
+            document.getElementById('step-1').textContent = content.step1;
+            document.getElementById('step-2').textContent = content.step2;
+            document.getElementById('step-3').textContent = content.step3;
+            document.getElementById('step-4').textContent = content.step4;
+            document.getElementById('payment-address-label').textContent = content.addressLabel;
+            document.getElementById('payment-confirmation').textContent = content.confirmation;
+
+            // Gérer la direction du texte pour l'arabe
+            const instructionsContainer = document.querySelector('.instructions-container');
+            if (lang === 'ar') {
+                instructionsContainer.classList.add('text-ar');
+            } else {
+                instructionsContainer.classList.remove('text-ar');
+            }
+        }
+        
+        function setLanguage(lang) {
+            document.querySelectorAll('.language-switcher img').forEach(el => el.classList.remove('active'));
+            const activeFlag = document.getElementById(`lang-${lang}`);
+            if (activeFlag) {
+                activeFlag.classList.add('active');
+            }
+            document.documentElement.lang = lang;
+            updateContent(lang);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Lis le paramètre de langue dans l'URL (envoyé par la page parente)
             const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang') || 'fr'; // 'fr' par défaut si aucun paramètre n'est trouvé
+            const lang = urlParams.get('lang') || 'fr';
             setLanguage(lang);
         });
     </script>
