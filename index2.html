@@ -202,55 +202,25 @@
             background-color: #3f586a;
         }
         
-        /* Styles pour le tableau gestion25 (les 4 dernières colonnes) */
-        #data-table.gestion25-table td:nth-last-child(4) {
+        /* Styles de couleur pour les cellules */
+        .green-cell {
             background-color: green;
             color: white;
         }
         
-        #data-table.gestion25-table td:nth-last-child(3) {
+        .red-cell {
             background-color: red;
             color: white;
         }
         
-        #data-table.gestion25-table td:nth-last-child(2) {
+        .blue-cell {
             background-color: blue;
             color: white;
         }
         
-        #data-table.gestion25-table td:last-child {
+        .orange-cell {
             background-color: orange;
             color: black;
-        }
-        
-        /* Styles pour les tableaux gestion45 et gestion451 */
-        #data-table.gestion45-table td:nth-last-child(3),
-        #data-table.gestion451-table td:nth-last-child(3) {
-            background-color: green;
-            color: white;
-        }
-        
-        #data-table.gestion45-table td:nth-last-child(2),
-        #data-table.gestion451-table td:nth-last-child(2) {
-            background-color: red;
-            color: white;
-        }
-        
-        #data-table.gestion45-table td:last-child,
-        #data-table.gestion451-table td:last-child {
-            background-color: blue;
-            color: white;
-        }
-        
-        /* Styles pour les tableaux historique (dernière colonne) */
-        #data-table.historique-table td.derniere-colonne-verte {
-            background-color: green;
-            color: white;
-        }
-        
-        #data-table.historique-table td.derniere-colonne-rouge {
-            background-color: red;
-            color: white;
         }
 
         /* Règles pour les petits écrans (téléphones) */
@@ -632,18 +602,7 @@
             const headers = lines[0].split(';');
             const body = lines.slice(1);
             
-            let tableClass = '';
-            if (filePath.includes('gestion25.csv')) {
-                tableClass = 'gestion25-table';
-            } else if (filePath.includes('gestion45.csv')) {
-                tableClass = 'gestion45-table';
-            } else if (filePath.includes('gestion451.csv')) {
-                tableClass = 'gestion451-table';
-            } else if (filePath.includes('historique')) {
-                tableClass = 'historique-table';
-            }
-            
-            let table = `<table id="data-table" class="${tableClass}"><thead><tr>`;
+            let table = `<table id="data-table"><thead><tr>`;
             headers.forEach(header => {
                 table += `<th>${header}</th>`;
             });
@@ -655,41 +614,42 @@
                 const totalColumns = values.length;
                 values.forEach((value, index) => {
                     let cellClasses = '';
+                    const trimmedValue = value.trim();
 
                     // Règles pour gestion25.csv
                     if (filePath.includes('gestion25.csv')) {
                         const reversedIndex = totalColumns - index;
-                        if (reversedIndex === 1 && value.trim() === '1') cellClasses = 'col-9';
-                        if (reversedIndex === 2 && value.trim() === '1') cellClasses = 'col-8';
-                        if (reversedIndex === 3 && value.trim() === '1') cellClasses = 'col-7';
-                        if (reversedIndex === 4 && value.trim() === '1') cellClasses = 'col-6';
+                        if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'orange-cell';
+                        if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'blue-cell';
+                        if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'red-cell';
+                        if (reversedIndex === 4 && trimmedValue === '1') cellClasses = 'green-cell';
                     }
                     // Règles pour gestion45.csv et gestion451.csv
                     else if (filePath.includes('gestion45.csv') || filePath.includes('gestion451.csv')) {
                         const reversedIndex = totalColumns - index;
-                        if (reversedIndex === 1 && value.trim() === '1') cellClasses = 'last-col';
-                        if (reversedIndex === 2 && value.trim() === '1') cellClasses = 'penult-col';
-                        if (reversedIndex === 3 && value.trim() === '1') cellClasses = 'ante-penult-col';
+                        if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'blue-cell';
+                        if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'red-cell';
+                        if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'green-cell';
                     }
                     // Règles pour les fichiers historique
                     else if (filePath.includes('historique')) {
                         if (index === totalColumns - 1) { // Dernière colonne
-                            const numericValue = parseInt(value, 10);
+                            const numericValue = parseInt(trimmedValue, 10);
                             
                             if (filePath.includes('historique_under25.csv')) {
                                 if (!isNaN(numericValue)) {
                                     if (numericValue <= 2) {
-                                        cellClasses = 'derniere-colonne-verte';
+                                        cellClasses = 'green-cell';
                                     } else {
-                                        cellClasses = 'derniere-colonne-rouge';
+                                        cellClasses = 'red-cell';
                                     }
                                 }
                             } else if (filePath.includes('historique_under45.csv')) {
                                 if (!isNaN(numericValue)) {
                                     if (numericValue <= 4) {
-                                        cellClasses = 'derniere-colonne-verte';
+                                        cellClasses = 'green-cell';
                                     } else {
-                                        cellClasses = 'derniere-colonne-rouge';
+                                        cellClasses = 'red-cell';
                                     }
                                 }
                             }
