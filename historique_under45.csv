@@ -1,8 +1,10 @@
-;taux de reussite : ;;0,928402494;4651;
-;;;;333;
+;taux de reussite : ;;0,928187487;4651;
+;;;;334;
 ;;;;;
 ;;;;;
-MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;
+MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_Outcome
+2025-08-11 00:00:00.000;RenofaYamaguchi;VentforetKofu;0;1;1
+2025-08-11 00:00:00.000;Uganda;Niger;2;0;2
 2025-08-10 00:00:00.000;AlmiranteBrown;CentralNorte;0;0;0
 2025-08-10 00:00:00.000;ChacoForEver;GimnasiadeMendoza;0;2;2
 2025-08-10 00:00:00.000;ClubAtléticoAlvarado;AtléticoGüemes;1;1;2
@@ -59,10 +61,20 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;
 2025-08-07 00:00:00.000;JaguaresdeCórdoba;IndependienteMedellín;0;1;1
 2025-08-07 00:00:00.000;LarneFC;SantaClara;0;3;3
 2025-08-07 00:00:00.000;SanLorenzodeAlmagro;VélezSársfield;1;0;1
+2025-08-07 00:00:00.000;CRVascodaGama;CSA;3;1;4
+2025-08-07 00:00:00.000;GodoyCruz;GimnasiayEsgrimaLaP;1;2;3
+2025-08-07 00:00:00.000;JaguaresdeCórdoba;IndependienteMedellín;0;1;1
+2025-08-07 00:00:00.000;LarneFC;SantaClara;0;3;3
+2025-08-07 00:00:00.000;SanLorenzodeAlmagro;VélezSársfield;1;0;1
 2025-08-05 00:00:00.000;DefensoresdeBelgrano;DeportivoMorón;0;0;0
 2025-08-05 00:00:00.000;LUIF;BKSkjold;0;7;7
 2025-08-05 00:00:00.000;RepublicofCongo;Sudan;1;1;2
 2025-08-05 00:00:00.000;Senegal;Nigeria;1;0;1
+2025-08-05 00:00:00.000;DefensoresdeBelgrano;DeportivoMorón;0;0;0
+2025-08-05 00:00:00.000;LUIF;BKSkjold;0;7;7
+2025-08-04 00:00:00.000;FerroCarrilOeste;AllBoys;0;0;0
+2025-08-04 00:00:00.000;FKDe?i?Tuzi;MladostDonjaGorica;3;2;5
+2025-08-04 00:00:00.000;SportivoAmeliano;ClubLibertad;0;4;4
 2025-08-04 00:00:00.000;FerroCarrilOeste;AllBoys;0;0;0
 2025-08-04 00:00:00.000;FKDe?i?Tuzi;MladostDonjaGorica;3;2;5
 2025-08-04 00:00:00.000;SportivoAmeliano;ClubLibertad;0;4;4
@@ -77,6 +89,14 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;
 2025-08-03 00:00:00.000;EstudiantesdeRíoCuar;Talleres(RE);2;0;2
 2025-08-03 00:00:00.000;FCFakelVoronezh;SokolSaratov;1;0;1
 2025-08-03 00:00:00.000;FKVeležMostar;BoracBanjaLuka;1;1;2
+2025-08-03 00:00:00.000;GimnasiadeMendoza;ClubAtléticoMitre;1;0;1
+2025-08-03 00:00:00.000;GimnasiayEsgrimadeJ;ClubAtléticoColón;4;0;4
+2025-08-03 00:00:00.000;IsidroMetapán;ZacatecolucaFC;2;1;3
+2025-08-03 00:00:00.000;LuisÁngelFirpo;InterFA;2;0;2
+2025-08-03 00:00:00.000;MunicipalLimeño;HérculesFC;5;2;7
+2025-08-03 00:00:00.000;OHiggins;UniónLaCalera;1;0;1
+2025-08-03 00:00:00.000;PlatenseMunicipal;AlianzaFC;1;1;2
+2025-08-03 00:00:00.000;SanMartíndeTucumán;RiverPlate;0;3;3
 2025-08-03 00:00:00.000;GimnasiadeMendoza;ClubAtléticoMitre;1;0;1
 2025-08-03 00:00:00.000;GimnasiayEsgrimadeJ;ClubAtléticoColón;4;0;4
 2025-08-03 00:00:00.000;IsidroMetapán;ZacatecolucaFC;2;1;3
@@ -4636,14 +4656,3 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;
 2024-08-14 00:00:00.000;Istaravshan;FCIstiklol;0;2;2
 2024-08-14 00:00:00.000;Navalcarnero;RealÁvila;2;0;2
 2024-08-14 00:00:00.000;SDTarazona;RealMadridCastilla;0;1;1
-2024-08-13 00:00:00.000;BocaJuniorsdeCali;CúcutaDeportivo;0;1;1
-2024-08-13 00:00:00.000;BogotáFC;RealCartagena;0;1;1
-2024-08-13 00:00:00.000;Cambridge;QPR;1;2;3
-2024-08-13 00:00:00.000;Dobrudzha;OFCNesebar;6;1;7
-2024-08-13 00:00:00.000;Telford;Stourbridge;1;5;6
-2024-08-13 00:00:00.000;Temperley;DeportivoMadryn;0;1;1
-2024-08-12 00:00:00.000;FSCPrykarpattia;FCBukovynaChernivtsi;0;1;1
-2024-08-12 00:00:00.000;GimnasiayTiro;ClubAtléticoColón;1;0;1
-2024-08-12 00:00:00.000;TermezSurkhon;QizilqumZarafshon;1;0;1
-2024-08-12 00:00:00.000;Tigre;GodoyCruz;0;2;2
-2024-08-12 00:00:00.000;WalterFerretti;RealEstelí;1;2;3

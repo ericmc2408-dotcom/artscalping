@@ -1,7 +1,14 @@
-;taux de reussite : ;;1;;8488
-;;;;;0
+;taux de reussite : ;;1;8479;
+;;;;0;
 ;;;;;
 ;;;;;
+MatchDate;HomeTeam;AwayTeam;;;
+2025-08-11 00:00:00.000;Arda;LokPlovdiv;0;0;0
+2025-08-11 00:00:00.000;ArgentinosJrs;UniondeSantaFe;1;0;1
+2025-08-11 00:00:00.000;CentralEsp;UruguayMont;1;0;1
+2025-08-11 00:00:00.000;Llaneros;IndMedellin;0;0;0
+2025-08-11 00:00:00.000;Marquense;CobanImperial;0;0;0
+2025-08-11 00:00:00.000;Oliveirense;SCFarense;1;0;1
 2025-08-10 00:00:00.000;Atenas;Albion;0;1;1
 2025-08-10 00:00:00.000;AtlTucuman;RosarioCentral;0;0;0
 2025-08-10 00:00:00.000;AustinFC;Houston;2;0;2
@@ -231,6 +238,7 @@
 2025-07-27 00:00:00.000;ChacoForEver;AlmiranteBrown;0;0;0
 2025-07-27 00:00:00.000;Charlotte;Toronto;0;0;0
 2025-07-27 00:00:00.000;ChernoMore;BotevPlovdiv;2;0;2
+2025-07-27 00:00:00.000;CRB;Novorizontino;1;0;1
 2025-07-27 00:00:00.000;Cruzeiro;Ceara;1;1;2
 2025-07-27 00:00:00.000;DefensoresUnidos;Agropecuario;0;1;1
 2025-07-27 00:00:00.000;EstRioCuarto;NuevaChicago;0;1;1
@@ -537,6 +545,7 @@
 2025-06-27 00:00:00.000;Selfoss;LeiknirR;1;0;1
 2025-06-26 00:00:00.000;Grau;UdeDeportes;0;1;1
 2025-06-26 00:00:00.000;Njardvik;Keflavik;0;0;0
+2025-06-26 00:00:00.000;Norrby;Torslanda;2;0;2
 2025-06-26 00:00:00.000;XorazmUrganch;Andijan;1;1;2
 2025-06-25 00:00:00.000;LaLuz;Atenas;1;1;2
 2025-06-25 00:00:00.000;LosAngelesFC;FlamengoRJ;0;0;0
@@ -647,6 +656,7 @@
 2025-06-15 00:00:00.000;Yamaguchi;Iwaki;1;1;2
 2025-06-14 00:00:00.000;Bunyodkor;Pakhtakor;1;0;1
 2025-06-14 00:00:00.000;ChacaritaJrs;Agropecuario;2;0;2
+2025-06-14 00:00:00.000;Cheongju;Seongnam;0;0;0
 2025-06-14 00:00:00.000;DefdeBelgrano;GimnasiaJujuy;0;0;0
 2025-06-14 00:00:00.000;DeportivoMaipu;RacingCordoba;0;0;0
 2025-06-14 00:00:00.000;GimnasiayTiro;Quilmes;0;0;0
@@ -2546,6 +2556,7 @@
 2025-03-30 00:00:00.000;Albacete;Mirandes;1;1;2
 2025-03-30 00:00:00.000;Alcoyano;MeridaAD;0;2;2
 2025-03-30 00:00:00.000;Algeciras;AtlMadridB;1;0;1
+2025-03-30 00:00:00.000;AllBoys;Ferro;0;0;0
 2025-03-30 00:00:00.000;Alvarado;Patronato;1;1;2
 2025-03-30 00:00:00.000;America;Tigres;2;0;2
 2025-03-30 00:00:00.000;ArabeUnido;IndChorrera;0;1;1
@@ -6912,6 +6923,7 @@
 2024-10-06 00:00:00.000;StTruiden;Gent;0;1;1
 2024-10-06 00:00:00.000;Suduva;Transinvest;0;0;0
 2024-10-06 00:00:00.000;Sundsvall;Degerfors;0;0;0
+2024-10-06 00:00:00.000;SuwonBluewings;Anyang;0;0;0
 2024-10-06 00:00:00.000;Tacuarembo;SudAmerica;0;1;1
 2024-10-06 00:00:00.000;Teuta;KFTirana;1;1;2
 2024-10-06 00:00:00.000;Toluca;UnamPumas;1;1;2
@@ -8470,18 +8482,6 @@
 2024-08-15 00:00:00.000;Monagas;UnivCentral;0;1;1
 2024-08-14 00:00:00.000;AlMasry;ZED;0;0;0
 2024-08-14 00:00:00.000;Zalgiris;Transinvest;1;0;1
-2024-08-13 00:00:00.000;Guarani;VilaNovaFC;2;0;2
-2024-08-13 00:00:00.000;GVSanJose;AlwaysReady;0;0;0
-2024-08-13 00:00:00.000;Limache;SanFelipe;0;2;2
-2024-08-13 00:00:00.000;Veraguas;UMECIT;0;0;0
-2024-08-12 00:00:00.000;Achuapa;Xelaju;0;0;0
-2024-08-12 00:00:00.000;AllBoys;Ferro;1;0;1
-2024-08-12 00:00:00.000;Bravo;Koper;0;0;0
-2024-08-12 00:00:00.000;Cheongju;Seongnam;1;1;2
-2024-08-12 00:00:00.000;CRB;Novorizontino;0;0;0
-2024-08-12 00:00:00.000;GimnasiayTiro;Colon;1;0;1
-2024-08-12 00:00:00.000;Internacional;AthleticoPR;1;1;2
-2024-08-12 00:00:00.000;Kamaz;TorpedoMoscow;0;0;0
 2024-08-12 00:00:00.000;LaSerena;CuricoUnido;0;0;0
 2024-08-12 00:00:00.000;Matagalpa;Ocotal;1;0;1
 2024-08-12 00:00:00.000;ModernSport;AlIttihad;1;0;1
