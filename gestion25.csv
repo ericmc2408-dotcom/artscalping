@@ -1,9 +1,16 @@
-;;Matchs ;Taux de reussite :;;96,63%;;
+;;Matchs ;Taux de reussite :;;96,88%;;
 ;;;;;;;
 ;;;total;win;lose ;42m30;3 min
-;;;89;86;3;2;0
+;;;96;93;3;2;0
 ;;;;;;;
 ;;;;;;;
+13/08/2025;Aarau;Bellinzona;1;1;;;
+13/08/2025;AtlNacional;SaoPaulo;1;1;;;
+13/08/2025;Barnsley;Fleetwood;1;1;;;
+13/08/2025;GoldenArrows;RichardsBay;1;1;;;
+13/08/2025;InddelValle;MushucRuna;1;1;;;
+13/08/2025;KaizerChiefs;Polokwane;1;1;;;
+13/08/2025;LokomotivMoscow;Baltika;1;1;;;
 12/08/2025;AGMK;Qizilqum;1;1;;;
 12/08/2025;AllBoys;Patronato;1;1;;;
 12/08/2025;Barrow;Preston;1;1;;;
@@ -20,6 +27,7 @@
 12/08/2025;SpartakMoscow;DinamoMkh;1;1;;;
 12/08/2025;Wigan;NottsCo;1;1;;;
 12/08/2025;Wrexham;Hull;1;1;;;
+11/08/2025;Alajuelense;Herediano;1;1;;;
 11/08/2025;Arda;LokPlovdiv;1;1;;;
 11/08/2025;ArgentinosJrs;UniondeSantaFe;1;1;;;
 11/08/2025;ELNacional;BarcelonaSC;1;;1;;
@@ -84,11 +92,11 @@
 10/08/2025;SuzhouDongwu;ShijiazhuangGongfu;1;1;;;
 10/08/2025;Tacuarembo;ClubOriental;1;1;;;
 10/08/2025;Tauro;UMECIT;1;1;;;
-10/08/2025;Temperley;SanTelmo;1;1;;;
-10/08/2025;TianjinTigers;QingdaoWestCoast;1;1;;;
-10/08/2025;Trelleborg;UmeaFC;1;1;;;
-10/08/2025;VascodaGama;AtleticoMG;1;1;;;
-10/08/2025;Veles;VolgarAstrakhan;1;1;;;
-10/08/2025;Vestri;FramR;1;1;;;
-10/08/2025;Wanderers;PlazaColonia;1;1;;;
-10/08/2025;YelimaySemey;Aktobe;1;1;;;
+45879;Temperley;SanTelmo;1;1;;;
+45879;TianjinTigers;QingdaoWestCoast;1;1;;;
+45879;Trelleborg;UmeaFC;1;1;;;
+45879;VascodaGama;AtleticoMG;1;1;;;
+45879;Veles;VolgarAstrakhan;1;1;;;
+45879;Vestri;FramR;1;1;;;
+45879;Wanderers;PlazaColonia;1;1;;;
+45879;YelimaySemey;Aktobe;1;1;;;
