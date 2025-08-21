@@ -1,8 +1,37 @@
-;taux de reussite : ;;0,927308448;4581;
-;;;;333;
+;taux de reussite : ;;0,927015251;4590;
+;;;;335;
 ;;;;;
 ;;;;;
 MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_Outcome
+2025-08-20 00:00:00.000;ElGounaFC;GhazlElMehalla;0;0;0
+2025-08-20 00:00:00.000;FKLoznica;DinamoJug;2;1;3
+2025-08-20 00:00:00.000;GetafeB;AlcaláRSD;3;0;3
+2025-08-20 00:00:00.000;Ma?vaŠabac;FKKabel;3;0;3
+2025-08-20 00:00:00.000;PalenciaCA;GimnásticaSegoviana;2;3;5
+2025-08-20 00:00:00.000;StocksbridgeParkSteel;CleethorpesTown;1;3;4
+2025-08-20 00:00:00.000;WadiDegla;PetrojetFC;0;1;1
+2025-08-19 00:00:00.000;AtléticoFC;RealSoachaCundinamarc;2;3;5
+2025-08-19 00:00:00.000;BarranquillaFC;OrsomarsoSC;0;2;2
+2025-08-19 00:00:00.000;EsteghlalKhuzestan;CaspianQazvin;1;1;2
+2025-08-19 00:00:00.000;EtarVelikoTarnovo;FCYantra;0;1;1
+2025-08-19 00:00:00.000;Gillingham;Chesterfield;4;1;5
+2025-08-19 00:00:00.000;GlentoranBelfast;Glenavon;2;0;2
+2025-08-19 00:00:00.000;IsmailySC;AlIttihadAlexandria;0;1;1
+2025-08-19 00:00:00.000;Luton;Wigan;1;0;1
+2025-08-19 00:00:00.000;Malavan;SepahanIsfahanFC;1;1;2
+2025-08-19 00:00:00.000;OrbitCollege;Sekhukhune;0;3;3
+2025-08-19 00:00:00.000;PharcoFC;TalaeaElGaish;0;1;1
+2025-08-19 00:00:00.000;Sudan;Senegal;0;0;0
+2025-08-19 00:00:00.000;TalleresdeCórdoba;SanMartíndeSanJuan;0;0;0
+2025-08-18 00:00:00.000;Agropecuario;ClubAtléticoMitre;2;1;3
+2025-08-18 00:00:00.000;AlBaqaaSC;AlSalt;1;5;6
+2025-08-18 00:00:00.000;GolGohar;ShahrdariArak;1;0;1
+2025-08-18 00:00:00.000;NikiVolos;Panetolikos;1;2;3
+2025-08-18 00:00:00.000;Persepolis;FajrSepasi;1;1;2
+2025-08-18 00:00:00.000;Sarmiento;AtléticoTucumán;2;2;4
+2025-08-18 00:00:00.000;VoltaRedonda;ClubedeRegatasBrasil;0;1;1
+2025-08-18 00:00:00.000;ZobAhanIsfahan;PaykanFC;0;1;1
+2025-08-18 00:00:00.000;ZoryaLuhansk;KryvbasKryvyiRih;2;3;5
 2025-08-17 00:00:00.000;AtléticoGüemes;AllBoys;1;2;3
 2025-08-17 00:00:00.000;CarpiFC1909;Trento;0;0;0
 2025-08-17 00:00:00.000;CentralCórdobaSdE;BarracasCentral;1;1;2
@@ -342,6 +371,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2025-07-16 00:00:00.000;NKDubrava;NKSesvete;1;2;3
 2025-07-15 00:00:00.000;Bideford;TivertonTown;1;2;3
 2025-07-15 00:00:00.000;Cuiabá;AmazonasFC;3;1;4
+2025-07-15 00:00:00.000;Horsham;BurgessHillTown;1;1;2
 2025-07-15 00:00:00.000;VélezSársfield;Tigre;2;1;3
 2025-07-14 00:00:00.000;BurkinaFasoU20;TogoU20;0;1;1
 2025-07-14 00:00:00.000;MladostDonjaGorica;SlavenBelupo;2;6;8
@@ -433,6 +463,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2025-06-29 00:00:00.000;AtléticoGüemes;ClubAtléticoLosAndes;2;1;3
 2025-06-29 00:00:00.000;Chapecoense;GoiásEsporteClube;1;2;3
 2025-06-29 00:00:00.000;FAŠiauliai;FKDžiugas;5;0;5
+2025-06-29 00:00:00.000;IndonesiaW;KyrgyzstanW;1;0;1
 2025-06-29 00:00:00.000;VoltaRedonda;OperárioFerroviário;1;0;1
 2025-06-28 00:00:00.000;Barkchi;KhosilotFarkhor;0;1;1
 2025-06-28 00:00:00.000;Bottrop;Essen;0;10;10
@@ -1680,6 +1711,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2025-03-25 00:00:00.000;Nigeria;Zimbabwe;1;1;2
 2025-03-25 00:00:00.000;NorthernIrelandU21;UzbekistanU21;1;0;1
 2025-03-25 00:00:00.000;SouthKorea;Jordan;1;1;2
+2025-03-25 00:00:00.000;Sudan;SouthSudan;1;1;2
 2025-03-24 00:00:00.000;CyprusU21;IsraelU21;3;1;4
 2025-03-24 00:00:00.000;DeportivoCali;AméricadeCali;1;1;2
 2025-03-24 00:00:00.000;ENPPIClub;PharcoFC;1;0;1
@@ -1938,6 +1970,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2025-03-08 00:00:00.000;ClubAlmagro;DeportivoMadryn;1;0;1
 2025-03-08 00:00:00.000;ClubAtléticoLosAndes;SanMartíndeTucumán;1;1;2
 2025-03-08 00:00:00.000;CSMRe?i?a;ArgesPitesti;0;0;0
+2025-03-08 00:00:00.000;DynamoVladivostok;FCIrtyshOmsk;0;0;0
 2025-03-08 00:00:00.000;FAŠiauliai;FKDainavaAlytus;2;2;4
 2025-03-08 00:00:00.000;FCBunyodkor;NeftchiFargona;2;2;4
 2025-03-08 00:00:00.000;FCFelgueiras;UniãodeLeiria;2;2;4
@@ -2355,6 +2388,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2025-02-09 00:00:00.000;CádizCF;Cartagena;5;2;7
 2025-02-09 00:00:00.000;CAPlatense;InstitutodeCórdoba;1;0;1
 2025-02-09 00:00:00.000;CaracasFC;AnzoáteguiFC;1;0;1
+2025-02-09 00:00:00.000;ClubAtléticoMitre;DefensoresUnidos;0;1;1
 2025-02-09 00:00:00.000;ClubGuaraní;ClubLibertad;0;1;1
 2025-02-09 00:00:00.000;ComerciantesUnidos;UniversitariodeDeport;1;1;2
 2025-02-09 00:00:00.000;DeportesLaSerena;SanMarcosdeArica;2;1;3
@@ -2929,6 +2963,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2024-12-07 00:00:00.000;AnorthosisFamagusta;Omonia29isMaiou;2;0;2
 2024-12-07 00:00:00.000;ASManiemaUnion;RajaCasablanca;1;1;2
 2024-12-07 00:00:00.000;BengaluruFC;KeralaBlasters;4;2;6
+2024-12-07 00:00:00.000;BesatKermanshah;NiroyeZamini;1;0;1
 2024-12-07 00:00:00.000;CoruxoFC;UMEscobedo;3;0;3
 2024-12-07 00:00:00.000;FKZemun;FKSlobodaUžice;1;1;2
 2024-12-07 00:00:00.000;KakamegaHomeboyz;AFCLeopards;1;1;2
@@ -3422,6 +3457,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2024-11-02 00:00:00.000;Bari;Reggiana;2;2;4
 2024-11-02 00:00:00.000;BrowndeAdrogué;AtléticoRafaela;1;2;3
 2024-11-02 00:00:00.000;CSMFoc?ani;CSMioveni;1;0;1
+2024-11-02 00:00:00.000;Egaleo;AsterasTripolisB;1;0;1
 2024-11-02 00:00:00.000;EnvigadoFC;JuniordeBarranquilla;0;0;0
 2024-11-02 00:00:00.000;FKBangaGargždai;FKTransINVEST;1;1;2
 2024-11-02 00:00:00.000;FKJedinstvo;OFKPetrovac;3;2;5
@@ -3487,6 +3523,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2024-10-30 00:00:00.000;VoskaSport;FKShkupi;3;1;4
 2024-10-30 00:00:00.000;ZaxoFC;DuhokFC;2;2;4
 2024-10-29 00:00:00.000;AmaZulu;ChippaUnited;2;0;2
+2024-10-29 00:00:00.000;ArioEslamshahr;ParsJonoubiJam;1;1;2
 2024-10-29 00:00:00.000;Brusque;Chapecoense;0;1;1
 2024-10-29 00:00:00.000;CoastalUnion;KageraSugar;1;0;1
 2024-10-29 00:00:00.000;Guijuelo;OurenseCF;1;2;3
@@ -3781,6 +3818,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2024-10-13 00:00:00.000;Huachipato;ColoColo;1;2;3
 2024-10-13 00:00:00.000;IbizaIslasPitiusas;ElcheCFIlicitano;1;2;3
 2024-10-13 00:00:00.000;Ilioupoli;AsterasTripolisB;1;0;1
+2024-10-13 00:00:00.000;Kavala;NikiVolos;1;1;2
 2024-10-13 00:00:00.000;Kazakhstan;Slovenia;0;1;1
 2024-10-13 00:00:00.000;Lleida;Alzira;0;2;2
 2024-10-13 00:00:00.000;OnceDeportivodeAhuac;Cacahuatique;1;0;1
@@ -3973,6 +4011,7 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2024-09-29 00:00:00.000;CFRayoMajadahonda;GetafeB;1;2;3
 2024-09-29 00:00:00.000;ClubAtléticoMitre;Temperley;0;0;0
 2024-09-29 00:00:00.000;Conquense;Navalcarnero;1;0;1
+2024-09-29 00:00:00.000;EspéranceSportivedeT;StadeTunisien;2;2;4
 2024-09-29 00:00:00.000;FKRabotni?kiSkopje;FKShkupi;2;1;3
 2024-09-29 00:00:00.000;FKŽeljezni?ar;NKPosušje;1;0;1
 2024-09-29 00:00:00.000;FoshanNanshi;ShijiazhuangGongfu;1;1;2
@@ -4556,33 +4595,3 @@ MatchDate;HomeTeam;AwayTeam;FullTimeHomeGoals;FullTimeAwayGoals;ActualUnder4_5_O
 2024-08-23 00:00:00.000;TajikistanU17;IranU17;2;1;3
 2024-08-23 00:00:00.000;Tyumen;ArsenalTula;0;0;0
 2024-08-23 00:00:00.000;UCraiova1948;1599?elimb?r;1;1;2
-2024-08-22 00:00:00.000;CDIllescas;SanSebastiándelosRe;0;0;0
-2024-08-22 00:00:00.000;EnskedeIK;IKBrage;1;2;3
-2024-08-22 00:00:00.000;FCVologda;TekstilshchikIvanovo;1;3;4
-2024-08-22 00:00:00.000;Foolad;MesRafsanjan;0;0;0
-2024-08-22 00:00:00.000;HapoelRamatGanGivat;HapoelKfarSaba;2;0;2
-2024-08-22 00:00:00.000;UDMelilla;ElcheCFIlicitano;3;0;3
-2024-08-21 00:00:00.000;BocaJuniorsdeCali;RealCartagena;1;4;5
-2024-08-21 00:00:00.000;BogotáFC;InternacionalFCPalmir;1;2;3
-2024-08-21 00:00:00.000;Bro?Radom;StomilOlsztyn;2;1;3
-2024-08-21 00:00:00.000;FCAstrakhan;LegionDynamo;2;1;3
-2024-08-21 00:00:00.000;FCIrtyshOmsk;Chelyabinsk;1;2;3
-2024-08-21 00:00:00.000;TorpedoMiass;NostaNovotroitsk;1;0;1
-2024-08-21 00:00:00.000;ZamoraFC;UCVFC;3;2;5
-2024-08-20 00:00:00.000;BihorOradea;ArgesPitesti;1;0;1
-2024-08-20 00:00:00.000;BiologNovokubanskProg;MashukKMVPyatigorsk;0;2;2
-2024-08-20 00:00:00.000;ClubAtléticoAtlanta;DeportivoMorón;1;0;1
-2024-08-20 00:00:00.000;DefensayJusticia;ClubAtléticoBanfield;1;0;1
-2024-08-20 00:00:00.000;HFKOlomouc;Vyškov;0;2;2
-2024-08-20 00:00:00.000;JaguaresdeCórdoba;DeportesTolima;0;2;2
-2024-08-20 00:00:00.000;LeekTown;MickleoverSports;1;3;4
-2024-08-20 00:00:00.000;OlympicFKTashkent;NasafQarshi;0;2;2
-2024-08-19 00:00:00.000;ChindiaTârgovi?te;1599?elimb?r;2;1;3
-2024-08-19 00:00:00.000;ClubSportEmelec;ClubDeportivoElNacio;0;1;1
-2024-08-19 00:00:00.000;GodoyCruz;DeportivoRiestra;4;1;5
-2024-08-19 00:00:00.000;KFLaçi;KFTirana;0;0;0
-2024-08-19 00:00:00.000;PartizaniTirana;VllazniaShkodër;0;1;1
-2024-08-19 00:00:00.000;PatriotasFC;OnceCaldas;3;1;4
-2024-08-19 00:00:00.000;PFCMinyorPernik;CSKA1948SofiaII;1;0;1
-2024-08-19 00:00:00.000;RealValladolid;Espanyol;1;0;1
-2024-08-19 00:00:00.000;Talleres(RE);GuillermoBrown;1;1;2
