@@ -1,11 +1,22 @@
-;Matchs ;Taux de reussite :;;96,23%;;
+;Matchs ;Taux de reussite :;;95,31%;;
 ;;;;;;
 ;;;;;;
 ;;;total;win ;lose ;86m30
-;;;53;51;2;0
+;;;64;61;3;0
 ;;;;;;
 ;;;;;;
 ;;;;;;
+23/08/2025;AlcioneMilano;Triestina;1;1;;
+23/08/2025;ClubAtléticoColón;ChacaritaJuniors;1;1;;
+23/08/2025;EnvigadoFC;DeportivoPereira;1;1;;
+23/08/2025;Halifax;ForestGreen;1;1;;
+23/08/2025;Ituano;YpirangaRS;1;1;;
+23/08/2025;SanMarcosdeArica;SantiagoMorning;1;1;;
+23/08/2025;ShinnikYaroslavl;RodinaMoscow;1;1;;
+22/08/2025;FCVihrenSandanski;DunavRuse;1;1;;
+22/08/2025;MCElBayadh;CSConstantine;1;1;;
+22/08/2025;PFKAndijan;FCPakhtakorTashkent;1;;1;
+22/08/2025;Villefranche;USQuevillyRouen;1;1;;
 21/08/2025;ASSoliman;StadeTunisien;1;1;;
 21/08/2025;LincolnRedImps;Braga;1;1;;
 21/08/2025;ModernSportFC;ZamalekSC;1;1;;
@@ -48,14 +59,14 @@
 15/08/2025;FCSmorgon;ArsenalDzyarzhynsk;1;1;;
 15/08/2025;Sochaux;USOrléans;1;1;;
 14/08/2025;AlIttihadAlexandria;ModernSportFC;1;1;;
-14/08/2025;SantaClara;LarneFC;1;1;;
-13/08/2025;Mauritania;BurkinaFaso;1;1;;
-13/08/2025;TermezSurkhon;FCBunyodkor;1;1;;
-13/08/2025;MagesiFC;StellenboschFC;1;1;;
-12/08/2025;MarumoGallants;OrlandoPirates;1;1;;
-12/08/2025;Sudan;Nigeria;1;1;;
-11/08/2025;ZoryaLuhansk;KudrivkaNyva;1;1;;
-10/08/2025;ChacoForEver;GimnasiadeMendoza;1;1;;
-10/08/2025;FCSportistSvoge;LudogoretsB;1;1;;
-10/08/2025;RotorVolgograd;FCUfa;1;1;;
-10/08/2025;VegaltaSendai;TokushimaVortis;1;1;;
+45883;SantaClara;LarneFC;1;1;;
+45882;Mauritania;BurkinaFaso;1;1;;
+45882;TermezSurkhon;FCBunyodkor;1;1;;
+45882;MagesiFC;StellenboschFC;1;1;;
+45881;MarumoGallants;OrlandoPirates;1;1;;
+45881;Sudan;Nigeria;1;1;;
+45880;ZoryaLuhansk;KudrivkaNyva;1;1;;
+45879;ChacoForEver;GimnasiadeMendoza;1;1;;
+45879;FCSportistSvoge;LudogoretsB;1;1;;
+45879;RotorVolgograd;FCUfa;1;1;;
+45879;VegaltaSendai;TokushimaVortis;1;1;;
