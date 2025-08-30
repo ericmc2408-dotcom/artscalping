@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtScalping</title>
+    
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    
     <style>
         body {
             margin: 0;
@@ -253,11 +259,6 @@
             margin: 0.5em 0;
         }
 
-        .green-keyword {
-            color: #00CC00;
-            font-weight: bold;
-        }
-
         .final-text {
             font-size: 1.2em;
             margin-top: 3em;
@@ -318,7 +319,7 @@
     <div class="content-container" id="content-container">
     </div>
 
-    <a href="index2.html" class="arrow-btn" id="menu-btn">← Меню</a>
+    <a href="index2.html" class="arrow-btn" id="menu-btn">← Menu</a>
     <a href="#" class="arrow-btn" id="next-btn">→</a>
 
     <script>
@@ -332,23 +333,22 @@
 
         const scenes = [
             `
-                <p class="animated-text">Вы мечтаете о дополнительном доходе, финансовой независимости или о воплощении своих мечтаний?</p>
-                <p class="animated-subtitle">Я предлагаю вам метод, который я разработал после 15 лет исследований и работы.</p>
+                <p class="animated-text">Мечтаете о дополнительном доходе, финансовой независимости или воплощении своих мечтаний?</p>
+                <p class="animated-subtitle">Я предлагаю вам метод, который разработал после 15 лет исследований и работы.</p>
             `,
             `
-                <p class="animated-text">Постоянное совершенствование вашего управления, простая игра, ограниченные потери на коротких периодах. Откройте дверь к финансовой свободе!</p>
+                <p class="animated-text">Постоянное развитие вашего управления, простая игра, ограниченные потери за короткие периоды. Откройте дверь к финансовой свободе!</p>
             `,
             `
                 <div class="scene3-container">
-                    <h2 class="scene3-title"><strong>Выбор Самых Безопасных Ставок</strong></h2>
+                    <h2 class="scene3-title"><strong>Выбор самых безопасных ставок</strong></h2>
                     <p class="scene3-subtitle">Выбор Самых Безопасных Ставок</p>
-                    <p class="scene3-text">Эти показатели успеха являются результатом <strong>секретного уравнения</strong>, терпеливо разработанного и протестированного на данных за многие годы, объединяющего показатели производительности и последовательности.</p>
+                    <p class="scene3-text">Эти показатели успеха являются результатом секретного уравнения, терпеливо разработанного и протестированного на основе многолетних данных, сочетающего в себе индексы производительности и последовательности.</p>
                     <p class="scene3-rate">Процент успеха: от 92 до 94%</p>
                     <div class="button-container">
                         <a href="#" class="btn">Меньше 4.5</a>
                         <a href="#" class="btn">Меньше 2.5 1-й тайм</a>
                     </div>
-                    <p class="gemini-credit">Разработано с помощью Gemini AI.</p>
                 </div>
             `,
             `
@@ -357,32 +357,32 @@
                     <div class="rules-box">
                         <p class="box-title">Меньше 4.5</p>
                         <div class="rules-list">
-                            <p><span class="green-keyword">Стоп-лосс</span>: Выходить из ставки на 86-й минуте 30 секунд или через 12 минут после 4-го гола.</p>
-                            <p><span class="green-keyword">Скальпинг / Кэш-аут</span>: Процент успеха увеличивается после каждого гола.</p>
-                            <p><span class="green-keyword">Условие</span>: Не делайте ставку на следующий гол, пока ваша текущая ставка не завершена.</p>
+                            <p>Стоп-лосс: Выйти из ставки на 86-й минуте 30 секунд или через 12 минут после 4-го гола.</p>
+                            <p>Скальпинг / Cash Out: Процент успеха увеличивается после каждого гола.</p>
+                            <p>Условие: Не ставить на следующий гол, пока ваша текущая ставка не завершена.</p>
                         </div>
                     </div>
 
                     <div class="rules-box">
-                        <p class="box-title">Меньше 2.5 1-й тайм <span class="green-keyword">правило 6 - 6 - 10</span></p>
+                        <p class="box-title">Меньше 2.5 1-й тайм правило 6 - 6 -10</p>
                         <div class="rules-list">
-                            <p><span class="green-keyword">Основное правило</span>: Мы ждем первый гол и делаем кэш-аут на 2-м голе.</p>
-                            <p><span class="green-keyword">Условие не-игры</span>: Если 2 гола забиты за 6 минут, мы не играем. Мы входим в ставку на 7-й минуте и делаем кэш-аут или лэй через 6 минут. Если забит 2-й гол, мы берем стабилизированную ставку (от 30 секунд до 1 минуты) и делаем кэш-аут через 10 минут.</p>
-                            <p><span class="green-keyword">Стоп-лосс</span>: Выходить из ставки на 42-й минуте 30 секунд.</p>
-                            <p><span class="green-keyword">Скальпинг / Кэш-аут</span>: Процент успеха увеличивается после каждого гола.</p>
-                            <p><span class="green-keyword">Условие</span>: Не делайте ставку на следующий гол, пока ваша текущая ставка не завершена.</p>
+                            <p>Основное правило: Мы ждем первый гол и делаем "cash out" на 2-м голе.</p>
+                            <p>Условие не-игры: Если 2 гола забиты за 6 минут, мы не играем. Мы делаем ставку на 7-й минуте и делаем "cash out" или "lay" через 6 минут. Если забивается 2-й гол, мы берем стабилизированную ставку (от 30 секунд до 1 минуты) и делаем "cash out" через 10 минут.</p>
+                            <p>Стоп-лосс: Выйти из ставки на 42-й минуте 30 секунд.</p>
+                            <p>Скальпинг / Cash Out: Процент успеха увеличивается после каждого гола.</p>
+                            <p>Условие: Не ставить на следующий гол, пока ваша текущая ставка не завершена.</p>
                         </div>
                     </div>
 
-                    <p class="final-text">При скрупулезном применении этих правил, процент успеха увеличивается с <span class="green-keyword"><strong>92-94%</strong></span> до <span class="green-keyword"><strong>98-100%</strong></span>.</p>
+                    <p class="final-text">Применяя эти правила, процент успеха возрастает с 92-94% до 98-100%.</p>
                 </div>
             `,
             `
                 <div class="ferrari-container">
                     <h2 class="ferrari-title">Аналогия с Ferrari</h2>
-                    <p class="ferrari-text">Мы предлагаем вам **высокопроизводительный инструмент**. Но, как и с Ferrari, одной мощности недостаточно. Без опытного водителя лучшая машина окажется в кювете.</p>
-                    <p class="ferrari-text">Метод ArtScalping — это Ferrari. **Терпение, строгость и интеллект** — это навыки, которые вам нужны, чтобы управлять им и получать значительную прибыль.</p>
-                    <p class="ferrari-text">Самоконтроль — ключ к превращению этого инструмента в настоящую машину для заработка.</p>
+                    <p class="ferrari-text">Мы предлагаем вам высокопроизводительный инструмент. Но как и с Ferrari, одной мощности недостаточно. Без умелого водителя лучшая машина окажется в кювете.</p>
+                    <p class="ferrari-text">Метод ArtScalping - это Ferrari. Терпение, строгость и интеллект - это навыки, которые вам нужны, чтобы управлять им и получать значительную прибыль.</p>
+                    <p class="ferrari-text">Самоконтроль - ключ к превращению этого инструмента в настоящую машину для зарабатывания денег.</p>
                     <a href="index2.html" class="start-btn">Начать метод</a>
                 </div>
             `
@@ -391,6 +391,7 @@
         function updateScene() {
             contentContainer.style.opacity = '0';
             
+            // Manage ball and title position
             if (currentScene >= 2) {
                 footballBall.classList.add('right');
                 footballBall.classList.remove('center');

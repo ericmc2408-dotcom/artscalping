@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtScalping</title>
+    
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    
     <style>
         body {
             margin: 0;
@@ -236,7 +242,7 @@
             border-radius: 10px;
             padding: 1.5em;
             margin-bottom: 1.5em;
-            text-align: right; /* Aligner le texte à droite pour l'arabe */
+            text-align: left;
             width: 100%;
         }
         
@@ -251,11 +257,6 @@
             font-size: 1em;
             line-height: 1.6;
             margin: 0.5em 0;
-        }
-
-        .green-keyword {
-            color: #00CC00;
-            font-weight: bold;
         }
 
         .final-text {
@@ -318,7 +319,7 @@
     <div class="content-container" id="content-container">
     </div>
 
-    <a href="index2.html" class="arrow-btn" id="menu-btn">← القائمة</a>
+    <a href="index2.html" class="arrow-btn" id="menu-btn">← Menu</a>
     <a href="#" class="arrow-btn" id="next-btn">→</a>
 
     <script>
@@ -332,23 +333,22 @@
 
         const scenes = [
             `
-                <p class="animated-text">هل تحلم بدخل إضافي، أو بالاستقلال المالي، أو بتحقيق أحلامك؟</p>
-                <p class="animated-subtitle">أقدم لك طريقة قمت بتطويرها بعد 15 عامًا من البحث والعمل.</p>
+                <p class="animated-text">هل تحلم بدخل إضافي، أو بتحقيق الاستقلال المالي، أو بتحقيق أحلامك؟</p>
+                <p class="animated-subtitle">أقترح عليك طريقة قمت بتطويرها بعد 15 عامًا من البحث والعمل.</p>
             `,
             `
-                <p class="animated-text">تقدم مستمر في إدارتك، لعبة سهلة، خسائر محدودة على فترات قصيرة. افتح الباب أمام الحرية المالية!</p>
+                <p class="animated-text">تقدم مستمر في إدارتك، لعبة سهلة، خسائر محدودة في فترات قصيرة. افتح الباب للحرية المالية!</p>
             `,
             `
                 <div class="scene3-container">
                     <h2 class="scene3-title"><strong>اختيار الرهانات الأكثر أمانًا</strong></h2>
                     <p class="scene3-subtitle">اختيار الرهانات الأكثر أمانًا</p>
-                    <p class="scene3-text">تعتبر هذه معدلات النجاح نتيجة <strong>معادلة سرية</strong>، تم إعدادها واختبارها بصبر على مدى سنوات من البيانات، تجمع بين مؤشرات الأداء والتسلسلات.</p>
+                    <p class="scene3-text">هذه معدلات النجاح هي نتيجة معادلة سرية، تم تطويرها واختبارها بصبر على مدى سنوات من البيانات، وتجمع بين مؤشرات الأداء والتسلسلات.</p>
                     <p class="scene3-rate">معدل النجاح: 92 إلى 94%</p>
                     <div class="button-container">
                         <a href="#" class="btn">أقل من 4.5</a>
-                        <a href="#" class="btn">أقل من 2.5 الشوط الأول</a>
+                        <a href="#" class="btn">أقل من 2.5 في الشوط الأول</a>
                     </div>
-                    <p class="gemini-credit">تم تطويرها بمساعدة Gemini AI.</p>
                 </div>
             `,
             `
@@ -357,33 +357,33 @@
                     <div class="rules-box">
                         <p class="box-title">أقل من 4.5</p>
                         <div class="rules-list">
-                            <p><span class="green-keyword">وقف الخسارة</span>: الخروج من الرهان في الدقيقة 86 و 30 ثانية أو 12 دقيقة بعد الهدف الرابع.</p>
-                            <p><span class="green-keyword">سكالبينج / كاش أوت</span>: يزداد معدل النجاح بعد كل هدف.</p>
-                            <p><span class="green-keyword">شرط</span>: لا تراهن على الهدف التالي حتى ينتهي رهانك الحالي.</p>
+                            <p>الحد من الخسارة: الخروج من الرهان في الدقيقة 86 و 30 ثانية أو بعد 12 دقيقة من الهدف الرابع.</p>
+                            <p>سكالبينغ / سحب الأموال: تزداد نسبة النجاح بعد كل هدف.</p>
+                            <p>الشرط: لا تراهن على الهدف التالي حتى يكتمل رهانك الحالي.</p>
                         </div>
                     </div>
 
                     <div class="rules-box">
-                        <p class="box-title">أقل من 2.5 الشوط الأول <span class="green-keyword">قاعدة 6 - 6 - 10</span></p>
+                        <p class="box-title">أقل من 2.5 في الشوط الأول، قاعدة 6 - 6 - 10</p>
                         <div class="rules-list">
-                            <p><span class="green-keyword">القاعدة الرئيسية</span>: ننتظر الهدف الأول ونخرج بعد الهدف الثاني.</p>
-                            <p><span class="green-keyword">شرط عدم اللعب</span>: إذا تم تسجيل هدفين في 6 دقائق، فإننا لا نلعب. ندخل في الرهان في الدقيقة 7 ونخرج أو نرهن بعد 6 دقائق. إذا تم تسجيل هدف ثاني، فإننا نأخذ الرهان المستقر (30 ثانية إلى دقيقة واحدة) ونخرج بعد 10 دقائق.</p>
-                            <p><span class="green-keyword">وقف الخسارة</span>: الخروج من الرهان في الدقيقة 42 و 30 ثانية.</p>
-                            <p><span class="green-keyword">سكالبينج / كاش أوت</span>: يزداد معدل النجاح بعد كل هدف.</p>
-                            <p><span class="green-keyword">شرط</span>: لا تراهن على الهدف التالي حتى ينتهي رهانك الحالي.</p>
+                            <p>القاعدة الأساسية: ننتظر الهدف الأول ونسحب الأموال بعد الهدف الثاني.</p>
+                            <p>شرط عدم اللعب: إذا تم تسجيل هدفين في 6 دقائق، لا نلعب. نضع رهانًا في الدقيقة 7 ونسحب الأموال أو نضع رهان "lay" بعد 6 دقائق. إذا تم تسجيل هدف ثانٍ، نأخذ الرهان المستقر (30 ثانية إلى 1 دقيقة) ونسحب الأموال بعد 10 دقائق.</p>
+                            <p>الحد من الخسارة: الخروج من الرهان في الدقيقة 42 و 30 ثانية.</p>
+                            <p>سكالبينغ / سحب الأموال: تزداد نسبة النجاح بعد كل هدف.</p>
+                            <p>الشرط: لا تراهن على الهدف التالي حتى يكتمل رهانك الحالي.</p>
                         </div>
                     </div>
 
-                    <p class="final-text">بتطبيق هذه القواعد بدقة، يزداد معدل النجاح من <span class="green-keyword"><strong>92-94%</strong></span> إلى <span class="green-keyword"><strong>98-100%</strong></span>.</p>
+                    <p class="final-text">بتطبيق هذه القواعد، تزداد نسبة النجاح من 92-94% إلى 98-100%.</p>
                 </div>
             `,
             `
                 <div class="ferrari-container">
                     <h2 class="ferrari-title">تشبيه فيراري</h2>
-                    <p class="ferrari-text">نقدم لك <strong>أداة عالية الأداء</strong>. ولكن مثل فيراري، القوة وحدها لا تكفي. بدون سائق ماهر، أفضل سيارة تنتهي في الخندق.</p>
-                    <p class="ferrari-text">طريقة ArtScalping هي فيراري. <strong>الصبر، الدقة، والذكاء</strong> هي المهارات التي تحتاجها لقيادتها وتحقيق أرباح كبيرة.</p>
-                    <p class="ferrari-text">التحكم الذاتي هو المفتاح لتحويل هذه الأداة إلى آلة ربح حقيقية.</p>
-                    <a href="index2.html" class="start-btn">ابدأ الطريقة</a>
+                    <p class="ferrari-text">نقدم لك أداة عالية الأداء. ولكن مثل فيراري، القوة وحدها لا تكفي. فبدون سائق ماهر، ستنتهي أفضل سيارة في الحفرة.</p>
+                    <p class="ferrari-text">طريقة ArtScalping هي فيراري. الصبر، والانضباط، والذكاء هي المهارات التي تحتاجها لقيادتها وتحقيق أرباح كبيرة.</p>
+                    <p class="ferrari-text">التحكم في النفس هو المفتاح لتحويل هذه الأداة إلى آلة حقيقية لجني الأموال.</p>
+                    <a href="index2.html" class="start-btn">بدء الطريقة</a>
                 </div>
             `
         ];
@@ -391,6 +391,7 @@
         function updateScene() {
             contentContainer.style.opacity = '0';
             
+            // Manage ball and title position
             if (currentScene >= 2) {
                 footballBall.classList.add('right');
                 footballBall.classList.remove('center');

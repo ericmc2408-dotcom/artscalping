@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtScalping</title>
+    
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    
     <style>
         body {
             margin: 0;
@@ -253,11 +259,6 @@
             margin: 0.5em 0;
         }
 
-        .green-keyword {
-            color: #00CC00;
-            font-weight: bold;
-        }
-
         .final-text {
             font-size: 1.2em;
             margin-top: 3em;
@@ -318,7 +319,7 @@
     <div class="content-container" id="content-container">
     </div>
 
-    <a href="index2.html" class="arrow-btn" id="menu-btn">← メニュー</a>
+    <a href="index2.html" class="arrow-btn" id="menu-btn">← Menu</a>
     <a href="#" class="arrow-btn" id="next-btn">→</a>
 
     <script>
@@ -332,58 +333,57 @@
 
         const scenes = [
             `
-                <p class="animated-text">副収入、経済的自立、または夢の実現を夢見ていますか？</p>
-                <p class="animated-subtitle">15年間の研究と作業の後に私が開発した方法を提供します。</p>
+                <p class="animated-text">あなたは副収入や経済的自立、夢の実現を夢見ていますか？</p>
+                <p class="animated-subtitle">15年間の研究と作業を経て私が開発したメソッドを提案します。</p>
             `,
             `
-                <p class="animated-text">管理の一貫した進歩、簡単なゲーム、短期間での損失限定。経済的自由への扉を開きましょう！</p>
+                <p class="animated-text">一貫した管理の進捗、簡単なプレイ、短期間での限定的な損失。経済的自由への扉を開きましょう！</p>
             `,
             `
                 <div class="scene3-container">
-                    <h2 class="scene3-title"><strong>最も安全な賭けの選択</strong></h2>
-                    <p class="scene3-subtitle">最も安全な賭けの選択</p>
-                    <p class="scene3-text">これらの成功率は、パフォーマンス指標とシーケンスを組み合わせた、何年ものデータをかけて辛抱強く開発およびテストされた<strong>秘密の方程式</strong>の結果です。</p>
+                    <h2 class="scene3-title"><strong>最も安全なベットの選択</strong></h2>
+                    <p class="scene3-subtitle">最も安全なベットの選択</p>
+                    <p class="scene3-text">これらの成功率は、パフォーマンス指標とシーケンスを組み合わせ、長年のデータで忍耐強く開発およびテストされた秘密の方程式の結果です。</p>
                     <p class="scene3-rate">成功率：92〜94％</p>
                     <div class="button-container">
                         <a href="#" class="btn">4.5未満</a>
                         <a href="#" class="btn">2.5未満（前半）</a>
                     </div>
-                    <p class="gemini-credit">ジェミニAIの助けを借りて開発されました。</p>
                 </div>
             `,
             `
                 <div class="scene4-container">
-                    <h2 class="scene4-main-title">完全でシーケンシャルな方法のルール</h2>
+                    <h2 class="scene4-main-title">完全かつ順序付けされたメソッドのルール</h2>
                     <div class="rules-box">
                         <p class="box-title">4.5未満</p>
                         <div class="rules-list">
-                            <p><span class="green-keyword">ストップロス</span>：86分30秒または4番目のゴールの12分後に賭けから退出する。</p>
-                            <p><span class="green-keyword">スキャルピング/キャッシュアウト</span>：成功率は各ゴールの後に増加します。</p>
-                            <p><span class="green-keyword">条件</span>：現在の賭けが終了するまで、次のゴールに賭けないでください。</p>
+                            <p>ストップロス: 86分30秒、または4点目のゴールの12分後にベットを終了します。</p>
+                            <p>スキャルピング/キャッシュアウト: ゴールごとに成功率が上がります。</p>
+                            <p>条件: 現在のベットが完了するまで、次のゴールにベットしないでください。</p>
                         </div>
                     </div>
 
                     <div class="rules-box">
-                        <p class="box-title">2.5未満（前半） <span class="green-keyword">ルール 6 - 6 - 10</span></p>
+                        <p class="box-title">2.5未満（前半）ルール 6 - 6 -10</p>
                         <div class="rules-list">
-                            <p><span class="green-keyword">主要ルール</span>：最初のゴールを待ち、2番目のゴールでキャッシュアウトします。</p>
-                            <p><span class="green-keyword">非プレイ条件</span>：6分以内に2ゴールが決まった場合、プレイしません。7分目にポジションを取り、6分後にキャッシュアウトまたはレイします。2番目のゴールが決まった場合、安定した賭け（30秒から1分）を取り、10分後にキャッシュアウトします。</p>
-                            <p><span class="green-keyword">ストップロス</span>：42分30秒で賭けから退出する。</p>
-                            <p><span class="green-keyword">スキャルピング/キャッシュアウト</span>：成功率は各ゴールの後に増加します。</p>
-                            <p><span class="green-keyword">条件</span>：現在の賭けが終了するまで、次のゴールに賭けないでください。</p>
+                            <p>主なルール: 最初のゴールを待ち、2点目のゴールで「キャッシュアウト」します。</p>
+                            <p>プレイしない条件: 6分以内に2つのゴールが入った場合はプレイしません。7分目にベットを行い、6分後に「キャッシュアウト」または「レイ」します。2点目のゴールが入った場合、安定したベット（30秒から1分）を取り、10分後に「キャッシュアウト」します。</p>
+                            <p>ストップロス: 42分30秒でベットを終了します。</p>
+                            <p>スキャルピング/キャッシュアウト: ゴールごとに成功率が上がります。</p>
+                            <p>条件: 現在のベットが完了するまで、次のゴールにベットしないでください。</p>
                         </div>
                     </div>
 
-                    <p class="final-text">これらのルールを厳守することで、成功率は<span class="green-keyword"><strong>92〜94％</strong></span>から<span class="green-keyword"><strong>98〜100％</strong></span>に増加します。</p>
+                    <p class="final-text">これらのルールを適用することで、成功率は92〜94%から98〜100%に上がります。</p>
                 </div>
             `,
             `
                 <div class="ferrari-container">
-                    <h2 class="ferrari-title">フェラーリの比喩</h2>
-                    <p class="ferrari-text">私たちはあなたに<strong>高性能なツール</strong>を提供します。しかし、フェラーリと同じように、パワーだけでは十分ではありません。熟練したドライバーがいなければ、最高の車も溝に落ちてしまいます。</p>
-                    <p class="ferrari-text">ArtScalpingメソッドはフェラーリです。<strong>忍耐、厳格さ、そして知性</strong>は、それを運転し、多大な利益を達成するために必要なスキルです。</p>
-                    <p class="ferrari-text">自己制御は、このツールを真の勝利の機械に変えるための鍵です。</p>
-                    <a href="index2.html" class="start-btn">メソッドを開始する</a>
+                    <h2 class="ferrari-title">フェラーリのたとえ</h2>
+                    <p class="ferrari-text">私たちはあなたに高性能ツールを提供します。しかし、フェラーリと同じように、力だけでは不十分です。熟練したドライバーがいなければ、最高の車でも溝に落ちてしまいます。</p>
+                    <p class="ferrari-text">ArtScalpingメソッドはフェラーリです。忍耐、厳格さ、知性が、それを運転して多大な利益を上げるために必要なスキルです。</p>
+                    <p class="ferrari-text">自制心は、このツールを真の「お金を稼ぐ機械」に変えるための鍵です。</p>
+                    <a href="index2.html" class="start-btn">メソッドを開始</a>
                 </div>
             `
         ];
@@ -391,6 +391,7 @@
         function updateScene() {
             contentContainer.style.opacity = '0';
             
+            // Manage ball and title position
             if (currentScene >= 2) {
                 footballBall.classList.add('right');
                 footballBall.classList.remove('center');
