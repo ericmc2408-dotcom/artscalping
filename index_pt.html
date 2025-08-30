@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtScalping</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #1A232D;
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            from { background-position: 0 0; }
+            to { background-position: 50px 50px; }
+        }
+        
+        .content-container {
+            position: relative;
+            max-width: 900px;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .site-name-container {
+            position: absolute;
+            top: 5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .site-name {
+            font-size: 4em;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 10px #FFD700;
+        }
+
+        .football-ball {
+            position: absolute;
+            top: 20vh;
+            width: 100px;
+            height: 100px;
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            z-index: 3;
+            transition: left 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        
+        .football-ball.center {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .football-ball.right {
+            left: 75%;
+            transform: translateX(-50%);
+        }
+        
+        .animated-text {
+            display: block;
+            white-space: pre-wrap;
+            margin: 0 auto;
+            font-size: 1.5em;
+            color: #ADD8E6;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards ease-out;
+            margin-top: 10px;
+        }
+        
+        .animated-subtitle {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #d1d1d1;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards ease-out;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .arrow-btn {
+            position: absolute;
+            bottom: 5vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            background-color: #376392;
+            color: #fff;
+            border-radius: 50%;
+            text-decoration: none;
+            cursor: pointer;
+            z-index: 5;
+            transition: background-color 0.3s;
+        }
+
+        .arrow-btn:hover {
+            background-color: #4A7AB0;
+        }
+
+        #next-btn {
+            right: 5vw;
+            width: 50px;
+            font-size: 2em;
+        }
+
+        #menu-btn {
+            left: 5vw;
+            width: auto;
+            padding: 0 15px;
+            font-size: 1.2em;
+            border-radius: 25px;
+        }
+        #menu-btn span {
+            margin-left: 5px;
+        }
+
+        .scene3-container {
+            max-width: 600px;
+            color: #d1d1d1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scene3-title {
+            font-size: 2.2em;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+
+        .scene3-subtitle {
+            font-size: 1em;
+            color: #b0b0b0;
+            margin-bottom: 1.5em;
+        }
+
+        .scene3-text {
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 2em;
+        }
+
+        .scene3-rate {
+            font-size: 1.8em;
+            color: #00CC00;
+            font-weight: bold;
+            margin-bottom: 2em;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            margin-bottom: 2em;
+        }
+        
+        .btn {
+            background-color: #376392;
+            color: #fff;
+            padding: 1em 2em;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #4A7AB0;
+        }
+
+        .gemini-credit {
+            font-size: 0.7em;
+            color: #777;
+            margin-top: 2em;
+        }
+
+        .scene4-container {
+            max-width: 800px;
+            padding: 20px;
+            color: #d1d1d1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        
+        .scene4-main-title {
+            font-size: 2.2em;
+            color: #FFD700;
+            margin-bottom: 0.5em;
+        }
+
+        .rules-box {
+            background-color: #2C3A4D;
+            border-radius: 10px;
+            padding: 1.5em;
+            margin-bottom: 1.5em;
+            text-align: left;
+            width: 100%;
+        }
+        
+        .box-title {
+            font-size: 1.5em;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+
+        .rules-list p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 0.5em 0;
+        }
+
+        .green-keyword {
+            color: #00CC00;
+            font-weight: bold;
+        }
+
+        .final-text {
+            font-size: 1.2em;
+            margin-top: 3em;
+            flex-shrink: 0;
+        }
+
+        .ferrari-container {
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ferrari-title {
+            font-size: 2.5em;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .ferrari-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            background-color: transparent;
+            color: #00CC00;
+            border: 2px solid #00CC00;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards ease-out;
+            animation-delay: 1s;
+        }
+
+        .start-btn:hover {
+            background-color: #00CC00;
+            color: #1A232D;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="background-effect"></div>
+    <div class="football-ball" id="football-ball"></div>
+
+    <div class="site-name-container" id="site-name-container">
+        <h1 class="site-name">ArtScalping</h1>
+    </div>
+
+    <div class="content-container" id="content-container">
+    </div>
+
+    <a href="index2.html" class="arrow-btn" id="menu-btn">← Menu</a>
+    <a href="#" class="arrow-btn" id="next-btn">→</a>
+
+    <script>
+        let currentScene = 0;
+        const totalScenes = 5;
+        const nextBtn = document.getElementById('next-btn');
+        const menuBtn = document.getElementById('menu-btn');
+        const contentContainer = document.getElementById('content-container');
+        const siteNameContainer = document.getElementById('site-name-container');
+        const footballBall = document.getElementById('football-ball');
+
+        const scenes = [
+            `
+                <p class="animated-text">Você sonha com uma renda extra, com a independência financeira ou com a realização dos seus sonhos?</p>
+                <p class="animated-subtitle">Eu ofereço a você um método que desenvolvi após 15 anos de pesquisa e trabalho.</p>
+            `,
+            `
+                <p class="animated-text">Uma progressão constante em sua gestão, um jogo fácil, perdas limitadas em períodos curtos. Abra a porta para a liberdade financeira!</p>
+            `,
+            `
+                <div class="scene3-container">
+                    <h2 class="scene3-title"><strong>Seleção das Apostas Mais Seguras</strong></h2>
+                    <p class="scene3-subtitle">Selecionar as Apostas Mais Seguras</p>
+                    <p class="scene3-text">Essas taxas de sucesso são o resultado de uma <strong>equação secreta</strong>, pacientemente elaborada e testada ao longo de anos de dados, combinando indicadores de desempenho e sequências.</p>
+                    <p class="scene3-rate">Taxa de sucesso: 92 a 94%</p>
+                    <div class="button-container">
+                        <a href="#" class="btn">Abaixo de 4.5</a>
+                        <a href="#" class="btn">Abaixo de 2.5 1º tempo</a>
+                    </div>
+                    <p class="gemini-credit">Desenvolvido com a ajuda da Gemini AI.</p>
+                </div>
+            `,
+            `
+                <div class="scene4-container">
+                    <h2 class="scene4-main-title">As Regras do Método Completo e Sequenciado</h2>
+                    <div class="rules-box">
+                        <p class="box-title">Abaixo de 4.5</p>
+                        <div class="rules-list">
+                            <p><span class="green-keyword">Stop Loss</span>: Sair da aposta aos 86 minutos e 30 segundos ou 12 minutos após o 4º gol.</p>
+                            <p><span class="green-keyword">Scalping / Cash Out</span>: A taxa de sucesso aumenta após cada gol.</p>
+                            <p><span class="green-keyword">Condição</span>: Não aposte no próximo gol até que sua aposta atual tenha terminado.</p>
+                        </div>
+                    </div>
+
+                    <div class="rules-box">
+                        <p class="box-title">Abaixo de 2.5 1º tempo <span class="green-keyword">regra 6 - 6 - 10</span></p>
+                        <div class="rules-list">
+                            <p><span class="green-keyword">Regra principal</span>: Esperamos o primeiro gol e fazemos cash out no 2º gol.</p>
+                            <p><span class="green-keyword">Condição de não jogo</span>: Se 2 gols forem marcados em 6 minutos, não jogamos. Fazemos uma entrada no 7º minuto e fazemos cash out ou lay após 6 minutos. Se um 2º gol for marcado, pegamos a aposta estabilizada (30 segundos a 1 minuto) e fazemos cash out após 10 min.</p>
+                            <p><span class="green-keyword">Stop Loss</span>: Sair da aposta aos 42 minutos e 30 segundos.</p>
+                            <p><span class="green-keyword">Scalping / Cash Out</span>: A taxa de sucesso aumenta após cada gol.</p>
+                            <p><span class="green-keyword">Condição</span>: Não aposte no próximo gol até que sua aposta atual tenha terminado.</p>
+                        </div>
+                    </div>
+
+                    <p class="final-text">Ao aplicar estas regras, a taxa de sucesso aumenta de <span class="green-keyword"><strong>92-94%</strong></span> para <span class="green-keyword"><strong>98-100%</strong></span>.</p>
+                </div>
+            `,
+            `
+                <div class="ferrari-container">
+                    <h2 class="ferrari-title">A Analogia da Ferrari</h2>
+                    <p class="ferrari-text">Oferecemos a você uma **ferramenta de alto desempenho**. Mas, assim como com uma Ferrari, a potência não é suficiente. Sem um motorista competente, o melhor carro acaba na vala.</p>
+                    <p class="ferrari-text">O método ArtScalping é uma Ferrari. **Paciência, rigor e inteligência** são as habilidades que você precisa para dirigi-la e obter lucros substanciais.</p>
+                    <p class="ferrari-text">O autocontrole é a chave para transformar essa ferramenta em uma verdadeira máquina de ganhar.</p>
+                    <a href="index2.html" class="start-btn">Começar o Método</a>
+                </div>
+            `
+        ];
+
+        function updateScene() {
+            contentContainer.style.opacity = '0';
+            
+            if (currentScene >= 2) {
+                footballBall.classList.add('right');
+                footballBall.classList.remove('center');
+            } else {
+                footballBall.classList.add('center');
+                footballBall.classList.remove('right');
+            }
+
+            if (currentScene === 4) {
+                siteNameContainer.style.display = 'block';
+            } else if (currentScene === 3) {
+                 siteNameContainer.style.display = 'none';
+            } else {
+                 siteNameContainer.style.display = 'block';
+            }
+            
+            setTimeout(() => {
+                contentContainer.innerHTML = scenes[currentScene];
+                contentContainer.style.opacity = '1';
+                
+                menuBtn.style.display = 'flex';
+                
+                if (currentScene === totalScenes - 1) {
+                    nextBtn.style.display = 'none';
+                } else {
+                    nextBtn.style.display = 'flex';
+                    nextBtn.href = "#";
+                }
+                
+                if (currentScene === 3) {
+                    const scene4Subtitle = contentContainer.querySelector('.scene4-subtitle');
+                    if (scene4Subtitle) {
+                        scene4Subtitle.style.display = 'none';
+                    }
+                }
+
+            }, 500);
+        }
+
+        nextBtn.addEventListener('click', (e) => {
+            if (currentScene < totalScenes - 1) {
+                currentScene++;
+                e.preventDefault();
+                updateScene();
+            }
+        });
+
+        window.onload = () => {
+            updateScene();
+            setTimeout(() => {
+                nextBtn.style.display = 'flex';
+                menuBtn.style.display = 'flex';
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
