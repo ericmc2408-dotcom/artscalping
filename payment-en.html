@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script type='text/javascript' src='https://private-us-east-1.manuscdn.com/Xlc5vSX_lSV1rdi3byeaJE9WNG9DxEsrNho8LL89If8qnEEThuaHCZ8LBNiJ_ZwidDSHZREwvMxXAU9Dba11uQ=='></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtScalping - Payment Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .pricing-section {
+            margin-bottom: 40px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .pricing-card {
+            border: 2px solid #e1e8ed;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .pricing-card.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .pricing-card:hover::before {
+            left: 100%;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .card-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .card-features li {
+            padding: 8px 0;
+            color: #666;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .card-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .payment-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .payment-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .payment-method {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+
+        .payment-method.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .payment-method img {
+            width: 60px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .payment-method h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .payment-details {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .payment-info {
+            display: none;
+        }
+
+        .payment-info.active {
+            display: block;
+        }
+
+        .payment-info h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .payment-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .email-highlight {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .features-list {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .features-list h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ArtScalping</h1>
+            <p>Premium Access to our Trading Strategies</p>
+        </div>
+        
+        <div class="content">
+            <div class="features-list">
+                <h3>Your subscription includes:</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span>Secure and private access to our <strong>'Daily Matches'</strong> sheet</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span>Analysis and advice based on our unique scalping method</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span>A strategy designed to <strong>protect your capital</strong> and maximize your gains</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-section">
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-plan="monthly" data-price="120">
+                        <div class="card-title">Monthly Subscription</div>
+                        <div class="card-price">€120</div>
+                        <ul class="card-features">
+                            <li>Full access for 1 month</li>
+                            <li>'Daily Matches' sheet</li>
+                            <li>Daily analysis</li>
+                            <li>Priority customer support</li>
+                            <li>Capital protection strategies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card" data-plan="weekend" data-price="30">
+                        <div class="card-title">Weekend Access</div>
+                        <div class="card-price">€30</div>
+                        <ul class="card-features">
+                            <li>Weekend access only</li>
+                            <li>Weekend matches</li>
+                            <li>Specialized analysis</li>
+                            <li>Short-term strategies</li>
+                            <li>Email support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <h2 class="payment-title">Choose your payment method</h2>
+                
+                <div class="payment-methods">
+                    <div class="payment-method" data-method="neteller">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💳</div>
+                        <h3>Neteller</h3>
+                        <p>Secure payment</p>
+                    </div>
+                    
+                    <div class="payment-method" data-method="skrill">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🏦</div>
+                        <h3>Skrill</h3>
+                        <p>Fast transfer</p>
+                    </div>
+                    
+                    <div class="payment-method" data-method="paypal">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💰</div>
+                        <h3>PayPal</h3>
+                        <p>Secure donation</p>
+                    </div>
+                </div>
+
+                <div class="payment-details">
+                    <div class="payment-info" id="neteller-info">
+                        <h4>Neteller Payment Instructions</h4>
+                        <p><strong>1.</strong> Log in to your Neteller account</p>
+                        <p><strong>2.</strong> Select 'Money Transfer' or 'Send Money' option</p>
+                        <p><strong>3.</strong> Enter our Neteller account email address:</p>
+                        <div class="email-highlight">ericmc2@hotmail.fr</div>
+                        <p><strong>4.</strong> Amount to send: <span id="selected-amount">Select a plan</span></p>
+                        <p><strong>5.</strong> Once payment is completed, send us an email to the same address to confirm the transfer</p>
+                        <p><em>We will activate your subscription as soon as possible.</em></p>
+                    </div>
+                    
+                    <div class="payment-info" id="skrill-info">
+                        <h4>Skrill Payment Instructions</h4>
+                        <p><strong>1.</strong> Log in to your Skrill account</p>
+                        <p><strong>2.</strong> Click on 'Send Money'</p>
+                        <p><strong>3.</strong> Enter our Skrill account email address:</p>
+                        <div class="email-highlight">ericmc2@hotmail.fr</div>
+                        <p><strong>4.</strong> Amount to send: <span class="selected-amount">Select a plan</span></p>
+                        <p><strong>5.</strong> Confirm the transfer</p>
+                        <p><strong>6.</strong> Send us a confirmation email to the same address</p>
+                        <p><em>Activation within 24 hours maximum.</em></p>
+                    </div>
+                    
+                    <div class="payment-info" id="paypal-info">
+                        <h4>PayPal Donation</h4>
+                        <p><strong>1.</strong> Log in to your PayPal account</p>
+                        <p><strong>2.</strong> Select 'Send Money' or 'Make a Donation'</p>
+                        <p><strong>3.</strong> Enter the PayPal email address:</p>
+                        <div class="email-highlight">ericmc2408@gmail.com</div>
+                        <p><strong>4.</strong> Donation amount: <span class="selected-amount">Select a plan</span></p>
+                        <p><strong>5.</strong> Add a note mentioning "ArtScalping - [Selected Plan]"</p>
+                        <p><strong>6.</strong> Send us a confirmation email to ericmc2408@gmail.com</p>
+                        <p><em>Access activated upon payment receipt.</em></p>
+                    </div>
+                </div>
+
+                <button class="cta-button" id="confirm-payment" disabled>
+                    Confirm selection
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables to store selections
+        let selectedPlan = null;
+        let selectedMethod = null;
+        let selectedPrice = 0;
+
+        // Handle plan selection
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove previous selection
+                document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
+                
+                // Add selection to clicked card
+                this.classList.add('selected');
+                
+                selectedPlan = this.dataset.plan;
+                selectedPrice = this.dataset.price;
+                
+                updatePaymentInfo();
+                updateButton();
+            });
+        });
+
+        // Handle payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                // Remove previous selection
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                
+                // Add selection to clicked method
+                this.classList.add('selected');
+                
+                selectedMethod = this.dataset.method;
+                
+                showPaymentInfo();
+                updateButton();
+            });
+        });
+
+        // Function to show payment information
+        function showPaymentInfo() {
+            // Hide all payment info
+            document.querySelectorAll('.payment-info').forEach(info => {
+                info.classList.remove('active');
+            });
+            
+            // Show corresponding info
+            if (selectedMethod) {
+                document.getElementById(selectedMethod + '-info').classList.add('active');
+            }
+        }
+
+        // Function to update amounts in payment info
+        function updatePaymentInfo() {
+            const amountText = selectedPrice ? '€' + selectedPrice : 'Select a plan';
+            document.querySelectorAll('.selected-amount, #selected-amount').forEach(element => {
+                element.textContent = amountText;
+            });
+        }
+
+        // Function to update button
+        function updateButton() {
+            const button = document.getElementById('confirm-payment');
+            if (selectedPlan && selectedMethod) {
+                button.disabled = false;
+                button.textContent = `Proceed to payment - €${selectedPrice}`;
+            } else {
+                button.disabled = true;
+                button.textContent = 'Select a plan and payment method';
+            }
+        }
+
+        // Handle confirmation button click
+        document.getElementById('confirm-payment').addEventListener('click', function() {
+            if (selectedPlan && selectedMethod) {
+                alert(`Perfect! You have selected:\n\nPlan: ${selectedPlan === 'monthly' ? 'Monthly Subscription' : 'Weekend Access'}\nAmount: €${selectedPrice}\nMethod: ${selectedMethod.charAt(0).toUpperCase() + selectedMethod.slice(1)}\n\nPlease follow the instructions above to complete the payment.`);
+            }
+        });
+
+        // Animation on load
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
+

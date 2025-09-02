@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtScalping - भुगतान पृष्ठ</title>
+    <style>
+        /* Todo o CSS original copiado sem alterações para compatibilidade */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        .pricing-section {
+            margin-bottom: 40px;
+        }
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .pricing-card {
+            border: 2px solid #e1e8ed;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+        .pricing-card.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .pricing-card:hover::before {
+            left: 100%;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .card-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .card-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        .card-features li {
+            padding: 8px 0;
+            color: #666;
+            position: relative;
+            padding-left: 25px;
+        }
+        .card-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .payment-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .payment-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .payment-method {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .payment-method:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+        .payment-method.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        .payment-method img {
+            width: 60px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .payment-method h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .payment-details {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+        .payment-info {
+            display: none;
+        }
+        .payment-info.active {
+            display: block;
+        }
+        .payment-info h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .payment-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #666;
+        }
+        .email-highlight {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .features-list {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .features-list h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+        .feature-item:hover {
+            transform: translateX(5px);
+        }
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            .header {
+                padding: 30px 20px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ArtScalping</h1>
+            <p>हमारी ट्रेडिंग रणनीतियों तक प्रीमियम एक्सेस</p>
+        </div>
+        <div class="content">
+            <div class="features-list">
+                <h3>आपकी सदस्यता में शामिल है:</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span>हमारे <strong>'दिन के मैच'</strong> शीट तक सुरक्षित और निजी एक्सेस</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span>हमारी अद्वितीय स्कैल्पिंग विधि पर आधारित विश्लेषण और सलाह</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span>आपके पूंजी की <strong>सुरक्षा</strong> और अधिकतम लाभ के लिए बनी रणनीति</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-section">
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-plan="monthly" data-price="120">
+                        <div class="card-title">मासिक सदस्यता</div>
+                        <div class="card-price">120€</div>
+                        <ul class="card-features">
+                            <li>1 महीने तक पूर्ण एक्सेस</li>
+                            <li>'दिन के मैच' शीट</li>
+                            <li>दैनिक विश्लेषण</li>
+                            <li>प्राथमिक ग्राहक सहायता</li>
+                            <li>पूंजी संरक्षण रणनीतियाँ</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card" data-plan="weekend" data-price="30">
+                        <div class="card-title">वीकेंड एक्सेस</div>
+                        <div class="card-price">30€</div>
+                        <ul class="card-features">
+                            <li>केवल वीकेंड एक्सेस</li>
+                            <li>वीकेंड के मैच</li>
+                            <li>विशेषज्ञ विश्लेषण</li>
+                            <li>अल्पकालिक रणनीतियाँ</li>
+                            <li>ईमेल सहायता</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-section">
+                <h2 class="payment-title">अपना भुगतान का तरीका चुनें</h2>
+                <div class="payment-methods">
+                    <div class="payment-method" data-method="neteller">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💳</div>
+                        <h3>Neteller</h3>
+                        <p>सुरक्षित भुगतान</p>
+                    </div>
+                    <div class="payment-method" data-method="skrill">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🏦</div>
+                        <h3>Skrill</h3>
+                        <p>तेज़ ट्रांसफर</p>
+                    </div>
+                    <div class="payment-method" data-method="paypal">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💰</div>
+                        <h3>PayPal</h3>
+                        <p>सुरक्षित दान</p>
+                    </div>
+                </div>
+                <div class="payment-details">
+                    <div class="payment-info" id="neteller-info">
+                        <h4>Neteller भुगतान निर्देश</h4>
+                        <p><strong>1.</strong> अपने Neteller खाते में लॉगिन करें</p>
+                        <p><strong>2.</strong> 'मनी ट्रांसफ़र' या 'पैसे भेजें' विकल्प चुनें</p>
+                        <p><strong>3.</strong> हमारा Neteller ईमेल दर्ज करें:</p>
+                        <div class="email-highlight">ericmc2@hotmail.fr</div>
+                        <p><strong>4.</strong> भेजी जाने वाली राशि: <span id="selected-amount">कोई योजना चुनें</span></p>
+                        <p><strong>5.</strong> भुगतान के बाद, कृपया पुष्टि के लिए इसी पते पर ईमेल भेजें</p>
+                        <p><em>हम आपकी सदस्यता जल्द से जल्द सक्रिय करेंगे।</em></p>
+                    </div>
+                    <div class="payment-info" id="skrill-info">
+                        <h4>Skrill भुगतान निर्देश</h4>
+                        <p><strong>1.</strong> अपने Skrill खाते में लॉगिन करें</p>
+                        <p><strong>2.</strong> 'पैसे भेजें' पर क्लिक करें</p>
+                        <p><strong>3.</strong> हमारा Skrill ईमेल दर्ज करें:</p>
+                        <div class="email-highlight">ericmc2@hotmail.fr</div>
+                        <p><strong>4.</strong> भेजी जाने वाली राशि: <span class="selected-amount">कोई योजना चुनें</span></p>
+                        <p><strong>5.</strong> ट्रांसफर कन्फर्म करें</p>
+                        <p><strong>6.</strong> पुष्टि के लिए इसी ईमेल पर हमें मेल भेजें</p>
+                        <p><em>24 घंटे के भीतर सक्रियण।</em></p>
+                    </div>
+                    <div class="payment-info" id="paypal-info">
+                        <h4>PayPal दान</h4>
+                        <p><strong>1.</strong> अपने PayPal खाते में लॉगिन करें</p>
+                        <p><strong>2.</strong> 'पैसे भेजें' या 'दान करें' विकल्प चुनें</p>
+                        <p><strong>3.</strong> PayPal ईमेल दर्ज करें:</p>
+                        <div class="email-highlight">ericmc2408@gmail.com</div>
+                        <p><strong>4.</strong> दान राशि: <span class="selected-amount">कोई योजना चुनें</span></p>
+                        <p><strong>5.</strong> "ArtScalping - [चयनित योजना]" नोट में जोड़ें</p>
+                        <p><strong>6.</strong> पुष्टि के लिए हमें ericmc2408@gmail.com पर ईमेल करें</p>
+                        <p><em>भुगतान मिलते ही एक्सेस सक्रिय हो जाएगी।</em></p>
+                    </div>
+                </div>
+                <button class="cta-button" id="confirm-payment" disabled>
+                    चयन की पुष्टि करें
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // चयन को स्टोर करने के लिए वेरिएबल्स
+        let selectedPlan = null;
+        let selectedMethod = null;
+        let selectedPrice = 0;
+        // प्लान चयन की हैंडलिंग
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // पुरानी चयन हटाएं
+                document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
+                // चयनित कार्ड को चिह्नित करें
+                this.classList.add('selected');
+                selectedPlan = this.dataset.plan;
+                selectedPrice = this.dataset.price;
+                updatePaymentInfo();
+                updateButton();
+            });
+        });
+        // भुगतान विकल्प चयन की हैंडलिंग
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                // पुरानी चयन हटाएं
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                // चयनित भुगतान विकल्प को चिह्नित करें
+                this.classList.add('selected');
+                selectedMethod = this.dataset.method;
+                showPaymentInfo();
+                updateButton();
+            });
+        });
+        // भुगतान जानकारी दिखाने के लिए फ़ंक्शन
+        function showPaymentInfo() {
+            // सभी भुगतान जानकारी छुपाएं
+            document.querySelectorAll('.payment-info').forEach(info => {
+                info.classList.remove('active');
+            });
+            // चयनित भुगतान जानकारी दिखाएं
+            if (selectedMethod) {
+                document.getElementById(selectedMethod + '-info').classList.add('active');
+            }
+        }
+        // भुगतान राशि अपडेट करने के लिए फ़ंक्शन
+        function updatePaymentInfo() {
+            const amountText = selectedPrice ? selectedPrice + '€' : 'कोई योजना चुनें';
+            document.querySelectorAll('.selected-amount, #selected-amount').forEach(element => {
+                element.textContent = amountText;
+            });
+        }
+        // भुगतान बटन अपडेट करने के लिए फ़ंक्शन
+        function updateButton() {
+            const button = document.getElementById('confirm-payment');
+            if (selectedPlan && selectedMethod) {
+                button.disabled = false;
+                button.textContent = `भुगतान करें - ${selectedPrice}€`;
+            } else {
+                button.disabled = true;
+                button.textContent = 'कोई योजना और भुगतान विधि चुनें';
+            }
+        }
+        // पुष्टि बटन पर क्लिक हैंडलिंग
+        document.getElementById('confirm-payment').addEventListener('click', function() {
+            if (selectedPlan && selectedMethod) {
+                alert(`बधाई हो! आपने चयन किया:\n\nयोजना: ${selectedPlan === 'monthly' ? 'मासिक सदस्यता' : 'वीकेंड एक्सेस'}\nराशि: ${selectedPrice}€\nविधि: ${selectedMethod.charAt(0).toUpperCase() + selectedMethod.slice(1)}\n\nकृपया भुगतान पूरा करने के लिए ऊपर दिए गए निर्देशों का पालन करें।`);
+            }
+        });
+        // लोड पर एनिमेशन सक्षम करें
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
+

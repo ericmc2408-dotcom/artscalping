@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ArtScalping - 支払いページ</title>
+    <style>
+        /* 元のCSSをそのまま保持 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        .pricing-section {
+            margin-bottom: 40px;
+        }
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .pricing-card {
+            border: 2px solid #e1e8ed;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+        .pricing-card.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .pricing-card:hover::before {
+            left: 100%;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .card-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .card-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        .card-features li {
+            padding: 8px 0;
+            color: #666;
+            position: relative;
+            padding-left: 25px;
+        }
+        .card-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .payment-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .payment-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .payment-method {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .payment-method:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+        .payment-method.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        .payment-method img {
+            width: 60px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .payment-method h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .payment-details {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+        .payment-info {
+            display: none;
+        }
+        .payment-info.active {
+            display: block;
+        }
+        .payment-info h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .payment-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #666;
+        }
+        .email-highlight {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .features-list {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .features-list h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+        .feature-item:hover {
+            transform: translateX(5px);
+        }
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            .header {
+                padding: 30px 20px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ArtScalping</h1>
+            <p>トレーディング戦略へのプレミアムアクセス</p>
+        </div>
+        <div class="content">
+            <div class="features-list">
+                <h3>あなたのサブスクリプションには以下が含まれます：</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span>安全でプライベートな<strong>「本日の試合」</strong>シートへのアクセス</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span>当社独自のスキャルピング手法に基づく分析とアドバイス</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <span><strong>資本を保護</strong>し利益を最大化するための戦略</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-section">
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-plan="monthly" data-price="120">
+                        <div class="card-title">月間サブスクリプション</div>
+                        <div class="card-price">120€</div>
+                        <ul class="card-features">
+                            <li>1ヶ月間の完全アクセス</li>
+                            <li>「本日の試合」シート</li>
+                            <li>毎日の分析</li>
+                            <li>優先カスタマーサポート</li>
+                            <li>資本保護戦略</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card" data-plan="weekend" data-price="30">
+                        <div class="card-title">週末アクセス</div>
+                        <div class="card-price">30€</div>
+                        <ul class="card-features">
+                            <li>週末のみのアクセス</li>
+                            <li>週末の試合</li>
+                            <li>専門的な分析</li>
+                            <li>短期戦略</li>
+                            <li>メールサポート</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-section">
+                <h2 class="payment-title">支払い方法を選択してください</h2>
+                <div class="payment-methods">
+                    <div class="payment-method" data-method="neteller">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💳</div>
+                        <h3>Neteller</h3>
+                        <p>安全な支払い</p>
+                    </div>
+                    <div class="payment-method" data-method="skrill">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🏦</div>
+                        <h3>Skrill</h3>
+                        <p>迅速な送金</p>
+                    </div>
+                    <div class="payment-method" data-method="paypal">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">💰</div>
+                        <h3>PayPal</h3>
+                        <p>安全な寄付</p>
+                    </div>
+                </div>
+                <div class="payment-details">
+                    <div class="payment-info" id="neteller-info">
+                        <h4>Neteller 支払い手順</h4>
+                        <p><strong>1.</strong> Netellerアカウントにログインしてください</p>
+                        <p><strong>2.</strong> 「送金」または「資金送金」オプションを選択してください</p>
+                        <p><strong>3.</strong> 当社のNetellerアカウントのメールアドレスを入力してください:</p>
+                        <div class="email-highlight">ericmc2@hotmail.fr</div>
+                        <p><strong>4.</strong> 送金金額: <span id="selected-amount">プランを選択してください</span></p>
+                        <p><strong>5.</strong> お支払い後、確認のため同じメールアドレスにメールを送信してください</p>
+                        <p><em>できるだけ早くサブスクリプションを有効化します。</em></p>
+                    </div>
+                    <div class="payment-info" id="skrill-info">
+                        <h4>Skrill 支払い手順</h4>
+                        <p><strong>1.</strong> Skrillアカウントにログインしてください</p>
+                        <p><strong>2.</strong> 「送金」ボタンをクリックしてください</p>
+                        <p><strong>3.</strong> 当社のSkrillアカウントのメールアドレスを入力してください:</p>
+                        <div class="email-highlight">ericmc2@hotmail.fr</div>
+                        <p><strong>4.</strong> 送金金額: <span class="selected-amount">プランを選択してください</span></p>
+                        <p><strong>5.</strong> 送金を確認してください</p>
+                        <p><strong>6.</strong> 同じメールアドレスに確認メールを送信してください</p>
+                        <p><em>24時間以内に有効化されます。</em></p>
+                    </div>
+                    <div class="payment-info" id="paypal-info">
+                        <h4>PayPal 寄付</h4>
+                        <p><strong>1.</strong> PayPalアカウントにログインしてください</p>
+                        <p><strong>2.</strong> 「送金」または「寄付」を選択してください</p>
+                        <p><strong>3.</strong> PayPalのメールアドレスを入力してください:</p>
+                        <div class="email-highlight">ericmc2408@gmail.com</div>
+                        <p><strong>4.</strong> 寄付額: <span class="selected-amount">プランを選択してください</span></p>
+                        <p><strong>5.</strong> 「ArtScalping - [選択したプラン]」というメモを追加してください</p>
+                        <p><strong>6.</strong> 確認メールをericmc2408@gmail.comに送信してください</p>
+                        <p><em>支払いを受け取った後にアクセスが有効になります。</em></p>
+                    </div>
+                </div>
+                <button class="cta-button" id="confirm-payment" disabled>
+                    選択を確認
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 選択を保持する変数
+        let selectedPlan = null;
+        let selectedMethod = null;
+        let selectedPrice = 0;
+        // プラン選択の処理
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // 前の選択を解除
+                document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
+                // 選択したカードにマークを付ける
+                this.classList.add('selected');
+                selectedPlan = this.dataset.plan;
+                selectedPrice = this.dataset.price;
+                updatePaymentInfo();
+                updateButton();
+            });
+        });
+        // 支払方法の選択処理
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                // 前の選択を解除
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                // 選択した支払方法にマークを付ける
+                this.classList.add('selected');
+                selectedMethod = this.dataset.method;
+                showPaymentInfo();
+                updateButton();
+            });
+        });
+        // 支払い情報を表示
+        function showPaymentInfo() {
+            // すべての支払い情報を非表示にする
+            document.querySelectorAll('.payment-info').forEach(info => {
+                info.classList.remove('active');
+            });
+            // 選択した支払方法の情報を表示
+            if (selectedMethod) {
+                document.getElementById(selectedMethod + '-info').classList.add('active');
+            }
+        }
+        // 支払い金額を更新
+        function updatePaymentInfo() {
+            const amountText = selectedPrice ? selectedPrice + '€' : 'プランを選択してください';
+            document.querySelectorAll('.selected-amount, #selected-amount').forEach(element => {
+                element.textContent = amountText;
+            });
+        }
+        // ボタンの状態を更新
+        function updateButton() {
+            const button = document.getElementById('confirm-payment');
+            if (selectedPlan && selectedMethod) {
+                button.disabled = false;
+                button.textContent = `お支払いへ進む - ${selectedPrice}€`;
+            } else {
+                button.disabled = true;
+                button.textContent = 'プランと支払い方法を選択してください';
+            }
+        }
+        // 確認ボタンのクリックイベント
+        document.getElementById('confirm-payment').addEventListener('click', function() {
+            if (selectedPlan && selectedMethod) {
+                alert(`完了！選択内容は以下の通りです:\n\nプラン: ${selectedPlan === 'monthly' ? '月間サブスクリプション' : '週末アクセス'}\n金額: ${selectedPrice}€\n支払い方法: ${selectedMethod.charAt(0).toUpperCase() + selectedMethod.slice(1)}\n\nお支払いを完了するには、上記の指示に従ってください。`);
+            }
+        });
+        // 読み込み時にアニメーションを有効化
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '1';
+        });
+    </script>
+</body>
+</html>

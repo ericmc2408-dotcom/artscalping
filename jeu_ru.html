@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры игр - ArtScalping</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1A232D;
+            color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        .game-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        h1 {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #ADD8E6;
+            margin-top: 40px;
+            border-bottom: 1px solid #4A7AB0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .example {
+            background-color: #2C3A4D;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .match-info {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        .scenario-text {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .timer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #1a232d;
+            border-radius: 8px;
+            border: 1px solid #4A7AB0;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .timer-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            filter: invert(1);
+        }
+        .timer-display {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #FFD700;
+            width: 120px;
+            text-align: center;
+        }
+        .action-point {
+            font-size: 1.1em;
+            margin-left: 20px;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .goal-indicator { background-color: #F44336; }
+        .buy-indicator { background-color: #4CAF50; }
+        .sell-indicator { background-color: #376392; }
+
+        .play-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        .play-button:hover {
+            background-color: #66BB6A;
+        }
+        .action-taken {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #376392;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .important-note {
+            color: #F44336;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+        .stop-message {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .win-message {
+            color: #4CAF50;
+            font-size: 1.2em;
+        }
+        .lose-message {
+            color: #F44336;
+            font-size: 1.2em;
+        }
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .option-button {
+            background-color: #4A7AB0;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .option-button:hover {
+            background-color: #5C8BC7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-content">
+    <h1>Примеры практических ситуаций</h1>
+
+    <h2>Сценарий 1: Отказ</h2>
+    <div class="example">
+        <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
+        <p class="scenario-text">
+            Первый гол забит на 9-й минуте, второй - на 14-й. Так как между двумя голами прошло менее 6 минут, мы отказываемся от матча.
+        </p>
+        <div class="timer-container">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <div class="timer-display" id="timer1">00:00</div>
+            <span class="action-point goal-indicator" id="goal1-1">ГОЛ (9')</span>
+            <span class="action-point goal-indicator" id="goal1-2">ГОЛ (14')</span>
+        </div>
+        <button class="play-button" onclick="startScenario1()">Запустить сценарий</button>
+        <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
+            СТОП! Два гола были забиты до 15-й минуты. Риск слишком высок, чтобы продолжать. Мы отказываемся от матча.
+        </div>
+        <div class="action-taken">
+            Действие: Риск слишком высок, чтобы продолжать. Мы отказываемся от матча.
+        </div>
+        <p class="important-note">Ключевое правило: Если общее количество голов достигает 2 или более до 15-й минуты, мы отказываемся.</p>
+    </div>
+    
+    <h2>Сценарий 2: Идеальный удар</h2>
+    <div class="example">
+        <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
+        <p class="scenario-text">
+            Гол забит рано, но мы следуем нашему методу для получения оптимальной прибыли.
+        </p>
+        <div class="timer-container">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <div class="timer-display" id="timer2">00:00</div>
+            <span class="action-point goal-indicator" id="goal2-1">ГОЛ (9')</span>
+            <span class="action-point buy-indicator" id="buy2-1">СТАВКА (15')</span>
+            <span class="action-point sell-indicator" id="sell2-1">ПРОДАНО (21')</span>
+            <span class="action-point goal-indicator" id="goal2-2">ГОЛ (23')</span>
+            <span class="action-point buy-indicator" id="buy2-2">СТАВКА (24')</span>
+            <span class="action-point sell-indicator" id="sell2-2">ПРОДАНО (34')</span>
+        </div>
+        <button class="play-button" onclick="startScenario2()">Запустить сценарий</button>
+        <div class="stop-message win-message" id="stop-message-2" style="display:none;">
+            ПОБЕДА! Идеальный удар успешно выполнен.
+        </div>
+        <div class="action-taken">
+            Действие: Мы получили прибыль от двух ставок в одном тайме. Правильный кэшаут - ключ к прибыльности.
+        </div>
+    </div>
+
+    <h2>Сценарий 3: Выбор игрока</h2>
+    <div class="example">
+        <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
+        <p class="scenario-text">
+            Первый гол забит на 9-й минуте. Мы ждем 15-й минуты, чтобы сделать нашу ставку. Второй гол забит на 21-й минуте. В этот момент у игрока есть два варианта.
+        </p>
+        <div class="timer-container">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <div class="timer-display" id="timer3">00:00</div>
+            <span class="action-point goal-indicator" id="goal3-1">ГОЛ (9')</span>
+            <span class="action-point buy-indicator" id="buy3-1">СТАВКА (15')</span>
+            <span class="action-point goal-indicator" id="goal3-2">ГОЛ (21')</span>
+            <span class="action-point buy-indicator" id="buy3-2" style="display:none;">2-я СТАВКА (23')</span>
+            <span class="action-point sell-indicator" id="sell3-1" style="display:none;">ПРОДАЖА (31')</span>
+        </div>
+        <button class="play-button" id="play3" onclick="startScenario3()">Запустить сценарий</button>
+        <div id="options3" style="display:none;">
+            <p class="cta-text">Забит второй гол! Ваша ставка Under 2.5 под угрозой. Что вы выберете?</p>
+            <div class="options-container">
+                <button class="option-button" onclick="continueScenario3('optionA')">
+                    Вариант 1: Оставить первую ставку и ждать 42м30
+                </button>
+                <button class="option-button" onclick="continueScenario3('optionB')">
+                    Вариант 2: Сделать новую ставку и продать обе на 31м или 42м30
+                </button>
+            </div>
+        </div>
+        <div class="action-taken" id="action3" style="display:none;"></div>
+        <div class="stop-message" id="stop-message-3" style="display:none;"></div>
+    </div>
+
+    <h2>Сценарий 4: Пустыня</h2>
+    <div class="example">
+        <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
+        <p class="scenario-text">
+            Голов нет. Мы не играем. Мы ждем следующего матча.
+        </p>
+        <div class="timer-container">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <div class="timer-display" id="timer4">00:00</div>
+        </div>
+        <button class="play-button" onclick="startScenario4()">Запустить сценарий</button>
+        <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
+            Голов нет. Мы не играем. Мы ждем следующего матча.
+        </div>
+    </div>
+    
+    <h2>Сценарий 5: Небольшая фиксация прибыли</h2>
+    <div class="example">
+        <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
+        <p class="scenario-text">
+            Гол забит на 9-й минуте. Игрок делает ставку на 15-й минуте и фиксирует небольшую прибыль на 21-й минуте, перепродав ставку.
+        </p>
+        <div class="timer-container">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <div class="timer-display" id="timer5">00:00</div>
+            <span class="action-point goal-indicator" id="goal5-1">ГОЛ (9')</span>
+            <span class="action-point buy-indicator" id="buy5-1">СТАВКА (15')</span>
+            <span class="action-point sell-indicator" id="sell5-1">ПРОДАЖА (21')</span>
+        </div>
+        <button class="play-button" onclick="startScenario5()">Запустить сценарий</button>
+        <div class="stop-message win-message" id="stop-message-5" style="display:none;">
+            Прибыль зафиксирована! Ставка перепродана, и игрок покидает рынок.
+        </div>
+    </div>
+
+    <h2>Сценарий 6: Занятие позиции</h2>
+    <div class="example">
+        <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
+        <p class="scenario-text">
+            Голы забиваются на **18-й, 33-й, 47-й и 58-й минутах**. Единственное правило - избегать игры на **нескольких позициях** одновременно. Секундомер не отображается, чтобы сосредоточиться на действиях. Матч заканчивается через 12 минут после 4-го гола.
+            <br><br>
+            Вам предстоит найти правильное время (5, 10 или 15 минут) для ваших ставок после каждого гола. Цель - использовать **пики коэффициентов** после каждого гола, потому что через 5-10 минут после гола **падение коэффициентов** самое быстрое.
+        </p>
+        <div class="timer-container" style="display: none;">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <div class="timer-display" id="timer6">00:00</div>
+            <span class="action-point goal-indicator" id="goal6-1">ГОЛ (18')</span>
+            <span class="action-point buy-indicator" id="buy6-1">СТАВКА (20')</span>
+            <span class="action-point sell-indicator" id="sell6-1">ПРОДАЖА (28')</span>
+            <span class="action-point goal-indicator" id="goal6-2">ГОЛ (33')</span>
+            <span class="action-point buy-indicator" id="buy6-2">СТАВКА (35')</span>
+            <span class="action-point sell-indicator" id="sell6-2">ПРОДАЖА (43')</span>
+            <span class="action-point goal-indicator" id="goal6-3">ГОЛ (47')</span>
+            <span class="action-point buy-indicator" id="buy6-3">СТАВКА (49')</span>
+            <span class="action-point sell-indicator" id="sell6-3">ПРОДАЖА (57')</span>
+            <span class="action-point goal-indicator" id="goal6-4">ГОЛ (58')</span>
+            <span class="action-point buy-indicator" id="buy6-4">СТАВКА (60')</span>
+            <span class="action-point sell-indicator" id="sell6-4">ПРОДАЖА (68')</span>
+        </div>
+        <button class="play-button" onclick="startScenario6()">Запустить сценарий</button>
+        <div class="stop-message win-message" id="stop-message-6" style="display:none;">
+            Матч окончен! Сценарий завершился через 12 минут после 4-го гола, на 70-й минуте.
+        </div>
+        <div class="action-taken">
+            Действие: Цель состоит в том, чтобы закончить матч вовремя, следуя правилам.
+        </div>
+        <p class="important-note">Ключевое правило: Игра должна закончиться через 12 минут после 4-го гола или самое позднее на 82м30.</p>
+    </div>
+
+</div>
+
+<script>
+    let scenario3Interval;
+    let scenario3Minutes = 0;
+    let scenario3Seconds = 0;
+    const speedFactor = 40;
+
+    function resetScenario(scenario) {
+        const timerDisplay = document.getElementById(`timer${scenario}`);
+        const stopMessage = document.getElementById(`stop-message-${scenario}`);
+
+        timerDisplay.textContent = '00:00';
+
+        // Reset action points for all scenarios
+        if (scenario === 1) {
+            document.getElementById('goal1-1').style.opacity = 0;
+            document.getElementById('goal1-2').style.opacity = 0;
+        }
+        if (scenario === 2) {
+            document.getElementById('goal2-1').style.opacity = 0;
+            document.getElementById('buy2-1').style.opacity = 0;
+            document.getElementById('sell2-1').style.opacity = 0;
+            document.getElementById('goal2-2').style.opacity = 0;
+            document.getElementById('buy2-2').style.opacity = 0;
+            document.getElementById('sell2-2').style.opacity = 0;
+        }
+        if (scenario === 3) {
+            document.getElementById('goal3-1').style.opacity = 0;
+            document.getElementById('buy3-1').style.opacity = 0;
+            document.getElementById('goal3-2').style.opacity = 0;
+            document.getElementById('buy3-2').style.opacity = 0;
+            document.getElementById('sell3-1').style.opacity = 0;
+            document.getElementById('play3').style.display = 'block';
+            document.getElementById('options3').style.display = 'none';
+            document.getElementById('action3').style.display = 'none';
+            clearInterval(scenario3Interval);
+        }
+        if (scenario === 4) {
+            // No action points to reset for this scenario
+        }
+        if (scenario === 5) {
+            document.getElementById('goal5-1').style.opacity = 0;
+            document.getElementById('buy5-1').style.opacity = 0;
+            document.getElementById('sell5-1').style.opacity = 0;
+        }
+        if (scenario === 6) {
+            document.getElementById('goal6-1').style.opacity = 0;
+            document.getElementById('buy6-1').style.opacity = 0;
+            document.getElementById('sell6-1').style.opacity = 0;
+            document.getElementById('goal6-2').style.opacity = 0;
+            document.getElementById('buy6-2').style.opacity = 0;
+            document.getElementById('sell6-2').style.opacity = 0;
+            document.getElementById('goal6-3').style.opacity = 0;
+            document.getElementById('buy6-3').style.opacity = 0;
+            document.getElementById('sell6-3').style.opacity = 0;
+            document.getElementById('goal6-4').style.opacity = 0;
+            document.getElementById('buy6-4').style.opacity = 0;
+            document.getElementById('sell6-4').style.opacity = 0;
+        }
+        if (stopMessage) {
+            stopMessage.style.display = 'none';
+        }
+    }
+
+    function runTimer(scenario, actions) {
+        const timerDisplay = document.getElementById(`timer${scenario}`);
+        const stopMessage = document.getElementById(`stop-message-${scenario}`);
+        
+        let minutes = 0;
+        let seconds = 0;
+        let interval;
+        let stopConditionMet = false;
+
+        resetScenario(scenario);
+
+        interval = setInterval(() => {
+            if (stopConditionMet) {
+                clearInterval(interval);
+                return;
+            }
+
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+            }
+
+            for (const action of actions) {
+                if (minutes === action.min && seconds === action.sec) {
+                    const element = document.getElementById(action.id);
+                    if (element) {
+                        element.style.opacity = 1;
+                    }
+                    if (action.stop) {
+                        stopConditionMet = true;
+                        if (stopMessage) {
+                            stopMessage.style.display = 'block';
+                        }
+                    }
+                }
+            }
+
+            const formattedMinutes = String(minutes).padStart(2, '0');
+            const formattedSeconds = String(seconds).padStart(2, '0');
+            timerDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
+        }, 1000 / speedFactor);
+    }
+    
+    function startScenario1() {
+        const actions = [
+            { id: 'goal1-1', min: 9, sec: 0 },
+            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+        ];
+        runTimer(1, actions);
+    }
+
+    function startScenario2() {
+        const actions = [
+            { id: 'goal2-1', min: 9, sec: 0 },
+            { id: 'buy2-1', min: 15, sec: 0 },
+            { id: 'sell2-1', min: 21, sec: 0 },
+            { id: 'goal2-2', min: 23, sec: 0 },
+            { id: 'buy2-2', min: 24, sec: 0 },
+            { id: 'sell2-2', min: 34, sec: 0, stop: true }
+        ];
+        runTimer(2, actions);
+    }
+
+    function startScenario3() {
+        resetScenario(3);
+        
+        const timerDisplay = document.getElementById('timer3');
+        const goal1 = document.getElementById('goal3-1');
+        const buy1 = document.getElementById('buy3-1');
+        const goal2 = document.getElementById('goal3-2');
+
+        scenario3Minutes = 0;
+        scenario3Seconds = 0;
+
+        scenario3Interval = setInterval(() => {
+            scenario3Seconds++;
+            if (scenario3Seconds === 60) {
+                scenario3Seconds = 0;
+                scenario3Minutes++;
+            }
+            
+            const formattedMinutes = String(scenario3Minutes).padStart(2, '0');
+            const formattedSeconds = String(scenario3Seconds).padStart(2, '0');
+            timerDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
+
+            if (scenario3Minutes === 9 && scenario3Seconds === 0) {
+                goal1.style.opacity = 1;
+            }
+
+            if (scenario3Minutes === 15 && scenario3Seconds === 0) {
+                buy1.style.opacity = 1;
+            }
+
+            if (scenario3Minutes === 21 && scenario3Seconds === 0) {
+                goal2.style.opacity = 1;
+                clearInterval(scenario3Interval);
+                document.getElementById('options3').style.display = 'block';
+            }
+        }, 1000 / speedFactor);
+    }
+
+    function continueScenario3(option) {
+        document.getElementById('options3').style.display = 'none';
+        const timerDisplay = document.getElementById('timer3');
+        const actionMessage = document.getElementById('action3');
+        const stopMessage = document.getElementById('stop-message-3');
+        
+        let interval;
+        
+        if (option === 'optionA') {
+            actionMessage.textContent = "Вариант 1 выбран: Ставка Under 2.5 сохраняется. Игрок ждет 42m30. Третий гол приведет к проигрышу ставки, а его отсутствие - к выигрышу.";
+            actionMessage.classList.remove('win-message', 'lose-message');
+            actionMessage.style.display = 'block';
+            
+            interval = setInterval(() => {
+                scenario3Seconds++;
+                if (scenario3Seconds === 60) {
+                    scenario3Seconds = 0;
+                    scenario3Minutes++;
+                }
+                const formattedMinutes = String(scenario3Minutes).padStart(2, '0');
+                const formattedSeconds = String(scenario3Seconds).padStart(2, '0');
+                timerDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
+
+                if (scenario3Minutes >= 42 && scenario3Seconds >= 30) {
+                    clearInterval(interval);
+                    stopMessage.textContent = "Ставка либо выигрышная, либо проигрышная. Риск был тотальным.";
+                    stopMessage.classList.add('lose-message');
+                    stopMessage.style.display = 'block';
+                }
+            }, 1000 / speedFactor);
+        }
+        
+        if (option === 'optionB') {
+            actionMessage.textContent = "Вариант 2 выбран: Новая ставка Under 2.5 делается на 23-й минуте. Цель - продать обе ставки вместе на 31-й или 42m30, чтобы зафиксировать прибыль.";
+            actionMessage.classList.remove('win-message', 'lose-message');
+            actionMessage.style.display = 'block';
+
+            interval = setInterval(() => {
+                scenario3Seconds++;
+                if (scenario3Seconds === 60) {
+                    scenario3Seconds = 0;
+                    scenario3Minutes++;
+                }
+                const formattedMinutes = String(scenario3Minutes).padStart(2, '0');
+                const formattedSeconds = String(scenario3Seconds).padStart(2, '0');
+                timerDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
+                
+                // On affiche la prise de pari à 23 minutes
+                if (scenario3Minutes === 23 && scenario3Seconds === 0) {
+                    document.getElementById('buy3-2').style.opacity = 1;
+                }
+
+                // On affiche la vente à 31 minutes pour l'exemple
+                if (scenario3Minutes === 31 && scenario3Seconds === 0) {
+                    document.getElementById('sell3-1').style.opacity = 1;
+                    clearInterval(interval);
+                    stopMessage.textContent = "Обе ставки были проданы на 31-й минуте. Игрок фиксирует свою прибыль и может перейти к следующему матчу.";
+                    stopMessage.classList.add('win-message');
+                    stopMessage.style.display = 'block';
+                }
+            }, 1000 / speedFactor);
+        }
+    }
+
+    function startScenario4() {
+        const actions = [
+            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
+        ];
+        runTimer(4, actions);
+    }
+    
+    function startScenario5() {
+        const actions = [
+            { id: 'goal5-1', min: 9, sec: 0 },
+            { id: 'buy5-1', min: 15, sec: 0 },
+            { id: 'sell5-1', min: 21, sec: 0, stop: true }
+        ];
+        runTimer(5, actions);
+    }
+
+    function startScenario6() {
+        const actions = [
+            { id: 'goal6-1', min: 18, sec: 0 },
+            { id: 'buy6-1', min: 20, sec: 0 },
+            { id: 'sell6-1', min: 28, sec: 0 },
+            { id: 'goal6-2', min: 33, sec: 0 },
+            { id: 'buy6-2', min: 35, sec: 0 },
+            { id: 'sell6-2', min: 43, sec: 0 },
+            { id: 'goal6-3', min: 47, sec: 0 },
+            { id: 'buy6-3', min: 49, sec: 0 },
+            { id: 'sell6-3', min: 57, sec: 0 },
+            { id: 'goal6-4', min: 58, sec: 0 },
+            { id: 'buy6-4', min: 60, sec: 0 },
+            { id: 'sell6-4', min: 68, sec: 0 },
+            { id: 'stop-message-6', min: 70, sec: 0, stop: true }
+        ];
+        runTimer(6, actions);
+    }
+</script>
+
+</body>
+</html>
