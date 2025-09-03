@@ -311,6 +311,399 @@
 
         .free-trial-cta p {
             margin: 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .free-trial-cta a {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #f1c40f;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .free-trial-cta a:hover {
+            background-color: #f39c12;
+        }
+        
+        .free-trial-cta a .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+/* --- Styles pour les tableaux générés --- */
+#table-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+    overflow-x: auto;
+    display: none;
+}
+
+#data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #34495e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    /* Styles pour que le tableau tienne sur la page */
+    table-layout: fixed;
+    font-size: 0.9em;
+}
+
+#data-table th, #data-table td {
+    border: 1px solid #2c3e50;
+    padding: 12px 15px;
+    text-align: left;
+    /* Styles pour le tableau gestion25 */
+    padding: 8px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+#data-table thead th {
+    background-color: #2980b9;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#data-table tbody tr:nth-child(even) {
+    background-color: #2c3e50;
+}
+
+#data-table tbody tr:hover {
+    background-color: #3f586a;
+}
+    
+/* Styles pour les 4 dernières colonnes */
+/* Colonne F (avant-avant-avant-dernière) : verte si la valeur est 1 */
+#data-table td:nth-last-child(4).green-cell {
+    background-color: green;
+    color: white;
+}
+    
+/* Colonne G (avant-avant-dernière) : rouge si la valeur est 1 */
+#data-table td:nth-last-child(3).red-cell {
+    background-color: red;
+    color: white;
+}
+    
+/* Colonne H (avant-dernière) : bleue si la valeur est 1 */
+#data-table td:nth-last-child(2).blue-cell {
+    background-color: blue;
+    color: white;
+}
+    
+/* Colonne I (dernière) : orange si la valeur est 1 */
+#data-table td:nth-last-child(1).orange-cell {
+    background-color: orange;
+    color: black;
+}
+
+/* Styles de couleur pour les cellules */
+.green-cell {
+    background-color: green;
+    color: white;
+}
+
+.red-cell {
+    background-color: red;
+    color: white;
+}
+    
+.blue-cell {
+    background-color: blue;
+    color: white;
+}
+    
+.orange-cell {
+    background-color: orange;
+    color: black;
+}
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h1 id="site-title">ArtScalping</h1>
+        <div class="language-switcher">
+            <img src="https://flagcdn.com/fr.svg" alt="Français" onclick="setLanguage('fr')" id="lang-fr" class="active">
+            <img src="https://flagcdn.com/gb.svg" alt="English" onclick="setLanguage('en')" id="lang-en">
+            <img src="https://flagcdn.com/es.svg" alt="Español" onclick="setLanguage('es')" id="lang-es">
+            <img src="https://flagcdn.com/cn.svg" alt="中文" onclick="setLanguage('zh')" id="lang-zh">
+            <img src="https://flagcdn.com/de.svg" alt="Deutsch" onclick="setLanguage('de')" id="lang-de">
+            <img src="https://flagcdn.com/pt.svg" alt="Português" onclick="setLanguage('pt')" id="lang-pt">
+            <img src="https://flagcdn.com/sa.svg" alt="العربية" onclick="setLanguage('ar')" id="lang-ar">
+            <img src="https://flagcdn.com/in.svg" alt="हिन्दी" onclick="setLanguage('hi')" id="lang-hi">
+            <img src="https://flagcdn.com/jp.svg" alt="日本語" onclick="setLanguage('ja')" id="lang-ja">
+        </div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="historique_under25.csv" id="link-past-under-2-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 2.5</span><span class="text-en" style="display:none;">Historical Under 2.5</span><span class="text-es" style="display:none;">Historial Under 2.5</span><span class="text-zh" style="display:none;">历史 Under 2.5</span><span class="text-de" style="display:none;">Historie Under 2.5</span><span class="text-pt" style="display:none;">Histórico Under 2.5</span><span class="text-ar" style="display:none;">تاريخ Under 2.5</span><span class="text-hi" style="display:none;">अंडर 2.5 इतिहास</span><span class="text-ja" style="display:none;">Under 2.5 履歴</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="historique_under45.csv" id="link-past-under-4-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 4.5</span><span class="text-en" style="display:none;">Historical Under 4.5</span><span class="text-es" style="display:none;">Historial Under 4.5</span><span class="text-zh" style="display:none;">历史 Under 4.5</span><span class="text-de" style="display:none;">Historie Under 4.5</span><span class="text-pt" style="display:none;">Histórico Under 4.5</span><span class="text-ar" style="display:none;">تاريخ Under 4.5</span><span class="text-hi" style="display:none;">अंडर 4.5 इतिहास</span><span class="text-ja" style="display:none;">Under 4.5 履歴</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="gestion25.csv" id="link-results-under-2-5">
+                    <span class="icon">&#x1F4C8;</span><span class="text-fr">Résultats Under 2.5 1HT</span><span class="text-en" style="display:none;">Results Under 2.5 1HT</span><span class="text-es" style="display:none;">Resultados Under 2.5 1HT</span><span class="text-zh" style="display:none;">结果 Under 2.5 1HT</span><span class="text-de" style="display:none;">Ergebnisse Under 2.5 1HT</span><span class="text-pt" style="display:none;">Resultados Under 2.5 1HT</span><span class="text-ar" style="display:none;">نتائج Under 2.5 1HT</span><span class="text-hi" style="display:none;">परिणाम Under 2.5 1HT</span><span class="text-ja" style="display:none;">結果 Under 2.5 1HT</span>
+                </a>
+            </li>
+            <li class="class="menu-item"">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="gestion45.csv" id="link-results-under-4-5">
+                    <span class="icon">&#x1F4C8;</span><span class="text-fr">Résultats Under 4.5</span><span class="text-en" style="display:none;">Results Under 4.5</span><span class="text-es" style="display:none;">Resultados Under 4.5</span><span class="text-zh" style="display:none;">结果 Under 4.5</span><span class="text-de" style="display:none;">Ergebnisse Under 4.5</span><span class="text-pt" style="display:none;">Resultados Under 4.5</span><span class="text-ar" style="display:none;">نتائج Under 4.5</span><span class="text-hi" style="display:none;">परिणाम Under 4.5</span><span class="text-ja" style="display:none;">結果 Under 4.5</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="gestion451.csv" id="link-results-under-4-5-sequence">
+                    <span class="icon">&#x1F4C8;</span><span class="text-fr">Résultats Under 4.5 Séquence</span><span class="text-en" style="display:none;">Results Under 4.5 Sequence</span><span class="text-es" style="display:none;">Resultados Under 4.5 Secuencia</span><span class="text-zh" style="display:none;">结果 Under 4.5 序列</span><span class="text-de" style="display:none;">Ergebnisse Under 4.5 Sequenz</span><span class="text-pt" style="display:none;">Resultados Under 4.5 Sequência</span><span class="text-ar" style="display:none;">نتائج Under 4.5 تسلسل</span><span class="text-hi" style="display:none;">परिणाम Under 4.5 अनुक्रम</span><span class="text-ja" style="display:none;">結果 Under 4.5 シーケンス</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="paiement_neteller.html" class="menu-link subscribe" data-content-type="iframe" id="link-subscribe">
+                    <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span><span class="text-es" style="display:none;">Suscripción</span><span class="text-zh" style="display:none;">订阅</span><span class="text-de" style="display:none;">Abonnement</span><span class="text-pt" style="display:none;">Assinatura</span><span class="text-ar" style="display:none;">اشتراك</span><span class="text-hi" style="display:none;">सदस्यता</span><span class="text-ja" style="display:none;">購読</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="mailto:ericmc2@hotmail.fr?subject=Question%20concernant%20ArtScalping" class="menu-link contact" id="link-contact">
+                    <span class="icon">&#x2709;</span><span class="text-fr">Me Contacter</span><span class="text-en" style="display:none;">Contact Us</span><span class="text-es" style="display:none;">Contáctanos</span><span class="text-zh" style="display:none;">联系我们</span><span class="text-de" style="display:none;">Kontaktieren Sie uns</span><span class="text-pt" style="display:none;">Contate-nos</span><span class="text-ar" style="display:none;">اتصل بنا</span><span class="text-hi" style="display:none;">हमसे संपर्क करें</span><span class="text-ja" style="display:none;">お問い合わせ</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content" id="main-content">
+        <div id="home-content">
+            <h2 id="content-title"></h2>
+            <img src="soccer.jpg" alt="Joueur de football en action" class="main-image">
+            <p id="content-p1"></p>
+            <p id="content-p2"></p>
+            
+            <div class="free-trial-cta">
+                <p id="cta-text"></p>
+                <a href="#" id="free-trial-mail">
+                    <span class="icon">&#x1F4E7;</span>
+                    <span id="cta-link-text"></span>
+                </a>
+            </div>
+            
+            <footer class="footer-gemini">
+                <span id="footer-text"></span>
+            </footer>
+        </div>
+        <div id="table-container"></div>
+        <iframe id="content-iframe" class="main-iframe" name="content-iframe"></iframe>
+    </div>
+
+    <script>
+        const links = document.querySelectorAll('.menu-link');
+        const homeContent = document.getElementById('home-content');
+        const tableContainer = document.getElementById('table-container');
+        const contentIframe = document.getElementById('content-iframe');
+        const siteTitle = document.getElementById('site-title');
+
+        let currentLanguage = 'fr';
+        
+        const translations = {
+            fr: {
+                title: "Menu Principal - ArtScalping",
+                h2: "Maîtrisez vos paris avec notre méthode",
+                p1: "En s'appuyant sur notre stratégie de paris multiples dans un même pari 'Lay under 2.5 1HT et Lay under 4.5', vous **maîtrisez le risque** de manière significative. Notre approche vous donne les clés pour remporter plusieurs paris sur une même rencontre. Si un pari simple a un faible taux de perte (3-4%), notre méthode de scalping permet de **réduire ce taux drastiquement** en multipliant vos victoires sur chaque match.",
+                p2: "Notre système est conçu pour **protéger votre capital** et limiter les découverts au maximum. Avec un écart probable de seulement 3 matchs et un maximum théorique de 4, vous vous assurez de **longues séries de victoires** et une rentabilité constante, indispensable pour devenir un parieur averti.",
+                cta: "Bénéficiez d'un essai gratuit d'une semaine pour accéder à la feuille des matchs du jour !",
+                ctaLink: "Demander l'accès",
+                footer: "Conçu avec l'aide de Gemini",
+                contactSubject: "Question concernant ArtScalping",
+                trialSubject: "Demande d'essai gratuit ArtScalping",
+                resultsUnder25: "Résultats Under 2.5 1HT",
+                resultsUnder45: "Résultats Under 4.5",
+                resultsUnder45Seq: "Résultats Under 4.5 Séquence"
+            },
+            
+
+        // Fonction pour afficher le contenu et masquer le reste
+        function showContent(contentToShow) {
+            homeContent.style.display = 'none';
+            tableContainer.style.display = 'none';
+            contentIframe.style.display = 'none';
+
+            if (contentToShow === 'home') {
+                homeContent.style.display = 'flex';
+            } else if (contentToShow === 'table') {
+                tableContainer.style.display = 'block';
+            } else if (contentToShow === 'iframe') {
+                contentIframe.style.display = 'block';
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            document.querySelectorAll('[class^="text-"]').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.language-switcher img').forEach(el => el.classList.remove('active'));
+            
+            const langElements = document.querySelectorAll(`.text-${lang}`);
+            langElements.forEach(el => el.style.display = 'inline');
+            document.getElementById(`lang-${lang}`).classList.add('active');
+
+            const textContent = translations[lang];
+            
+            document.title = textContent.title;
+            document.documentElement.lang = lang;
+            document.getElementById('content-title').textContent = textContent.h2;
+            document.getElementById('content-p1').innerHTML = textContent.p1;
+            document.getElementById('content-p2').innerHTML = textContent.p2;
+            document.getElementById('cta-text').textContent = textContent.cta;
+            document.getElementById('cta-link-text').textContent = textContent.ctaLink;
+            document.getElementById('footer-text').textContent = textContent.footer;
+            
+            document.getElementById('link-contact').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.contactSubject)}`;
+            document.getElementById('free-trial-mail').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.trialSubject)}`;
+
+            // Update text for menu links
+            const menuLinks = document.querySelectorAll('.menu-link');
+            menuLinks.forEach(link => {
+                const linkId = link.id;
+                const linkTextSpan = link.querySelector(`.text-${lang}`);
+                if (linkTextSpan) {
+                    // Update text from translations object
+                }
+            });
+        }
+
+        async function loadCSV(filePath) {
+            const response = await fetch(filePath);
+            const data = await response.text();
+            const lines = data.split('\n').filter(line => line.trim() !== '');
+            const headers = lines[0].split(';');
+            const body = lines.slice(1);
+            
+            let table = `<table id="data-table"><thead><tr>`;
+            headers.forEach(header => {
+                table += `<th>${header}</th>`;
+            });
+            table += '</tr></thead><tbody>';
+
+            body.forEach(line => {
+                const values = line.split(';');
+                table += '<tr>';
+                const totalColumns = values.length;
+                values.forEach((value, index) => {
+                    let cellClasses = '';
+                    const trimmedValue = value.trim();
+
+                    // Règles pour gestion25.csv
+                    if (filePath.includes('gestion25.csv')) {
+                        const reversedIndex = totalColumns - index;
+                        if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'orange-cell';
+                        if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'blue-cell';
+                        if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'red-cell';
+                        if (reversedIndex === 4 && trimmedValue === '1') cellClasses = 'green-cell';
+                    }
+                    // Règles pour gestion45.csv et gestion451.csv
+                    else if (filePath.includes('gestion45.csv') || filePath.includes('gestion451.csv')) {
+                        const reversedIndex = totalColumns - index;
+                        if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'blue-cell';
+                        if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'red-cell';
+                        if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'green-cell';
+                    }
+                    // Règles pour les fichiers historique
+                    else if (filePath.includes('historique')) {
+                        if (index === totalColumns - 1) { // Dernière colonne
+                            const numericValue = parseInt(trimmedValue, 10);
+                            
+                            if (filePath.includes('historique_under25.csv')) {
+                                if (!isNaN(numericValue)) {
+                                    if (numericValue <= 2) {
+                                        cellClasses = 'green-cell';
+                                    } else {
+                                        cellClasses = 'red-cell';
+                                    }
+                                }
+                            } else if (filePath.includes('historique_under45.csv')) {
+                                if (!isNaN(numericValue)) {
+                                    if (numericValue <= 4) {
+                                        cellClasses = 'green-cell';
+                                    } else {
+                                        cellClasses = 'red-cell';
+                                    }
+                                }
+                        }
+                        
+                        // Ajout du style directement pour les cellules du tableau
+                        if (cellClasses) {
+                            table += `<td class="${cellClasses}">${value}</td>`;
+                        } else {
+                            table += `<td>${value}</td>`;
+                        }
+                        
+                    } else {
+                        table += `<td>${value}</td>`;
+                    }
+                });
+                table += '</tr>';
+            });
+
+            table += '</tbody></table>';
+            return table;
+        }
+
+        links.forEach(link => {
+            link.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const contentType = link.dataset.contentType;
+                const file = link.dataset.file;
+                const url = link.href;
+
+                // Masquer le contenu de la page d'accueil
+                homeContent.style.display = 'none';
+                tableContainer.style.display = 'none';
+                contentIframe.style.display = 'none';
+
+                if (contentType === 'csv') {
+                    try {
+                        tableContainer.innerHTML = await loadCSV(file);
+                        tableContainer.style.display = 'block';
+                    } catch (error) {
+                        console.error('Erreur lors du chargement du fichier CSV :', error);
+                        tableContainer.innerHTML = `<p>Erreur lors du chargement du tableau.</p>`;
+                        tableContainer.style.display = 'block';
+                    }
+                } else if (contentType === 'iframe') {
+                    contentIframe.src = url;
+                    contentIframe.style.display = 'block';
+                } else if (url.startsWith('mailto:')) {
+                    window.location.href = url;
+                }
+            });
+        });
+
+        // Charger la page d'accueil par défaut
+        window.addEventListener('DOMContentLoaded', () => {
+            setLanguage('fr');
+            showContent('home');
+        });
+
+        // Gestion du titre cliquable
+        siteTitle.addEventListener('click', () => {
+            showContent('home');
+        });
+    </script>
+</body>
+</html>
 
 
 
