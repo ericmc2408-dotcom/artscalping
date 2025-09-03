@@ -138,6 +138,40 @@
             display: none;
         }
         
+        #home-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        #home-content h2 {
+            color: #f1c40f;
+            font-size: 2.5em;
+        }
+
+        #home-content p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        .main-image {
+            width: 400px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-gemini {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #95a5a6;
+        }
+        
+        /* Styles pour les tableaux générés */
         #table-container {
             width: 100%;
             max-width: 1000px;
@@ -246,6 +280,62 @@
                 width: 100%;
                 justify-content: flex-start;
             }
+
+            #home-content h2 {
+                font-size: 1.8em;
+            }
+
+            #home-content p {
+                font-size: 1em;
+                margin: 10px auto;
+            }
+            
+            .main-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        /* Nouveaux styles pour la section d'essai gratuit */
+        .free-trial-cta {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .free-trial-cta p {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .free-trial-cta a {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #f1c40f;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .free-trial-cta a:hover {
+            background-color: #f39c12;
+        }
+        
+        .free-trial-cta a .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -266,6 +356,16 @@
         </div>
         <ul class="menu-list">
             <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="historique_under25.csv" id="link-past-under-2-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 2.5</span><span class="text-en" style="display:none;">Historical Under 2.5</span><span class="text-es" style="display:none;">Historial Under 2.5</span><span class="text-zh" style="display:none;">历史 Under 2.5</span><span class="text-de" style="display:none;">Historie Under 2.5</span><span class="text-pt" style="display:none;">Histórico Under 2.5</span><span class="text-ar" style="display:none;">تاريخ Under 2.5</span><span class="text-hi" style="display:none;">अंडर 2.5 इतिहास</span><span class="text-ja" style="display:none;">Under 2.5 履歴</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link" data-content-type="csv" data-file="historique_under45.csv" id="link-past-under-4-5">
+                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 4.5</span><span class="text-en" style="display:none;">Historical Under 4.5</span><span class="text-es" style="display:none;">Historial Under 4.5</span><span class="text-zh" style="display:none;">历史 Under 4.5</span><span class="text-de" style="display:none;">Historie Under 4.5</span><span class="text-pt" style="display:none;">Histórico Under 4.5</span><span class="text-ar" style="display:none;">تاريخ Under 4.5</span><span class="text-hi" style="display:none;">अंडर 4.5 इतिहास</span><span class="text-ja" style="display:none;">Under 4.5 履歴</span>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="#" class="menu-link" data-content-type="csv" data-file="gestion25.csv" id="link-results-under-2-5">
                     <span class="icon">&#x1F4C8;</span><span class="text-fr">Résultats Under 2.5 1HT</span><span class="text-en" style="display:none;">Results Under 2.5 1HT</span><span class="text-es" style="display:none;">Resultados Under 2.5 1HT</span><span class="text-zh" style="display:none;">结果 Under 2.5 1HT</span><span class="text-de" style="display:none;">Ergebnisse Under 2.5 1HT</span><span class="text-pt" style="display:none;">Resultados Under 2.5 1HT</span><span class="text-ar" style="display:none;">نتائج Under 2.5 1HT</span><span class="text-hi" style="display:none;">परिणाम Under 2.5 1HT</span><span class="text-ja" style="display:none;">結果 Under 2.5 1HT</span>
                 </a>
@@ -281,7 +381,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="payment.html" class="menu-link subscribe" data-content-type="iframe" id="link-subscribe">
+                <a href="paiement_neteller.html" class="menu-link subscribe" data-content-type="iframe" id="link-subscribe">
                     <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span><span class="text-es" style="display:none;">Suscripción</span><span class="text-zh" style="display:none;">订阅</span><span class="text-de" style="display:none;">Abonnement</span><span class="text-pt" style="display:none;">Assinatura</span><span class="text-ar" style="display:none;">اشتراك</span><span class="text-hi" style="display:none;">सदस्यता</span><span class="text-ja" style="display:none;">購読</span>
                 </a>
             </li>
@@ -294,91 +394,178 @@
     </div>
 
     <div class="content" id="main-content">
+        <div id="home-content">
+            <h2 id="content-title"></h2>
+            <img src="soccer.jpg" alt="Joueur de football en action" class="main-image">
+            <p id="content-p1"></p>
+            <p id="content-p2"></p>
+            
+            <div class="free-trial-cta">
+                <p id="cta-text"></p>
+                <a href="#" id="free-trial-mail">
+                    <span class="icon">&#x1F4E7;</span>
+                    <span id="cta-link-text"></span>
+                </a>
+            </div>
+            
+            <footer class="footer-gemini">
+                <span id="footer-text"></span>
+            </footer>
+        </div>
         <div id="table-container"></div>
         <iframe id="content-iframe" class="main-iframe" name="content-iframe"></iframe>
     </div>
 
     <script>
         const links = document.querySelectorAll('.menu-link');
+        const homeContent = document.getElementById('home-content');
         const tableContainer = document.getElementById('table-container');
         const contentIframe = document.getElementById('content-iframe');
         const siteTitle = document.getElementById('site-title');
+
+        let currentLanguage = 'fr';
         
-        // La fonction pour les traductions est toujours là
         const translations = {
             fr: {
                 title: "Menu Principal - ArtScalping",
+                h2: "Maîtrisez vos paris avec notre méthode",
+                p1: "En s'appuyant sur notre stratégie de paris multiples dans un même pari 'Lay under 2.5 1HT et Lay under 4.5', vous **maîtrisez le risque** de manière significative. Notre approche vous donne les clés pour remporter plusieurs paris sur une même rencontre. Si un pari simple a un faible taux de perte (3-4%), notre méthode de scalping permet de **réduire ce taux drastiquement** en multipliant vos victoires sur chaque match.",
+                p2: "Notre système est conçu pour **protéger votre capital** et limiter les découverts au maximum. Avec un écart probable de seulement 3 matchs et un maximum théorique de 4, vous vous assurez de **longues séries de victoires** et une rentabilité constante, indispensable pour devenir un parieur averti.",
+                cta: "Bénéficiez d'un essai gratuit d'une semaine pour accéder à la feuille des matchs du jour !",
+                ctaLink: "Demander l'accès",
+                footer: "Conçu avec l'aide de Gemini",
                 contactSubject: "Question concernant ArtScalping",
                 trialSubject: "Demande d'essai gratuit ArtScalping",
+                resultsUnder25: "Résultats Under 2.5 1HT",
+                resultsUnder45: "Résultats Under 4.5",
+                resultsUnder45Seq: "Résultats Under 4.5 Séquence"
             },
-            // ... autres langues
+            
+            // Les autres traductions (en, es, zh, de, pt, ar, hi, ja) ne sont pas incluses pour des raisons de concision, mais elles devraient être ajoutées ici.
         };
 
+        // Fonction pour afficher le contenu et masquer le reste
+        function showContent(contentToShow) {
+            homeContent.style.display = 'none';
+            tableContainer.style.display = 'none';
+            contentIframe.style.display = 'none';
+
+            if (contentToShow === 'home') {
+                homeContent.style.display = 'flex';
+            } else if (contentToShow === 'table') {
+                tableContainer.style.display = 'block';
+            } else if (contentToShow === 'iframe') {
+                contentIframe.style.display = 'block';
+            }
+        }
+
         function setLanguage(lang) {
-            // Logique de changement de langue
-            document.documentElement.lang = lang;
+            currentLanguage = lang;
+            
             document.querySelectorAll('[class^="text-"]').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.language-switcher img').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll(`.text-${lang}`).forEach(el => el.style.display = 'inline');
-            document.getElementById(`lang-${lang}`).classList.add('active');
             
-            const textContent = translations[lang];
-            document.title = textContent.title;
-            document.getElementById('link-contact').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.contactSubject)}`;
-        }
-        
-        async function loadCSV(filePath) {
-            try {
-                const response = await fetch(filePath);
-                if (!response.ok) {
-                    throw new Error(`Erreur HTTP: ${response.status}`);
-                }
-                const data = await response.text();
-                const lines = data.split('\n').filter(line => line.trim() !== '');
-                const headers = lines[0].split(';');
-                const body = lines.slice(1);
-                
-                let table = `<table id="data-table"><thead><tr>`;
-                headers.forEach(header => {
-                    table += `<th>${header}</th>`;
-                });
-                table += '</tr></thead><tbody>';
-                body.forEach(line => {
-                    const values = line.split(';');
-                    table += '<tr>';
-                    const totalColumns = values.length;
-                    values.forEach((value, index) => {
-                        let cellClasses = '';
-                        const trimmedValue = value.trim();
+            const langElements = document.querySelectorAll(`.text-${lang}`);
+            langElements.forEach(el => el.style.display = 'inline');
+            document.getElementById(`lang-${lang}`).classList.add('active');
 
-                        if (filePath.includes('gestion25.csv')) {
-                            const reversedIndex = totalColumns - index;
-                            if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'orange-cell';
-                            if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'blue-cell';
-                            if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'red-cell';
-                            if (reversedIndex === 4 && trimmedValue === '1') cellClasses = 'green-cell';
+            const textContent = translations[lang];
+            
+            document.title = textContent.title;
+            document.documentElement.lang = lang;
+            document.getElementById('content-title').textContent = textContent.h2;
+            document.getElementById('content-p1').innerHTML = textContent.p1;
+            document.getElementById('content-p2').innerHTML = textContent.p2;
+            document.getElementById('cta-text').textContent = textContent.cta;
+            document.getElementById('cta-link-text').textContent = textContent.ctaLink;
+            document.getElementById('footer-text').textContent = textContent.footer;
+            
+            document.getElementById('link-contact').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.contactSubject)}`;
+            document.getElementById('free-trial-mail').href = `mailto:ericmc2@hotmail.fr?subject=${encodeURIComponent(textContent.trialSubject)}`;
+
+            // Update text for menu links
+            const menuLinks = document.querySelectorAll('.menu-link');
+            menuLinks.forEach(link => {
+                const linkId = link.id;
+                const linkTextSpan = link.querySelector(`.text-${lang}`);
+                if (linkTextSpan) {
+                    // Update text from translations object
+                }
+            });
+        }
+
+        async function loadCSV(filePath) {
+            const response = await fetch(filePath);
+            const data = await response.text();
+            const lines = data.split('\n').filter(line => line.trim() !== '');
+            const headers = lines[0].split(';');
+            const body = lines.slice(1);
+            
+            let table = `<table id="data-table"><thead><tr>`;
+            headers.forEach(header => {
+                table += `<th>${header}</th>`;
+            });
+            table += '</tr></thead><tbody>';
+
+            body.forEach(line => {
+                const values = line.split(';');
+                table += '<tr>';
+                const totalColumns = values.length;
+                values.forEach((value, index) => {
+                    let cellClasses = '';
+                    const trimmedValue = value.trim();
+
+                    // Règles pour gestion25.csv
+                    if (filePath.includes('gestion25.csv')) {
+                        const reversedIndex = totalColumns - index;
+                        if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'orange-cell';
+                        if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'blue-cell';
+                        if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'red-cell';
+                        if (reversedIndex === 4 && trimmedValue === '1') cellClasses = 'green-cell';
+                    }
+                    // Règles pour gestion45.csv et gestion451.csv
+                    else if (filePath.includes('gestion45.csv') || filePath.includes('gestion451.csv')) {
+                        const reversedIndex = totalColumns - index;
+                        if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'blue-cell';
+                        if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'red-cell';
+                        if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'green-cell';
+                    }
+                    // Règles pour les fichiers historique
+                    else if (filePath.includes('historique')) {
+                        if (index === totalColumns - 1) { // Dernière colonne
+                            const numericValue = parseInt(trimmedValue, 10);
+                            
+                            if (filePath.includes('historique_under25.csv')) {
+                                if (!isNaN(numericValue)) {
+                                    if (numericValue <= 2) {
+                                        cellClasses = 'green-cell';
+                                    } else {
+                                        cellClasses = 'red-cell';
+                                    }
+                                }
+                            } else if (filePath.includes('historique_under45.csv')) {
+                                if (!isNaN(numericValue)) {
+                                    if (numericValue <= 4) {
+                                        cellClasses = 'green-cell';
+                                    } else {
+                                        cellClasses = 'red-cell';
+                                    }
+                                }
+                            }
                         }
-                        else if (filePath.includes('gestion45.csv') || filePath.includes('gestion451.csv')) {
-                            const reversedIndex = totalColumns - index;
-                            if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'blue-cell';
-                            if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'red-cell';
-                            if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'green-cell';
-                        }
-                        
-                        if (cellClasses) {
-                            table += `<td class="${cellClasses}">${value}</td>`;
-                        } else {
-                            table += `<td>${value}</td>`;
-                        }
-                    });
-                    table += '</tr>';
+                    }
+                    
+                    if (cellClasses) {
+                        table += `<td class="${cellClasses}">${value}</td>`;
+                    } else {
+                        table += `<td>${value}</td>`;
+                    }
                 });
-                table += '</tbody></table>';
-                return table;
-            } catch (error) {
-                console.error('Erreur lors du chargement du fichier CSV :', error);
-                return `<p style="text-align: center; color: red;">Erreur lors du chargement du tableau. Le navigateur pourrait bloquer l'accès aux fichiers locaux pour des raisons de sécurité. Essayez de lancer un serveur web ou de publier le site.</p>`;
-            }
+                table += '</tr>';
+            });
+
+            table += '</tbody></table>';
+            return table;
         }
 
         links.forEach(link => {
@@ -388,12 +575,20 @@
                 const file = link.dataset.file;
                 const url = link.href;
 
+                // Masquer le contenu de la page d'accueil
+                homeContent.style.display = 'none';
                 tableContainer.style.display = 'none';
                 contentIframe.style.display = 'none';
 
                 if (contentType === 'csv') {
-                    tableContainer.innerHTML = await loadCSV(file);
-                    tableContainer.style.display = 'block';
+                    try {
+                        tableContainer.innerHTML = await loadCSV(file);
+                        tableContainer.style.display = 'block';
+                    } catch (error) {
+                        console.error('Erreur lors du chargement du fichier CSV :', error);
+                        tableContainer.innerHTML = `<p>Erreur lors du chargement du tableau.</p>`;
+                        tableContainer.style.display = 'block';
+                    }
                 } else if (contentType === 'iframe') {
                     contentIframe.src = url;
                     contentIframe.style.display = 'block';
@@ -403,14 +598,16 @@
             });
         });
 
+        // Charger la page d'accueil par défaut
         window.addEventListener('DOMContentLoaded', () => {
             setLanguage('fr');
-            contentIframe.src = 'accueil.html';
-            contentIframe.style.display = 'block';
+            showContent('home');
         });
 
-        // Suppression de la logique pour le titre cliquable car il n'y a plus de page d'accueil simple
-        // siteTitle.addEventListener('click', () => { ... });
+        // Gestion du titre cliquable
+        siteTitle.addEventListener('click', () => {
+            showContent('home');
+        });
     </script>
 </body>
 </html>
