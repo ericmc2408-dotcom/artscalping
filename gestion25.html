@@ -6,41 +6,35 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <style>
     table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { border: 1px solid black; padding: 6px 10px; text-align: left; }
+    th, td { border: 1px solid black; padding: 5px 8px; text-align: left; }
+    tbody tr:nth-child(even) { background: #f1f1f1; }
   </style>
 </head>
 <body>
-  <h1>Affichage du fichier gestion25.csv</h1>
+  <h1>Affichage automatique du fichier gestion25.csv</h1>
   <div id="table-container">Chargement...</div>
   <script>
     Papa.parse('/gestion25.csv', {
       download: true,
       delimiter: ';',
-      header: true,
       skipEmptyLines: true,
+      header: false, // On ignore les titres: on affiche tout
       complete: function(results) {
         if(results.errors.length) {
           document.getElementById('table-container').innerText = 'Erreur lors du parsing du fichier CSV.';
           console.error(results.errors);
           return;
         }
-        const fields = results.meta.fields.filter(f => f.trim() !== '');
-        if(fields.length === 0) {
-          document.getElementById('table-container').innerText = 'Aucune donnée valide trouvée.';
-          return;
-        }
-        let table = '<table><thead><tr>';
-        for (let col of fields) {
-          table += `<th>${col}</th>`;
-        }
-        table += '</tr></thead><tbody>';
-        for (let row of results.data) {
-          table += '<tr>';
-          for (let col of fields) {
-            table += `<td>${row[col] || ''}</td>`;
-          }
-          table += '</tr>';
-        }
+        let table = '<table><tbody>';
+        results.data.forEach(function(row, idx){
+          table += "<tr>";
+          row.forEach(function(cell){
+            // Titre en gras pour ligne 1 ou 2 (pour l'entête non standard du fichier)
+            if(idx < 2) table += "<th>"+cell+"</th>";
+            else table += "<td>"+cell+"</td>";
+          });
+          table += "</tr>";
+        });
         table += '</tbody></table>';
         document.getElementById('table-container').innerHTML = table;
       },
@@ -52,4 +46,5 @@
   </script>
 </body>
 </html>
+
 
