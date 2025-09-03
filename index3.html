@@ -280,8 +280,8 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="payment.html" class="menu-link subscribe" data-content-type="iframe" id="link-subscribe">
-                    <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span><span class="text-es" style="display:none;">Suscripción</span><span class="text-zh" style="display:none;">订阅</span><span class="text-de" style="display:none;">Abonnement</span><span class="text-pt" style="display:none;">Assinatura</span><span class="text-ar" style="display:none;">اشتراك</span><span class="text-hi" style="display:none;">सदस्यता</span><span class="text-ja" style="display:none;">購読</span>
+                <a href="index2.html" class="menu-link" id="link-menu">
+                    <span class="icon">&#x1F3E0;</span><span class="text-fr">Menu</span><span class="text-en" style="display:none;">Menu</span><span class="text-es" style="display:none;">Menú</span><span class="text-zh" style="display:none;">菜单</span><span class="text-de" style="display:none;">Menü</span><span class="text-pt" style="display:none;">Cardápio</span><span class="text-ar" style="display:none;">قائمة</span><span class="text-hi" style="display:none;">मेन्यू</span><span class="text-ja" style="display:none;">メニュー</span>
                 </a>
             </li>
             <li class="menu-item">
@@ -348,7 +348,6 @@
                         let cellClasses = '';
                         const trimmedValue = value.trim();
 
-                        // Logique de coloration unifiée pour tous les fichiers de gestion
                         const reversedIndex = totalColumns - index;
                         if (trimmedValue === '1') {
                             if (reversedIndex === 1) cellClasses = 'orange-cell';
@@ -375,22 +374,25 @@
 
         links.forEach(link => {
             link.addEventListener('click', async (e) => {
-                e.preventDefault();
                 const contentType = link.dataset.contentType;
-                const file = link.dataset.file;
-                const url = link.href;
+                if (contentType) {
+                    e.preventDefault();
+                    
+                    const file = link.dataset.file;
+                    const url = link.href;
 
-                tableContainer.style.display = 'none';
-                contentIframe.style.display = 'none';
+                    tableContainer.style.display = 'none';
+                    contentIframe.style.display = 'none';
 
-                if (contentType === 'csv') {
-                    tableContainer.innerHTML = await loadCSV(file);
-                    tableContainer.style.display = 'block';
-                } else if (contentType === 'iframe') {
-                    contentIframe.src = url;
-                    contentIframe.style.display = 'block';
-                } else if (url.startsWith('mailto:')) {
-                    window.location.href = url;
+                    if (contentType === 'csv') {
+                        tableContainer.innerHTML = await loadCSV(file);
+                        tableContainer.style.display = 'block';
+                    } else if (contentType === 'iframe') {
+                        contentIframe.src = url;
+                        contentIframe.style.display = 'block';
+                    } else if (url.startsWith('mailto:')) {
+                        window.location.href = url;
+                    }
                 }
             });
         });
