@@ -83,7 +83,6 @@
         .goal-indicator { background-color: #F44336; }
         .buy-indicator { background-color: #4CAF50; }
         .sell-indicator { background-color: #376392; }
-
         .play-button {
             background-color: #4CAF50;
             color: white;
@@ -149,13 +148,13 @@
 <body>
 
 <div class="game-content">
-    <h1>Praxisbeispiele</h1>
+    <h1>Beispiele für Praxis-Szenarien</h1>
 
-    <h2>Szenario 1: Aufgabe</h2>
+    <h2>Szenario 1: Abbruch</h2>
     <div class="example">
-        <p class="match-info">Match: FC Alibala vs. Deportivo Los Nugettos</p>
+        <p class="match-info">Spiel: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Ein erstes Tor fällt in der 9. Minute, gefolgt von einem zweiten in der 14. Minute. Da weniger als 6 Minuten zwischen den beiden Toren vergangen sind, brechen wir ab.
+            Ein erstes Tor wird in der 9. Minute erzielt, gefolgt von einem zweiten in der 14. Minute. Da zwischen den beiden Toren weniger als 6 Minuten vergangen sind, brechen wir ab.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Stoppuhr-Symbol" class="timer-icon">
@@ -165,19 +164,16 @@
         </div>
         <button class="play-button" onclick="startScenario1()">Szenario starten</button>
         <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
-            STOP! Zwei Tore wurden vor der 15. Minute erzielt. Das Risiko ist zu hoch, um fortzufahren. Wir geben das Spiel auf.
+            STOP! Zwei Tore wurden in weniger als 6 Minuten erzielt. Abbruch!
         </div>
-        <div class="action-taken">
-            Aktion: Das Risiko ist zu hoch, um fortzufahren. Wir geben das Spiel auf.
-        </div>
-        <p class="important-note">Schlüsselregel: Wenn die Gesamtzahl der Tore vor der 15. Minute 2 oder mehr erreicht, brechen wir ab.</p>
+        <p class="important-note">Schlüsselregel: Wenn zwei Tore in weniger als 6 Minuten erzielt werden, brechen wir das Spiel ab, unabhängig vom Spielzeitpunkt.</p>
     </div>
     
-    <h2>Szenario 2: Der perfekte Wurf</h2>
+    <h2>Szenario 2: Der perfekte Treffer</h2>
     <div class="example">
-        <p class="match-info">Match: FC Alibala vs. Deportivo Los Nugettos</p>
+        <p class="match-info">Spiel: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Ein Tor fällt früh, aber wir folgen unserer Methode für den optimalen Gewinn.
+            Ein Tor wird früh erzielt, aber wir folgen unserer Methode für den optimalen Gewinn.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Stoppuhr-Symbol" class="timer-icon">
@@ -191,18 +187,15 @@
         </div>
         <button class="play-button" onclick="startScenario2()">Szenario starten</button>
         <div class="stop-message win-message" id="stop-message-2" style="display:none;">
-            SIEG! Der perfekte Wurf ist gelungen.
-        </div>
-        <div class="action-taken">
-            Aktion: Wir haben bei zwei Wetten in derselben Halbzeit einen Gewinn erzielt. Der richtige Cash-out ist der Schlüssel zur Rentabilität.
+            SIEG! Der perfekte Treffer wurde erzielt.
         </div>
     </div>
 
     <h2>Szenario 3: Die Wahl des Wetters</h2>
     <div class="example">
-        <p class="match-info">Match: FC Alibala vs. Deportivo Los Nugettos</p>
+        <p class="match-info">Spiel: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Ein erstes Tor fällt in der 9. Minute. Wir warten bis zur 15. Minute, um unsere Wette zu platzieren. Ein zweites Tor folgt in der 21. Minute. An diesem Punkt hat der Wetter zwei Optionen.
+            Ein erstes Tor wird in der 9. Minute erzielt. Wir warten bis zur 15. Minute, um unsere Wette zu platzieren. Ein zweites Tor fällt in der 21. Minute. Zu diesem Zeitpunkt hat der Wetter zwei Optionen.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Stoppuhr-Symbol" class="timer-icon">
@@ -215,13 +208,13 @@
         </div>
         <button class="play-button" id="play3" onclick="startScenario3()">Szenario starten</button>
         <div id="options3" style="display:none;">
-            <p class="cta-text">Ein zweites Tor wurde erzielt! Ihre Under-2.5-Wette ist in Gefahr. Was ist Ihre Wahl?</p>
+            <p class="cta-text">Ein zweites Tor wurde erzielt! Ihre Wette auf "Unter 2.5 Tore" ist in Gefahr. Was ist Ihre Wahl?</p>
             <div class="options-container">
                 <button class="option-button" onclick="continueScenario3('optionA')">
-                    Option 1: Wir behalten die erste Wette und warten bis 42m30
+                    Option 1: Wir behalten die erste Wette und warten bis 42:30 Minuten
                 </button>
                 <button class="option-button" onclick="continueScenario3('optionB')">
-                    Option 2: Wir platzieren eine neue Wette und verkaufen beide bei 31m oder 42m30
+                    Option 2: Wir platzieren eine neue Wette und verkaufen beide bei 31 oder 42:30 Minuten
                 </button>
             </div>
         </div>
@@ -231,7 +224,7 @@
 
     <h2>Szenario 4: Die Wüste</h2>
     <div class="example">
-        <p class="match-info">Match: FC Alibala vs. Deportivo Los Nugettos</p>
+        <p class="match-info">Spiel: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
             Keine Tore. Wir spielen nicht. Wir warten auf das nächste Spiel.
         </p>
@@ -243,33 +236,35 @@
         <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
             Keine Tore. Wir spielen nicht. Wir warten auf das nächste Spiel.
         </div>
+        <p class="important-note">Schlüsselregel: Wenn keine Tore fallen, ist das Spiel nicht spielbar. Wir warten auf das nächste Spiel.</p>
     </div>
     
-    <h2>Szenario 5: Kleine Gewinnmitnahme</h2>
+    <h2>Szenario 5: Kleiner Gewinnmitnahme</h2>
     <div class="example">
-        <p class="match-info">Match: FC Alibala vs. Deportivo Los Nugettos</p>
+        <p class="match-info">Spiel: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Ein Tor fällt in der 9. Minute. Der Wetter platziert seine Wette bei 15 Minuten und sichert sich einen kleinen Gewinn in der 21. Minute, indem er die Wette weiterverkauft.
+            Ein Tor wird in der 9. Minute erzielt. Der Wetter platziert seine Wette in der 15. Minute und sichert sich einen kleinen Gewinn in der 21. Minute durch den Verkauf der Wette.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Stoppuhr-Symbol" class="timer-icon">
             <div class="timer-display" id="timer5">00:00</div>
+            <span class="action-point goal-indicator" id="goal5-1">TOR (9')</span>
             <span class="action-point buy-indicator" id="buy5-1">WETTE (15')</span>
             <span class="action-point sell-indicator" id="sell5-1">VERKAUF (21')</span>
         </div>
         <button class="play-button" onclick="startScenario5()">Szenario starten</button>
         <div class="stop-message win-message" id="stop-message-5" style="display:none;">
-            Gewinn gesichert! Die Wette wird weiterverkauft und der Wetter verlässt den Markt.
+            Gewinn gesichert! Die Wette wird verkauft und der Wetter verlässt den Markt.
         </div>
     </div>
 
-    <h2>Szenario 6: Position einnehmen</h2>
+    <h2>Szenario 6: Positionseinnahme</h2>
     <div class="example">
-        <p class="match-info">Match: FC Alibala vs. Deportivo Los Nugettos</p>
+        <p class="match-info">Spiel: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Tore fallen in der **18., 33., 47. und 58. Minute**. Die einzige Regel ist, nicht **mehrere Positionen** gleichzeitig zu spielen. Die Stoppuhr ist ausgeblendet, um sich auf die Aktionen zu konzentrieren. Das Spiel endet 12 Minuten nach dem 4. Tor.
+            Die Tore fallen in der **18., 33., 47. und 58. Minute**. Die einzige Regel ist, **mehrere Positionen** gleichzeitig zu vermeiden. Die Stoppuhr ist außerhalb des Rahmens, um sich auf die Aktionen zu konzentrieren. Das Spiel endet 12 Minuten nach dem 4. Tor.
             <br><br>
-            Es liegt an Ihnen, das richtige Timing (5, 10 oder 15 Minuten) für Ihre Wetten nach jedem Tor zu finden. Das Ziel ist es, die **Quoten-Spitzen** nach jedem Tor zu nutzen, denn 5 bis 10 Minuten nach dem Tor ist der **Quoten-Abfall** am schnellsten.
+            Es liegt an Ihnen, das richtige Timing (5, 10 oder 15 Minuten) für Ihre Wetten nach jedem Tor zu finden. Ziel ist es, die **Spitzen der Quoten** nach jedem Tor zu nutzen, da die **Spitzen des Quotenabfalls** 5 bis 10 Minuten nach dem Tor am schnellsten sind.
         </p>
         <div class="timer-container" style="display: none;">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Stoppuhr-Symbol" class="timer-icon">
@@ -284,17 +279,14 @@
             <span class="action-point buy-indicator" id="buy6-3">WETTE (49')</span>
             <span class="action-point sell-indicator" id="sell6-3">VERKAUF (57')</span>
             <span class="action-point goal-indicator" id="goal6-4">TOR (58')</span>
-            <span class="action-point buy6-4" id="buy6-4">WETTE (60')</span>
-            <span class="action-point sell-6-4" id="sell6-4">VERKAUF (68')</span>
+            <span class="action-point buy-indicator" id="buy6-4">WETTE (60')</span>
+            <span class="action-point sell-indicator" id="sell6-4">VERKAUF (68')</span>
         </div>
         <button class="play-button" onclick="startScenario6()">Szenario starten</button>
         <div class="stop-message win-message" id="stop-message-6" style="display:none;">
-            Spiel beendet! Das Szenario endete 12 Minuten nach dem 4. Tor, in der 70. Minute.
+            Spiel beendet! Das Szenario endete 12 Minuten nach dem 4. Tor, also in der 70. Minute.
         </div>
-        <div class="action-taken">
-            Aktion: Das Ziel ist es, das Spiel pünktlich nach den Regeln zu beenden.
-        </div>
-        <p class="important-note">Schlüsselregel: Das Spiel muss 12 Minuten nach dem 4. Tor oder spätestens bei 82m30 enden.</p>
+        <p class="important-note">Schlüsselregel: Das Spiel muss 12 Minuten nach dem 4. Tor oder spätestens bei **87:30 Minuten** enden.</p>
     </div>
 
 </div>
@@ -311,7 +303,7 @@
 
         timerDisplay.textContent = '00:00';
 
-        // Reset action points for all scenarios
+        // Reset points d'action pour tous les scénarios
         if (scenario === 1) {
             document.getElementById('goal1-1').style.opacity = 0;
             document.getElementById('goal1-2').style.opacity = 0;
@@ -336,7 +328,7 @@
             clearInterval(scenario3Interval);
         }
         if (scenario === 4) {
-            // No action points to reset for this scenario
+            // Pas de points d'action à réinitialiser pour ce scénario
         }
         if (scenario === 5) {
             document.getElementById('goal5-1').style.opacity = 0;
@@ -362,7 +354,7 @@
         }
     }
 
-    function runTimer(scenario, actions) {
+    function runTimer(scenario, actions, finalTime) {
         const timerDisplay = document.getElementById(`timer${scenario}`);
         const stopMessage = document.getElementById(`stop-message-${scenario}`);
         
@@ -370,6 +362,8 @@
         let seconds = 0;
         let interval;
         let stopConditionMet = false;
+        let firstGoalTime = -1;
+        let secondGoalTime = -1;
 
         resetScenario(scenario);
 
@@ -385,18 +379,42 @@
                 minutes++;
             }
 
+            // Gestion des actions spécifiques (buts, paris)
             for (const action of actions) {
                 if (minutes === action.min && seconds === action.sec) {
                     const element = document.getElementById(action.id);
                     if (element) {
                         element.style.opacity = 1;
                     }
-                    if (action.stop) {
+
+                    // Logique pour le scénario 1
+                    if (scenario === 1 && action.id.startsWith('goal')) {
+                        if (firstGoalTime === -1) {
+                            firstGoalTime = minutes * 60 + seconds;
+                        } else {
+                            secondGoalTime = minutes * 60 + seconds;
+                            if (secondGoalTime - firstGoalTime <= 6 * 60) {
+                                stopConditionMet = true;
+                                if (stopMessage) {
+                                    stopMessage.style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+
+                    if (action.stop && scenario !== 1) {
                         stopConditionMet = true;
                         if (stopMessage) {
                             stopMessage.style.display = 'block';
                         }
                     }
+                }
+            }
+            
+            if (finalTime && minutes * 60 + seconds >= finalTime) {
+                stopConditionMet = true;
+                if (stopMessage) {
+                    stopMessage.style.display = 'block';
                 }
             }
 
@@ -409,7 +427,7 @@
     function startScenario1() {
         const actions = [
             { id: 'goal1-1', min: 9, sec: 0 },
-            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+            { id: 'goal1-2', min: 14, sec: 0 }
         ];
         runTimer(1, actions);
     }
@@ -473,7 +491,7 @@
         let interval;
         
         if (option === 'optionA') {
-            actionMessage.textContent = "Option 1 gewählt: Die Under-2.5-Wette wird beibehalten. Der Wetter wartet bis 42m30. Ein 3. Tor würde die Wette verlieren lassen, während das Ausbleiben eines Tores sie gewinnen lassen würde.";
+            actionMessage.textContent = "Option 1 gewählt: Die Wette auf 'Unter 2.5 Tore' wird beibehalten. Der Wetter wartet bis 42 Minuten und 30 Sekunden. Ein 3. Tor würde die Wette verlieren lassen, während ein ausbleibendes Tor sie gewinnen lässt.";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
             
@@ -489,7 +507,7 @@
 
                 if (scenario3Minutes >= 42 && scenario3Seconds >= 30) {
                     clearInterval(interval);
-                    stopMessage.textContent = "Die Wette ist entweder ein Gewinner oder ein Verlierer. Das Risiko war total.";
+                    stopMessage.textContent = "Die Wette ist entweder gewonnen oder verloren. Das Risiko war maximal.";
                     stopMessage.classList.add('lose-message');
                     stopMessage.style.display = 'block';
                 }
@@ -497,7 +515,7 @@
         }
         
         if (option === 'optionB') {
-            actionMessage.textContent = "Option 2 gewählt: Eine neue Under-2.5-Wette wird bei 23 Minuten platziert. Das Ziel ist es, beide Wetten zusammen bei 31m oder 42m30 zu verkaufen, um den Gewinn zu sichern.";
+            actionMessage.textContent = "Option 2 gewählt: Eine neue Wette auf 'Unter 2.5 Tore' wird in der 23. Minute platziert. Das Ziel ist es, beide Wetten zusammen bei 31 oder 42:30 Minuten zu verkaufen, um den Gewinn zu sichern.";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
 
@@ -529,10 +547,8 @@
     }
 
     function startScenario4() {
-        const actions = [
-            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
-        ];
-        runTimer(4, actions);
+        const actions = [];
+        runTimer(4, actions, 45 * 60);
     }
     
     function startScenario5() {

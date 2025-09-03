@@ -83,7 +83,6 @@
         .goal-indicator { background-color: #F44336; }
         .buy-indicator { background-color: #4CAF50; }
         .sell-indicator { background-color: #376392; }
-
         .play-button {
             background-color: #4CAF50;
             color: white;
@@ -165,12 +164,9 @@
         </div>
         <button class="play-button" onclick="startScenario1()">Lancer le Scénario</button>
         <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
-            STOP ! Deux buts ont été marqués avant la 15ème minute. Le risque est trop élevé pour continuer. Nous abandonnons le match.
+            STOP ! Deux buts ont été marqués en moins de 6 minutes. Abandon !
         </div>
-        <div class="action-taken">
-            Action : Le risque est trop élevé pour continuer. Nous abandonnons le match.
-        </div>
-        <p class="important-note">Règle clé : Si le total de buts atteint 2 buts ou plus avant la 15ème minute, nous abandonnons.</p>
+        <p class="important-note">Règle clé : Si deux buts sont marqués en moins de 6 minutes, nous abandonnons, quel que soit le moment du match.</p>
     </div>
     
     <h2>Scénario 2 : Le Coup Parfait</h2>
@@ -192,9 +188,6 @@
         <button class="play-button" onclick="startScenario2()">Lancer le Scénario</button>
         <div class="stop-message win-message" id="stop-message-2" style="display:none;">
             VICTOIRE ! Le coup parfait est réussi.
-        </div>
-        <div class="action-taken">
-            Action : Nous avons fait un bénéfice sur deux paris dans la même mi-temps. Le cash out au bon moment est la clé de la rentabilité.
         </div>
     </div>
 
@@ -233,7 +226,7 @@
     <div class="example">
         <p class="match-info">Match : FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Pas de buts. On ne joue pas. On attend le prochain match.
+            Pas de buts. On ne joue pas. Le match continue, mais nous ne prenons aucune position.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Icône Chronomètre" class="timer-icon">
@@ -243,6 +236,7 @@
         <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
             Pas de buts. On ne joue pas. On attend le prochain match.
         </div>
+        <p class="important-note">Règle clé : S'il n'y a pas de buts, le match n'est pas jouable. On attend le prochain match.</p>
     </div>
     
     <h2>Scénario 5 : Petite Prise de Gain</h2>
@@ -292,10 +286,7 @@
         <div class="stop-message win-message" id="stop-message-6" style="display:none;">
             Match terminé ! Le scénario s'est conclu 12 minutes après le 4e but, soit à la 70e minute.
         </div>
-        <div class="action-taken">
-            Action : L'objectif est de finir le match dans les temps, en suivant les règles.
-        </div>
-        <p class="important-note">Règle clé : Le jeu doit se terminer 12 minutes après le 4e but, ou au plus tard à 82m30.</p>
+        <p class="important-note">Règle clé : Le jeu doit se terminer 12 minutes après le 4e but, ou au plus tard à **87m30**.</p>
     </div>
 
 </div>
@@ -363,7 +354,7 @@
         }
     }
 
-    function runTimer(scenario, actions) {
+    function runTimer(scenario, actions, finalTime) {
         const timerDisplay = document.getElementById(`timer${scenario}`);
         const stopMessage = document.getElementById(`stop-message-${scenario}`);
         
@@ -371,6 +362,8 @@
         let seconds = 0;
         let interval;
         let stopConditionMet = false;
+        let firstGoalTime = -1;
+        let secondGoalTime = -1;
 
         resetScenario(scenario);
 
@@ -386,18 +379,42 @@
                 minutes++;
             }
 
+            // Gestion des actions spécifiques (buts, paris)
             for (const action of actions) {
                 if (minutes === action.min && seconds === action.sec) {
                     const element = document.getElementById(action.id);
                     if (element) {
                         element.style.opacity = 1;
                     }
-                    if (action.stop) {
+
+                    // Logique pour le scénario 1
+                    if (scenario === 1 && action.id.startsWith('goal')) {
+                        if (firstGoalTime === -1) {
+                            firstGoalTime = minutes * 60 + seconds;
+                        } else {
+                            secondGoalTime = minutes * 60 + seconds;
+                            if (secondGoalTime - firstGoalTime <= 6 * 60) {
+                                stopConditionMet = true;
+                                if (stopMessage) {
+                                    stopMessage.style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+
+                    if (action.stop && scenario !== 1) {
                         stopConditionMet = true;
                         if (stopMessage) {
                             stopMessage.style.display = 'block';
                         }
                     }
+                }
+            }
+            
+            if (finalTime && minutes * 60 + seconds >= finalTime) {
+                stopConditionMet = true;
+                if (stopMessage) {
+                    stopMessage.style.display = 'block';
                 }
             }
 
@@ -410,7 +427,7 @@
     function startScenario1() {
         const actions = [
             { id: 'goal1-1', min: 9, sec: 0 },
-            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+            { id: 'goal1-2', min: 14, sec: 0 }
         ];
         runTimer(1, actions);
     }
@@ -530,10 +547,8 @@
     }
 
     function startScenario4() {
-        const actions = [
-            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
-        ];
-        runTimer(4, actions);
+        const actions = [];
+        runTimer(4, actions, 45 * 60);
     }
     
     function startScenario5() {

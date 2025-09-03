@@ -83,7 +83,6 @@
         .goal-indicator { background-color: #F44336; }
         .buy-indicator { background-color: #4CAF50; }
         .sell-indicator { background-color: #376392; }
-
         .play-button {
             background-color: #4CAF50;
             color: white;
@@ -149,38 +148,35 @@
 <body>
 
 <div class="game-content">
-    <h1>実践的なケースの例</h1>
+    <h1>実例のシナリオ</h1>
 
-    <h2>シナリオ1：放棄</h2>
+    <h2>シナリオ1：撤退</h2>
     <div class="example">
-        <p class="match-info">試合：FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">試合: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            9分に最初のゴール、続いて14分に2つ目のゴールが決まります。2つのゴールの間に6分未満しか経っていないため、この試合は放棄します。
+            9分に最初のゴール、14分に2つ目のゴールが決まります。2つのゴールの間が6分未満なので、私たちは撤退します。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="ストップウォッチのアイコン" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="タイマーアイコン" class="timer-icon">
             <div class="timer-display" id="timer1">00:00</div>
             <span class="action-point goal-indicator" id="goal1-1">ゴール (9')</span>
             <span class="action-point goal-indicator" id="goal1-2">ゴール (14')</span>
         </div>
         <button class="play-button" onclick="startScenario1()">シナリオを開始</button>
         <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
-            停止！15分までに2つのゴールが決まりました。続行するにはリスクが高すぎます。試合を放棄します。
+            ストップ！6分以内に2つのゴールが決まりました。撤退！
         </div>
-        <div class="action-taken">
-            行動：続行するにはリスクが高すぎます。試合を放棄します。
-        </div>
-        <p class="important-note">重要なルール：15分までに総ゴール数が2以上になった場合、我々は放棄します。</p>
+        <p class="important-note">重要なルール：6分以内に2つのゴールが決まった場合、試合時間に関係なく撤退します。</p>
     </div>
     
-    <h2>シナリオ2：完璧なショット</h2>
+    <h2>シナリオ2：完璧な一撃</h2>
     <div class="example">
-        <p class="match-info">試合：FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">試合: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            早々にゴールが決まりますが、私たちは最適な利益を得るために自分のメソッドに従います。
+            早めにゴールが決まりますが、私たちは最適な利益を得るために自分の方法に従います。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="ストップウォッチのアイコン" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="タイマーアイコン" class="timer-icon">
             <div class="timer-display" id="timer2">00:00</div>
             <span class="action-point goal-indicator" id="goal2-1">ゴール (9')</span>
             <span class="action-point buy-indicator" id="buy2-1">ベット (15')</span>
@@ -191,37 +187,34 @@
         </div>
         <button class="play-button" onclick="startScenario2()">シナリオを開始</button>
         <div class="stop-message win-message" id="stop-message-2" style="display:none;">
-            勝利！完璧なショットは成功です。
-        </div>
-        <div class="action-taken">
-            行動：私たちは同じハーフで2つのベットから利益を得ました。適切なキャッシュアウトが収益性の鍵です。
+            勝利！完璧な一撃が成功しました。
         </div>
     </div>
 
     <h2>シナリオ3：ベッターの選択</h2>
     <div class="example">
-        <p class="match-info">試合：FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">試合: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            9分に最初のゴールが決まります。私たちは15分まで待ってベットをします。21分に2つ目のゴールが決まります。この時点で、ベッターには2つの選択肢があります。
+            9分に最初のゴールが決まります。私たちは15分まで待ってベットを置きます。2つ目のゴールは21分に入ります。この時点で、ベッターには2つの選択肢があります。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="ストップウォッチのアイコン" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="タイマーアイコン" class="timer-icon">
             <div class="timer-display" id="timer3">00:00</div>
             <span class="action-point goal-indicator" id="goal3-1">ゴール (9')</span>
             <span class="action-point buy-indicator" id="buy3-1">ベット (15')</span>
             <span class="action-point goal-indicator" id="goal3-2">ゴール (21')</span>
-            <span class="action-point buy-indicator" id="buy3-2" style="display:none;">2つ目のベット (23')</span>
+            <span class="action-point buy-indicator" id="buy3-2" style="display:none;">2回目のベット (23')</span>
             <span class="action-point sell-indicator" id="sell3-1" style="display:none;">売却 (31')</span>
         </div>
         <button class="play-button" id="play3" onclick="startScenario3()">シナリオを開始</button>
         <div id="options3" style="display:none;">
-            <p class="cta-text">2つ目のゴールが決まりました！あなたのアンダー2.5ベットは危険にさらされています。あなたの選択は？</p>
+            <p class="cta-text">2つ目のゴールが決まりました！あなたの「アンダー2.5ゴール」のベットは危険にさらされています。あなたの選択は？</p>
             <div class="options-container">
                 <button class="option-button" onclick="continueScenario3('optionA')">
-                    オプション1：最初のベットを保持し、42分30秒まで待つ
+                    オプション1：最初のベットを残し、42分30秒まで待つ
                 </button>
                 <button class="option-button" onclick="continueScenario3('optionB')">
-                    オプション2：新しいベットをして、両方を31分または42分30秒で売却する
+                    オプション2：新しいベットを置き、両方を31分または42分30秒で売却する
                 </button>
             </div>
         </div>
@@ -231,28 +224,29 @@
 
     <h2>シナリオ4：砂漠</h2>
     <div class="example">
-        <p class="match-info">試合：FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">試合: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            ゴールがありません。私たちはプレーしません。次の試合を待ちます。
+            ゴールなし。私たちはプレイしません。次の試合を待ちます。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="ストップウォッチのアイコン" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="タイマーアイコン" class="timer-icon">
             <div class="timer-display" id="timer4">00:00</div>
         </div>
         <button class="play-button" onclick="startScenario4()">シナリオを開始</button>
         <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
-            ゴールがありません。私たちはプレーしません。次の試合を待ちます。
+            ゴールなし。私たちはプレイしません。次の試合を待ちます。
         </div>
+        <p class="important-note">重要なルール：ゴールがなければ、その試合はプレイできません。次の試合を待ちます。</p>
     </div>
     
-    <h2>シナリオ5：小さな利益確定</h2>
+    <h2>シナリオ5：少額の利確</h2>
     <div class="example">
-        <p class="match-info">試合：FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">試合: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            9分にゴールが決まります。ベッターは15分にベットをし、21分にベットを再売却して小さな利益を確保します。
+            9分にゴールが決まります。ベッターは15分にベットを置き、21分にベットを売却して少額の利益を確保します。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="ストップウォッチのアイコン" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="タイマーアイコン" class="timer-icon">
             <div class="timer-display" id="timer5">00:00</div>
             <span class="action-point goal-indicator" id="goal5-1">ゴール (9')</span>
             <span class="action-point buy-indicator" id="buy5-1">ベット (15')</span>
@@ -260,20 +254,20 @@
         </div>
         <button class="play-button" onclick="startScenario5()">シナリオを開始</button>
         <div class="stop-message win-message" id="stop-message-5" style="display:none;">
-            利益確定！ベットが再売却され、ベッターは市場を離れます。
+            利益確保！ベットが売却され、ベッターは市場から撤退します。
         </div>
     </div>
 
     <h2>シナリオ6：ポジションを取る</h2>
     <div class="example">
-        <p class="match-info">試合：FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">試合: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            ゴールは**18分、33分、47分、58分**に決まります。唯一のルールは、同時に**複数のポジション**でプレーしないことです。行動に集中するため、ストップウォッチは画面に表示されません。試合は4つ目のゴールの12分後に終了します。
+            ゴールは**18分、33分、47分、58分**に決まります。唯一のルールは、同時に**複数のポジション**をプレイしないことです。アクションに集中するため、タイマーはフレーム外にあります。試合は4つ目のゴールから12分後に終了します。
             <br><br>
-            各ゴールの後、ベットに最適な時間（5分、10分、または15分）を見つけるのはあなた次第です。目標は、各ゴールの後の**オッズのピーク**を利用することです。なぜなら、ゴール後5〜10分で**オッズの下落**が最も速いからです。
+            各ゴールの後にベットを置くための適切なタイミング（5、10、または15分）を見つけるのはあなた次第です。目標は、各ゴールの後の**オッズのピーク**を利用することです。なぜなら、ゴールから5〜10分後の**オッズ下落のピーク**が最も速いからです。
         </p>
         <div class="timer-container" style="display: none;">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="ストップウォッチのアイコン" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="タイマーアイコン" class="timer-icon">
             <div class="timer-display" id="timer6">00:00</div>
             <span class="action-point goal-indicator" id="goal6-1">ゴール (18')</span>
             <span class="action-point buy-indicator" id="buy6-1">ベット (20')</span>
@@ -290,12 +284,9 @@
         </div>
         <button class="play-button" onclick="startScenario6()">シナリオを開始</button>
         <div class="stop-message win-message" id="stop-message-6" style="display:none;">
-            試合終了！シナリオは4つ目のゴールの12分後、70分で終了しました。
+            試合終了！シナリオは4つ目のゴールから12分後、70分に終了しました。
         </div>
-        <div class="action-taken">
-            行動：目標は、ルールに従って時間内に試合を終えることです。
-        </div>
-        <p class="important-note">重要なルール：ゲームは4つ目のゴールの12分後、または遅くとも82分30秒で終了する必要があります。</p>
+        <p class="important-note">重要なルール：試合は4つ目のゴールから12分後、または遅くとも**87分30秒**までに終了しなければなりません。</p>
     </div>
 
 </div>
@@ -312,7 +303,7 @@
 
         timerDisplay.textContent = '00:00';
 
-        // Reset action points for all scenarios
+        // Reset points d'action pour tous les scénarios
         if (scenario === 1) {
             document.getElementById('goal1-1').style.opacity = 0;
             document.getElementById('goal1-2').style.opacity = 0;
@@ -337,7 +328,7 @@
             clearInterval(scenario3Interval);
         }
         if (scenario === 4) {
-            // No action points to reset for this scenario
+            // Pas de points d'action à réinitialiser pour ce scénario
         }
         if (scenario === 5) {
             document.getElementById('goal5-1').style.opacity = 0;
@@ -363,7 +354,7 @@
         }
     }
 
-    function runTimer(scenario, actions) {
+    function runTimer(scenario, actions, finalTime) {
         const timerDisplay = document.getElementById(`timer${scenario}`);
         const stopMessage = document.getElementById(`stop-message-${scenario}`);
         
@@ -371,6 +362,8 @@
         let seconds = 0;
         let interval;
         let stopConditionMet = false;
+        let firstGoalTime = -1;
+        let secondGoalTime = -1;
 
         resetScenario(scenario);
 
@@ -386,18 +379,42 @@
                 minutes++;
             }
 
+            // Gestion des actions spécifiques (buts, paris)
             for (const action of actions) {
                 if (minutes === action.min && seconds === action.sec) {
                     const element = document.getElementById(action.id);
                     if (element) {
                         element.style.opacity = 1;
                     }
-                    if (action.stop) {
+
+                    // Logique pour le scénario 1
+                    if (scenario === 1 && action.id.startsWith('goal')) {
+                        if (firstGoalTime === -1) {
+                            firstGoalTime = minutes * 60 + seconds;
+                        } else {
+                            secondGoalTime = minutes * 60 + seconds;
+                            if (secondGoalTime - firstGoalTime <= 6 * 60) {
+                                stopConditionMet = true;
+                                if (stopMessage) {
+                                    stopMessage.style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+
+                    if (action.stop && scenario !== 1) {
                         stopConditionMet = true;
                         if (stopMessage) {
                             stopMessage.style.display = 'block';
                         }
                     }
+                }
+            }
+            
+            if (finalTime && minutes * 60 + seconds >= finalTime) {
+                stopConditionMet = true;
+                if (stopMessage) {
+                    stopMessage.style.display = 'block';
                 }
             }
 
@@ -410,7 +427,7 @@
     function startScenario1() {
         const actions = [
             { id: 'goal1-1', min: 9, sec: 0 },
-            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+            { id: 'goal1-2', min: 14, sec: 0 }
         ];
         runTimer(1, actions);
     }
@@ -474,7 +491,7 @@
         let interval;
         
         if (option === 'optionA') {
-            actionMessage.textContent = "オプション1を選択しました：アンダー2.5のベットは維持されます。ベッターは42分30秒まで待ちます。3つ目のゴールが決まるとベットは負け、ゴールが決まらなければ勝ちとなります。";
+            actionMessage.textContent = "オプション1を選択：「アンダー2.5ゴール」のベットを維持します。ベッターは42分30秒まで待ちます。3つ目のゴールはベットの損失を意味し、ゴールがなければ勝利を意味します。";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
             
@@ -490,7 +507,7 @@
 
                 if (scenario3Minutes >= 42 && scenario3Seconds >= 30) {
                     clearInterval(interval);
-                    stopMessage.textContent = "ベットは勝ちか負けか。リスクは完全なものでした。";
+                    stopMessage.textContent = "ベットは勝利か、または敗北です。リスクは最大限でした。";
                     stopMessage.classList.add('lose-message');
                     stopMessage.style.display = 'block';
                 }
@@ -498,7 +515,7 @@
         }
         
         if (option === 'optionB') {
-            actionMessage.textContent = "オプション2を選択しました：23分に新しいアンダー2.5のベットをします。目標は、両方のベットを31分または42分30秒で一緒に売却して利益を確保することです。";
+            actionMessage.textContent = "オプション2を選択：23分に新しい「アンダー2.5ゴール」のベットを置きます。目標は、31分または42分30秒で両方のベットを一緒に売却して利益を確保することです。";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
 
@@ -530,10 +547,8 @@
     }
 
     function startScenario4() {
-        const actions = [
-            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
-        ];
-        runTimer(4, actions);
+        const actions = [];
+        runTimer(4, actions, 45 * 60);
     }
     
     function startScenario5() {

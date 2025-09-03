@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أمثلة على الألعاب - ArtScalping</title>
+    <title>أمثلة على اللعب - ArtScalping</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background: #1A232D;
             color: #f0f0f0;
             padding: 20px;
-            text-align: right; /* Set text alignment for RTL languages */
+            text-align: right;
         }
         .game-content {
             max-width: 900px;
             margin: 0 auto;
-            text-align: right; /* Specific alignment for the main content block */
+            text-align: right;
         }
         h1 {
             color: #FFD700;
@@ -56,12 +56,12 @@
             border-radius: 8px;
             border: 1px solid #4A7AB0;
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-            direction: ltr; /* Force LTR for timer display */
+            flex-direction: row-reverse;
         }
         .timer-icon {
             width: 30px;
             height: 30px;
-            margin-right: 15px;
+            margin-left: 15px;
             filter: invert(1);
         }
         .timer-display {
@@ -70,23 +70,20 @@
             color: #FFD700;
             width: 120px;
             text-align: center;
-            direction: ltr;
         }
         .action-point {
             font-size: 1.1em;
-            margin-left: 20px;
+            margin-right: 20px;
             color: #fff;
             padding: 5px 10px;
             border-radius: 5px;
             display: inline-block;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            direction: rtl; /* Set direction for action point text */
         }
         .goal-indicator { background-color: #F44336; }
         .buy-indicator { background-color: #4CAF50; }
         .sell-indicator { background-color: #376392; }
-
         .play-button {
             background-color: #4CAF50;
             color: white;
@@ -154,11 +151,11 @@
 <div class="game-content">
     <h1>أمثلة على الحالات العملية</h1>
 
-    <h2>السيناريو الأول: الانسحاب</h2>
+    <h2>السيناريو 1: الانسحاب</h2>
     <div class="example">
-        <p class="match-info">المباراة: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">المباراة: نادي أليبالا لكرة القدم ضد ديبورتيفو لوس نوغيتوس</p>
         <p class="scenario-text">
-            يحدث الهدف الأول في الدقيقة 9، يليه الهدف الثاني في الدقيقة 14. بما أن أقل من 6 دقائق قد مرت بين الهدفين، فإننا ننسحب من المباراة.
+            يتم تسجيل الهدف الأول في الدقيقة 9، يليه الهدف الثاني في الدقيقة 14. بما أن الفارق الزمني بين الهدفين أقل من 6 دقائق، فإننا ننسحب.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="أيقونة ساعة توقيت" class="timer-icon">
@@ -166,46 +163,40 @@
             <span class="action-point goal-indicator" id="goal1-1">هدف (9')</span>
             <span class="action-point goal-indicator" id="goal1-2">هدف (14')</span>
         </div>
-        <button class="play-button" onclick="startScenario1()">ابدأ السيناريو</button>
+        <button class="play-button" onclick="startScenario1()">بدء السيناريو</button>
         <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
-            توقف! تم تسجيل هدفين قبل الدقيقة 15. المخاطرة عالية جدًا للاستمرار. ننسحب من المباراة.
+            توقف! تم تسجيل هدفين في أقل من 6 دقائق. انسحاب!
         </div>
-        <div class="action-taken">
-            الإجراء: المخاطرة عالية جدًا للاستمرار. ننسحب من المباراة.
-        </div>
-        <p class="important-note">القاعدة الأساسية: إذا وصل إجمالي عدد الأهداف إلى 2 أو أكثر قبل الدقيقة 15، فإننا ننسحب.</p>
+        <p class="important-note">القاعدة الأساسية: إذا تم تسجيل هدفين في أقل من 6 دقائق، فإننا ننسحب، بغض النظر عن توقيت المباراة.</p>
     </div>
     
-    <h2>السيناريو الثاني: التسديدة المثالية</h2>
+    <h2>السيناريو 2: الضربة المثالية</h2>
     <div class="example">
-        <p class="match-info">المباراة: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">المباراة: نادي أليبالا لكرة القدم ضد ديبورتيفو لوس نوغيتوس</p>
         <p class="scenario-text">
-            يحدث هدف مبكر، لكننا نتبع طريقتنا لتحقيق الربح الأمثل.
+            يتم تسجيل هدف مبكر، لكننا نتبع طريقتنا لتحقيق الربح الأمثل.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="أيقونة ساعة توقيت" class="timer-icon">
             <div class="timer-display" id="timer2">00:00</div>
             <span class="action-point goal-indicator" id="goal2-1">هدف (9')</span>
             <span class="action-point buy-indicator" id="buy2-1">رهان (15')</span>
-            <span class="action-point sell-indicator" id="sell2-1">بيع (21')</span>
+            <span class="action-point sell-indicator" id="sell2-1">تم البيع (21')</span>
             <span class="action-point goal-indicator" id="goal2-2">هدف (23')</span>
             <span class="action-point buy-indicator" id="buy2-2">رهان (24')</span>
-            <span class="action-point sell-indicator" id="sell2-2">بيع (34')</span>
+            <span class="action-point sell-indicator" id="sell2-2">تم البيع (34')</span>
         </div>
-        <button class="play-button" onclick="startScenario2()">ابدأ السيناريو</button>
+        <button class="play-button" onclick="startScenario2()">بدء السيناريو</button>
         <div class="stop-message win-message" id="stop-message-2" style="display:none;">
-            فوز! التسديدة المثالية كانت ناجحة.
-        </div>
-        <div class="action-taken">
-            الإجراء: حققنا أرباحًا على رهانين في نفس الشوط. البيع في الوقت المناسب هو مفتاح الربحية.
+            انتصار! الضربة المثالية تمت بنجاح.
         </div>
     </div>
 
-    <h2>السيناريو الثالث: خيار المراهن</h2>
+    <h2>السيناريو 3: اختيار المراهن</h2>
     <div class="example">
-        <p class="match-info">المباراة: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">المباراة: نادي أليبالا لكرة القدم ضد ديبورتيفو لوس نوغيتوس</p>
         <p class="scenario-text">
-            يحدث الهدف الأول في الدقيقة 9. ننتظر حتى الدقيقة 15 لنقوم برهاننا. يأتي هدف ثانٍ في الدقيقة 21. في هذه المرحلة، لدى المراهن خياران.
+            يتم تسجيل الهدف الأول في الدقيقة 9. ننتظر حتى الدقيقة 15 لوضع رهاننا. يأتي الهدف الثاني في الدقيقة 21. في هذه اللحظة، لدى المراهن خياران.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="أيقونة ساعة توقيت" class="timer-icon">
@@ -216,15 +207,15 @@
             <span class="action-point buy-indicator" id="buy3-2" style="display:none;">رهان ثانٍ (23')</span>
             <span class="action-point sell-indicator" id="sell3-1" style="display:none;">بيع (31')</span>
         </div>
-        <button class="play-button" id="play3" onclick="startScenario3()">ابدأ السيناريو</button>
+        <button class="play-button" id="play3" onclick="startScenario3()">بدء السيناريو</button>
         <div id="options3" style="display:none;">
-            <p class="cta-text">تم تسجيل هدف ثانٍ! رهانك على "أقل من 2.5" في خطر. ما هو خيارك؟</p>
+            <p class="cta-text">تم تسجيل هدف ثانٍ! رهانك على "أقل من 2.5 هدف" في خطر. ما هو اختيارك؟</p>
             <div class="options-container">
                 <button class="option-button" onclick="continueScenario3('optionA')">
-                    الخيار 1: الاحتفاظ بالرهان الأول والانتظار حتى الدقيقة 42:30
+                    الخيار 1: نترك الرهان الأول وننتظر حتى 42 د 30 ث
                 </button>
                 <button class="option-button" onclick="continueScenario3('optionB')">
-                    الخيار 2: القيام برهان جديد وبيع كليهما في الدقيقة 31 أو 42:30
+                    الخيار 2: نضع رهاناً جديداً ونبيع الرهانين معاً في الدقيقة 31 أو 42 د 30 ث
                 </button>
             </div>
         </div>
@@ -232,27 +223,28 @@
         <div class="stop-message" id="stop-message-3" style="display:none;"></div>
     </div>
 
-    <h2>السيناريو الرابع: الصحراء</h2>
+    <h2>السيناريو 4: الصحراء</h2>
     <div class="example">
-        <p class="match-info">المباراة: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">المباراة: نادي أليبالا لكرة القدم ضد ديبورتيفو لوس نوغيتوس</p>
         <p class="scenario-text">
-            لا توجد أهداف. لا نلعب. ننتظر المباراة القادمة.
+            لا يوجد أهداف. لا نلعب. ننتظر المباراة القادمة.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="أيقونة ساعة توقيت" class="timer-icon">
             <div class="timer-display" id="timer4">00:00</div>
         </div>
-        <button class="play-button" onclick="startScenario4()">ابدأ السيناريو</button>
+        <button class="play-button" onclick="startScenario4()">بدء السيناريو</button>
         <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
-            لا توجد أهداف. لا نلعب. ننتظر المباراة القادمة.
+            لا يوجد أهداف. لا نلعب. ننتظر المباراة القادمة.
         </div>
+        <p class="important-note">القاعدة الأساسية: إذا لم تُسجل أهداف، فإن المباراة غير قابلة للعب. ننتظر المباراة التالية.</p>
     </div>
     
-    <h2>السيناريو الخامس: تحقيق ربح صغير</h2>
+    <h2>السيناريو 5: تحقيق ربح صغير</h2>
     <div class="example">
-        <p class="match-info">المباراة: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">المباراة: نادي أليبالا لكرة القدم ضد ديبورتيفو لوس نوغيتوس</p>
         <p class="scenario-text">
-            يحدث هدف في الدقيقة 9. يقوم المراهن بوضع رهانه في الدقيقة 15 ويؤمن ربحًا صغيرًا في الدقيقة 21 عن طريق إعادة بيع الرهان.
+            يتم تسجيل هدف في الدقيقة 9. يضع المراهن رهانه في الدقيقة 15، ويؤمن ربحًا صغيرًا في الدقيقة 21 ببيع الرهان.
         </p>
         <div class="timer-container">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="أيقونة ساعة توقيت" class="timer-icon">
@@ -261,19 +253,19 @@
             <span class="action-point buy-indicator" id="buy5-1">رهان (15')</span>
             <span class="action-point sell-indicator" id="sell5-1">بيع (21')</span>
         </div>
-        <button class="play-button" onclick="startScenario5()">ابدأ السيناريو</button>
+        <button class="play-button" onclick="startScenario5()">بدء السيناريو</button>
         <div class="stop-message win-message" id="stop-message-5" style="display:none;">
-            ربح مضمون! تم بيع الرهان والمراهن يغادر السوق.
+            تم تأمين الربح! تم بيع الرهان والمراهن يغادر السوق.
         </div>
     </div>
 
-    <h2>السيناريو السادس: اتخاذ الموقف</h2>
+    <h2>السيناريو 6: اتخاذ الموقف</h2>
     <div class="example">
-        <p class="match-info">المباراة: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">المباراة: نادي أليبالا لكرة القدم ضد ديبورتيفو لوس نوغيتوس</p>
         <p class="scenario-text">
-            يتم تسجيل الأهداف في الدقائق **18 و 33 و 47 و 58**. القاعدة الوحيدة هي تجنب اللعب في **عدة مراكز** في نفس الوقت. تم إخفاء ساعة التوقيت لتتمكن من التركيز على الإجراءات. تنتهي المباراة بعد 12 دقيقة من الهدف الرابع.
+            يتم تسجيل الأهداف في الدقائق **18 و 33 و 47 و 58**. القاعدة الوحيدة هي تجنب اللعب **بأكثر من مركز** في نفس الوقت. تم إخفاء ساعة التوقيت للتركيز على الإجراءات. تنتهي المباراة بعد 12 دقيقة من الهدف الرابع.
             <br><br>
-            الأمر متروك لك للعثور على الوقت المناسب (5 أو 10 أو 15 دقيقة) لرهاناتك بعد كل هدف. الهدف هو الاستفادة من **ذروة الاحتمالات** بعد كل هدف، لأنه بعد 5 إلى 10 دقائق من الهدف، يكون **انخفاض الاحتمالات** هو الأسرع.
+            الأمر متروك لك لإيجاد التوقيت الصحيح (5 أو 10 أو 15 دقيقة) لرهاناتك بعد كل هدف. الهدف هو الاستفادة من **قمم الاحتمالات** بعد كل هدف، لأن **قمم انخفاض الاحتمالات** تكون الأسرع بعد 5 إلى 10 دقائق من الهدف.
         </p>
         <div class="timer-container" style="display: none;">
             <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="أيقونة ساعة توقيت" class="timer-icon">
@@ -291,14 +283,11 @@
             <span class="action-point buy-indicator" id="buy6-4">رهان (60')</span>
             <span class="action-point sell-indicator" id="sell6-4">بيع (68')</span>
         </div>
-        <button class="play-button" onclick="startScenario6()">ابدأ السيناريو</button>
+        <button class="play-button" onclick="startScenario6()">بدء السيناريو</button>
         <div class="stop-message win-message" id="stop-message-6" style="display:none;">
-            المباراة انتهت! انتهى السيناريو بعد 12 دقيقة من الهدف الرابع، في الدقيقة 70.
+            انتهت المباراة! انتهى السيناريو بعد 12 دقيقة من الهدف الرابع، أي في الدقيقة 70.
         </div>
-        <div class="action-taken">
-            الإجراء: الهدف هو إنهاء المباراة في الوقت المناسب، باتباع القواعد.
-        </div>
-        <p class="important-note">القاعدة الأساسية: يجب أن تنتهي اللعبة بعد 12 دقيقة من الهدف الرابع، أو في موعد أقصاه 82د 30ث.</p>
+        <p class="important-note">القاعدة الأساسية: يجب أن تنتهي اللعبة بعد 12 دقيقة من الهدف الرابع، أو على أبعد تقدير عند **87 د 30 ث**.</p>
     </div>
 
 </div>
@@ -315,7 +304,7 @@
 
         timerDisplay.textContent = '00:00';
 
-        // Reset action points for all scenarios
+        // Reset points d'action pour tous les scénarios
         if (scenario === 1) {
             document.getElementById('goal1-1').style.opacity = 0;
             document.getElementById('goal1-2').style.opacity = 0;
@@ -340,7 +329,7 @@
             clearInterval(scenario3Interval);
         }
         if (scenario === 4) {
-            // No action points to reset for this scenario
+            // Pas de points d'action à réinitialiser pour ce scénario
         }
         if (scenario === 5) {
             document.getElementById('goal5-1').style.opacity = 0;
@@ -366,7 +355,7 @@
         }
     }
 
-    function runTimer(scenario, actions) {
+    function runTimer(scenario, actions, finalTime) {
         const timerDisplay = document.getElementById(`timer${scenario}`);
         const stopMessage = document.getElementById(`stop-message-${scenario}`);
         
@@ -374,6 +363,8 @@
         let seconds = 0;
         let interval;
         let stopConditionMet = false;
+        let firstGoalTime = -1;
+        let secondGoalTime = -1;
 
         resetScenario(scenario);
 
@@ -389,18 +380,42 @@
                 minutes++;
             }
 
+            // Gestion des actions spécifiques (buts, paris)
             for (const action of actions) {
                 if (minutes === action.min && seconds === action.sec) {
                     const element = document.getElementById(action.id);
                     if (element) {
                         element.style.opacity = 1;
                     }
-                    if (action.stop) {
+
+                    // Logique pour le scénario 1
+                    if (scenario === 1 && action.id.startsWith('goal')) {
+                        if (firstGoalTime === -1) {
+                            firstGoalTime = minutes * 60 + seconds;
+                        } else {
+                            secondGoalTime = minutes * 60 + seconds;
+                            if (secondGoalTime - firstGoalTime <= 6 * 60) {
+                                stopConditionMet = true;
+                                if (stopMessage) {
+                                    stopMessage.style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+
+                    if (action.stop && scenario !== 1) {
                         stopConditionMet = true;
                         if (stopMessage) {
                             stopMessage.style.display = 'block';
                         }
                     }
+                }
+            }
+            
+            if (finalTime && minutes * 60 + seconds >= finalTime) {
+                stopConditionMet = true;
+                if (stopMessage) {
+                    stopMessage.style.display = 'block';
                 }
             }
 
@@ -413,7 +428,7 @@
     function startScenario1() {
         const actions = [
             { id: 'goal1-1', min: 9, sec: 0 },
-            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+            { id: 'goal1-2', min: 14, sec: 0 }
         ];
         runTimer(1, actions);
     }
@@ -477,7 +492,7 @@
         let interval;
         
         if (option === 'optionA') {
-            actionMessage.textContent = "الخيار 1 تم اختياره: تم الاحتفاظ برهان "أقل من 2.5". المراهن ينتظر حتى 42د 30ث. إذا حدث هدف ثالث، يخسر الرهان، وإذا لم يحدث، فإنه يفوز.";
+            actionMessage.textContent = "Option 1 choisie : Le pari Under 2.5 est maintenu. Le parieur attend la 42e minute 30. Un 3e but ferait perdre le pari, tandis que l'absence de but le rendrait gagnant.";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
             
@@ -493,7 +508,7 @@
 
                 if (scenario3Minutes >= 42 && scenario3Seconds >= 30) {
                     clearInterval(interval);
-                    stopMessage.textContent = "الرهان إما فائز أو خاسر. المخاطرة كانت كاملة.";
+                    stopMessage.textContent = "Le pari est soit gagnant, soit perdant. Le risque était total.";
                     stopMessage.classList.add('lose-message');
                     stopMessage.style.display = 'block';
                 }
@@ -501,7 +516,7 @@
         }
         
         if (option === 'optionB') {
-            actionMessage.textContent = "الخيار 2 تم اختياره: تم وضع رهان جديد على "أقل من 2.5" في الدقيقة 23. الهدف هو بيع كلا الرهانين معًا في الدقيقة 31 أو 42د 30ث لتأمين الربح.";
+            actionMessage.textContent = "Option 2 choisie : Un nouveau pari Under 2.5 est pris à 23 minutes. L'objectif est de vendre les deux paris ensemble à la 31e ou 42m30 pour sécuriser le gain.";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
 
@@ -524,7 +539,7 @@
                 if (scenario3Minutes === 31 && scenario3Seconds === 0) {
                     document.getElementById('sell3-1').style.opacity = 1;
                     clearInterval(interval);
-                    stopMessage.textContent = "تم بيع كلا الرهانين في الدقيقة 31. المراهن يضمن ربحه ويمكنه الانتقال إلى المباراة التالية.";
+                    stopMessage.textContent = "Les deux paris ont été vendus à la 31e minute. Le parieur sécurise son gain et peut passer au match suivant.";
                     stopMessage.classList.add('win-message');
                     stopMessage.style.display = 'block';
                 }
@@ -533,10 +548,8 @@
     }
 
     function startScenario4() {
-        const actions = [
-            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
-        ];
-        runTimer(4, actions);
+        const actions = [];
+        runTimer(4, actions, 45 * 60);
     }
     
     function startScenario5() {

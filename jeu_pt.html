@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplos de Jogos - ArtScalping</title>
+    <title>Exemplos de Jogo - ArtScalping</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -83,7 +83,6 @@
         .goal-indicator { background-color: #F44336; }
         .buy-indicator { background-color: #4CAF50; }
         .sell-indicator { background-color: #376392; }
-
         .play-button {
             background-color: #4CAF50;
             color: white;
@@ -151,50 +150,44 @@
 <div class="game-content">
     <h1>Exemplos de Casos Práticos</h1>
 
-    <h2>Cenário 1: Abandono</h2>
+    <h2>Cenário 1: A Saída</h2>
     <div class="example">
         <p class="match-info">Jogo: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Um primeiro gol acontece aos 9 minutos, seguido de um segundo aos 14. Como se passaram menos de 6 minutos entre os dois gols, abandonamos.
+            Um primeiro golo é marcado aos 9 minutos, seguido por um segundo aos 14 minutos. Como passaram menos de 6 minutos entre os dois golos, nós saímos da aposta.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de cronômetro" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de Temporizador" class="timer-icon">
             <div class="timer-display" id="timer1">00:00</div>
-            <span class="action-point goal-indicator" id="goal1-1">GOL (9')</span>
-            <span class="action-point goal-indicator" id="goal1-2">GOL (14')</span>
+            <span class="action-point goal-indicator" id="goal1-1">GOLO (9')</span>
+            <span class="action-point goal-indicator" id="goal1-2">GOLO (14')</span>
         </div>
         <button class="play-button" onclick="startScenario1()">Lançar Cenário</button>
         <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
-            PARE! Dois gols foram marcados antes dos 15 minutos. O risco é muito alto para continuar. Abandonamos o jogo.
+            PARE! Dois golos foram marcados em menos de 6 minutos. Saia!
         </div>
-        <div class="action-taken">
-            Ação: O risco é muito alto para continuar. Abandonamos o jogo.
-        </div>
-        <p class="important-note">Regra-chave: Se o número total de gols chegar a 2 ou mais antes dos 15 minutos, abandonamos.</p>
+        <p class="important-note">Regra-chave: Se dois golos forem marcados em menos de 6 minutos, nós saímos da aposta, independentemente do tempo de jogo.</p>
     </div>
     
-    <h2>Cenário 2: O Tiro Perfeito</h2>
+    <h2>Cenário 2: O Golpe Perfeito</h2>
     <div class="example">
         <p class="match-info">Jogo: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Um gol acontece cedo, mas seguimos nosso método para o lucro ideal.
+            Um golo é marcado cedo, mas seguimos o nosso método para um lucro ideal.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de cronômetro" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de Temporizador" class="timer-icon">
             <div class="timer-display" id="timer2">00:00</div>
-            <span class="action-point goal-indicator" id="goal2-1">GOL (9')</span>
+            <span class="action-point goal-indicator" id="goal2-1">GOLO (9')</span>
             <span class="action-point buy-indicator" id="buy2-1">APOSTA (15')</span>
             <span class="action-point sell-indicator" id="sell2-1">VENDIDO (21')</span>
-            <span class="action-point goal-indicator" id="goal2-2">GOL (23')</span>
+            <span class="action-point goal-indicator" id="goal2-2">GOLO (23')</span>
             <span class="action-point buy-indicator" id="buy2-2">APOSTA (24')</span>
             <span class="action-point sell-indicator" id="sell2-2">VENDIDO (34')</span>
         </div>
         <button class="play-button" onclick="startScenario2()">Lançar Cenário</button>
         <div class="stop-message win-message" id="stop-message-2" style="display:none;">
-            VITÓRIA! O tiro perfeito é um sucesso.
-        </div>
-        <div class="action-taken">
-            Ação: Ganhamos dinheiro em duas apostas no mesmo tempo. O cash-out certo é a chave para a rentabilidade.
+            VITÓRIA! O golpe perfeito foi bem-sucedido.
         </div>
     </div>
 
@@ -202,26 +195,26 @@
     <div class="example">
         <p class="match-info">Jogo: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Um primeiro gol acontece aos 9 minutos. Esperamos até os 15 minutos para fazer nossa aposta. Um segundo gol chega aos 21 minutos. Neste ponto, o apostador tem duas opções.
+            Um primeiro golo é marcado aos 9 minutos. Esperamos até aos 15 minutos para fazer a nossa aposta. Um segundo golo chega aos 21 minutos. Neste ponto, o apostador tem duas opções.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de cronômetro" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de Temporizador" class="timer-icon">
             <div class="timer-display" id="timer3">00:00</div>
-            <span class="action-point goal-indicator" id="goal3-1">GOL (9')</span>
+            <span class="action-point goal-indicator" id="goal3-1">GOLO (9')</span>
             <span class="action-point buy-indicator" id="buy3-1">APOSTA (15')</span>
-            <span class="action-point goal-indicator" id="goal3-2">GOL (21')</span>
+            <span class="action-point goal-indicator" id="goal3-2">GOLO (21')</span>
             <span class="action-point buy-indicator" id="buy3-2" style="display:none;">2ª APOSTA (23')</span>
             <span class="action-point sell-indicator" id="sell3-1" style="display:none;">VENDA (31')</span>
         </div>
         <button class="play-button" id="play3" onclick="startScenario3()">Lançar Cenário</button>
         <div id="options3" style="display:none;">
-            <p class="cta-text">Um segundo gol foi marcado! Sua aposta Under 2.5 está em perigo. Qual é a sua escolha?</p>
+            <p class="cta-text">Um segundo golo foi marcado! A sua aposta "Menos de 2.5 Golos" está em perigo. Qual é a sua escolha?</p>
             <div class="options-container">
                 <button class="option-button" onclick="continueScenario3('optionA')">
-                    Opção 1: Manter a primeira aposta e esperar até 42m30
+                    Opção 1: Mantemos a primeira aposta e esperamos até 42m30s
                 </button>
                 <button class="option-button" onclick="continueScenario3('optionB')">
-                    Opção 2: Fazer uma nova aposta e vender ambas aos 31m ou 42m30
+                    Opção 2: Fazemos uma nova aposta e vendemos ambas aos 31m ou 42m30s
                 </button>
             </div>
         </div>
@@ -233,69 +226,67 @@
     <div class="example">
         <p class="match-info">Jogo: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Nenhum gol. Não jogamos. Esperamos pelo próximo jogo.
+            Nenhum golo. Nós não jogamos. Esperamos pelo próximo jogo.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de cronômetro" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de Temporizador" class="timer-icon">
             <div class="timer-display" id="timer4">00:00</div>
         </div>
         <button class="play-button" onclick="startScenario4()">Lançar Cenário</button>
         <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
-            Nenhum gol. Não jogamos. Esperamos pelo próximo jogo.
+            Nenhum golo. Nós não jogamos. Esperamos pelo próximo jogo.
         </div>
+        <p class="important-note">Regra-chave: Se não houver golos, o jogo não é jogável. Esperamos pelo próximo jogo.</p>
     </div>
     
     <h2>Cenário 5: Pequena Tomada de Lucro</h2>
     <div class="example">
         <p class="match-info">Jogo: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Um gol acontece aos 9 minutos. O apostador faz sua aposta aos 15 minutos e garante um pequeno lucro aos 21, revendendo a aposta.
+            Um golo é marcado aos 9 minutos. O apostador faz a sua aposta aos 15 minutos e garante um pequeno lucro aos 21 minutos, vendendo a aposta.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de cronômetro" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de Temporizador" class="timer-icon">
             <div class="timer-display" id="timer5">00:00</div>
-            <span class="action-point goal-indicator" id="goal5-1">GOL (9')</span>
+            <span class="action-point goal-indicator" id="goal5-1">GOLO (9')</span>
             <span class="action-point buy-indicator" id="buy5-1">APOSTA (15')</span>
             <span class="action-point sell-indicator" id="sell5-1">VENDA (21')</span>
         </div>
         <button class="play-button" onclick="startScenario5()">Lançar Cenário</button>
         <div class="stop-message win-message" id="stop-message-5" style="display:none;">
-            Lucro garantido! A aposta é revendida e o apostador deixa o mercado.
+            Lucro garantido! A aposta é vendida e o apostador sai do mercado.
         </div>
     </div>
 
-    <h2>Cenário 6: Tomar Posição</h2>
+    <h2>Cenário 6: Tomar uma Posição</h2>
     <div class="example">
         <p class="match-info">Jogo: FC Alibala vs Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            Gols acontecem aos **18, 33, 47 e 58 minutos**. A única regra é não jogar **várias posições** ao mesmo tempo. O cronômetro está escondido para que você se concentre nas ações. O jogo termina 12 minutos após o 4º gol.
+            Os golos são marcados aos **18, 33, 47 e 58 minutos**. A única regra é evitar jogar **múltiplas posições** ao mesmo tempo. O temporizador está fora do quadro para focar nas ações. O jogo termina 12 minutos após o 4º golo.
             <br><br>
-            Cabe a você encontrar o momento certo (5, 10 ou 15 minutos) para suas apostas após cada gol. O objetivo é usar os **picos de odds** após cada gol, porque de 5 a 10 minutos após o gol, a **queda das odds** é a mais rápida.
+            Cabe a você encontrar o momento certo (5, 10 ou 15 minutos) para as suas apostas após cada golo. O objetivo é usar os **picos das odds** após cada golo, porque 5 a 10 minutos após o golo, os **picos de queda das odds** são os mais rápidos.
         </p>
         <div class="timer-container" style="display: none;">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de cronômetro" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Ícone de Temporizador" class="timer-icon">
             <div class="timer-display" id="timer6">00:00</div>
-            <span class="action-point goal-indicator" id="goal6-1">GOL (18')</span>
+            <span class="action-point goal-indicator" id="goal6-1">GOLO (18')</span>
             <span class="action-point buy-indicator" id="buy6-1">APOSTA (20')</span>
             <span class="action-point sell-indicator" id="sell6-1">VENDA (28')</span>
-            <span class="action-point goal-indicator" id="goal6-2">GOL (33')</span>
+            <span class="action-point goal-indicator" id="goal6-2">GOLO (33')</span>
             <span class="action-point buy-indicator" id="buy6-2">APOSTA (35')</span>
             <span class="action-point sell-indicator" id="sell6-2">VENDA (43')</span>
-            <span class="action-point goal-indicator" id="goal6-3">GOL (47')</span>
+            <span class="action-point goal-indicator" id="goal6-3">GOLO (47')</span>
             <span class="action-point buy-indicator" id="buy6-3">APOSTA (49')</span>
             <span class="action-point sell-indicator" id="sell6-3">VENDA (57')</span>
-            <span class="action-point goal-indicator" id="goal6-4">GOL (58')</span>
+            <span class="action-point goal-indicator" id="goal6-4">GOLO (58')</span>
             <span class="action-point buy-indicator" id="buy6-4">APOSTA (60')</span>
             <span class="action-point sell-indicator" id="sell6-4">VENDA (68')</span>
         </div>
         <button class="play-button" onclick="startScenario6()">Lançar Cenário</button>
         <div class="stop-message win-message" id="stop-message-6" style="display:none;">
-            Jogo encerrado! O cenário terminou 12 minutos após o 4º gol, no minuto 70.
+            Jogo terminado! O cenário concluiu 12 minutos após o 4º golo, aos 70 minutos.
         </div>
-        <div class="action-taken">
-            Ação: O objetivo é terminar o jogo a tempo, seguindo as regras.
-        </div>
-        <p class="important-note">Regra-chave: O jogo deve terminar 12 minutos após o 4º gol, ou o mais tardar aos 82m30.</p>
+        <p class="important-note">Regra-chave: O jogo deve terminar 12 minutos após o 4º golo, ou o mais tardar aos **87m30s**.</p>
     </div>
 
 </div>
@@ -312,7 +303,7 @@
 
         timerDisplay.textContent = '00:00';
 
-        // Reset action points for all scenarios
+        // Reset points d'action pour tous les scénarios
         if (scenario === 1) {
             document.getElementById('goal1-1').style.opacity = 0;
             document.getElementById('goal1-2').style.opacity = 0;
@@ -337,7 +328,7 @@
             clearInterval(scenario3Interval);
         }
         if (scenario === 4) {
-            // No action points to reset for this scenario
+            // Pas de points d'action à réinitialiser pour ce scénario
         }
         if (scenario === 5) {
             document.getElementById('goal5-1').style.opacity = 0;
@@ -363,7 +354,7 @@
         }
     }
 
-    function runTimer(scenario, actions) {
+    function runTimer(scenario, actions, finalTime) {
         const timerDisplay = document.getElementById(`timer${scenario}`);
         const stopMessage = document.getElementById(`stop-message-${scenario}`);
         
@@ -371,6 +362,8 @@
         let seconds = 0;
         let interval;
         let stopConditionMet = false;
+        let firstGoalTime = -1;
+        let secondGoalTime = -1;
 
         resetScenario(scenario);
 
@@ -386,18 +379,42 @@
                 minutes++;
             }
 
+            // Gestion des actions spécifiques (buts, paris)
             for (const action of actions) {
                 if (minutes === action.min && seconds === action.sec) {
                     const element = document.getElementById(action.id);
                     if (element) {
                         element.style.opacity = 1;
                     }
-                    if (action.stop) {
+
+                    // Logique pour le scénario 1
+                    if (scenario === 1 && action.id.startsWith('goal')) {
+                        if (firstGoalTime === -1) {
+                            firstGoalTime = minutes * 60 + seconds;
+                        } else {
+                            secondGoalTime = minutes * 60 + seconds;
+                            if (secondGoalTime - firstGoalTime <= 6 * 60) {
+                                stopConditionMet = true;
+                                if (stopMessage) {
+                                    stopMessage.style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+
+                    if (action.stop && scenario !== 1) {
                         stopConditionMet = true;
                         if (stopMessage) {
                             stopMessage.style.display = 'block';
                         }
                     }
+                }
+            }
+            
+            if (finalTime && minutes * 60 + seconds >= finalTime) {
+                stopConditionMet = true;
+                if (stopMessage) {
+                    stopMessage.style.display = 'block';
                 }
             }
 
@@ -410,7 +427,7 @@
     function startScenario1() {
         const actions = [
             { id: 'goal1-1', min: 9, sec: 0 },
-            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+            { id: 'goal1-2', min: 14, sec: 0 }
         ];
         runTimer(1, actions);
     }
@@ -474,7 +491,7 @@
         let interval;
         
         if (option === 'optionA') {
-            actionMessage.textContent = "Opção 1 escolhida: A aposta Under 2.5 é mantida. O apostador espera até 42m30. Um 3º gol faria a aposta perder, enquanto a ausência de um gol a faria ganhar.";
+            actionMessage.textContent = "Opção 1 selecionada: A aposta 'Menos de 2.5 Golos' é mantida. O apostador espera até 42m30s. Um 3º golo faria a aposta perder, enquanto a ausência de golo a faria vencedora.";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
             
@@ -490,7 +507,7 @@
 
                 if (scenario3Minutes >= 42 && scenario3Seconds >= 30) {
                     clearInterval(interval);
-                    stopMessage.textContent = "A aposta é vencedora ou perdedora. O risco foi total.";
+                    stopMessage.textContent = "A aposta foi ganha ou perdida. O risco era total.";
                     stopMessage.classList.add('lose-message');
                     stopMessage.style.display = 'block';
                 }
@@ -498,7 +515,7 @@
         }
         
         if (option === 'optionB') {
-            actionMessage.textContent = "Opção 2 escolhida: Uma nova aposta Under 2.5 é feita aos 23 minutos. O objetivo é vender ambas as apostas juntas aos 31m ou 42m30 para garantir o lucro.";
+            actionMessage.textContent = "Opção 2 selecionada: Uma nova aposta 'Menos de 2.5 Golos' é feita aos 23 minutos. O objetivo é vender ambas as apostas juntas aos 31m ou 42m30s para garantir o lucro.";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
 
@@ -521,7 +538,7 @@
                 if (scenario3Minutes === 31 && scenario3Seconds === 0) {
                     document.getElementById('sell3-1').style.opacity = 1;
                     clearInterval(interval);
-                    stopMessage.textContent = "Ambas as apostas foram vendidas aos 31 minutos. O apostador garante seu lucro e pode ir para o próximo jogo.";
+                    stopMessage.textContent = "Ambas as apostas foram vendidas aos 31 minutos. O apostador garante seu lucro e pode passar para o próximo jogo.";
                     stopMessage.classList.add('win-message');
                     stopMessage.style.display = 'block';
                 }
@@ -530,10 +547,8 @@
     }
 
     function startScenario4() {
-        const actions = [
-            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
-        ];
-        runTimer(4, actions);
+        const actions = [];
+        runTimer(4, actions, 45 * 60);
     }
     
     function startScenario5() {

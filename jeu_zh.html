@@ -83,7 +83,6 @@
         .goal-indicator { background-color: #F44336; }
         .buy-indicator { background-color: #4CAF50; }
         .sell-indicator { background-color: #376392; }
-
         .play-button {
             background-color: #4CAF50;
             color: white;
@@ -149,38 +148,35 @@
 <body>
 
 <div class="game-content">
-    <h1>实用案例示例</h1>
+    <h1>实战案例</h1>
 
-    <h2>场景一：放弃</h2>
+    <h2>场景1：退出</h2>
     <div class="example">
-        <p class="match-info">比赛: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">比赛：FC Alibala 对阵 Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            第9分钟时第一个进球发生，接着第14分钟时第二个进球发生。由于两个进球之间的时间不到6分钟，我们放弃这场比赛。
+            第9分钟打进第一个球，第14分钟打进第二个球。由于两个进球之间的时间少于6分钟，我们退出。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="秒表图标" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="计时器图标" class="timer-icon">
             <div class="timer-display" id="timer1">00:00</div>
             <span class="action-point goal-indicator" id="goal1-1">进球 (9')</span>
             <span class="action-point goal-indicator" id="goal1-2">进球 (14')</span>
         </div>
         <button class="play-button" onclick="startScenario1()">启动场景</button>
         <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
-            停止！在第15分钟前有两个进球。风险过高，不适合继续。我们放弃这场比赛。
+            停止！不到6分钟内进了两个球。退出！
         </div>
-        <div class="action-taken">
-            行动：风险过高，不适合继续。我们放弃这场比赛。
-        </div>
-        <p class="important-note">关键规则：如果总进球数在第15分钟前达到2个或更多，我们放弃。</p>
+        <p class="important-note">关键规则：如果两个进球在不到6分钟内打进，无论比赛时间如何，我们都会退出。</p>
     </div>
     
-    <h2>场景二：完美出手</h2>
+    <h2>场景2：完美打击</h2>
     <div class="example">
-        <p class="match-info">比赛: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">比赛：FC Alibala 对阵 Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            早早地发生了一个进球，但我们遵循我们的方法以获得最佳利润。
+            早早打进一个球，但我们遵循我们的方法以获得最佳利润。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="秒表图标" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="计时器图标" class="timer-icon">
             <div class="timer-display" id="timer2">00:00</div>
             <span class="action-point goal-indicator" id="goal2-1">进球 (9')</span>
             <span class="action-point buy-indicator" id="buy2-1">下注 (15')</span>
@@ -191,21 +187,18 @@
         </div>
         <button class="play-button" onclick="startScenario2()">启动场景</button>
         <div class="stop-message win-message" id="stop-message-2" style="display:none;">
-            胜利！完美出手成功。
-        </div>
-        <div class="action-taken">
-            行动：我们在同一个半场通过两次下注获利。在正确的时间套现是盈利的关键。
+            胜利！完美打击成功。
         </div>
     </div>
 
-    <h2>场景三：投注者的选择</h2>
+    <h2>场景3：下注者的选择</h2>
     <div class="example">
-        <p class="match-info">比赛: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">比赛：FC Alibala 对阵 Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            第9分钟时第一个进球发生。我们等到第15分钟下注。第21分钟时第二个进球到来。此时，投注者有两个选择。
+            第一个球在第9分钟打进。我们等到第15分钟才下注。第二个球在第21分钟打进。此时，下注者有两个选择。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="秒表图标" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="计时器图标" class="timer-icon">
             <div class="timer-display" id="timer3">00:00</div>
             <span class="action-point goal-indicator" id="goal3-1">进球 (9')</span>
             <span class="action-point buy-indicator" id="buy3-1">下注 (15')</span>
@@ -215,13 +208,13 @@
         </div>
         <button class="play-button" id="play3" onclick="startScenario3()">启动场景</button>
         <div id="options3" style="display:none;">
-            <p class="cta-text">第二个进球发生了！你的 Under 2.5 投注处于危险之中。你的选择是什么？</p>
+            <p class="cta-text">第二个球打进了！你的“小于2.5球”赌注岌岌可危。你的选择是什么？</p>
             <div class="options-container">
                 <button class="option-button" onclick="continueScenario3('optionA')">
-                    选项1：保持第一次下注并等到42分30秒
+                    选项1：我们保留第一个赌注并等待到42分30秒
                 </button>
                 <button class="option-button" onclick="continueScenario3('optionB')">
-                    选项2：进行新的下注并在31分或42分30秒时一起卖出
+                    选项2：我们下一个新赌注，并在31分或42分30秒时一起卖出
                 </button>
             </div>
         </div>
@@ -229,30 +222,31 @@
         <div class="stop-message" id="stop-message-3" style="display:none;"></div>
     </div>
 
-    <h2>场景四：荒芜</h2>
+    <h2>场景4：沙漠</h2>
     <div class="example">
-        <p class="match-info">比赛: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">比赛：FC Alibala 对阵 Deportivo Los Nugettos</p>
         <p class="scenario-text">
             没有进球。我们不玩。我们等待下一场比赛。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="秒表图标" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="计时器图标" class="timer-icon">
             <div class="timer-display" id="timer4">00:00</div>
         </div>
         <button class="play-button" onclick="startScenario4()">启动场景</button>
         <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
             没有进球。我们不玩。我们等待下一场比赛。
         </div>
+        <p class="important-note">关键规则：如果没有进球，比赛就无法进行。我们等待下一场比赛。</p>
     </div>
     
-    <h2>场景五：小额利润提取</h2>
+    <h2>场景5：小额获利了结</h2>
     <div class="example">
-        <p class="match-info">比赛: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">比赛：FC Alibala 对阵 Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            第9分钟时一个进球发生。投注者在第15分钟下注，并在第21分钟通过转卖该投注来确保一笔小额利润。
+            第9分钟打进一个球。下注者在第15分钟下注，并在第21分钟通过卖出赌注来确保小额利润。
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="秒表图标" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="计时器图标" class="timer-icon">
             <div class="timer-display" id="timer5">00:00</div>
             <span class="action-point goal-indicator" id="goal5-1">进球 (9')</span>
             <span class="action-point buy-indicator" id="buy5-1">下注 (15')</span>
@@ -260,27 +254,27 @@
         </div>
         <button class="play-button" onclick="startScenario5()">启动场景</button>
         <div class="stop-message win-message" id="stop-message-5" style="display:none;">
-            利润已确保！投注被转卖，投注者离开市场。
+            利润已锁定！赌注被卖出，下注者退出市场。
         </div>
     </div>
 
-    <h2>场景六：采取仓位</h2>
+    <h2>场景6：持仓</h2>
     <div class="example">
-        <p class="match-info">比赛: FC Alibala vs Deportivo Los Nugettos</p>
+        <p class="match-info">比赛：FC Alibala 对阵 Deportivo Los Nugettos</p>
         <p class="scenario-text">
-            进球发生在**第18、33、47和58分钟**。唯一的规则是避免同时**进行多个仓位**。为了让您专注于行动，秒表已移出屏幕。比赛在第4个进球后的12分钟结束。
+            进球时间为**18、33、47 和 58分钟**。唯一的规则是避免同时**持仓多个**。计时器不在画面内，以专注于行动。比赛在第四个进球后12分钟结束。
             <br><br>
-            您需要自己找到每个进球后下注的正确时间（5、10或15分钟）。目标是利用每个进球后的**赔率峰值**，因为在进球后的5到10分钟内，**赔率下降**是最快的。
+            您需要自己找出每个进球后下注的正确时机（5、10 或 15分钟）。目标是利用每个进球后的**赔率峰值**，因为在进球后5到10分钟，**赔率下跌的峰值**是最快的。
         </p>
         <div class="timer-container" style="display: none;">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="秒表图标" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="计时器图标" class="timer-icon">
             <div class="timer-display" id="timer6">00:00</div>
             <span class="action-point goal-indicator" id="goal6-1">进球 (18')</span>
             <span class="action-point buy-indicator" id="buy6-1">下注 (20')</span>
             <span class="action-point sell-indicator" id="sell6-1">卖出 (28')</span>
             <span class="action-point goal-indicator" id="goal6-2">进球 (33')</span>
             <span class="action-point buy-indicator" id="buy6-2">下注 (35')</span>
-            <span class="action-point sell6-2" id="sell6-2">卖出 (43')</span>
+            <span class="action-point sell-indicator" id="sell6-2">卖出 (43')</span>
             <span class="action-point goal-indicator" id="goal6-3">进球 (47')</span>
             <span class="action-point buy-indicator" id="buy6-3">下注 (49')</span>
             <span class="action-point sell-indicator" id="sell6-3">卖出 (57')</span>
@@ -290,12 +284,9 @@
         </div>
         <button class="play-button" onclick="startScenario6()">启动场景</button>
         <div class="stop-message win-message" id="stop-message-6" style="display:none;">
-            比赛结束！场景在第4个进球后的12分钟，也就是第70分钟时结束。
+            比赛结束！场景在第四个进球后12分钟，即70分钟时结束。
         </div>
-        <div class="action-taken">
-            行动：目标是根据规则按时结束比赛。
-        </div>
-        <p class="important-note">关键规则：比赛必须在第4个进球后的12分钟内结束，最晚在第82分30秒。</p>
+        <p class="important-note">关键规则：比赛必须在第四个进球后12分钟内结束，或者最迟在**87分30秒**结束。</p>
     </div>
 
 </div>
@@ -312,7 +303,7 @@
 
         timerDisplay.textContent = '00:00';
 
-        // Reset action points for all scenarios
+        // Reset points d'action pour tous les scénarios
         if (scenario === 1) {
             document.getElementById('goal1-1').style.opacity = 0;
             document.getElementById('goal1-2').style.opacity = 0;
@@ -337,7 +328,7 @@
             clearInterval(scenario3Interval);
         }
         if (scenario === 4) {
-            // No action points to reset for this scenario
+            // Pas de points d'action à réinitialiser pour ce scénario
         }
         if (scenario === 5) {
             document.getElementById('goal5-1').style.opacity = 0;
@@ -363,7 +354,7 @@
         }
     }
 
-    function runTimer(scenario, actions) {
+    function runTimer(scenario, actions, finalTime) {
         const timerDisplay = document.getElementById(`timer${scenario}`);
         const stopMessage = document.getElementById(`stop-message-${scenario}`);
         
@@ -371,6 +362,8 @@
         let seconds = 0;
         let interval;
         let stopConditionMet = false;
+        let firstGoalTime = -1;
+        let secondGoalTime = -1;
 
         resetScenario(scenario);
 
@@ -386,18 +379,42 @@
                 minutes++;
             }
 
+            // Gestion des actions spécifiques (buts, paris)
             for (const action of actions) {
                 if (minutes === action.min && seconds === action.sec) {
                     const element = document.getElementById(action.id);
                     if (element) {
                         element.style.opacity = 1;
                     }
-                    if (action.stop) {
+
+                    // Logique pour le scénario 1
+                    if (scenario === 1 && action.id.startsWith('goal')) {
+                        if (firstGoalTime === -1) {
+                            firstGoalTime = minutes * 60 + seconds;
+                        } else {
+                            secondGoalTime = minutes * 60 + seconds;
+                            if (secondGoalTime - firstGoalTime <= 6 * 60) {
+                                stopConditionMet = true;
+                                if (stopMessage) {
+                                    stopMessage.style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+
+                    if (action.stop && scenario !== 1) {
                         stopConditionMet = true;
                         if (stopMessage) {
                             stopMessage.style.display = 'block';
                         }
                     }
+                }
+            }
+            
+            if (finalTime && minutes * 60 + seconds >= finalTime) {
+                stopConditionMet = true;
+                if (stopMessage) {
+                    stopMessage.style.display = 'block';
                 }
             }
 
@@ -410,7 +427,7 @@
     function startScenario1() {
         const actions = [
             { id: 'goal1-1', min: 9, sec: 0 },
-            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+            { id: 'goal1-2', min: 14, sec: 0 }
         ];
         runTimer(1, actions);
     }
@@ -474,7 +491,7 @@
         let interval;
         
         if (option === 'optionA') {
-            actionMessage.textContent = "选择选项1：Under 2.5 投注被保留。投注者等到42分30秒。如果第三个进球发生，投注会输掉，如果没有则会赢。";
+            actionMessage.textContent = "选择了选项1：“小于2.5球”赌注被保留。下注者等待到42分30秒。第三个进球将导致赌注失败，而没有进球则会使其获胜。";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
             
@@ -490,7 +507,7 @@
 
                 if (scenario3Minutes >= 42 && scenario3Seconds >= 30) {
                     clearInterval(interval);
-                    stopMessage.textContent = "投注要么赢要么输。风险是完全的。";
+                    stopMessage.textContent = "赌注要么赢了，要么输了。风险是巨大的。";
                     stopMessage.classList.add('lose-message');
                     stopMessage.style.display = 'block';
                 }
@@ -498,7 +515,7 @@
         }
         
         if (option === 'optionB') {
-            actionMessage.textContent = "选择选项2：在第23分钟进行新的 Under 2.5 投注。目标是在31分或42分30秒时一起卖出两个投注，以确保利润。";
+            actionMessage.textContent = "选择了选项2：在23分钟时下了一个新的“小于2.5球”赌注。目标是在31分或42分30秒时一起卖出这两个赌注，以确保利润。";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
 
@@ -521,7 +538,7 @@
                 if (scenario3Minutes === 31 && scenario3Seconds === 0) {
                     document.getElementById('sell3-1').style.opacity = 1;
                     clearInterval(interval);
-                    stopMessage.textContent = "两个投注都在第31分钟卖出。投注者确保了利润，可以去进行下一场比赛。";
+                    stopMessage.textContent = "两个赌注都在第31分钟被卖出。下注者确保了利润，可以进入下一场比赛。";
                     stopMessage.classList.add('win-message');
                     stopMessage.style.display = 'block';
                 }
@@ -530,10 +547,8 @@
     }
 
     function startScenario4() {
-        const actions = [
-            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
-        ];
-        runTimer(4, actions);
+        const actions = [];
+        runTimer(4, actions, 45 * 60);
     }
     
     function startScenario5() {

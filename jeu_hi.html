@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>खेल के उदाहरण - ArtScalping</title>
+    <title>खेल के उदाहरण - आर्टस्कैल्पिंग</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background: #1A232D;
             color: #f0f0f0;
             padding: 20px;
-            text-align: center;
+            text-align: right;
         }
         .game-content {
             max-width: 900px;
             margin: 0 auto;
-            text-align: left;
+            text-align: right;
         }
         h1 {
             color: #FFD700;
@@ -56,11 +56,12 @@
             border-radius: 8px;
             border: 1px solid #4A7AB0;
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+            flex-direction: row-reverse;
         }
         .timer-icon {
             width: 30px;
             height: 30px;
-            margin-right: 15px;
+            margin-left: 15px;
             filter: invert(1);
         }
         .timer-display {
@@ -72,7 +73,7 @@
         }
         .action-point {
             font-size: 1.1em;
-            margin-left: 20px;
+            margin-right: 20px;
             color: #fff;
             padding: 5px 10px;
             border-radius: 5px;
@@ -83,7 +84,6 @@
         .goal-indicator { background-color: #F44336; }
         .buy-indicator { background-color: #4CAF50; }
         .sell-indicator { background-color: #376392; }
-
         .play-button {
             background-color: #4CAF50;
             color: white;
@@ -151,77 +151,71 @@
 <div class="game-content">
     <h1>व्यावहारिक मामलों के उदाहरण</h1>
 
-    <h2>परिदृश्य 1: छोड़ना</h2>
+    <h2>परिदृश्य 1: निकासी</h2>
     <div class="example">
-        <p class="match-info">मैच: एफसी अलीबाला बनाम डेपोर्टिवो लॉस नुगेटोस</p>
+        <p class="match-info">मैच: एफसी अलिबाला बनाम डिपोर्टिवो लॉस नुगेटोस</p>
         <p class="scenario-text">
-            9वें मिनट में पहला गोल होता है, इसके बाद 14वें मिनट में दूसरा गोल होता है। चूंकि दोनों गोलों के बीच 6 मिनट से कम का समय है, हम मैच छोड़ देते हैं।
+            एक पहला गोल 9वें मिनट में, और उसके बाद दूसरा गोल 14वें मिनट में होता है। चूंकि दोनों गोलों के बीच 6 मिनट से कम का समय है, हम बाहर निकल जाते हैं।
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="स्टॉपवॉच आइकन" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="टाइमर आइकन" class="timer-icon">
             <div class="timer-display" id="timer1">00:00</div>
             <span class="action-point goal-indicator" id="goal1-1">गोल (9')</span>
             <span class="action-point goal-indicator" id="goal1-2">गोल (14')</span>
         </div>
-        <button class="play-button" onclick="startScenario1()">परिदृश्य शुरू करें</button>
+        <button class="play-button" onclick="startScenario1()">परिदृश्य लॉन्च करें</button>
         <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
-            रोकें! 15वें मिनट से पहले दो गोल हो गए। जारी रखने के लिए जोखिम बहुत अधिक है। हम मैच छोड़ देते हैं।
+            रुको! 6 मिनट से कम समय में दो गोल हो गए। बाहर निकलो!
         </div>
-        <div class="action-taken">
-            क्रिया: जारी रखने के लिए जोखिम बहुत अधिक है। हम मैच छोड़ देते हैं।
-        </div>
-        <p class="important-note">मुख्य नियम: यदि 15वें मिनट से पहले कुल गोलों की संख्या 2 या उससे अधिक हो जाती है, तो हम छोड़ देते हैं।</p>
+        <p class="important-note">मुख्य नियम: यदि 6 मिनट से कम समय में दो गोल होते हैं, तो हम मैच से बाहर निकल जाते हैं, चाहे मैच का समय कुछ भी हो।</p>
     </div>
     
-    <h2>परिदृश्य 2: आदर्श शॉट</h2>
+    <h2>परिदृश्य 2: सही हिट</h2>
     <div class="example">
-        <p class="match-info">मैच: एफसी अलीबाला बनाम डेपोर्टिवो लॉस नुगेटोस</p>
+        <p class="match-info">मैच: एफसी अलिबाला बनाम डिपोर्टिवो लॉस नुगेटोस</p>
         <p class="scenario-text">
-            जल्दी ही एक गोल हो जाता है, लेकिन हम इष्टतम लाभ के लिए अपनी विधि का पालन करते हैं।
+            एक गोल जल्दी हो जाता है, लेकिन हम इष्टतम लाभ के लिए अपनी विधि का पालन करते हैं।
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="स्टॉपवॉच आइकन" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="टाइमर आइकन" class="timer-icon">
             <div class="timer-display" id="timer2">00:00</div>
             <span class="action-point goal-indicator" id="goal2-1">गोल (9')</span>
-            <span class="action-point buy-indicator" id="buy2-1">दांव (15')</span>
-            <span class="action-point sell-indicator" id="sell2-1">बेचा गया (21')</span>
+            <span class="action-point buy-indicator" id="buy2-1">शर्त (15')</span>
+            <span class="action-point sell-indicator" id="sell2-1">बिक्री (21')</span>
             <span class="action-point goal-indicator" id="goal2-2">गोल (23')</span>
-            <span class="action-point buy-indicator" id="buy2-2">दांव (24')</span>
-            <span class="action-point sell-indicator" id="sell2-2">बेचा गया (34')</span>
+            <span class="action-point buy-indicator" id="buy2-2">शर्त (24')</span>
+            <span class="action-point sell-indicator" id="sell2-2">बिक्री (34')</span>
         </div>
-        <button class="play-button" onclick="startScenario2()">परिदृश्य शुरू करें</button>
+        <button class="play-button" onclick="startScenario2()">परिदृश्य लॉन्च करें</button>
         <div class="stop-message win-message" id="stop-message-2" style="display:none;">
-            जीत! आदर्श शॉट सफल रहा।
-        </div>
-        <div class="action-taken">
-            क्रिया: हमने एक ही हाफ में दो दांवों पर लाभ कमाया। सही समय पर कैश आउट करना लाभप्रदता की कुंजी है।
+            जीत! सही हिट सफल है।
         </div>
     </div>
 
     <h2>परिदृश्य 3: सट्टेबाज का चुनाव</h2>
     <div class="example">
-        <p class="match-info">मैच: एफसी अलीबाला बनाम डेपोर्टिवो लॉस नुगेटोस</p>
+        <p class="match-info">मैच: एफसी अलिबाला बनाम डिपोर्टिवो लॉस नुगेटोस</p>
         <p class="scenario-text">
-            9वें मिनट में पहला गोल होता है। हम अपना दांव लगाने के लिए 15वें मिनट तक इंतजार करते हैं। 21वें मिनट में दूसरा गोल हो जाता है। इस समय, सट्टेबाज के पास दो विकल्प होते हैं।
+            एक पहला गोल 9वें मिनट में होता है। हम अपनी शर्त लगाने के लिए 15वें मिनट तक इंतजार करते हैं। दूसरा गोल 21वें मिनट में होता है। इस बिंदु पर, सट्टेबाज के पास दो विकल्प हैं।
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="स्टॉपवॉच आइकन" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="टाइमर आइकन" class="timer-icon">
             <div class="timer-display" id="timer3">00:00</div>
             <span class="action-point goal-indicator" id="goal3-1">गोल (9')</span>
-            <span class="action-point buy-indicator" id="buy3-1">दांव (15')</span>
+            <span class="action-point buy-indicator" id="buy3-1">शर्त (15')</span>
             <span class="action-point goal-indicator" id="goal3-2">गोल (21')</span>
-            <span class="action-point buy-indicator" id="buy3-2" style="display:none;">दूसरा दांव (23')</span>
-            <span class="action-point sell-indicator" id="sell3-1" style="display:none;">बेचना (31')</span>
+            <span class="action-point buy-indicator" id="buy3-2" style="display:none;">दूसरी शर्त (23')</span>
+            <span class="action-point sell-indicator" id="sell3-1" style="display:none;">बिक्री (31')</span>
         </div>
-        <button class="play-button" id="play3" onclick="startScenario3()">परिदृश्य शुरू करें</button>
+        <button class="play-button" id="play3" onclick="startScenario3()">परिदृश्य लॉन्च करें</button>
         <div id="options3" style="display:none;">
-            <p class="cta-text">दूसरा गोल हो गया है! आपका अंडर 2.5 दांव खतरे में है। आपका चुनाव क्या है?</p>
+            <p class="cta-text">एक दूसरा गोल हो गया है! आपकी "अंडर 2.5 गोल" शर्त खतरे में है। आपका चुनाव क्या है?</p>
             <div class="options-container">
                 <button class="option-button" onclick="continueScenario3('optionA')">
-                    विकल्प 1: पहले दांव को रखें और 42m30 तक प्रतीक्षा करें
+                    विकल्प 1: हम पहली शर्त को छोड़ देते हैं और 42m30s तक प्रतीक्षा करते हैं
                 </button>
                 <button class="option-button" onclick="continueScenario3('optionB')">
-                    विकल्प 2: एक नया दांव लगाएं और दोनों को 31m या 42m30 पर बेच दें
+                    विकल्प 2: हम एक नई शर्त लगाते हैं और दोनों को 31m या 42m30s पर बेच देते हैं
                 </button>
             </div>
         </div>
@@ -231,71 +225,69 @@
 
     <h2>परिदृश्य 4: रेगिस्तान</h2>
     <div class="example">
-        <p class="match-info">मैच: एफसी अलीबाला बनाम डेपोर्टिवो लॉस नुगेटोस</p>
+        <p class="match-info">मैच: एफसी अलिबाला बनाम डिपोर्टिवो लॉस नुगेटोस</p>
         <p class="scenario-text">
-            कोई गोल नहीं। हम नहीं खेलते। हम अगले मैच का इंतजार करते हैं।
+            कोई गोल नहीं। हम नहीं खेलते हैं। हम अगले मैच का इंतजार करते हैं।
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="स्टॉपवॉच आइकन" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="टाइमर आइकन" class="timer-icon">
             <div class="timer-display" id="timer4">00:00</div>
         </div>
-        <button class="play-button" onclick="startScenario4()">परिदृश्य शुरू करें</button>
+        <button class="play-button" onclick="startScenario4()">परिदृश्य लॉन्च करें</button>
         <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
-            कोई गोल नहीं। हम नहीं खेलते। हम अगले मैच का इंतजार करते हैं।
+            कोई गोल नहीं। हम नहीं खेलते हैं। हम अगले मैच का इंतजार करते हैं।
         </div>
+        <p class="important-note">मुख्य नियम: यदि कोई गोल नहीं होता है, तो मैच खेलने योग्य नहीं है। हम अगले मैच का इंतजार करते हैं।</p>
     </div>
     
-    <h2>परिदृश्य 5: छोटी लाभ प्राप्ति</h2>
+    <h2>परिदृश्य 5: छोटा लाभ लेना</h2>
     <div class="example">
-        <p class="match-info">मैच: एफसी अलीबाला बनाम डेपोर्टिवो लॉस नुगेटोस</p>
+        <p class="match-info">मैच: एफसी अलिबाला बनाम डिपोर्टिवो लॉस नुगेटोस</p>
         <p class="scenario-text">
-            9वें मिनट में एक गोल होता है। सट्टेबाज 15 मिनट पर अपना दांव लगाता है, और 21वें मिनट में दांव को फिर से बेचकर एक छोटा लाभ सुरक्षित करता है।
+            9वें मिनट में एक गोल होता है। सट्टेबाज 15वें मिनट में अपनी शर्त लगाता है, और 21वें मिनट में शर्त बेचकर एक छोटा लाभ सुरक्षित करता है।
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="स्टॉपवॉच आइकन" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="टाइमर आइकन" class="timer-icon">
             <div class="timer-display" id="timer5">00:00</div>
             <span class="action-point goal-indicator" id="goal5-1">गोल (9')</span>
-            <span class="action-point buy-indicator" id="buy5-1">दांव (15')</span>
-            <span class="action-point sell-indicator" id="sell5-1">बेचना (21')</span>
+            <span class="action-point buy-indicator" id="buy5-1">शर्त (15')</span>
+            <span class="action-point sell-indicator" id="sell5-1">बिक्री (21')</span>
         </div>
-        <button class="play-button" onclick="startScenario5()">परिदृश्य शुरू करें</button>
+        <button class="play-button" onclick="startScenario5()">परिदृश्य लॉन्च करें</button>
         <div class="stop-message win-message" id="stop-message-5" style="display:none;">
-            लाभ सुरक्षित! दांव को फिर से बेचा जाता है और सट्टेबाज बाजार छोड़ देता है।
+            लाभ सुरक्षित! शर्त बेच दी जाती है और सट्टेबाज बाजार से बाहर निकल जाता है।
         </div>
     </div>
 
-    <h2>परिदृश्य 6: स्थिति लेना</h2>
+    <h2>परिदृश्य 6: एक स्थिति लेना</h2>
     <div class="example">
-        <p class="match-info">मैच: एफसी अलीबाला बनाम डेपोर्टिवो लॉस नुगेटोस</p>
+        <p class="match-info">मैच: एफसी अलिबाला बनाम डिपोर्टिवो लॉस नुगेटोस</p>
         <p class="scenario-text">
-            गोल **18वें, 33वें, 47वें और 58वें मिनट** में होते हैं। एकमात्र नियम यह है कि एक ही समय में **कई स्थितियों** पर खेलने से बचें। स्टॉपवॉच को स्क्रीन से बाहर रखा गया है ताकि क्रियाओं पर ध्यान केंद्रित किया जा सके। मैच चौथे गोल के 12 मिनट बाद समाप्त होता है।
+            गोल **18वें, 33वें, 47वें और 58वें मिनट** में होते हैं। एकमात्र नियम एक ही समय में **कई पदों** को खेलने से बचना है। क्रियाओं पर ध्यान केंद्रित करने के लिए टाइमर फ्रेम से बाहर है। मैच चौथे गोल के 12 मिनट बाद समाप्त होता है।
             <br><br>
-            प्रत्येक गोल के बाद अपने दांव के लिए सही समय (5, 10 या 15 मिनट) खोजना आप पर निर्भर है। लक्ष्य प्रत्येक गोल के बाद **ऑड्स की चोटियों** का उपयोग करना है, क्योंकि गोल के 5 से 10 मिनट बाद **ऑड्स का गिरना** सबसे तेज़ होता है।
+            प्रत्येक गोल के बाद अपनी शर्त के लिए सही समय (5, 10 या 15 मिनट) खोजना आपके ऊपर है। लक्ष्य प्रत्येक गोल के बाद **ऑड्स के चरम** का उपयोग करना है, क्योंकि गोल के 5 से 10 मिनट बाद, **ऑड्स में गिरावट के चरम** सबसे तेज होते हैं।
         </p>
         <div class="timer-container" style="display: none;">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="स्टॉपवॉच आइकन" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="टाइमर आइकन" class="timer-icon">
             <div class="timer-display" id="timer6">00:00</div>
             <span class="action-point goal-indicator" id="goal6-1">गोल (18')</span>
-            <span class="action-point buy-indicator" id="buy6-1">दांव (20')</span>
-            <span class="action-point sell-indicator" id="sell6-1">बेचना (28')</span>
+            <span class="action-point buy-indicator" id="buy6-1">शर्त (20')</span>
+            <span class="action-point sell-indicator" id="sell6-1">बिक्री (28')</span>
             <span class="action-point goal-indicator" id="goal6-2">गोल (33')</span>
-            <span class="action-point buy-indicator" id="buy6-2">दांव (35')</span>
-            <span class="action-point sell-indicator" id="sell6-2">बेचना (43')</span>
+            <span class="action-point buy-indicator" id="buy6-2">शर्त (35')</span>
+            <span class="action-point sell-indicator" id="sell6-2">बिक्री (43')</span>
             <span class="action-point goal-indicator" id="goal6-3">गोल (47')</span>
-            <span class="action-point buy-indicator" id="buy6-3">दांव (49')</span>
-            <span class="action-point sell-indicator" id="sell6-3">बेचना (57')</span>
+            <span class="action-point buy-indicator" id="buy6-3">शर्त (49')</span>
+            <span class="action-point sell-indicator" id="sell6-3">बिक्री (57')</span>
             <span class="action-point goal-indicator" id="goal6-4">गोल (58')</span>
-            <span class="action-point buy-indicator" id="buy6-4">दांव (60')</span>
-            <span class="action-point sell-indicator" id="sell6-4">बेचना (68')</span>
+            <span class="action-point buy-indicator" id="buy6-4">शर्त (60')</span>
+            <span class="action-point sell-indicator" id="sell6-4">बिक्री (68')</span>
         </div>
-        <button class="play-button" onclick="startScenario6()">परिदृश्य शुरू करें</button>
+        <button class="play-button" onclick="startScenario6()">परिदृश्य लॉन्च करें</button>
         <div class="stop-message win-message" id="stop-message-6" style="display:none;">
-            मैच खत्म! परिदृश्य 70वें मिनट में, चौथे गोल के 12 मिनट बाद समाप्त हुआ।
+            मैच समाप्त! परिदृश्य चौथे गोल के 12 मिनट बाद, 70वें मिनट में समाप्त हुआ।
         </div>
-        <div class="action-taken">
-            क्रिया: लक्ष्य नियमों का पालन करते हुए मैच को समय पर समाप्त करना है।
-        </div>
-        <p class="important-note">मुख्य नियम: खेल चौथे गोल के 12 मिनट बाद, या नवीनतम 82m30 पर समाप्त होना चाहिए।</p>
+        <p class="important-note">मुख्य नियम: खेल चौथे गोल के 12 मिनट बाद, या **87m30s** से ​​पहले समाप्त होना चाहिए।</p>
     </div>
 
 </div>
@@ -312,7 +304,7 @@
 
         timerDisplay.textContent = '00:00';
 
-        // Reset action points for all scenarios
+        // Reset points d'action pour tous les scénarios
         if (scenario === 1) {
             document.getElementById('goal1-1').style.opacity = 0;
             document.getElementById('goal1-2').style.opacity = 0;
@@ -337,7 +329,7 @@
             clearInterval(scenario3Interval);
         }
         if (scenario === 4) {
-            // No action points to reset for this scenario
+            // Pas de points d'action à réinitialiser pour ce scénario
         }
         if (scenario === 5) {
             document.getElementById('goal5-1').style.opacity = 0;
@@ -363,7 +355,7 @@
         }
     }
 
-    function runTimer(scenario, actions) {
+    function runTimer(scenario, actions, finalTime) {
         const timerDisplay = document.getElementById(`timer${scenario}`);
         const stopMessage = document.getElementById(`stop-message-${scenario}`);
         
@@ -371,6 +363,8 @@
         let seconds = 0;
         let interval;
         let stopConditionMet = false;
+        let firstGoalTime = -1;
+        let secondGoalTime = -1;
 
         resetScenario(scenario);
 
@@ -386,18 +380,42 @@
                 minutes++;
             }
 
+            // Gestion des actions spécifiques (buts, paris)
             for (const action of actions) {
                 if (minutes === action.min && seconds === action.sec) {
                     const element = document.getElementById(action.id);
                     if (element) {
                         element.style.opacity = 1;
                     }
-                    if (action.stop) {
+
+                    // Logique pour le scénario 1
+                    if (scenario === 1 && action.id.startsWith('goal')) {
+                        if (firstGoalTime === -1) {
+                            firstGoalTime = minutes * 60 + seconds;
+                        } else {
+                            secondGoalTime = minutes * 60 + seconds;
+                            if (secondGoalTime - firstGoalTime <= 6 * 60) {
+                                stopConditionMet = true;
+                                if (stopMessage) {
+                                    stopMessage.style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+
+                    if (action.stop && scenario !== 1) {
                         stopConditionMet = true;
                         if (stopMessage) {
                             stopMessage.style.display = 'block';
                         }
                     }
+                }
+            }
+            
+            if (finalTime && minutes * 60 + seconds >= finalTime) {
+                stopConditionMet = true;
+                if (stopMessage) {
+                    stopMessage.style.display = 'block';
                 }
             }
 
@@ -410,7 +428,7 @@
     function startScenario1() {
         const actions = [
             { id: 'goal1-1', min: 9, sec: 0 },
-            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+            { id: 'goal1-2', min: 14, sec: 0 }
         ];
         runTimer(1, actions);
     }
@@ -474,7 +492,7 @@
         let interval;
         
         if (option === 'optionA') {
-            actionMessage.textContent = "विकल्प 1 चुना गया: अंडर 2.5 दांव बनाए रखा गया है। सट्टेबाज 42m30 तक इंतजार करता है। तीसरा गोल दांव को हरा देगा, जबकि गोल न होने पर वह जीत जाएगा।";
+            actionMessage.textContent = "विकल्प 1 चुना गया: 'अंडर 2.5 गोल' शर्त को बनाए रखा गया है। सट्टेबाज 42 मिनट 30 सेकंड तक प्रतीक्षा करता है। तीसरा गोल शर्त को हरा देगा, जबकि गोल की अनुपस्थिति इसे विजेता बना देगी।";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
             
@@ -490,7 +508,7 @@
 
                 if (scenario3Minutes >= 42 && scenario3Seconds >= 30) {
                     clearInterval(interval);
-                    stopMessage.textContent = "दांव या तो विजेता है या हारने वाला। जोखिम पूरी तरह से था।";
+                    stopMessage.textContent = "शर्त या तो जीत गई है या हार गई है। जोखिम कुल था।";
                     stopMessage.classList.add('lose-message');
                     stopMessage.style.display = 'block';
                 }
@@ -498,7 +516,7 @@
         }
         
         if (option === 'optionB') {
-            actionMessage.textContent = "विकल्प 2 चुना गया: 23 मिनट पर एक नया अंडर 2.5 दांव लगाया जाता है। लक्ष्य दोनों दांवों को 31m या 42m30 पर एक साथ बेचकर लाभ को सुरक्षित करना है।";
+            actionMessage.textContent = "विकल्प 2 चुना गया: 23 मिनट पर एक नई 'अंडर 2.5 गोल' शर्त लगाई गई है। लक्ष्य 31m या 42m30s पर दोनों शर्तों को एक साथ बेचना है ताकि लाभ सुरक्षित हो सके।";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
 
@@ -521,7 +539,7 @@
                 if (scenario3Minutes === 31 && scenario3Seconds === 0) {
                     document.getElementById('sell3-1').style.opacity = 1;
                     clearInterval(interval);
-                    stopMessage.textContent = "दोनों दांव 31वें मिनट पर बेच दिए गए। सट्टेबाज अपना लाभ सुरक्षित करता है और अगले मैच में जा सकता है।";
+                    stopMessage.textContent = "दोनों शर्तें 31वें मिनट में बेची गईं। सट्टेबाज अपना लाभ सुरक्षित करता है और अगले मैच में जा सकता है।";
                     stopMessage.classList.add('win-message');
                     stopMessage.style.display = 'block';
                 }
@@ -530,10 +548,8 @@
     }
 
     function startScenario4() {
-        const actions = [
-            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
-        ];
-        runTimer(4, actions);
+        const actions = [];
+        runTimer(4, actions, 45 * 60);
     }
     
     function startScenario5() {

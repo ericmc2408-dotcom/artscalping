@@ -83,7 +83,6 @@
         .goal-indicator { background-color: #F44336; }
         .buy-indicator { background-color: #4CAF50; }
         .sell-indicator { background-color: #376392; }
-
         .play-button {
             background-color: #4CAF50;
             color: white;
@@ -149,38 +148,35 @@
 <body>
 
 <div class="game-content">
-    <h1>Примеры практических ситуаций</h1>
+    <h1>Примеры практических случаев</h1>
 
-    <h2>Сценарий 1: Отказ</h2>
+    <h2>Сценарий 1: Выход</h2>
     <div class="example">
         <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
         <p class="scenario-text">
-            Первый гол забит на 9-й минуте, второй - на 14-й. Так как между двумя голами прошло менее 6 минут, мы отказываемся от матча.
+            Первый гол забит на 9-й минуте, а второй — на 14-й. Поскольку между двумя голами прошло менее 6 минут, мы выходим.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка таймера" class="timer-icon">
             <div class="timer-display" id="timer1">00:00</div>
             <span class="action-point goal-indicator" id="goal1-1">ГОЛ (9')</span>
             <span class="action-point goal-indicator" id="goal1-2">ГОЛ (14')</span>
         </div>
         <button class="play-button" onclick="startScenario1()">Запустить сценарий</button>
         <div class="stop-message lose-message" id="stop-message-1" style="display:none;">
-            СТОП! Два гола были забиты до 15-й минуты. Риск слишком высок, чтобы продолжать. Мы отказываемся от матча.
+            СТОП! Два гола были забиты менее чем за 6 минут. Выходим!
         </div>
-        <div class="action-taken">
-            Действие: Риск слишком высок, чтобы продолжать. Мы отказываемся от матча.
-        </div>
-        <p class="important-note">Ключевое правило: Если общее количество голов достигает 2 или более до 15-й минуты, мы отказываемся.</p>
+        <p class="important-note">Ключевое правило: Если два гола забиты менее чем за 6 минут, мы выходим из матча, независимо от времени.</p>
     </div>
     
     <h2>Сценарий 2: Идеальный удар</h2>
     <div class="example">
         <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
         <p class="scenario-text">
-            Гол забит рано, но мы следуем нашему методу для получения оптимальной прибыли.
+            Гол забит рано, но мы следуем нашему методу для оптимальной прибыли.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка таймера" class="timer-icon">
             <div class="timer-display" id="timer2">00:00</div>
             <span class="action-point goal-indicator" id="goal2-1">ГОЛ (9')</span>
             <span class="action-point buy-indicator" id="buy2-1">СТАВКА (15')</span>
@@ -193,19 +189,16 @@
         <div class="stop-message win-message" id="stop-message-2" style="display:none;">
             ПОБЕДА! Идеальный удар успешно выполнен.
         </div>
-        <div class="action-taken">
-            Действие: Мы получили прибыль от двух ставок в одном тайме. Правильный кэшаут - ключ к прибыльности.
-        </div>
     </div>
 
     <h2>Сценарий 3: Выбор игрока</h2>
     <div class="example">
         <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
         <p class="scenario-text">
-            Первый гол забит на 9-й минуте. Мы ждем 15-й минуты, чтобы сделать нашу ставку. Второй гол забит на 21-й минуте. В этот момент у игрока есть два варианта.
+            Первый гол забит на 9-й минуте. Мы ждем до 15-й минуты, чтобы сделать нашу ставку. Второй гол забит на 21-й минуте. В этот момент у игрока есть два варианта.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка таймера" class="timer-icon">
             <div class="timer-display" id="timer3">00:00</div>
             <span class="action-point goal-indicator" id="goal3-1">ГОЛ (9')</span>
             <span class="action-point buy-indicator" id="buy3-1">СТАВКА (15')</span>
@@ -215,13 +208,13 @@
         </div>
         <button class="play-button" id="play3" onclick="startScenario3()">Запустить сценарий</button>
         <div id="options3" style="display:none;">
-            <p class="cta-text">Забит второй гол! Ваша ставка Under 2.5 под угрозой. Что вы выберете?</p>
+            <p class="cta-text">Забит второй гол! Ваша ставка «Меньше 2.5 голов» в опасности. Что вы выбираете?</p>
             <div class="options-container">
                 <button class="option-button" onclick="continueScenario3('optionA')">
-                    Вариант 1: Оставить первую ставку и ждать 42м30
+                    Вариант 1: Мы оставляем первую ставку и ждем до 42м30с
                 </button>
                 <button class="option-button" onclick="continueScenario3('optionB')">
-                    Вариант 2: Сделать новую ставку и продать обе на 31м или 42м30
+                    Вариант 2: Мы делаем новую ставку и продаем обе на 31-й или 42-й минуте 30с
                 </button>
             </div>
         </div>
@@ -236,23 +229,24 @@
             Голов нет. Мы не играем. Мы ждем следующего матча.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка таймера" class="timer-icon">
             <div class="timer-display" id="timer4">00:00</div>
         </div>
         <button class="play-button" onclick="startScenario4()">Запустить сценарий</button>
         <div class="stop-message lose-message" id="stop-message-4" style="display:none;">
             Голов нет. Мы не играем. Мы ждем следующего матча.
         </div>
+        <p class="important-note">Ключевое правило: Если нет голов, матч не играбелен. Мы ждем следующего матча.</p>
     </div>
     
-    <h2>Сценарий 5: Небольшая фиксация прибыли</h2>
+    <h2>Сценарий 5: Маленькая фиксация прибыли</h2>
     <div class="example">
         <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
         <p class="scenario-text">
-            Гол забит на 9-й минуте. Игрок делает ставку на 15-й минуте и фиксирует небольшую прибыль на 21-й минуте, перепродав ставку.
+            Гол забит на 9-й минуте. Игрок делает ставку на 15-й минуте и фиксирует небольшую прибыль на 21-й минуте, продавая ставку.
         </p>
         <div class="timer-container">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка таймера" class="timer-icon">
             <div class="timer-display" id="timer5">00:00</div>
             <span class="action-point goal-indicator" id="goal5-1">ГОЛ (9')</span>
             <span class="action-point buy-indicator" id="buy5-1">СТАВКА (15')</span>
@@ -260,20 +254,20 @@
         </div>
         <button class="play-button" onclick="startScenario5()">Запустить сценарий</button>
         <div class="stop-message win-message" id="stop-message-5" style="display:none;">
-            Прибыль зафиксирована! Ставка перепродана, и игрок покидает рынок.
+            Прибыль зафиксирована! Ставка продана, и игрок выходит с рынка.
         </div>
     </div>
 
-    <h2>Сценарий 6: Занятие позиции</h2>
+    <h2>Сценарий 6: Занять позицию</h2>
     <div class="example">
         <p class="match-info">Матч: ФК Алибала против Депортиво Лос Нугеттос</p>
         <p class="scenario-text">
-            Голы забиваются на **18-й, 33-й, 47-й и 58-й минутах**. Единственное правило - избегать игры на **нескольких позициях** одновременно. Секундомер не отображается, чтобы сосредоточиться на действиях. Матч заканчивается через 12 минут после 4-го гола.
+            Голы забиты на **18-й, 33-й, 47-й и 58-й** минутах. Единственное правило — избегать игры **на нескольких позициях** одновременно. Таймер находится за кадром, чтобы сосредоточиться на действиях. Матч заканчивается через 12 минут после четвертого гола.
             <br><br>
-            Вам предстоит найти правильное время (5, 10 или 15 минут) для ваших ставок после каждого гола. Цель - использовать **пики коэффициентов** после каждого гола, потому что через 5-10 минут после гола **падение коэффициентов** самое быстрое.
+            Вам предстоит найти правильное время (5, 10 или 15 минут) для ваших ставок после каждого гола. Цель — использовать **пики коэффициентов** после каждого гола, так как через 5-10 минут после гола **пики падения коэффициентов** являются самыми быстрыми.
         </p>
         <div class="timer-container" style="display: none;">
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка секундомера" class="timer-icon">
+            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/timer.png" alt="Иконка таймера" class="timer-icon">
             <div class="timer-display" id="timer6">00:00</div>
             <span class="action-point goal-indicator" id="goal6-1">ГОЛ (18')</span>
             <span class="action-point buy-indicator" id="buy6-1">СТАВКА (20')</span>
@@ -290,12 +284,9 @@
         </div>
         <button class="play-button" onclick="startScenario6()">Запустить сценарий</button>
         <div class="stop-message win-message" id="stop-message-6" style="display:none;">
-            Матч окончен! Сценарий завершился через 12 минут после 4-го гола, на 70-й минуте.
+            Матч окончен! Сценарий завершился через 12 минут после четвертого гола, на 70-й минуте.
         </div>
-        <div class="action-taken">
-            Действие: Цель состоит в том, чтобы закончить матч вовремя, следуя правилам.
-        </div>
-        <p class="important-note">Ключевое правило: Игра должна закончиться через 12 минут после 4-го гола или самое позднее на 82м30.</p>
+        <p class="important-note">Ключевое правило: Игра должна закончиться через 12 минут после четвертого гола, или не позднее **87м30с**.</p>
     </div>
 
 </div>
@@ -312,7 +303,7 @@
 
         timerDisplay.textContent = '00:00';
 
-        // Reset action points for all scenarios
+        // Reset points d'action pour tous les scénarios
         if (scenario === 1) {
             document.getElementById('goal1-1').style.opacity = 0;
             document.getElementById('goal1-2').style.opacity = 0;
@@ -337,7 +328,7 @@
             clearInterval(scenario3Interval);
         }
         if (scenario === 4) {
-            // No action points to reset for this scenario
+            // Pas de points d'action à réinitialiser pour ce scénario
         }
         if (scenario === 5) {
             document.getElementById('goal5-1').style.opacity = 0;
@@ -363,7 +354,7 @@
         }
     }
 
-    function runTimer(scenario, actions) {
+    function runTimer(scenario, actions, finalTime) {
         const timerDisplay = document.getElementById(`timer${scenario}`);
         const stopMessage = document.getElementById(`stop-message-${scenario}`);
         
@@ -371,6 +362,8 @@
         let seconds = 0;
         let interval;
         let stopConditionMet = false;
+        let firstGoalTime = -1;
+        let secondGoalTime = -1;
 
         resetScenario(scenario);
 
@@ -386,18 +379,42 @@
                 minutes++;
             }
 
+            // Gestion des actions spécifiques (buts, paris)
             for (const action of actions) {
                 if (minutes === action.min && seconds === action.sec) {
                     const element = document.getElementById(action.id);
                     if (element) {
                         element.style.opacity = 1;
                     }
-                    if (action.stop) {
+
+                    // Logique pour le scénario 1
+                    if (scenario === 1 && action.id.startsWith('goal')) {
+                        if (firstGoalTime === -1) {
+                            firstGoalTime = minutes * 60 + seconds;
+                        } else {
+                            secondGoalTime = minutes * 60 + seconds;
+                            if (secondGoalTime - firstGoalTime <= 6 * 60) {
+                                stopConditionMet = true;
+                                if (stopMessage) {
+                                    stopMessage.style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+
+                    if (action.stop && scenario !== 1) {
                         stopConditionMet = true;
                         if (stopMessage) {
                             stopMessage.style.display = 'block';
                         }
                     }
+                }
+            }
+            
+            if (finalTime && minutes * 60 + seconds >= finalTime) {
+                stopConditionMet = true;
+                if (stopMessage) {
+                    stopMessage.style.display = 'block';
                 }
             }
 
@@ -410,7 +427,7 @@
     function startScenario1() {
         const actions = [
             { id: 'goal1-1', min: 9, sec: 0 },
-            { id: 'goal1-2', min: 14, sec: 0, stop: true }
+            { id: 'goal1-2', min: 14, sec: 0 }
         ];
         runTimer(1, actions);
     }
@@ -474,7 +491,7 @@
         let interval;
         
         if (option === 'optionA') {
-            actionMessage.textContent = "Вариант 1 выбран: Ставка Under 2.5 сохраняется. Игрок ждет 42m30. Третий гол приведет к проигрышу ставки, а его отсутствие - к выигрышу.";
+            actionMessage.textContent = "Выбран вариант 1: Ставка «Меньше 2.5 голов» сохраняется. Игрок ждет до 42 минут 30 секунд. Третий гол приведет к проигрышу ставки, а отсутствие гола сделает ее выигрышной.";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
             
@@ -490,7 +507,7 @@
 
                 if (scenario3Minutes >= 42 && scenario3Seconds >= 30) {
                     clearInterval(interval);
-                    stopMessage.textContent = "Ставка либо выигрышная, либо проигрышная. Риск был тотальным.";
+                    stopMessage.textContent = "Ставка либо выиграна, либо проиграна. Риск был тотальным.";
                     stopMessage.classList.add('lose-message');
                     stopMessage.style.display = 'block';
                 }
@@ -498,7 +515,7 @@
         }
         
         if (option === 'optionB') {
-            actionMessage.textContent = "Вариант 2 выбран: Новая ставка Under 2.5 делается на 23-й минуте. Цель - продать обе ставки вместе на 31-й или 42m30, чтобы зафиксировать прибыль.";
+            actionMessage.textContent = "Выбран вариант 2: Новая ставка «Меньше 2.5 голов» делается на 23-й минуте. Цель — продать обе ставки вместе на 31-й или 42-й минуте 30с, чтобы зафиксировать прибыль.";
             actionMessage.classList.remove('win-message', 'lose-message');
             actionMessage.style.display = 'block';
 
@@ -530,10 +547,8 @@
     }
 
     function startScenario4() {
-        const actions = [
-            { id: 'stop-message-4', min: 15, sec: 0, stop: true }
-        ];
-        runTimer(4, actions);
+        const actions = [];
+        runTimer(4, actions, 45 * 60);
     }
     
     function startScenario5() {
