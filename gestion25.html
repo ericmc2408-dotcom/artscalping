@@ -118,49 +118,43 @@
         const headers = lines[0].split(',').map(h => h.trim());
         const dataRows = lines.slice(1);
 
-        let winColIndex = headers.findIndex(h => h.toLowerCase() === 'win');
-        let loseColIndex = headers.findIndex(h => h.toLowerCase() === 'lose');
-        let m4230ColIndex = headers.findIndex(h => h.toLowerCase() === '42m30');
-        let m6ColIndex = headers.findIndex(h => h.toLowerCase() === '6 min');
-        
-        let winTotal = 0, loseTotal = 0, m4230Total = 0, m6Total = 0;
-        
-        const validDataRows = dataRows.filter(row => row.split(',').length === headers.length);
+        // Analyse de la ligne des totaux
+        const totalLine = dataRows[0].split(',').map(c => c.trim());
+        const totalMatches = totalLine[3] || '0';
+        const totalWins = totalLine[4] || '0';
+        const totalLoses = totalLine[5] || '0';
+        const total42m30 = totalLine[6] || '0';
+        const total6min = totalLine[7] || '0';
 
-        validDataRows.forEach(line => {
-            const row = line.split(',').map(c => c.trim());
-            if (winColIndex !== -1 && row[winColIndex] === '1') winTotal++;
-            if (loseColIndex !== -1 && row[loseColIndex] === '1') loseTotal++;
-            if (m4230ColIndex !== -1 && row[m4230ColIndex] === '1') m4230Total++;
-            if (m6ColIndex !== -1 && row[m6ColIndex] === '1') m6Total++;
-        });
-
-        const totalMatches = validDataRows.length;
-        const winRate = totalMatches > 0 ? ((winTotal / totalMatches) * 100).toFixed(2) : 0;
+        // Calcul du taux de réussite
+        const winRate = (parseInt(totalWins) / parseInt(totalMatches) * 100).toFixed(2);
         document.getElementById('success-rate').innerText = `TAUX DE RÉUSSITE : ${winRate}%`;
 
         let html = '<table><thead><tr>';
-        headers.forEach(header => {
-            html += `<th>${header}</th>`;
-        });
-        html += '</tr></thead><tbody>';
+        // En-têtes pour la ligne des totaux
+        html += `<th></th><th></th><th></th><th>total</th><th>win</th><th>lose</th><th>42m30</th><th>6 min</th></tr></thead><tbody>`;
 
-        let totalRowHtml = '<tr><td></td><td></td><td></td>';
-        totalRowHtml += `<td>${totalMatches}</td>`;
-        totalRowHtml += `<td>${winTotal}</td>`;
-        totalRowHtml += `<td>${loseTotal}</td>`;
-        totalRowHtml += `<td>${m4230Total}</td>`;
-        totalRowHtml += `<td>${m6Total}</td>`;
-        totalRowHtml += '</tr>';
-        html += totalRowHtml;
+        // Ligne des totaux
+        html += `<tr><td></td><td></td><td></td><td>${totalMatches}</td><td>${totalWins}</td><td>${totalLoses}</td><td>${total42m30}</td><td>${total6min}</td></tr>`;
 
-        validDataRows.forEach(line => {
+        // En-têtes pour les lignes de données
+        html += `<tr><th>Date</th><th>Équipe 1</th><th>Équipe 2</th><th></th><th></th><th></th><th></th><th></th></tr>`;
+        
+        // Génération des lignes de données
+        const matchRows = dataRows.slice(1);
+        const winColIndex = headers.findIndex(h => h.toLowerCase() === 'win');
+        const loseColIndex = headers.findIndex(h => h.toLowerCase() === 'lose');
+        const m4230ColIndex = headers.findIndex(h => h.toLowerCase() === '42m30');
+        const m6ColIndex = headers.findIndex(h => h.toLowerCase() === '6 min');
+
+        matchRows.forEach(line => {
             const row = line.split(',').map(c => c.trim());
             html += '<tr>';
             row.forEach((cell, index) => {
                 let cellClass = '';
                 let cellValue = cell;
 
+                // Appliquer la classe de couleur si la colonne contient '1'
                 if (index === winColIndex && cellValue === '1') {
                     cellClass = 'cell-win';
                 } else if (index === loseColIndex && cellValue === '1') {
