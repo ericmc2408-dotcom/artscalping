@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Afficher gestion25.csv</title>
+  <meta charset="UTF-8" />
+  <title>Affichage gestion25.csv</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <style>
     table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+    th, td { border: 1px solid black; padding: 6px 10px; text-align: left; }
   </style>
 </head>
 <body>
@@ -15,24 +15,41 @@
   <script>
     Papa.parse('/gestion25.csv', {
       download: true,
+      delimiter: ';',
       header: true,
+      skipEmptyLines: true,
       complete: function(results) {
+        if(results.errors.length) {
+          document.getElementById('table-container').innerText = 'Erreur lors du parsing du fichier CSV.';
+          console.error(results.errors);
+          return;
+        }
+        const fields = results.meta.fields.filter(f => f.trim() !== '');
+        if(fields.length === 0) {
+          document.getElementById('table-container').innerText = 'Aucune donnée valide trouvée.';
+          return;
+        }
         let table = '<table><thead><tr>';
-        for (let col of results.meta.fields) {
+        for (let col of fields) {
           table += `<th>${col}</th>`;
         }
         table += '</tr></thead><tbody>';
         for (let row of results.data) {
           table += '<tr>';
-          for (let col of results.meta.fields) {
-            table += `<td>${row[col]||''}</td>`;
+          for (let col of fields) {
+            table += `<td>${row[col] || ''}</td>`;
           }
           table += '</tr>';
         }
         table += '</tbody></table>';
         document.getElementById('table-container').innerHTML = table;
+      },
+      error: function(err) {
+        document.getElementById('table-container').innerText = 'Erreur lors du chargement du fichier CSV.';
+        console.error(err);
       }
     });
   </script>
 </body>
 </html>
+
