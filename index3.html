@@ -356,16 +356,6 @@
         </div>
         <ul class="menu-list">
             <li class="menu-item">
-                <a href="#" class="menu-link" data-content-type="csv" data-file="historique_under25.csv" id="link-past-under-2-5">
-                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 2.5</span><span class="text-en" style="display:none;">Historical Under 2.5</span><span class="text-es" style="display:none;">Historial Under 2.5</span><span class="text-zh" style="display:none;">历史 Under 2.5</span><span class="text-de" style="display:none;">Historie Under 2.5</span><span class="text-pt" style="display:none;">Histórico Under 2.5</span><span class="text-ar" style="display:none;">تاريخ Under 2.5</span><span class="text-hi" style="display:none;">अंडर 2.5 इतिहास</span><span class="text-ja" style="display:none;">Under 2.5 履歴</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="#" class="menu-link" data-content-type="csv" data-file="historique_under45.csv" id="link-past-under-4-5">
-                    <span class="icon">&#x1F4CA;</span><span class="text-fr">Historique Under 4.5</span><span class="text-en" style="display:none;">Historical Under 4.5</span><span class="text-es" style="display:none;">Historial Under 4.5</span><span class="text-zh" style="display:none;">历史 Under 4.5</span><span class="text-de" style="display:none;">Historie Under 4.5</span><span class="text-pt" style="display:none;">Histórico Under 4.5</span><span class="text-ar" style="display:none;">تاريخ Under 4.5</span><span class="text-hi" style="display:none;">अंडर 4.5 इतिहास</span><span class="text-ja" style="display:none;">Under 4.5 履歴</span>
-                </a>
-            </li>
-            <li class="menu-item">
                 <a href="#" class="menu-link" data-content-type="csv" data-file="gestion25.csv" id="link-results-under-2-5">
                     <span class="icon">&#x1F4C8;</span><span class="text-fr">Résultats Under 2.5 1HT</span><span class="text-en" style="display:none;">Results Under 2.5 1HT</span><span class="text-es" style="display:none;">Resultados Under 2.5 1HT</span><span class="text-zh" style="display:none;">结果 Under 2.5 1HT</span><span class="text-de" style="display:none;">Ergebnisse Under 2.5 1HT</span><span class="text-pt" style="display:none;">Resultados Under 2.5 1HT</span><span class="text-ar" style="display:none;">نتائج Under 2.5 1HT</span><span class="text-hi" style="display:none;">परिणाम Under 2.5 1HT</span><span class="text-ja" style="display:none;">結果 Under 2.5 1HT</span>
                 </a>
@@ -381,7 +371,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="paiement_neteller.html" class="menu-link subscribe" data-content-type="iframe" id="link-subscribe">
+                <a href="payment.html" class="menu-link subscribe" data-content-type="iframe" id="link-subscribe">
                     <span class="icon">&#x1F4B3;</span><span class="text-fr">Abonnement</span><span class="text-en" style="display:none;">Subscription</span><span class="text-es" style="display:none;">Suscripción</span><span class="text-zh" style="display:none;">订阅</span><span class="text-de" style="display:none;">Abonnement</span><span class="text-pt" style="display:none;">Assinatura</span><span class="text-ar" style="display:none;">اشتراك</span><span class="text-hi" style="display:none;">सदस्यता</span><span class="text-ja" style="display:none;">購読</span>
                 </a>
             </li>
@@ -601,7 +591,8 @@
         // Charger la page d'accueil par défaut
         window.addEventListener('DOMContentLoaded', () => {
             setLanguage('fr');
-            showContent('home');
+            contentIframe.src = 'accueil.html';
+            showContent('iframe');
         });
 
         // Gestion du titre cliquable
