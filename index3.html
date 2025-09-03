@@ -179,21 +179,21 @@
         #data-table tbody tr:hover {
             background-color: #3f586a;
         }
-        
-        /* Styles pour les 4 dernières colonnes des tableaux de gestion */
-        #data-table td:nth-last-child(4) {
+
+        /* NOUVEAU: Styles pour les cellules individuelles */
+        td.green-cell {
             background-color: green;
             color: white;
         }
-        #data-table td:nth-last-child(3) {
+        td.red-cell {
             background-color: red;
             color: white;
         }
-        #data-table td:nth-last-child(2) {
+        td.blue-cell {
             background-color: blue;
             color: white;
         }
-        #data-table td:nth-last-child(1) {
+        td.orange-cell {
             background-color: orange;
             color: black;
         }
@@ -304,18 +304,16 @@
         const contentIframe = document.getElementById('content-iframe');
         const siteTitle = document.getElementById('site-title');
         
-        // La fonction pour les traductions est toujours là
         const translations = {
             fr: {
                 title: "Menu Principal - ArtScalping",
                 contactSubject: "Question concernant ArtScalping",
                 trialSubject: "Demande d'essai gratuit ArtScalping",
             },
-            // ... autres langues
+            // Les autres traductions (en, es, zh, de, pt, ar, hi, ja) ne sont pas incluses pour des raisons de concision, mais elles devraient être ajoutées ici.
         };
 
         function setLanguage(lang) {
-            // Logique de changement de langue
             document.documentElement.lang = lang;
             document.querySelectorAll('[class^="text-"]').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.language-switcher img').forEach(el => el.classList.remove('active'));
@@ -409,8 +407,11 @@
             contentIframe.style.display = 'block';
         });
 
-        // Suppression de la logique pour le titre cliquable car il n'y a plus de page d'accueil simple
-        // siteTitle.addEventListener('click', () => { ... });
+        siteTitle.addEventListener('click', () => {
+            contentIframe.src = 'accueil.html';
+            tableContainer.style.display = 'none';
+            contentIframe.style.display = 'block';
+        });
     </script>
 </body>
 </html>
