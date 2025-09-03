@@ -180,7 +180,6 @@
             background-color: #3f586a;
         }
 
-        /* NOUVEAU: Styles pour les cellules individuelles */
         td.green-cell {
             background-color: green;
             color: white;
@@ -349,18 +348,13 @@
                         let cellClasses = '';
                         const trimmedValue = value.trim();
 
-                        if (filePath.includes('gestion25.csv')) {
-                            const reversedIndex = totalColumns - index;
-                            if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'orange-cell';
-                            if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'blue-cell';
-                            if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'red-cell';
-                            if (reversedIndex === 4 && trimmedValue === '1') cellClasses = 'green-cell';
-                        }
-                        else if (filePath.includes('gestion45.csv') || filePath.includes('gestion451.csv')) {
-                            const reversedIndex = totalColumns - index;
-                            if (reversedIndex === 1 && trimmedValue === '1') cellClasses = 'blue-cell';
-                            if (reversedIndex === 2 && trimmedValue === '1') cellClasses = 'red-cell';
-                            if (reversedIndex === 3 && trimmedValue === '1') cellClasses = 'green-cell';
+                        // Logique de coloration unifiée pour tous les fichiers de gestion
+                        const reversedIndex = totalColumns - index;
+                        if (trimmedValue === '1') {
+                            if (reversedIndex === 1) cellClasses = 'orange-cell';
+                            if (reversedIndex === 2) cellClasses = 'blue-cell';
+                            if (reversedIndex === 3) cellClasses = 'red-cell';
+                            if (reversedIndex === 4) cellClasses = 'green-cell';
                         }
                         
                         if (cellClasses) {
