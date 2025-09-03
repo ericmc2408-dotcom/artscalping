@@ -22,7 +22,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #2C3A4D;
+            background-color: #2C4B5E;
             margin-top: 20px;
         }
         thead {
@@ -89,7 +89,7 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', () => {
         const csvFilePath = 'gestion25.csv';
 
         fetch(csvFilePath)
@@ -115,57 +115,61 @@
             return '<p style="text-align:center;">Fichier CSV vide ou mal formaté.</p>';
         }
 
-        const headers = lines[0].split(',').map(h => h.trim());
+        // Détection du délimiteur (virgule ou point-virgule)
+        const delimiter = lines[0].includes(';') ? ';' : ',';
+        const headers = lines[0].split(delimiter).map(h => h.trim());
         const dataRows = lines.slice(1);
 
-        // Analyse de la ligne des totaux
-        const totalLine = dataRows[0].split(',').map(c => c.trim());
-        const totalMatches = totalLine[3] || '0';
-        const totalWins = totalLine[4] || '0';
-        const totalLoses = totalLine[5] || '0';
-        const total42m30 = totalLine[6] || '0';
-        const total6min = totalLine[7] || '0';
-
-        // Calcul du taux de réussite
-        const winRate = (parseInt(totalWins) / parseInt(totalMatches) * 100).toFixed(2);
-        document.getElementById('success-rate').innerText = `TAUX DE RÉUSSITE : ${winRate}%`;
-
-        let html = '<table><thead><tr>';
-        // En-têtes pour la ligne des totaux
-        html += `<th></th><th></th><th></th><th>total</th><th>win</th><th>lose</th><th>42m30</th><th>6 min</th></tr></thead><tbody>`;
-
-        // Ligne des totaux
-        html += `<tr><td></td><td></td><td></td><td>${totalMatches}</td><td>${totalWins}</td><td>${totalLoses}</td><td>${total42m30}</td><td>${total6min}</td></tr>`;
-
-        // En-têtes pour les lignes de données
-        html += `<tr><th>Date</th><th>Équipe 1</th><th>Équipe 2</th><th></th><th></th><th></th><th></th><th></th></tr>`;
-        
-        // Génération des lignes de données
-        const matchRows = dataRows.slice(1);
         const winColIndex = headers.findIndex(h => h.toLowerCase() === 'win');
         const loseColIndex = headers.findIndex(h => h.toLowerCase() === 'lose');
         const m4230ColIndex = headers.findIndex(h => h.toLowerCase() === '42m30');
         const m6ColIndex = headers.findIndex(h => h.toLowerCase() === '6 min');
+        
+        let winTotal = 0;
+        let loseTotal = 0;
+        let m4230Total = 0;
+        let m6Total = 0;
+        let totalMatches = 0;
 
+        // Tente de lire les totaux de la deuxième ligne
+        if (dataRows.length > 0 && dataRows[0].split(delimiter).length >= 8) {
+            const totalsLine = dataRows[0].split(delimiter).map(c => c.trim());
+            totalMatches = parseInt(totalsLine[3]) || 0;
+            winTotal = parseInt(totalsLine[4]) || 0;
+            loseTotal = parseInt(totalsLine[5]) || 0;
+            m4230Total = parseInt(totalsLine[6]) || 0;
+            m6Total = parseInt(totalsLine[7]) || 0;
+        }
+        
+        const winRate = totalMatches > 0 ? ((winTotal / totalMatches) * 100).toFixed(2) : 0;
+        document.getElementById('success-rate').innerText = `TAUX DE RÉUSSITE : ${winRate}%`;
+
+        let html = '<table><thead><tr>';
+        html += `<th></th><th></th><th></th><th>total</th><th>win</th><th>lose</th><th>42m30</th><th>6 min</th></tr></thead><tbody>`;
+
+        html += `<tr><td></td><td></td><td></td><td>${totalMatches}</td><td>${winTotal}</td><td>${loseTotal}</td><td>${m4230Total}</td><td>${m6Total}</td></tr>`;
+
+        html += `<tr><th>Date</th><th>Équipe 1</th><th>Équipe 2</th><th></th><th></th><th></th><th></th><th></th></tr>`;
+        
+        const matchRows = dataRows.slice(1);
         matchRows.forEach(line => {
-            const row = line.split(',').map(c => c.trim());
+            const row = line.split(delimiter).map(c => c.trim());
+            if (row.length < 8) return; // Skip malformed rows
             html += '<tr>';
             row.forEach((cell, index) => {
                 let cellClass = '';
-                let cellValue = cell;
-
-                // Appliquer la classe de couleur si la colonne contient '1'
-                if (index === winColIndex && cellValue === '1') {
+                
+                if (index === winColIndex && cell === '1') {
                     cellClass = 'cell-win';
-                } else if (index === loseColIndex && cellValue === '1') {
+                } else if (index === loseColIndex && cell === '1') {
                     cellClass = 'cell-lose';
-                } else if (index === m4230ColIndex && cellValue === '1') {
+                } else if (index === m4230ColIndex && cell === '1') {
                     cellClass = 'cell-42m30';
-                } else if (index === m6ColIndex && cellValue === '1') {
+                } else if (index === m6ColIndex && cell === '1') {
                     cellClass = 'cell-6min';
                 }
                 
-                html += `<td class="${cellClass}">${cellValue}</td>`;
+                html += `<td class="${cellClass}">${cell}</td>`;
             });
             html += '</tr>';
         });
