@@ -90,7 +90,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        // Le chemin du fichier CSV, qui doit être sur votre site
         const csvFilePath = 'gestion25.csv';
 
         fetch(csvFilePath)
@@ -146,7 +145,6 @@
         });
         html += '</tr></thead><tbody>';
 
-        // Ligne de totaux
         let totalRowHtml = '<tr><td></td><td></td><td></td>';
         totalRowHtml += `<td>${totalMatches}</td>`;
         totalRowHtml += `<td>${winTotal}</td>`;
@@ -156,7 +154,6 @@
         totalRowHtml += '</tr>';
         html += totalRowHtml;
 
-        // Génération des lignes de données
         validDataRows.forEach(line => {
             const row = line.split(',').map(c => c.trim());
             html += '<tr>';
@@ -164,7 +161,6 @@
                 let cellClass = '';
                 let cellValue = cell;
 
-                // Appliquer la classe de couleur si la colonne contient '1'
                 if (index === winColIndex && cellValue === '1') {
                     cellClass = 'cell-win';
                 } else if (index === loseColIndex && cellValue === '1') {
