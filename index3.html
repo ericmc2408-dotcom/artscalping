@@ -281,7 +281,7 @@
             </li>
             <li class="menu-item">
                 <a href="index2.html" class="menu-link" id="link-menu">
-                    <span class="icon">&#x2190;</span><span class="text-fr">Menu</span><span class="text-en" style="display:none;">Menu</span><span class="text-es" style="display:none;">Menú</span><span class="text-zh" style="display:none;">菜单</span><span class="text-de" style="display:none;">Menü</span><span class="text-pt" style="display:none;">Cardápio</span><span class="text-ar" style="display:none;">قائمة</span><span class="text-hi" style="display:none;">मेन्यू</span><span class="text-ja" style="display:none;">メニュー</span>
+                    <span class="icon">&#x1F3E0;</span><span class="text-fr">Menu</span><span class="text-en" style="display:none;">Menu</span><span class="text-es" style="display:none;">Menú</span><span class="text-zh" style="display:none;">菜单</span><span class="text-de" style="display:none;">Menü</span><span class="text-pt" style="display:none;">Cardápio</span><span class="text-ar" style="display:none;">قائمة</span><span class="text-hi" style="display:none;">मेन्यू</span><span class="text-ja" style="display:none;">メニュー</span>
                 </a>
             </li>
             <li class="menu-item">
@@ -375,7 +375,6 @@
         links.forEach(link => {
             link.addEventListener('click', async (e) => {
                 const contentType = link.dataset.contentType;
-                // Le lien "Menu" n'a pas d'attribut data-content-type
                 if (contentType) {
                     e.preventDefault();
                     
@@ -400,7 +399,6 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             setLanguage('fr');
-            // Affiche accueil.html par défaut dans la frame droite
             contentIframe.src = 'accueil.html';
             contentIframe.style.display = 'block';
         });
