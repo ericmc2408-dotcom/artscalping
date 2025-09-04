@@ -53,7 +53,7 @@
             height: 100%;
             transition: opacity 0.5s ease-out;
         }
-
+        
         .animated-text {
             display: block;
             white-space: pre-wrap;
@@ -119,7 +119,7 @@
 
         .scene-container {
             max-width: 600px;
-            color: #d1d1d1;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -129,14 +129,14 @@
 
         .scene-title {
             font-size: 2.2em;
-            color: #fff;
+            color: #fff; /* Default color if not specified inline */
             font-weight: bold;
             margin-bottom: 0.5em;
         }
 
         .scene-subtitle {
             font-size: 1em;
-            color: #b0b0b0;
+            color: #b0b0b0; /* Default color if not specified inline */
             margin-bottom: 1.5em;
         }
 
@@ -255,7 +255,7 @@
             `,
             `
                 <div class="scene-container">
-                    <h2 class="scene-title"><strong>Selecting the Safest Bets</strong></h2>
+                    <h2 class="scene-title" style="color: #FFD700;"><strong>Selecting the Safest Bets</strong></h2>
                     <p class="scene-subtitle">A secret equation, patiently crafted and tested.</p>
                     <p class="scene-text">These success rates are the result of in-depth analysis, combining performance indicators and sequences.</p>
                     <p class="scene-rate">Success Rate: 92 to 94%</p>
@@ -267,37 +267,18 @@
             `,
             `
                 <div class="scene-container">
-                    <h2 class="scene-title">Rules of Our Complete Strategy</h2>
-                    <p class="animated-subtitle" style="font-size: 0.9em;">A strategy with 98 to 100% precision.</p>
-                    <div class="rules-box">
-                        <p class="box-title">Under 4.5</p>
-                        <div class="rules-list">
-                            <p>Stop Loss: Exit the bet at 86 minutes 30 seconds or 12 minutes after the 4th goal.</p>
-                            <p>Scalping / Cash Out: The success rate increases after each goal.</p>
-                            <p>Condition: Do not bet on the next goal until your current bet has finished.</p>
-                        </div>
-                    </div>
-
-                    <div class="rules-box">
-                        <p class="box-title">Under 2.5 1st Half - 6-6-10 Rule</p>
-                        <div class="rules-list">
-                            <p>Main Rule: We wait for the first goal and cash out after the 2nd goal.</p>
-                            <p>No-Play Condition: If 2 goals are scored within 6 minutes, we do not play. We make an entry at the 7th minute and cash out or lay after 6 minutes. If a 2nd goal is scored, we take the stabilized bet (30 seconds to 1 minute) and cash out after 10 minutes.</p>
-                            <p>Stop Loss: Exit the bet at 42 minutes 30 seconds.</p>
-                            <p>Scalping / Cash Out: The success rate increases after each goal.</p>
-                            <p>Condition: Do not bet on the next goal until your current bet has finished.</p>
-                        </div>
-                    </div>
-
-                    <p class="final-text">By applying these rules, the success rate increases from 92-94% to 98-100%.</p>
+                    <h2 class="scene-title" style="color: #FFD700;">Master Your Risk</h2>
+                    <p class="animated-subtitle" style="color: #d1d1d1;">Our method doesn't just identify bets; it guides you to minimize risk.</p>
+                    <p class="scene-text" style="color: #ADD8E6;">By applying our stake management rules, you transform a high-performance strategy into an ultra-secure investment system.</p>
+                    <p class="final-text" style="color: #d1d1d1;">All detailed rules are available in the <span style="font-size: 1.2em; font-weight: bold; color: #FFD700;">Games</span> section of the main menu.</p>
                 </div>
             `,
             `
                 <div class="scene-container">
-                    <h2 class="scene-title">The Ferrari Analogy</h2>
-                    <p class="ferrari-text">We offer you a high-performance tool. But like with a Ferrari, power alone is not enough. Without a competent driver, the best car ends up in the ditch.</p>
-                    <p class="ferrari-text">The ArtScalping method is a Ferrari. Patience, discipline, and intelligence are the skills you need to drive it and earn substantial profits.</p>
-                    <p class="ferrari-text">Self-control is the key to transforming this tool into a true money-making machine.</p>
+                    <h2 class="scene-title" style="color: #FFD700;">The Ferrari Analogy</h2>
+                    <p class="ferrari-text" style="color: #d1d1d1;">We offer you a high-performance tool. But like a Ferrari, power alone is not enough. Without a skilled driver, the best car ends up in the ditch.</p>
+                    <p class="ferrari-text" style="color: #ADD8E6;">The ArtScalping method is a Ferrari. Patience, discipline, and intelligence are the skills you need to drive it and earn substantial profits.</p>
+                    <p class="ferrari-text" style="color: #d1d1d1;">Self-control is the key to transforming this tool into a true money-making machine.</p>
                     <a href="index2_en.html" class="start-btn">Start the Method</a>
                 </div>
             `
