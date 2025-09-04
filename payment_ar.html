@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head><script type='text/javascript' src='https://private-us-east-1.manuscdn.com/YXw-qlH1k2YkgodTdMHs6wvUf86nykxeDwua0wQRiP3hYuIZ8qc1SB4MTV_s46gZxKmkvtbwNYVHL4_P1r8IIw=='></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtScalping - صفحة الدفع</title>
     <style>
-        /* احتفاظ بنمط CSS الأصلي */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
+
         .container {
             background: white;
             border-radius: 20px;
@@ -29,6 +30,7 @@
             overflow: hidden;
             animation: slideUp 0.6s ease-out;
         }
+
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -39,35 +41,40 @@
                 transform: translateY(0);
             }
         }
+
         .header {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
             padding: 40px;
             text-align: center;
         }
+
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
             font-weight: 700;
         }
+
         .header p {
             font-size: 1.1rem;
             opacity: 0.9;
         }
+
         .content {
             padding: 40px;
-            direction: rtl;
-            text-align: right;
         }
+
         .pricing-section {
             margin-bottom: 40px;
         }
+
         .pricing-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
+
         .pricing-card {
             border: 2px solid #e1e8ed;
             border-radius: 15px;
@@ -78,15 +85,18 @@
             position: relative;
             overflow: hidden;
         }
+
         .pricing-card:hover {
             border-color: #667eea;
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
         }
+
         .pricing-card.selected {
             border-color: #667eea;
             background: linear-gradient(135deg, #667eea10, #764ba210);
         }
+
         .pricing-card::before {
             content: '';
             position: absolute;
@@ -97,109 +107,131 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s;
         }
+
         .pricing-card:hover::before {
             left: 100%;
         }
+
         .card-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 15px;
             color: #2c3e50;
         }
+
         .card-price {
             font-size: 3rem;
             font-weight: 700;
             color: #667eea;
             margin-bottom: 20px;
         }
+
         .card-features {
             list-style: none;
             margin-bottom: 25px;
         }
+
         .card-features li {
             padding: 8px 0;
             color: #666;
             position: relative;
-            padding-right: 25px;
+            padding-right: 25px; /* Changed for RTL */
+            padding-left: 0; /* Changed for RTL */
         }
+
         .card-features li::before {
             content: '✓';
             position: absolute;
-            right: 0;
+            right: 0; /* Changed for RTL */
+            left: auto; /* Changed for RTL */
             color: #27ae60;
             font-weight: bold;
         }
+
         .payment-section {
             background: #f8f9fa;
             border-radius: 15px;
             padding: 30px;
             margin-top: 30px;
-            direction: rtl;
-            text-align: right;
         }
+
         .payment-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 25px;
+            text-align: center;
             color: #2c3e50;
         }
+
         .payment-methods {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
+
         .payment-method {
             background: white;
             border: 2px solid #e1e8ed;
             border-radius: 10px;
             padding: 20px;
+            text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-align: center;
         }
+
         .payment-method:hover {
             border-color: #667eea;
             transform: scale(1.02);
         }
+
         .payment-method.selected {
             border-color: #667eea;
             background: #667eea;
             color: white;
         }
+
         .payment-method img {
             width: 60px;
             height: 40px;
             object-fit: contain;
             margin-bottom: 10px;
         }
+
         .payment-method h3 {
             font-size: 1.1rem;
             margin-bottom: 5px;
         }
+
         .payment-details {
             background: white;
             border-radius: 10px;
             padding: 25px;
             margin-top: 20px;
-            border-left: 4px solid #667eea;
+            border-right: 4px solid #667eea; /* Changed for RTL */
+            border-left: none; /* Changed for RTL */
         }
+
         .payment-info {
             display: none;
         }
+
         .payment-info.active {
             display: block;
         }
+
         .payment-info h4 {
             color: #2c3e50;
             margin-bottom: 15px;
             font-size: 1.2rem;
         }
+
         .payment-info p {
             margin-bottom: 10px;
             line-height: 1.6;
             color: #666;
         }
+
         .email-highlight {
             background: #667eea;
             color: white;
@@ -209,6 +241,7 @@
             display: inline-block;
             margin: 10px 0;
         }
+
         .cta-button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -222,28 +255,32 @@
             width: 100%;
             margin-top: 20px;
         }
+
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
+
         .features-list {
             background: #f8f9fa;
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
         }
+
         .features-list h3 {
             color: #2c3e50;
             margin-bottom: 20px;
             font-size: 1.3rem;
             text-align: center;
-            direction: rtl;
         }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
+
         .feature-item {
             display: flex;
             align-items: center;
@@ -252,9 +289,11 @@
             border-radius: 8px;
             transition: transform 0.2s ease;
         }
+
         .feature-item:hover {
             transform: translateX(5px);
         }
+
         .feature-icon {
             width: 20px;
             height: 20px;
@@ -265,25 +304,32 @@
             justify-content: center;
             color: white;
             font-size: 12px;
-            margin-left: 15px;
+            margin-left: 15px; /* Changed for RTL */
+            margin-right: 0; /* Changed for RTL */
             flex-shrink: 0;
         }
+
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
             }
+            
             .header {
                 padding: 30px 20px;
             }
+            
             .header h1 {
                 font-size: 2rem;
             }
+            
             .content {
                 padding: 30px 20px;
             }
+            
             .pricing-cards {
                 grid-template-columns: 1fr;
             }
+            
             .payment-methods {
                 grid-template-columns: 1fr;
             }
@@ -294,45 +340,48 @@
     <div class="container">
         <div class="header">
             <h1>ArtScalping</h1>
-            <p>الوصول المتميز إلى استراتيجيات التداول الخاصة بنا</p>
+            <p>الوصول المميز إلى استراتيجيات التداول لدينا</p>
         </div>
+        
         <div class="content">
             <div class="features-list">
-                <h3>تتضمن اشتراكك:</h3>
+                <h3>اشتراكك يتضمن:</h3>
                 <div class="features-grid">
                     <div class="feature-item">
                         <div class="feature-icon">✓</div>
-                        <span>وصول آمن وخاص إلى قائمة <strong>”مباريات اليوم“</strong></span>
+                        <span>وصول آمن وخاص إلى جدول <strong>'مباريات اليوم'</strong> الخاص بنا</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">✓</div>
-                        <span>تحليلات ونصائح بناءً على طريقتنا الفريدة للتداول السريع</span>
+                        <span>تحليلات ونصائح بناءً على طريقة السكالبينج الفريدة لدينا</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">✓</div>
-                        <span>استراتيجية مصممة <strong>لحماية رأس مالك</strong> وتعظيم أرباحك</span>
+                        <span>استراتيجية مصممة <strong>لحماية رأس مالك</strong> وزيادة الأرباح</span>
                     </div>
                 </div>
             </div>
+
             <div class="pricing-section">
                 <div class="pricing-cards">
                     <div class="pricing-card" data-plan="monthly" data-price="120">
-                        <div class="card-title">اشتراك شهري</div>
+                        <div class="card-title">الاشتراك الشهري</div>
                         <div class="card-price">120€</div>
                         <ul class="card-features">
-                            <li>وصول كامل لمدة شهر</li>
-                            <li>قائمة "مباريات اليوم"</li>
+                            <li>وصول كامل لمدة شهر واحد</li>
+                            <li>جدول 'مباريات اليوم'</li>
                             <li>تحليلات يومية</li>
-                            <li>دعم عملاء أولوية</li>
+                            <li>دعم العملاء ذو الأولوية</li>
                             <li>استراتيجيات حماية رأس المال</li>
                         </ul>
                     </div>
+                    
                     <div class="pricing-card" data-plan="weekend" data-price="30">
-                        <div class="card-title">وصول عطلة نهاية الأسبوع</div>
+                        <div class="card-title">وصول نهاية الأسبوع</div>
                         <div class="card-price">30€</div>
                         <ul class="card-features">
-                            <li>وصول فقط لعطلة نهاية الأسبوع</li>
-                            <li>مباريات عطلة نهاية الأسبوع</li>
+                            <li>وصول نهاية الأسبوع فقط</li>
+                            <li>مباريات نهاية الأسبوع</li>
                             <li>تحليلات متخصصة</li>
                             <li>استراتيجيات قصيرة المدى</li>
                             <li>دعم عبر البريد الإلكتروني</li>
@@ -340,133 +389,158 @@
                     </div>
                 </div>
             </div>
+
             <div class="payment-section">
-                <h2 class="payment-title">اختر طريقة الدفع الخاصة بك</h2>
+                <h2 class="payment-title">اختر طريقة الدفع</h2>
+                
                 <div class="payment-methods">
                     <div class="payment-method" data-method="neteller">
                         <div style="font-size: 2rem; margin-bottom: 10px;">💳</div>
                         <h3>Neteller</h3>
                         <p>دفع آمن</p>
                     </div>
+                    
                     <div class="payment-method" data-method="skrill">
                         <div style="font-size: 2rem; margin-bottom: 10px;">🏦</div>
                         <h3>Skrill</h3>
                         <p>تحويل سريع</p>
                     </div>
+                    
                     <div class="payment-method" data-method="paypal">
                         <div style="font-size: 2rem; margin-bottom: 10px;">💰</div>
                         <h3>PayPal</h3>
                         <p>تبرع آمن</p>
                     </div>
                 </div>
+
                 <div class="payment-details">
                     <div class="payment-info" id="neteller-info">
-                        <h4>تعليمات الدفع Neteller</h4>
-                        <p><strong>1.</strong> سجّل الدخول إلى حساب Neteller الخاص بك</p>
-                        <p><strong>2.</strong> اختر خيار "تحويل الأموال" أو "إرسال مال"</p>
-                        <p><strong>3.</strong> أدخل عنوان البريد الإلكتروني لحسابنا Neteller:</p>
+                        <h4>تعليمات الدفع عبر Neteller</h4>
+                        <p><strong>1.</strong> قم بتسجيل الدخول إلى حسابك في Neteller</p>
+                        <p><strong>2.</strong> اختر خيار 'تحويل الأموال' أو 'إرسال الأموال'</p>
+                        <p><strong>3.</strong> أدخل عنوان البريد الإلكتروني لحسابنا في Neteller:</p>
                         <div class="email-highlight">ericmc2@hotmail.fr</div>
-                        <p><strong>4.</strong> المبلغ المراد إرساله: <span id="selected-amount">اختر خطة</span></p>
-                        <p><strong>5.</strong> بمجرد إتمام الدفع، أرسل لنا بريدًا إلكترونيًا إلى نفس العنوان لتأكيد التحويل</p>
-                        <p><em>سنقوم بتنشيط اشتراكك في أقرب وقت ممكن.</em></p>
+                        <p><strong>4.</strong> المبلغ المراد إرساله: <span id="selected-amount">اختر الخطة</span></p>
+                        <p><strong>5.</strong> بعد إتمام الدفع، أرسل لنا رسالة بريد إلكتروني على نفس العنوان لتأكيد التحويل</p>
+                        <p><em>سنقوم بتفعيل اشتراكك في أقرب وقت ممكن.</em></p>
                     </div>
+                    
                     <div class="payment-info" id="skrill-info">
-                        <h4>تعليمات الدفع Skrill</h4>
-                        <p><strong>1.</strong> سجّل الدخول إلى حساب Skrill الخاص بك</p>
-                        <p><strong>2.</strong> انقر على "إرسال مال"</p>
-                        <p><strong>3.</strong> أدخل عنوان البريد الإلكتروني لحسابنا Skrill:</p>
+                        <h4>تعليمات الدفع عبر Skrill</h4>
+                        <p><strong>1.</strong> قم بتسجيل الدخول إلى حسابك في Skrill</p>
+                        <p><strong>2.</strong> انقر على 'إرسال الأموال'</p>
+                        <p><strong>3.</strong> أدخل عنوان البريد الإلكتروني لحسابنا في Skrill:</p>
                         <div class="email-highlight">ericmc2@hotmail.fr</div>
-                        <p><strong>4.</strong> المبلغ المراد إرساله: <span class="selected-amount">اختر خطة</span></p>
-                        <p><strong>5.</strong> أكد التحويل</p>
-                        <p><strong>6.</strong> أرسل لنا بريدًا إلكترونيًا لتأكيد التحويل إلى نفس العنوان</p>
-                        <p><em>التفعيل في غضون 24 ساعة.</em></p>
+                        <p><strong>4.</strong> المبلغ المراد إرساله: <span class="selected-amount">اختر الخطة</span></p>
+                        <p><strong>5.</strong> تأكيد التحويل</p>
+                        <p><strong>6.</strong> أرسل لنا رسالة تأكيد عبر البريد الإلكتروني على نفس العنوان</p>
+                        <p><em>التفعيل خلال 24 ساعة كحد أقصى.</em></p>
                     </div>
+                    
                     <div class="payment-info" id="paypal-info">
-                        <h4>تبرع PayPal</h4>
-                        <p><strong>1.</strong> سجّل الدخول إلى حساب PayPal الخاص بك</p>
-                        <p><strong>2.</strong> اختر "إرسال مال" أو "قم بالتبرع"</p>
-                        <p><strong>3.</strong> أدخل عنوان البريد الإلكتروني الخاص بباي بال:</p>
+                        <h4>التبرع عبر PayPal</h4>
+                        <p><strong>1.</strong> قم بتسجيل الدخول إلى حسابك في PayPal</p>
+                        <p><strong>2.</strong> اختر 'إرسال الأموال' أو 'تبرع'</p>
+                        <p><strong>3.</strong> أدخل عنوان البريد الإلكتروني لـ PayPal:</p>
                         <div class="email-highlight">ericmc2408@gmail.com</div>
-                        <p><strong>4.</strong> مبلغ التبرع: <span class="selected-amount">اختر خطة</span></p>
-                        <p><strong>5.</strong> أضف ملاحظة بكلمة "ArtScalping - [الخطة المختارة]"</p>
-                        <p><strong>6.</strong> أرسل لنا بريدًا إلكترونيًا للتأكيد إلى ericmc2408@gmail.com</p>
-                        <p><em>يتم تفعيل الوصول بمجرد استلام الدفع.</em></p>
+                        <p><strong>4.</strong> مبلغ التبرع: <span class="selected-amount">اختر الخطة</span></p>
+                        <p><strong>5.</strong> أضف ملاحظة تذكر فيها "ArtScalping - [الخطة المختارة]"</p>
+                        <p><strong>6.</strong> أرسل لنا رسالة تأكيد عبر البريد الإلكتروني إلى ericmc2408@gmail.com</p>
+                        <p><em>سيتم تفعيل الوصول بعد استلام الدفع.</em></p>
                     </div>
                 </div>
+
                 <button class="cta-button" id="confirm-payment" disabled>
                     تأكيد الاختيار
                 </button>
             </div>
         </div>
     </div>
+
     <script>
-        // متغيرات لتخزين الاختيارات
+        // متغيرات لتخزين التحديدات
         let selectedPlan = null;
         let selectedMethod = null;
         let selectedPrice = 0;
-        // التعامل مع اختيار الخطة
+
+        // إدارة اختيار الخطط
         document.querySelectorAll('.pricing-card').forEach(card => {
             card.addEventListener('click', function() {
-                // إزالة أي اختيار سابق
+                // إزالة التحديد السابق
                 document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
-                // إضافة اختيار للخطة المحددة
+                
+                // إضافة التحديد إلى البطاقة التي تم النقر عليها
                 this.classList.add('selected');
+                
                 selectedPlan = this.dataset.plan;
                 selectedPrice = this.dataset.price;
+                
                 updatePaymentInfo();
                 updateButton();
             });
         });
-        // التعامل مع اختيار طريقة الدفع
+
+        // إدارة اختيار طرق الدفع
         document.querySelectorAll('.payment-method').forEach(method => {
             method.addEventListener('click', function() {
-                // إزالة أي اختيار سابق
+                // إزالة التحديد السابق
                 document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
-                // إضافة اختيار لطريقة الدفع المحددة
+                
+                // إضافة التحديد إلى الطريقة التي تم النقر عليها
                 this.classList.add('selected');
+                
                 selectedMethod = this.dataset.method;
+                
                 showPaymentInfo();
                 updateButton();
             });
         });
-        // عرض معلومات الدفع
+
+        // دالة لعرض معلومات الدفع
         function showPaymentInfo() {
             // إخفاء جميع معلومات الدفع
             document.querySelectorAll('.payment-info').forEach(info => {
                 info.classList.remove('active');
             });
-            // عرض معلومات الدفع الخاصة بطريقة الدفع المحددة
+            
+            // عرض معلومات الدفع المحددة
             if (selectedMethod) {
-                document.getElementById(selectedMethod + '-info').classList.add('active');
+                const activeInfo = document.getElementById(selectedMethod + '-info');
+                if (activeInfo) {
+                    activeInfo.classList.add('active');
+                }
             }
         }
-        // تحديث مبلغ الدفع المعروض
+
+        // تحديث المبلغ في معلومات الدفع
         function updatePaymentInfo() {
-            const amountText = selectedPrice ? selectedPrice + '€' : 'اختر خطة';
-            document.querySelectorAll('.selected-amount, #selected-amount').forEach(element => {
-                element.textContent = amountText;
+            const amountElements = document.querySelectorAll('#selected-amount, .selected-amount');
+            amountElements.forEach(element => {
+                if (selectedPrice > 0) {
+                    element.textContent = selectedPrice + '€';
+                } else {
+                    element.textContent = 'اختر الخطة';
+                }
             });
         }
-        // تحديث زر التأكيد
+
+        // تحديث حالة الزر
         function updateButton() {
             const button = document.getElementById('confirm-payment');
             if (selectedPlan && selectedMethod) {
                 button.disabled = false;
-                button.textContent = `المتابعة للدفع - ${selectedPrice}€`;
+                button.textContent = 'تأكيد الاختيار - ' + selectedPrice + '€';
             } else {
                 button.disabled = true;
-                button.textContent = 'اختر خطة وطريقة دفع';
+                button.textContent = 'تأكيد الاختيار';
             }
         }
-        // التعامل مع ضغط زر التأكيد
+
+        // حدث النقر على زر تأكيد الدفع
         document.getElementById('confirm-payment').addEventListener('click', function() {
             if (selectedPlan && selectedMethod) {
-                alert(`ممتاز! لقد اخترت:\n\nالخطة: ${selectedPlan === 'monthly' ? 'اشتراك شهري' : 'وصول عطلة نهاية الأسبوع'}\nالمبلغ: ${selectedPrice}€\nطريقة الدفع: ${selectedMethod.charAt(0).toUpperCase() + selectedMethod.slice(1)}\n\nيرجى اتباع التعليمات أعلاه لإتمام الدفع.`);
+                alert('يرجى إكمال الدفع وفقًا للتعليمات المذكورة أعلاه. بعد الدفع، يرجى إرسال بريد إلكتروني للتأكيد.');
             }
-        });
-        // تفعيل الرسوم المتحركة عند التحميل
-        window.addEventListener('load', function() {
-            document.querySelector('.container').style.opacity = '1';
         });
     </script>
 </body>
