@@ -51,44 +51,7 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-        }
-
-        .site-name-container {
-            position: absolute;
-            top: 5vh;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-        }
-
-        .site-name {
-            font-size: 4em;
-            font-weight: bold;
-            color: #FFD700;
-            text-shadow: 0 0 10px #FFD700;
-        }
-
-        .football-ball {
-            position: absolute;
-            top: 20vh;
-            width: 100px;
-            height: 100px;
-            background-image: url('1.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            border-radius: 50%;
-            z-index: 3;
-            transition: left 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-        
-        .football-ball.center {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .football-ball.right {
-            left: 75%;
-            transform: translateX(-50%);
+            transition: opacity 0.5s ease-out;
         }
         
         .animated-text {
@@ -120,7 +83,7 @@
         .arrow-btn {
             position: absolute;
             bottom: 5vh;
-            display: none;
+            display: flex;
             justify-content: center;
             align-items: center;
             height: 50px;
@@ -130,7 +93,7 @@
             text-decoration: none;
             cursor: pointer;
             z-index: 5;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, opacity 0.5s;
         }
 
         .arrow-btn:hover {
@@ -154,35 +117,36 @@
             margin-left: 5px;
         }
 
-        .scene3-container {
+        .scene-container {
             max-width: 600px;
-            color: #d1d1d1;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            animation: fadeIn 1s forwards ease-out;
         }
 
-        .scene3-title {
+        .scene-title {
             font-size: 2.2em;
-            color: #fff;
+            color: #fff; /* Couleur par défaut si non spécifié en ligne */
             font-weight: bold;
             margin-bottom: 0.5em;
         }
 
-        .scene3-subtitle {
+        .scene-subtitle {
             font-size: 1em;
-            color: #b0b0b0;
+            color: #b0b0b0; /* Couleur par défaut si non spécifié en ligne */
             margin-bottom: 1.5em;
         }
 
-        .scene3-text {
+        .scene-text {
             font-size: 1em;
             line-height: 1.5;
             margin-bottom: 2em;
         }
 
-        .scene3-rate {
+        .scene-rate {
             font-size: 1.8em;
             color: #00CC00;
             font-weight: bold;
@@ -216,24 +180,6 @@
             margin-top: 2em;
         }
 
-        .scene4-container {
-            max-width: 800px;
-            padding: 20px;
-            color: #d1d1d1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        
-        .scene4-main-title {
-            font-size: 2.2em;
-            color: #FFD700;
-            margin-bottom: 0.5em;
-        }
-
         .rules-box {
             background-color: #2C3A4D;
             border-radius: 10px;
@@ -244,45 +190,24 @@
         }
         
         .box-title {
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: #FFD700;
             font-weight: bold;
             margin-bottom: 0.5em;
         }
 
         .rules-list p {
-            font-size: 1em;
+            font-size: 0.9em;
             line-height: 1.6;
             margin: 0.5em 0;
         }
 
         .final-text {
-            font-size: 1.2em;
+            font-size: 1em;
             margin-top: 3em;
             flex-shrink: 0;
         }
-
-        .ferrari-container {
-            max-width: 600px;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .ferrari-title {
-            font-size: 2.5em;
-            color: #FFD700;
-            margin-bottom: 20px;
-        }
-
-        .ferrari-text {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
+        
         .start-btn {
             background-color: transparent;
             color: #00CC00;
@@ -301,23 +226,17 @@
             background-color: #00CC00;
             color: #1A232D;
         }
-        
     </style>
 </head>
 <body>
 
     <div class="background-effect"></div>
-    <div class="football-ball" id="football-ball"></div>
-
-    <div class="site-name-container" id="site-name-container">
-        <h1 class="site-name">ArtScalping</h1>
-    </div>
-
+    
     <div class="content-container" id="content-container">
     </div>
 
-    <a href="index2.html" class="arrow-btn" id="menu-btn">← Menu</a>
-    <a href="#" class="arrow-btn" id="next-btn">→</a>
+    <a href="index2.html" class="arrow-btn" id="menu-btn" style="opacity:0;">← Menu</a>
+    <a href="#" class="arrow-btn" id="next-btn" style="opacity:0;">→</a>
 
     <script>
         let currentScene = 0;
@@ -325,23 +244,21 @@
         const nextBtn = document.getElementById('next-btn');
         const menuBtn = document.getElementById('menu-btn');
         const contentContainer = document.getElementById('content-container');
-        const siteNameContainer = document.getElementById('site-name-container');
-        const footballBall = document.getElementById('football-ball');
 
         const scenes = [
             `
                 <p class="animated-text">Vous rêvez d'un complément de revenu, d'atteindre l'indépendance financière ou de réaliser vos rêves ?</p>
-                <p class="animated-subtitle">Je vous propose une méthode que j'ai mise au point après 15 ans de recherches et de travaux.</p>
+                <p class="animated-subtitle">Découvrez une stratégie d'investissement que j'ai mise au point après 15 ans de recherches et de travaux.</p>
             `,
             `
-                <p class="animated-text">Une progression de votre gestion constante, un jeu facile, des pertes limitées sur de courtes périodes. Ouvrez-vous la porte de la liberté financière !</p>
+                <p class="animated-text">Une approche méthodique pour une progression constante de votre capital et des pertes limitées sur de courtes périodes. C'est l'opportunité d'ouvrir la porte à votre liberté financière !</p>
             `,
             `
-                <div class="scene3-container">
-                    <h2 class="scene3-title"><strong>Sélection des paris les plus sûrs</strong></h2>
-                    <p class="scene3-subtitle">Sélectionner les Paris les plus Sûrs</p>
-                    <p class="scene3-text">Ces taux de réussite sont le fruit d'une équation secrète, patiemment élaborée et testée sur des années de données, alliant indices de performance et séquences.</p>
-                    <p class="scene3-rate">Taux de réussite : 92 à 94%</p>
+                <div class="scene-container">
+                    <h2 class="scene-title" style="color: #FFD700;"><strong>Sélection des paris les plus sûrs</strong></h2>
+                    <p class="scene-subtitle">Une équation secrète, patiemment élaborée et testée.</p>
+                    <p class="scene-text">Ces taux de réussite sont le fruit d'une analyse poussée, combinant indices de performance et séquences.</p>
+                    <p class="scene-rate">Taux de réussite : 92 à 94%</p>
                     <div class="button-container">
                         <a href="#" class="btn">Under 4.5</a>
                         <a href="#" class="btn">Under 2.5 1ère mi-temps</a>
@@ -349,37 +266,19 @@
                 </div>
             `,
             `
-                <div class="scene4-container">
-                    <h2 class="scene4-main-title">Les Règles de la Méthode Complète et séquencée</h2>
-                    <div class="rules-box">
-                        <p class="box-title">Under 4.5</p>
-                        <div class="rules-list">
-                            <p>Stop Loss : Sortir du pari à la 86e minute 30 secondes ou 12 minutes après le 4eme but.</p>
-                            <p>Scalping / Cash Out : Le taux de réussite augmente après chaque but.</p>
-                            <p>Condition : Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.</p>
-                        </div>
-                    </div>
-
-                    <div class="rules-box">
-                        <p class="box-title">Under 2.5 1ère mi-temps règle 6 - 6 -10</p>
-                        <div class="rules-list">
-                            <p>Règle principale : On attends le premier but et cash out 2 eme but</p>
-                            <p>Condition de non-jeu : Si 2 buts sont marqués en 6 minutes, on ne joue pas. on fait une prise sur la 7 eme minute et on cash out ou lay au bout de 6 minutes. si un 2 eme but est marqué on prend le paris stabilisé (30 secondes a 1 minute ) et on cash out aprés 10 min</p>
-                            <p>Stop Loss : Sortir du pari à la 42e minute 30 secondes.</p>
-                            <p>Scalping / Cash Out : Le taux de réussite augmente après chaque but.</p>
-                            <p>Condition : Ne pas parier sur le but suivant tant que votre pari n'est pas terminé.</p>
-                        </div>
-                    </div>
-
-                    <p class="final-text">En appliquant ces règles, le taux de réussite passe de 92-94% à 98-100%.</p>
+                <div class="scene-container">
+                    <h2 class="scene-title" style="color: #FFD700;">Maîtrisez votre risque</h2>
+                    <p class="animated-subtitle" style="color: #d1d1d1;">Notre méthode ne se contente pas d'identifier les paris, elle vous guide pour réduire le risque au minimum.</p>
+                    <p class="scene-text" style="color: #ADD8E6;">En appliquant nos règles de gestion des mises, vous transformez une stratégie très performante en un système d'investissement ultra-sécurisé.</p>
+                    <p class="final-text" style="color: #d1d1d1;">L'ensemble des règles détaillées est disponible dans la section <span style="font-size: 1.2em; font-weight: bold; color: #FFD700;">Jeux</span> du menu principal.</p>
                 </div>
             `,
             `
-                <div class="ferrari-container">
-                    <h2 class="ferrari-title">L'analogie de la Ferrari</h2>
-                    <p class="ferrari-text">Nous vous offrons un outil de haute performance. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.</p>
-                    <p class="ferrari-text">La méthode ArtScalping est une Ferrari. Patience, rigueur et intelligence sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.</p>
-                    <p class="ferrari-text">La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.</p>
+                <div class="scene-container">
+                    <h2 class="scene-title" style="color: #FFD700;">L'analogie de la Ferrari</h2>
+                    <p class="ferrari-text" style="color: #d1d1d1;">Nous vous offrons un outil de haute performance. Mais comme avec une Ferrari, la puissance ne suffit pas. Sans un pilote compétent, la meilleure voiture finit dans le décor.</p>
+                    <p class="ferrari-text" style="color: #ADD8E6;">La méthode ArtScalping est une Ferrari. Patience, rigueur et intelligence sont les compétences dont vous avez besoin pour la piloter et réaliser des profits substantiels.</p>
+                    <p class="ferrari-text" style="color: #d1d1d1;">La maîtrise de soi est la clé pour transformer cet outil en une véritable machine à gagner.</p>
                     <a href="index2.html" class="start-btn">Démarrez la méthode</a>
                 </div>
             `
@@ -388,43 +287,17 @@
         function updateScene() {
             contentContainer.style.opacity = '0';
             
-            // Gestion de la position du ballon et du titre
-            if (currentScene >= 2) {
-                footballBall.classList.add('right');
-                footballBall.classList.remove('center');
-            } else {
-                footballBall.classList.add('center');
-                footballBall.classList.remove('right');
-            }
-
-            if (currentScene === 4) {
-                siteNameContainer.style.display = 'block';
-            } else if (currentScene === 3) {
-                 siteNameContainer.style.display = 'none';
-            } else {
-                 siteNameContainer.style.display = 'block';
-            }
-            
             setTimeout(() => {
                 contentContainer.innerHTML = scenes[currentScene];
                 contentContainer.style.opacity = '1';
                 
-                menuBtn.style.display = 'flex';
-                
                 if (currentScene === totalScenes - 1) {
-                    nextBtn.style.display = 'none';
+                    nextBtn.style.opacity = '0';
+                    nextBtn.style.pointerEvents = 'none';
                 } else {
-                    nextBtn.style.display = 'flex';
-                    nextBtn.href = "#";
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.pointerEvents = 'auto';
                 }
-                
-                if (currentScene === 3) {
-                    const scene4Subtitle = contentContainer.querySelector('.scene4-subtitle');
-                    if (scene4Subtitle) {
-                        scene4Subtitle.style.display = 'none';
-                    }
-                }
-
             }, 500);
         }
 
@@ -439,9 +312,9 @@
         window.onload = () => {
             updateScene();
             setTimeout(() => {
-                nextBtn.style.display = 'flex';
-                menuBtn.style.display = 'flex';
-            }, 2000);
+                nextBtn.style.opacity = '1';
+                menuBtn.style.opacity = '1';
+            }, 500);
         };
     </script>
 </body>
