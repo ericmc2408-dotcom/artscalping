@@ -54,45 +54,6 @@
             transition: opacity 0.5s ease-out;
         }
 
-        .site-name-container {
-            position: absolute;
-            top: 5vh;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .site-name {
-            font-size: 4em;
-            font-weight: bold;
-            color: #FFD700;
-            text-shadow: 0 0 10px #FFD700;
-        }
-
-        .football-ball {
-            position: absolute;
-            top: 20vh;
-            width: 100px;
-            height: 100px;
-            background-image: url('1.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            border-radius: 50%;
-            z-index: 3;
-            transition: all 0.5s ease-in-out;
-        }
-        
-        .football-ball.center {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .football-ball.right {
-            left: 75%;
-            transform: translateX(-50%);
-        }
-        
         .animated-text {
             display: block;
             white-space: pre-wrap;
@@ -229,20 +190,20 @@
         }
         
         .box-title {
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: #FFD700;
             font-weight: bold;
             margin-bottom: 0.5em;
         }
 
         .rules-list p {
-            font-size: 1em;
+            font-size: 0.9em;
             line-height: 1.6;
             margin: 0.5em 0;
         }
 
         .final-text {
-            font-size: 1.2em;
+            font-size: 1em;
             margin-top: 3em;
             flex-shrink: 0;
         }
@@ -270,16 +231,11 @@
 <body>
 
     <div class="background-effect"></div>
-    <div class="football-ball" id="football-ball"></div>
-
-    <div class="site-name-container" id="site-name-container">
-        <h1 class="site-name">ArtScalping</h1>
-    </div>
-
+    
     <div class="content-container" id="content-container">
     </div>
 
-    <a href="index2.html" class="arrow-btn" id="menu-btn" style="opacity:0;">← Menu</a>
+    <a href="index2_en.html" class="arrow-btn" id="menu-btn" style="opacity:0;">← Menu</a>
     <a href="#" class="arrow-btn" id="next-btn" style="opacity:0;">→</a>
 
     <script>
@@ -288,16 +244,14 @@
         const nextBtn = document.getElementById('next-btn');
         const menuBtn = document.getElementById('menu-btn');
         const contentContainer = document.getElementById('content-container');
-        const siteNameContainer = document.getElementById('site-name-container');
-        const footballBall = document.getElementById('football-ball');
 
         const scenes = [
             `
-                <p class="animated-text">Dreaming of a side income, financial independence, or achieving your goals?</p>
-                <p class="animated-subtitle">Discover an investment strategy I've developed after 15 years of research and hard work.</p>
+                <p class="animated-text">Dreaming of extra income, financial independence, or making your dreams come true?</p>
+                <p class="animated-subtitle">Discover an investment strategy I've developed over 15 years of research and hard work.</p>
             `,
             `
-                <p class="animated-text">A methodical approach for consistent capital growth and limited losses over short periods. This is your opportunity to open the door to financial freedom!</p>
+                <p class="animated-text">A methodical approach for consistent capital growth and limited losses over short periods. This is your chance to open the door to financial freedom!</p>
             `,
             `
                 <div class="scene-container">
@@ -313,25 +267,25 @@
             `,
             `
                 <div class="scene-container">
-                    <h2 class="scene-title">Rules of our Complete Strategy</h2>
-                    <p class="animated-subtitle">A strategy with 98 to 100% precision.</p>
+                    <h2 class="scene-title">Rules of Our Complete Strategy</h2>
+                    <p class="animated-subtitle" style="font-size: 0.9em;">A strategy with 98 to 100% precision.</p>
                     <div class="rules-box">
                         <p class="box-title">Under 4.5</p>
                         <div class="rules-list">
-                            <p>Stop Loss: Exit the bet at the 86th minute 30 seconds or 12 minutes after the 4th goal.</p>
+                            <p>Stop Loss: Exit the bet at 86 minutes 30 seconds or 12 minutes after the 4th goal.</p>
                             <p>Scalping / Cash Out: The success rate increases after each goal.</p>
-                            <p>Condition: Do not bet on the next goal until your current bet is finished.</p>
+                            <p>Condition: Do not bet on the next goal until your current bet has finished.</p>
                         </div>
                     </div>
 
                     <div class="rules-box">
                         <p class="box-title">Under 2.5 1st Half - 6-6-10 Rule</p>
                         <div class="rules-list">
-                            <p>Main Rule: Wait for the first goal and cash out after the 2nd goal.</p>
-                            <p>No-play Condition: If 2 goals are scored within 6 minutes, we don't play. We make a pick at the 7th minute and cash out or lay after 6 minutes. If a 2nd goal is scored, we take the stabilized bet (30 seconds to 1 minute) and cash out after 10 min</p>
-                            <p>Stop Loss: Exit the bet at the 42nd minute 30 seconds.</p>
+                            <p>Main Rule: We wait for the first goal and cash out after the 2nd goal.</p>
+                            <p>No-Play Condition: If 2 goals are scored within 6 minutes, we do not play. We make an entry at the 7th minute and cash out or lay after 6 minutes. If a 2nd goal is scored, we take the stabilized bet (30 seconds to 1 minute) and cash out after 10 minutes.</p>
+                            <p>Stop Loss: Exit the bet at 42 minutes 30 seconds.</p>
                             <p>Scalping / Cash Out: The success rate increases after each goal.</p>
-                            <p>Condition: Do not bet on the next goal until your current bet is finished.</p>
+                            <p>Condition: Do not bet on the next goal until your current bet has finished.</p>
                         </div>
                     </div>
 
@@ -341,10 +295,10 @@
             `
                 <div class="scene-container">
                     <h2 class="scene-title">The Ferrari Analogy</h2>
-                    <p class="ferrari-text">We're offering you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car ends up in the ditch.</p>
-                    <p class="ferrari-text">The ArtScalping method is a Ferrari. Patience, discipline, and intelligence are the skills you need to drive it and achieve substantial profits.</p>
-                    <p class="ferrari-text">Self-control is the key to turning this tool into a real money-making machine.</p>
-                    <a href="index2.html" class="start-btn">Start the Method</a>
+                    <p class="ferrari-text">We offer you a high-performance tool. But like with a Ferrari, power alone is not enough. Without a competent driver, the best car ends up in the ditch.</p>
+                    <p class="ferrari-text">The ArtScalping method is a Ferrari. Patience, discipline, and intelligence are the skills you need to drive it and earn substantial profits.</p>
+                    <p class="ferrari-text">Self-control is the key to transforming this tool into a true money-making machine.</p>
+                    <a href="index2_en.html" class="start-btn">Start the Method</a>
                 </div>
             `
         ];
@@ -352,28 +306,13 @@
         function updateScene() {
             contentContainer.style.opacity = '0';
             
-            // Handle football position and title visibility
             setTimeout(() => {
-                if (currentScene >= 2) {
-                    footballBall.classList.add('right');
-                    footballBall.classList.remove('center');
-                } else {
-                    footballBall.classList.add('center');
-                    footballBall.classList.remove('right');
-                }
-
-                if (currentScene === 3) {
-                    siteNameContainer.style.opacity = '0';
-                } else {
-                    siteNameContainer.style.opacity = '1';
-                }
-
                 contentContainer.innerHTML = scenes[currentScene];
                 contentContainer.style.opacity = '1';
                 
                 if (currentScene === totalScenes - 1) {
                     nextBtn.style.opacity = '0';
-                    nextBtn.style.pointerEvents = 'none'; // Disables the button
+                    nextBtn.style.pointerEvents = 'none';
                 } else {
                     nextBtn.style.opacity = '1';
                     nextBtn.style.pointerEvents = 'auto';
