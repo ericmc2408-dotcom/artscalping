@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtScalping</title>
     
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/twitter.png" sizes="any">
     
     <style>
         body {
@@ -54,44 +51,7 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-        }
-
-        .site-name-container {
-            position: absolute;
-            top: 5vh;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-        }
-
-        .site-name {
-            font-size: 4em;
-            font-weight: bold;
-            color: #FFD700;
-            text-shadow: 0 0 10px #FFD700;
-        }
-
-        .football-ball {
-            position: absolute;
-            top: 20vh;
-            width: 100px;
-            height: 100px;
-            background-image: url('1.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            border-radius: 50%;
-            z-index: 3;
-            transition: left 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-        
-        .football-ball.center {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .football-ball.right {
-            left: 75%;
-            transform: translateX(-50%);
+            transition: opacity 0.5s ease-out;
         }
         
         .animated-text {
@@ -123,7 +83,7 @@
         .arrow-btn {
             position: absolute;
             bottom: 5vh;
-            display: none;
+            display: flex;
             justify-content: center;
             align-items: center;
             height: 50px;
@@ -133,7 +93,7 @@
             text-decoration: none;
             cursor: pointer;
             z-index: 5;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, opacity 0.5s;
         }
 
         .arrow-btn:hover {
@@ -157,35 +117,36 @@
             margin-left: 5px;
         }
 
-        .scene3-container {
+        .scene-container {
             max-width: 600px;
-            color: #d1d1d1;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            animation: fadeIn 1s forwards ease-out;
         }
 
-        .scene3-title {
+        .scene-title {
             font-size: 2.2em;
-            color: #fff;
+            color: #fff; /* デフォルトカラー */
             font-weight: bold;
             margin-bottom: 0.5em;
         }
 
-        .scene3-subtitle {
+        .scene-subtitle {
             font-size: 1em;
-            color: #b0b0b0;
+            color: #b0b0b0; /* デフォルトカラー */
             margin-bottom: 1.5em;
         }
 
-        .scene3-text {
+        .scene-text {
             font-size: 1em;
             line-height: 1.5;
             margin-bottom: 2em;
         }
 
-        .scene3-rate {
+        .scene-rate {
             font-size: 1.8em;
             color: #00CC00;
             font-weight: bold;
@@ -219,24 +180,6 @@
             margin-top: 2em;
         }
 
-        .scene4-container {
-            max-width: 800px;
-            padding: 20px;
-            color: #d1d1d1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        
-        .scene4-main-title {
-            font-size: 2.2em;
-            color: #FFD700;
-            margin-bottom: 0.5em;
-        }
-
         .rules-box {
             background-color: #2C3A4D;
             border-radius: 10px;
@@ -247,45 +190,24 @@
         }
         
         .box-title {
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: #FFD700;
             font-weight: bold;
             margin-bottom: 0.5em;
         }
 
         .rules-list p {
-            font-size: 1em;
+            font-size: 0.9em;
             line-height: 1.6;
             margin: 0.5em 0;
         }
 
         .final-text {
-            font-size: 1.2em;
+            font-size: 1em;
             margin-top: 3em;
             flex-shrink: 0;
         }
-
-        .ferrari-container {
-            max-width: 600px;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .ferrari-title {
-            font-size: 2.5em;
-            color: #FFD700;
-            margin-bottom: 20px;
-        }
-
-        .ferrari-text {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
+        
         .start-btn {
             background-color: transparent;
             color: #00CC00;
@@ -304,23 +226,17 @@
             background-color: #00CC00;
             color: #1A232D;
         }
-        
     </style>
 </head>
 <body>
 
     <div class="background-effect"></div>
-    <div class="football-ball" id="football-ball"></div>
-
-    <div class="site-name-container" id="site-name-container">
-        <h1 class="site-name">ArtScalping</h1>
-    </div>
-
+    
     <div class="content-container" id="content-container">
     </div>
 
-    <a href="index2_ja.html" class="arrow-btn" id="menu-btn">← メニュー</a>
-    <a href="#" class="arrow-btn" id="next-btn">→</a>
+    <a href="index2_ja.html" class="arrow-btn" id="menu-btn" style="opacity:0;">← メニュー</a>
+    <a href="#" class="arrow-btn" id="next-btn" style="opacity:0;">→</a>
 
     <script>
         let currentScene = 0;
@@ -328,62 +244,42 @@
         const nextBtn = document.getElementById('next-btn');
         const menuBtn = document.getElementById('menu-btn');
         const contentContainer = document.getElementById('content-container');
-        const siteNameContainer = document.getElementById('site-name-container');
-        const footballBall = document.getElementById('football-ball');
 
         const scenes = [
             `
-                <p class="animated-text">副収入、経済的な自立、あるいは夢を実現することを夢見ていますか？</p>
-                <p class="animated-subtitle">15年間の研究と仕事の末に私が開発した手法をご提案します。</p>
+                <p class="animated-text">副収入、経済的自立、そして夢の実現を夢見ていますか？</p>
+                <p class="animated-subtitle">15年間の調査と努力を経て私が開発した投資戦略を発見してください。</p>
             `,
             `
-                <p class="animated-text">ゲーム管理の絶え間ない改善、シンプルなゲーム、短期間での限定的な損失。経済的な自由への扉を開きましょう！</p>
+                <p class="animated-text">体系的なアプローチで、安定した資産の成長と短期的な損失を限定的にします。これはあなたの経済的自由への扉を開くチャンスです！</p>
             `,
             `
-                <div class="scene3-container">
-                    <h2 class="scene3-title"><strong>最も安全な賭けの選択</strong></h2>
-                    <p class="scene3-subtitle">最も安全な賭けを選択</p>
-                    <p class="scene3-text">これらの成功率は、パフォーマンス指数とシーケンスを組み合わせた、何年ものデータをかけて辛抱強く開発され、テストされた秘密の方程式の結果です。</p>
-                    <p class="scene3-rate">成功率：92〜94%</p>
+                <div class="scene-container">
+                    <h2 class="scene-title" style="color: #FFD700;"><strong>最も安全な賭けの選択</strong></h2>
+                    <p class="scene-subtitle">辛抱強く考案され、テストされた秘密の方程式です。</p>
+                    <p class="scene-text">これらの成功率は、パフォーマンス指標とシーケンスを組み合わせた詳細な分析の結果です。</p>
+                    <p class="scene-rate">成功率：92〜94％</p>
                     <div class="button-container">
-                        <a href="#" class="btn">4.5未満</a>
-                        <a href="#" class="btn">前半2.5未満</a>
+                        <a href="#" class="btn">Under 4.5</a>
+                        <a href="#" class="btn">Under 2.5 前半戦</a>
                     </div>
                 </div>
             `,
             `
-                <div class="scene4-container">
-                    <h2 class="scene4-main-title">完全かつシーケンシャルな手法のルール</h2>
-                    <div class="rules-box">
-                        <p class="box-title">4.5未満</p>
-                        <div class="rules-list">
-                            <p>ストップロス：86分30秒後、または4点目のゴールの12分後に賭けを終了します。</p>
-                            <p>スキャルピング/キャッシュアウト：各ゴールの後に成功率が上がります。</p>
-                            <p>条件：あなたの賭けが確定するまで、次のゴールに賭けないでください。</p>
-                        </div>
-                    </div>
-
-                    <div class="rules-box">
-                        <p class="box-title">前半2.5未満のルール 6 - 6 - 10</p>
-                        <div class="rules-list">
-                            <p>主なルール：最初のゴールを待ち、2点目のゴール後にキャッシュアウトします。</p>
-                            <p>ノープレイ条件：6分以内に2つのゴールが決まった場合、私たちはプレイしません。7分目に賭け、6分後にキャッシュアウトまたはレイします。もし2点目のゴールが決まったら、安定した賭け（30秒から1分）を取り、10分後にキャッシュアウトします。</p>
-                            <p>ストップロス：42分30秒後に賭けを終了します。</p>
-                            <p>スキャルピング/キャッシュアウト：各ゴールの後に成功率が上がります。</p>
-                            <p>条件：あなたの賭けが確定するまで、次のゴールに賭けないでください。</p>
-                        </div>
-                    </div>
-
-                    <p class="final-text">これらのルールを適用することで、成功率は92-94%から98-100%に上がります。</p>
+                <div class="scene-container">
+                    <h2 class="scene-title" style="color: #FFD700;">リスクを管理する</h2>
+                    <p class="animated-subtitle" style="color: #d1d1d1;">私たちのメソッドは賭けを特定するだけでなく、リスクを最小限に抑える方法をガイドします。</p>
+                    <p class="scene-text" style="color: #ADD8E6;">私たちの賭け金管理ルールを適用することで、非常に高いパフォーマンスの戦略を、超安全な投資システムに変えることができます。</p>
+                    <p class="final-text" style="color: #d1d1d1;">すべての詳細ルールは、メインメニューの<span style="font-size: 1.2em; font-weight: bold; color: #FFD700;">ゲーム</span>セクションで利用できます。</p>
                 </div>
             `,
             `
-                <div class="ferrari-container">
-                    <h2 class="ferrari-title">フェラーリの比喩</h2>
-                    <p class="ferrari-text">私たちはあなたに高性能なツールを提供します。しかし、フェラーリと同じで、力だけでは十分ではありません。有能なドライバーがいなければ、最高の車も溝に落ちてしまいます。</p>
-                    <p class="ferrari-text">ArtScalping手法はフェラーリです。それを運転し、大きな利益を得るためには、忍耐、規律、そして知性が必要です。</p>
-                    <p class="ferrari-text">自己制御が、このツールを真の利益を生む機械に変える鍵です。</p>
-                    <a href="index2_ja.html" class="start-btn">手法を開始</a>
+                <div class="scene-container">
+                    <h2 class="scene-title" style="color: #FFD700;">フェラーリの比喩</h2>
+                    <p class="ferrari-text" style="color: #d1d1d1;">私たちはあなたに高性能なツールを提供します。しかし、フェラーリと同じように、パワーだけでは不十分です。有能なドライバーがいなければ、最高の車でも溝にはまってしまいます。</p>
+                    <p class="ferrari-text" style="color: #ADD8E6;">ArtScalpingメソッドはフェラーリです。忍耐、規律、そして知性こそが、それを操縦し、大きな利益を得るために必要なスキルです。</p>
+                    <p class="ferrari-text" style="color: #d1d1d1;">自己管理が、このツールを真の「お金を稼ぐ機械」に変える鍵となります。</p>
+                    <a href="index2_ja.html" class="start-btn">メソッドを開始する</a>
                 </div>
             `
         ];
@@ -391,43 +287,17 @@
         function updateScene() {
             contentContainer.style.opacity = '0';
             
-            // Manage ball and title position
-            if (currentScene >= 2) {
-                footballBall.classList.add('right');
-                footballBall.classList.remove('center');
-            } else {
-                footballBall.classList.add('center');
-                footballBall.classList.remove('right');
-            }
-
-            if (currentScene === 4) {
-                siteNameContainer.style.display = 'block';
-            } else if (currentScene === 3) {
-                 siteNameContainer.style.display = 'none';
-            } else {
-                 siteNameContainer.style.display = 'block';
-            }
-            
             setTimeout(() => {
                 contentContainer.innerHTML = scenes[currentScene];
                 contentContainer.style.opacity = '1';
                 
-                menuBtn.style.display = 'flex';
-                
                 if (currentScene === totalScenes - 1) {
-                    nextBtn.style.display = 'none';
+                    nextBtn.style.opacity = '0';
+                    nextBtn.style.pointerEvents = 'none';
                 } else {
-                    nextBtn.style.display = 'flex';
-                    nextBtn.href = "#";
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.pointerEvents = 'auto';
                 }
-                
-                if (currentScene === 3) {
-                    const scene4Subtitle = contentContainer.querySelector('.scene4-subtitle');
-                    if (scene4Subtitle) {
-                        scene4Subtitle.style.display = 'none';
-                    }
-                }
-
             }, 500);
         }
 
@@ -442,9 +312,9 @@
         window.onload = () => {
             updateScene();
             setTimeout(() => {
-                nextBtn.style.display = 'flex';
-                menuBtn.style.display = 'flex';
-            }, 2000);
+                nextBtn.style.opacity = '1';
+                menuBtn.style.opacity = '1';
+            }, 500);
         };
     </script>
 </body>
