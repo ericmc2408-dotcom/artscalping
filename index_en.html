@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtScalping</title>
     
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/twitter.png" sizes="any">
     
     <style>
         body {
@@ -54,6 +51,7 @@
             justify-content: center;
             align-items: center;
             height: 100%;
+            transition: opacity 0.5s ease-out;
         }
 
         .site-name-container {
@@ -62,6 +60,7 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
+            transition: opacity 0.5s ease-out;
         }
 
         .site-name {
@@ -81,7 +80,7 @@
             background-repeat: no-repeat;
             border-radius: 50%;
             z-index: 3;
-            transition: left 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
         }
         
         .football-ball.center {
@@ -123,7 +122,7 @@
         .arrow-btn {
             position: absolute;
             bottom: 5vh;
-            display: none;
+            display: flex;
             justify-content: center;
             align-items: center;
             height: 50px;
@@ -133,7 +132,7 @@
             text-decoration: none;
             cursor: pointer;
             z-index: 5;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, opacity 0.5s;
         }
 
         .arrow-btn:hover {
@@ -157,35 +156,36 @@
             margin-left: 5px;
         }
 
-        .scene3-container {
+        .scene-container {
             max-width: 600px;
             color: #d1d1d1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            animation: fadeIn 1s forwards ease-out;
         }
 
-        .scene3-title {
+        .scene-title {
             font-size: 2.2em;
             color: #fff;
             font-weight: bold;
             margin-bottom: 0.5em;
         }
 
-        .scene3-subtitle {
+        .scene-subtitle {
             font-size: 1em;
             color: #b0b0b0;
             margin-bottom: 1.5em;
         }
 
-        .scene3-text {
+        .scene-text {
             font-size: 1em;
             line-height: 1.5;
             margin-bottom: 2em;
         }
 
-        .scene3-rate {
+        .scene-rate {
             font-size: 1.8em;
             color: #00CC00;
             font-weight: bold;
@@ -219,24 +219,6 @@
             margin-top: 2em;
         }
 
-        .scene4-container {
-            max-width: 800px;
-            padding: 20px;
-            color: #d1d1d1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        
-        .scene4-main-title {
-            font-size: 2.2em;
-            color: #FFD700;
-            margin-bottom: 0.5em;
-        }
-
         .rules-box {
             background-color: #2C3A4D;
             border-radius: 10px;
@@ -264,28 +246,7 @@
             margin-top: 3em;
             flex-shrink: 0;
         }
-
-        .ferrari-container {
-            max-width: 600px;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .ferrari-title {
-            font-size: 2.5em;
-            color: #FFD700;
-            margin-bottom: 20px;
-        }
-
-        .ferrari-text {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
+        
         .start-btn {
             background-color: transparent;
             color: #00CC00;
@@ -304,7 +265,6 @@
             background-color: #00CC00;
             color: #1A232D;
         }
-        
     </style>
 </head>
 <body>
@@ -319,8 +279,8 @@
     <div class="content-container" id="content-container">
     </div>
 
-    <a href="index2.html" class="arrow-btn" id="menu-btn">← Menu</a>
-    <a href="#" class="arrow-btn" id="next-btn">→</a>
+    <a href="index2.html" class="arrow-btn" id="menu-btn" style="opacity:0;">← Menu</a>
+    <a href="#" class="arrow-btn" id="next-btn" style="opacity:0;">→</a>
 
     <script>
         let currentScene = 0;
@@ -333,18 +293,18 @@
 
         const scenes = [
             `
-                <p class="animated-text">Dreaming of extra income, financial independence, or making your dreams a reality?</p>
-                <p class="animated-subtitle">I'm proposing a method that I developed after 15 years of research and work.</p>
+                <p class="animated-text">Dreaming of a side income, financial independence, or achieving your goals?</p>
+                <p class="animated-subtitle">Discover an investment strategy I've developed after 15 years of research and hard work.</p>
             `,
             `
-                <p class="animated-text">Constant improvement in your game management, a simple game, limited losses over short periods. Open the door to financial freedom!</p>
+                <p class="animated-text">A methodical approach for consistent capital growth and limited losses over short periods. This is your opportunity to open the door to financial freedom!</p>
             `,
             `
-                <div class="scene3-container">
-                    <h2 class="scene3-title"><strong>Selecting the Safest Bets</strong></h2>
-                    <p class="scene3-subtitle">Selecting the safest bets</p>
-                    <p class="scene3-text">These success rates are the result of a secret equation, patiently developed and tested over years of data, combining performance indices and sequences.</p>
-                    <p class="scene3-rate">Success Rate: 92 to 94%</p>
+                <div class="scene-container">
+                    <h2 class="scene-title"><strong>Selecting the Safest Bets</strong></h2>
+                    <p class="scene-subtitle">A secret equation, patiently crafted and tested.</p>
+                    <p class="scene-text">These success rates are the result of in-depth analysis, combining performance indicators and sequences.</p>
+                    <p class="scene-rate">Success Rate: 92 to 94%</p>
                     <div class="button-container">
                         <a href="#" class="btn">Under 4.5</a>
                         <a href="#" class="btn">Under 2.5 1st Half</a>
@@ -352,25 +312,26 @@
                 </div>
             `,
             `
-                <div class="scene4-container">
-                    <h2 class="scene4-main-title">The Rules of the Complete and Sequential Method</h2>
+                <div class="scene-container">
+                    <h2 class="scene-title">Rules of our Complete Strategy</h2>
+                    <p class="animated-subtitle">A strategy with 98 to 100% precision.</p>
                     <div class="rules-box">
                         <p class="box-title">Under 4.5</p>
                         <div class="rules-list">
-                            <p>Stop-Loss: End the bet after 86 minutes and 30 seconds or 12 minutes after the 4th goal.</p>
+                            <p>Stop Loss: Exit the bet at the 86th minute 30 seconds or 12 minutes after the 4th goal.</p>
                             <p>Scalping / Cash Out: The success rate increases after each goal.</p>
-                            <p>Condition: Do not bet on the next goal as long as your bet has not been finalized.</p>
+                            <p>Condition: Do not bet on the next goal until your current bet is finished.</p>
                         </div>
                     </div>
 
                     <div class="rules-box">
-                        <p class="box-title">Under 2.5 1st Half Rule 6 - 6 - 10</p>
+                        <p class="box-title">Under 2.5 1st Half - 6-6-10 Rule</p>
                         <div class="rules-list">
-                            <p>Main Rule: We wait for the first goal and cash out after the 2nd goal.</p>
-                            <p>No-Play Condition: If 2 goals are scored within 6 minutes, we do not play. We bet in the 7th minute and cash out or lay after 6 minutes. If a 2nd goal is scored, we take the stabilized bet (30 seconds to 1 minute) and cash out after 10 minutes.</p>
-                            <p>Stop-Loss: End the bet after 42 minutes and 30 seconds.</p>
+                            <p>Main Rule: Wait for the first goal and cash out after the 2nd goal.</p>
+                            <p>No-play Condition: If 2 goals are scored within 6 minutes, we don't play. We make a pick at the 7th minute and cash out or lay after 6 minutes. If a 2nd goal is scored, we take the stabilized bet (30 seconds to 1 minute) and cash out after 10 min</p>
+                            <p>Stop Loss: Exit the bet at the 42nd minute 30 seconds.</p>
                             <p>Scalping / Cash Out: The success rate increases after each goal.</p>
-                            <p>Condition: Do not bet on the next goal as long as your bet has not been finalized.</p>
+                            <p>Condition: Do not bet on the next goal until your current bet is finished.</p>
                         </div>
                     </div>
 
@@ -378,11 +339,11 @@
                 </div>
             `,
             `
-                <div class="ferrari-container">
-                    <h2 class="ferrari-title">The Ferrari Analogy</h2>
-                    <p class="ferrari-text">We offer you a high-performance tool. But just like with a Ferrari, power alone is not enough. Without a competent driver, the best car ends up in a ditch.</p>
-                    <p class="ferrari-text">The ArtScalping method is a Ferrari. Patience, discipline, and intelligence are the skills you need to drive it and make significant profits.</p>
-                    <p class="ferrari-text">Self-control is the key to turning this tool into a true profit machine.</p>
+                <div class="scene-container">
+                    <h2 class="scene-title">The Ferrari Analogy</h2>
+                    <p class="ferrari-text">We're offering you a high-performance tool. But like a Ferrari, power isn't enough. Without a skilled driver, the best car ends up in the ditch.</p>
+                    <p class="ferrari-text">The ArtScalping method is a Ferrari. Patience, discipline, and intelligence are the skills you need to drive it and achieve substantial profits.</p>
+                    <p class="ferrari-text">Self-control is the key to turning this tool into a real money-making machine.</p>
                     <a href="index2.html" class="start-btn">Start the Method</a>
                 </div>
             `
@@ -391,43 +352,32 @@
         function updateScene() {
             contentContainer.style.opacity = '0';
             
-            // Manage ball and title position
-            if (currentScene >= 2) {
-                footballBall.classList.add('right');
-                footballBall.classList.remove('center');
-            } else {
-                footballBall.classList.add('center');
-                footballBall.classList.remove('right');
-            }
-
-            if (currentScene === 4) {
-                siteNameContainer.style.display = 'block';
-            } else if (currentScene === 3) {
-                 siteNameContainer.style.display = 'none';
-            } else {
-                 siteNameContainer.style.display = 'block';
-            }
-            
+            // Handle football position and title visibility
             setTimeout(() => {
+                if (currentScene >= 2) {
+                    footballBall.classList.add('right');
+                    footballBall.classList.remove('center');
+                } else {
+                    footballBall.classList.add('center');
+                    footballBall.classList.remove('right');
+                }
+
+                if (currentScene === 3) {
+                    siteNameContainer.style.opacity = '0';
+                } else {
+                    siteNameContainer.style.opacity = '1';
+                }
+
                 contentContainer.innerHTML = scenes[currentScene];
                 contentContainer.style.opacity = '1';
                 
-                menuBtn.style.display = 'flex';
-                
                 if (currentScene === totalScenes - 1) {
-                    nextBtn.style.display = 'none';
+                    nextBtn.style.opacity = '0';
+                    nextBtn.style.pointerEvents = 'none'; // Disables the button
                 } else {
-                    nextBtn.style.display = 'flex';
-                    nextBtn.href = "#";
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.pointerEvents = 'auto';
                 }
-                
-                if (currentScene === 3) {
-                    const scene4Subtitle = contentContainer.querySelector('.scene4-subtitle');
-                    if (scene4Subtitle) {
-                        scene4Subtitle.style.display = 'none';
-                    }
-                }
-
             }, 500);
         }
 
@@ -442,9 +392,9 @@
         window.onload = () => {
             updateScene();
             setTimeout(() => {
-                nextBtn.style.display = 'flex';
-                menuBtn.style.display = 'flex';
-            }, 2000);
+                nextBtn.style.opacity = '1';
+                menuBtn.style.opacity = '1';
+            }, 500);
         };
     </script>
 </body>
